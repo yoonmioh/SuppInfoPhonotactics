@@ -611,14 +611,14 @@ Figure5_dist_4 <- clm_plotdat(modelTable1, "scoreDictToken", xlevels=25, type="d
 ggarrange(Figure5_mean_1, Figure5_dist_1,Figure5_mean_2,Figure5_dist_2, Figure5_mean_3,Figure5_dist_3, Figure5_mean_4, Figure5_dist_4, labels=c("a.", "","b.","","c.","","d.",""),ncol=2, widths=c(1,6))
 ```
 
-## TableS1: Modeling confidence ratings with an ordinal mixed effects model after discarding 50 nonwords based on token-based dictionary phonotasctic scores
+## TableS1: Modeling confidence ratings with an ordinal mixed effects model with a subset of data
 ```{r Table.S1, echo=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
 # Model for Table S1
 dataExp1DScore <- dataExp1DprimeFinite[dataExp1DprimeFinite$scoreDictToken > min(dataExp1DprimeFinite[dataExp1DprimeFinite$type=="real",]$scoreDictToken),]
 # modelTableS1 <- clmm(enteredResponse ~ macron*type*c.(dprime) + c.(n.neighbors)*type*c.(dprime) + c.(length)*c.(dprime) + c.(scoreDictToken) + (1 + macron*type + c.(n.neighbors)*type| workerId) + (1 + c.(length) + c.(scoreDictToken)| workerId) + (0 + c.(dprime)|word), data=dataExp1DScore)
 # saveRDS(modelTableS1, file = "modelTableS1.rds")
-# modelTableS1 <- readRDS("./modelTableS1.rds")  
-# clm_table(modelTableS1, caption="Table S1: Model summary of confidence ratings with an ordinal mixed effects model. All numeric variables in this model are centered.")
+modelTableS1 <- readRDS("./modelTableS1.rds")  
+clm_table(modelTableS1, caption="Table S1: Model summary of confidence ratings with an ordinal mixed effects model with a subset of data after discarding 50 nonwords based on token-based dictionary phonotasctic scores. All numeric variables in this model are centered.")
 ``` 
 
 ## Statistical models with self-reported survey measures
