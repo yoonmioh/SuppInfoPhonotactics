@@ -61,11 +61,12 @@ clm_table <- function(mod, digits=3, ...) {
   table <- summary(mod)$coefficients %>%
     data.frame() %>%
     rlang::set_names(c("beta", "se", "z", "p")) %>%
+    rownames_to_column("parameter") %>%
     mutate(
-      parameter = row.names(.) %>%
+      parameter = parameter %>%
         str_replace_all(
           ., 
-          str_c("(", str_c(names(attr(mod$terms, "dataClasses"))[attr(mod$terms, "dataClasses") %in% c("factor", "logical")][-1], collapse="|"), ")"), 
+          str_c("(", str_c(names(attr(mod$terms, "dataClasses"))[attr(mod$terms, "dataClasses") %in% c("factor", "logical", "character")][-1], collapse="|"), ")"), 
           "\\1 = "
         ) %>%
         str_replace_all(
@@ -232,6 +233,42 @@ clm_thresholds = function(mod) {
   return(thresholds)
 }
 
+# Custom function to format logistic regression results in a nice table
+logistic_table <- function(mod, digits=3, ...) {
+  table <- summary(mod)$coefficients %>%
+    data.frame() %>%
+    rlang::set_names(c("beta", "se", "z", "p")) %>%
+    rownames_to_column("parameter") %>%
+    mutate(
+      parameter = parameter %>%
+        str_replace_all(
+          ., 
+          str_c("(", str_c(names(attr(attr(mod@frame, "terms"), "dataClasses"))[attr(attr(mod@frame, "terms"), "dataClasses") %in% c("factor", "logical")][-1], collapse="|"), ")"), 
+          "\\1 = "
+        ) %>%
+        str_replace_all(
+          .,
+          "(?<=^|\\:)(?:c\\.\\()([^:]+)(?:\\))(?=$|\\:)",
+          "\\1 (centered)"
+        ) %>%
+        str_replace_all(., fixed(":"), " &times; "),
+      significance = case_when(
+        p < 0.001 ~ "\\*\\*\\*",
+        p < 0.01 ~ "\\*\\*",
+        p < 0.05 ~ "\\*",
+        p < 0.1 ~ ".",
+        TRUE ~ ""
+      )
+    ) %>%
+    dplyr::select(parameter, beta, se, z, p, significance) %>%
+    mutate(
+      p = ifelse(p<0.001, "<0.001", format(round(p, 3), nsmall=3))
+    ) %>%
+    kable(digits=3, escape=F, col.names=c("Parameter", "Estimate", "Std. Error", "$z$", "$p$", ""), align="lrrrrl", ...) %>%
+    kable_styling()
+  return(table)
+}
+
 ```
 
 # Introduction 
@@ -241,7 +278,7 @@ This R Markdown script contains all the code used for outlier detection, data an
 ## Participant exclusions
 ```{r loading_data_Exp1, echo=TRUE, message=FALSE, warning=FALSE}
 # Loading the data to filter out participants
-dataExp1 <- read.delim("./dataAnonNotFilteredExp1_added.txt", sep ="\t", header = TRUE)
+dataExp1 <- read.delim("./dataAnonNotFilteredExp1_added.txt", sep ="\t", header = TRUE, encoding="UTF-8")
 
 # Remove 11 suspicious participants
 rmParticipant1Exp1 <- c("5970a90e","6e5ccd20","9e75832a","86687167","64afd2cc","429604bc","409f2599","d6390ddc","7ab6a320","bd90455b","39b29c2b")
@@ -428,6 +465,11 @@ ggplot(Fig4T, aes(x=scoreRsSeg, y=mean, group=Type, label=word)) + labs(x= "Phon
 ```
 
 ## Table1: Modeling confidence ratings with an ordinal mixed effects model
+
+[ST: This model has a random slope for dprime by word, but no random intercept for word (0 + c.(dprime) | word). Was that a mistake based on trying the advice to decorrelate random effects? It seems very unusual... if you just want to decorrelate the intercept from the slope, you would need (1 | word) + (0 + dprime | word)]
+
+[ST: Is the model fitting procedure outlined clearly in the paper? Since there are no comments along the way here, it might be hard to reconstruct without extremely clear guidance.]
+
 ```{r Table.1, echo=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
 # Model for Table 1
 dataExp1DprimeFinite <- dataExp1[is.finite(dataExp1$dprime),]
@@ -442,14 +484,24 @@ clm_table(modelTable1, caption="Table 1: Model summary of confidence ratings wit
 ``` 
 
 ## Figure 5: Effect plots from the model presented in Table 1
-```{r Fig.5, echo=FALSE, message=FALSE, warning=FALSE, fig.width=11, fig.height=9, fig.cap="Figure 5: Effect plots of the interaction between the presence of macrons and the distinction between non vs. real word stimuli on the top (Fig.5a), the interaction between the neighbourhood density and the distinction between non vs. real word stimuli on the middle (Fig.5b), the interaction between d′ and the presence of macrons (Fig.5c), and the frequency-weighted dictionary phonotactic score on the bottom (Fig.5d). Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings."}
 
-# 1) Type*Macron
-Figure5_mean_1 <- clm_plotdat(modelTable1, c("type", "macron"), xlevels=25, type="mean") %>%
+[ST: I suggest making the color scheme for these plots the same as the one used for the raw data plots; either set nonwords to black and real words to blue in those raw data plots, or set the colors here to match those used earlier. (Similarly for the shapes, if they are not already the same)]
+
+[ST: It is probably worth increasing the font size of the axis labels, since they get pretty small in the final figure.]
+
+[ST: In these plots, I chose dprime values of 1 and 3 as cuts, because they show the different behaviors well and fit easily in the labels. You can change them if you want -- but if you want to use quartile values, then I suggest you use the quantile function as commented out in the code, because the values it calculates are *different* to the ones you had there before (likely due to updates in the data with exclusions etc.). If you stick with 1 and 3, it would be helpful either here or in the paper (where any figure is presented) to briefly indicate what a dprime of 1 or 3 represents, and where those values fall in the overall distribution of dprimes across participants.]
+
+```{r Fig.5, echo=FALSE, message=FALSE, warning=FALSE, fig.width=11, fig.height=12, fig.cap="Figure 5: Effect plots of: the interaction between the presence of macrons, the distinction between non vs. real word stimuli, and participant d' (Fig.5a); the interaction between the neighbourhood density, the distinction between non vs. real word stimuli, and participant d' (Fig.5b); the interaction between the stimulus length and participant d' (Fig.5b); and the frequency-weighted dictionary phonotactic score (Fig.5d). For plots involving interactions with paricipant d', the upper panel represents participants with high d', and the lower panel represents participants with low d'. Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings."}
+dprimes = dataExp1DprimeFinite %>% group_by(workerId, dprime) %>% summarise() %>% pull(dprime)
+dprime_cuts = c(3, 1) # quantile(dprimes, p=c(0.75, 0.25))
+yrange = c(2.3, 5)
+
+# 1) Type*Macron*Dprime
+Figure5_mean_1 <- clm_plotdat(modelTable1, c("type", "macron", "dprime"), xlevels=list(dprime=dprime_cuts), type="mean") %>%
   mutate(
     type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
-    macron.int = as.integer(macron),
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
+    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE"),
+    dprime = factor(dprime, levels=dprime_cuts)
   ) %>%
   ggplot(., aes(x=macron, y=pred, color=type, shape=type)) +
   geom_point(size=4, position=position_dodge(width=0.2)) +
@@ -457,62 +509,69 @@ Figure5_mean_1 <- clm_plotdat(modelTable1, c("type", "macron"), xlevels=25, type
   geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
   xlab("Presence of macron") +
   ylab("Predicted mean rating") + 
+  facet_grid(dprime ~ ., labeller=label_both, switch="y") +
+  ylim(yrange) +
   scale_shape_manual(values = c("Nonword" = 19, "Word" = 17)) + 
   scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
   scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  theme_classic() + 
+  theme_bw() + 
   theme(
     legend.position="none",
     panel.background = element_blank()
   )
 
-Figure5_dist_1 <- clm_plotdat(modelTable1, c("type", "macron"), xlevels=25, type="dist") %>%
+Figure5_dist_1 <- clm_plotdat(modelTable1, c("type", "macron", "dprime"), xlevels=list(dprime=dprime_cuts), type="dist") %>%
   mutate(
     type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
-    macron.int = as.integer(macron),
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
+    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE"),
+    dprime = factor(dprime, levels=dprime_cuts)
   ) %>%
+  rename("Rating" = response) %>%
   ggplot(., aes(x=macron, y=pred, color=type, shape=type)) +
-  geom_point(size=2, position=position_dodge(width=0.2)) +
-  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.7, position=position_dodge(width=0.2)) +
+  geom_point(size=4, position=position_dodge(width=0.2)) +
+  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
   geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
   xlab("Presence of macron") +
   ylab("Probability of rating") + 
   scale_shape_manual(values = c("Nonword" = 19, "Word" = 17)) + 
   scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
   scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
+  facet_grid(dprime ~ Rating, labeller=label_both, switch="y") +
   ylim(0, 1) +  
   theme_bw() + 
   theme(
     legend.position="right",
-    panel.background = element_blank()
-  )
-
-# 2) Type*Neighbourhood density
-Figure5_mean_2 <- clm_plotdat(modelTable1, c("type", "n.neighbors"), xlevels=list(length=25), type="mean") %>%
-  mutate(
-    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word")
-  ) %>%
-  ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
-  geom_line(size=1) +
-  xlab("Neighbourhood density") +
-  ylab("Predicted mean rating") + 
-  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  theme_classic() + 
-  theme(
-    plot.title = element_text(hjust = 0.5, size=15),
-    legend.position="none",
     legend.title=element_blank(),
     panel.background = element_blank()
   )
 
-Figure5_dist_2 <- clm_plotdat(modelTable1, c("type", "n.neighbors"), xlevels=list(length=25), type="dist") %>%
+# 2) Type*Neighbourhood density*Dprime
+Figure5_mean_2 <- clm_plotdat(modelTable1, c("type", "n.neighbors", "dprime"), xlevels=list(dprime=dprime_cuts), type="mean") %>%
   mutate(
-    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word")
+    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
+    dprime = factor(dprime, levels=dprime_cuts)
   ) %>%
+  ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
+  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
+  geom_line(size=1) +
+  xlab("Neighbourhood density") +
+  ylab("Predicted mean rating") + 
+  facet_grid(dprime ~ ., labeller=label_both, switch="y") +
+  ylim(yrange) +
+  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
+  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
+  theme_bw() + 
+  theme(
+    legend.position="none",
+    panel.background = element_blank()
+  )
+
+Figure5_dist_2 <- clm_plotdat(modelTable1, c("type", "n.neighbors", "dprime"), xlevels=list(dprime=dprime_cuts), type="dist") %>%
+  mutate(
+    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
+    dprime = factor(dprime, levels=dprime_cuts)
+  ) %>%
+  rename("Rating" = response) %>%
   ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
   geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
   geom_line(size=1) +
@@ -520,55 +579,55 @@ Figure5_dist_2 <- clm_plotdat(modelTable1, c("type", "n.neighbors"), xlevels=lis
   ylab("Probability of rating") + 
   scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
   scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
+  facet_grid(dprime ~ Rating, labeller=label_both, switch="y") +
   ylim(0, 1) +  
   theme_bw() + 
   theme(
-    plot.title = element_text(hjust = 0.5, size=15),
     legend.position="right",
-    legend.title=element_blank()
+    legend.title=element_blank(),
+    panel.background = element_blank()
   )
 
-# 3) Dprime*Macron
-Figure5_mean_3 <- clm_plotdat(modelTable1, c("dprime", "macron"), xlevels=list(dprime=c(1.5805, 2.453)), type="mean") %>%
+# 3) Dprime*Length
+Figure5_mean_3 <- clm_plotdat(modelTable1, c("length", "dprime"), xlevels=list(dprime=dprime_cuts, length=25), type="mean") %>%
   mutate(
-    dprime = factor(dprime, labels=c("LQ (1.5805)", "UQ (2.453)")) %>% fct_relevel("UQ (2.453)"),
-    macron.int = as.integer(macron),
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
+    dprime = factor(dprime, levels=dprime_cuts),
+    type = "Word and\nNonword"
   ) %>%
-  ggplot(., aes(x=macron, y=pred, color=dprime, shape=dprime)) +
-  geom_point(size=4, position=position_dodge(width=0.2)) +
-  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
-  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
-  xlab("Presence of macron") +
+  ggplot(., aes(x=length, y=pred, color=type, fill=type)) +
+  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
+  geom_line(size=1) +
+  xlab("Stimulus length") +
   ylab("Predicted mean rating") + 
-  scale_color_discrete(name="d'") +
-  scale_shape_discrete(name="d'") +  
-  theme_classic() + 
+  facet_grid(dprime ~ ., labeller=label_both, switch="y") +
+  ylim(yrange) +
+  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
+  scale_fill_manual(values = c("Word and\nNonword" = "purple")) + 
+  theme_bw() + 
   theme(
     legend.position="none",
     panel.background = element_blank()
   )
 
-Figure5_dist_3 <- clm_plotdat(modelTable1, c("dprime", "macron"), xlevels=list(dprime=c(1.5805, 2.453)), type="dist") %>%
+Figure5_dist_3 <- clm_plotdat(modelTable1, c("length", "dprime"), xlevels=list(dprime=dprime_cuts, length=25), type="dist") %>%
   mutate(
-    dprime = factor(dprime, labels=c("LQ (1.5805)", "UQ (2.453)")) %>% fct_relevel("UQ (2.453)"),
-    macron.int = as.integer(macron),
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
+    dprime = factor(dprime, levels=dprime_cuts),
+    type = "Word and\nNonword"
   ) %>%
-  ggplot(., aes(x=macron, y=pred, color=dprime, shape=dprime)) +
-  geom_point(size=2, position=position_dodge(width=0.2)) +
-  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.7, position=position_dodge(width=0.2)) +
-  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
-  xlab("Presence of macron") +
+  rename("Rating" = response) %>%
+  ggplot(., aes(x=length, y=pred, color=type, fill=type)) +
+  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
+  geom_line(size=1) +
+  xlab("Stimulus length") +
   ylab("Probability of rating") + 
-  scale_color_discrete(name="d'") +
-  scale_shape_discrete(name="d'") +  
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
+  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
+  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +
+  facet_grid(dprime ~ Rating, labeller=label_both, switch="y") +
   ylim(0, 1) +  
   theme_bw() + 
   theme(
     legend.position="right",
+    legend.title=element_blank(),
     panel.background = element_blank()
   )
 
@@ -580,6 +639,7 @@ Figure5_mean_4 <- clm_plotdat(modelTable1, "scoreDictToken", xlevels=25, type="m
   geom_line(size=1) +
   xlab("Phonotactic score") +
   ylab("Predicted mean rating") + 
+  ylim(yrange) +
   scale_color_manual(values = c("Word and\nNonword" = "purple")) +
   scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
   theme_classic() + 
@@ -608,10 +668,13 @@ Figure5_dist_4 <- clm_plotdat(modelTable1, "scoreDictToken", xlevels=25, type="d
     legend.title=element_blank()
   ) 
 
-ggarrange(Figure5_mean_1, Figure5_dist_1,Figure5_mean_2,Figure5_dist_2, Figure5_mean_3,Figure5_dist_3, Figure5_mean_4, Figure5_dist_4, labels=c("a.", "","b.","","c.","","d.",""),ncol=2, widths=c(1,6))
+ggarrange(Figure5_mean_1, Figure5_dist_1,Figure5_mean_2,Figure5_dist_2, Figure5_mean_3,Figure5_dist_3, Figure5_mean_4, Figure5_dist_4, labels=c("a.", "","b.","","c.","", "d.", ""),ncol=2, widths=c(1,6), heights=c(2,2,2,1))
 ```
 
 ## TableS1: Modeling confidence ratings with an ordinal mixed effects model after discarding 50 nonwords based on token-based dictionary phonotasctic scores
+
+[ST: This is all commented out, and the corresponding model file isn't in the repository. Should this still be here?]
+
 ```{r Table.S1, echo=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
 # Model for Table S1
 dataExp1DScore <- dataExp1DprimeFinite[dataExp1DprimeFinite$scoreDictToken > min(dataExp1DprimeFinite[dataExp1DprimeFinite$type=="real",]$scoreDictToken),]
@@ -622,6 +685,9 @@ dataExp1DScore <- dataExp1DprimeFinite[dataExp1DprimeFinite$scoreDictToken > min
 ``` 
 
 ## Statistical models with self-reported survey measures
+
+[ST: The question I raised about model fitting procedures earlier is also important here, since these models are supposed to be comparable in some way, but it is hard to compare them when they have different predictors and it's not clear where those differences come from.]
+
 ### Model A: Participants’ self-evaluated level of Māori proficiency
 ```{r Table.S2, echo=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
 dataExp1$macron <- FALSE
@@ -635,18 +701,113 @@ clm_table(modelA, caption="Table S2: Model summary of confidence ratings with an
 ```
 
 ### Figure S1: Effect plots from Model A (Participants’ self-evaluated level of Māori proficiency)
-```{r Fig.S1, echo=FALSE, message=FALSE, warning=FALSE, fig.width=11, fig.height=4.5, fig.cap="Figure S1: Effect plots of phonotactic score (Fig.S1a) and neighbourhood density (Fig.S1b). Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings."}
-# 1) Phonotactic score
-FigureS1_mean_1 <- clm_plotdat(modelA, "scoreDictToken", xlevels=25, type="mean") %>%
+
+[ST: I don't know why you had only plotted a subset of the effects from these models. I included all of the effects in this plot, as a demonstration for how it would be done. You'll need to repeat this for the other models, or if you only wanted certain effects plotted, then you'll need to convert this plot back to something that resembles the others.]
+
+```{r Fig.S1, echo=FALSE, message=FALSE, warning=FALSE, fig.width=11, fig.height=12.5, fig.cap="Figure S1: Effect plots of: the interaction between self-rated Māori proficiency and the distinction between non vs. real word stimuli (Fig.S1a); the interaction between self-rated Māori proficiency and stimulus length (Fig.S1b); the frequency-weighted dictionary phonotactic score (Fig.S1c); the neighbourhood density (Fig.S1d); and the presence of a macron (Fig.S1e). Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings."}
+prof_cuts = c(4, 0)
+
+# 1) Proficiency*Type
+FigureS1_mean_1 <- clm_plotdat(modelA, c("type", "maoriProf"), xlevels=list(maoriProf=prof_cuts), type="mean") %>%
+  mutate(
+    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
+    maoriProf = factor(maoriProf)
+  ) %>%
+  ggplot(., aes(x=maoriProf, y=pred, color=type, shape=type)) +
+  geom_point(size=4, position=position_dodge(width=0.2)) +
+  geom_line(aes(x=as.integer(maoriProf)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
+  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
+  xlab("Māori proficiency") +
+  ylab("Predicted mean rating") +
+  ylim(yrange) +
+  scale_shape_manual(values = c("Nonword" = 19, "Word" = 17)) + 
+  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
+  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
+  theme_bw() + 
+  theme(
+    legend.position="none",
+    panel.background = element_blank()
+  )
+
+FigureS1_dist_1 <- clm_plotdat(modelA, c("type", "maoriProf"), xlevels=list(maoriProf=prof_cuts), type="dist") %>%
+  mutate(
+    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
+    maoriProf = factor(maoriProf)
+  ) %>%
+  rename("Rating" = response) %>%
+  ggplot(., aes(x=maoriProf, y=pred, color=type, shape=type)) +
+  geom_point(size=4, position=position_dodge(width=0.2)) +
+  geom_line(aes(x=as.integer(maoriProf)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
+  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
+  xlab("Māori proficiency") +
+  ylab("Probability of rating") + 
+  scale_shape_manual(values = c("Nonword" = 19, "Word" = 17)) + 
+  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
+  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
+  facet_grid(. ~ Rating, labeller=label_both, switch="y") +
+  ylim(0, 1) +  
+  theme_bw() + 
+  theme(
+    legend.position="right",
+    legend.title=element_blank(),
+    panel.background = element_blank()
+  )
+
+# 2) Proficiency*Length
+FigureS1_mean_2 <- clm_plotdat(modelA, c("length", "maoriProf"), xlevels=list(maoriProf=prof_cuts, length=25), type="mean") %>%
+  mutate(
+    type="Word and\nNonword",
+    maoriProf = factor(maoriProf, levels=prof_cuts)
+  ) %>%
+  ggplot(., aes(x=length, y=pred, color=type, fill=type)) +
+  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
+  geom_line(size=1) +
+  xlab("Stimulus length") +
+  ylab("Predicted mean rating") +
+  ylim(yrange) +
+  facet_grid(maoriProf ~ ., labeller=label_both, switch="y") +
+  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
+  scale_fill_manual(values = c("Word and\nNonword" = "purple")) + 
+  theme_bw() + 
+  theme(
+    legend.position="none",
+    panel.background = element_blank()
+  )
+
+FigureS1_dist_2 <- clm_plotdat(modelA, c("length", "maoriProf"), xlevels=list(maoriProf=prof_cuts, length=25), type="dist") %>%
+  mutate(
+    type = "Word and\nNonword",
+    maoriProf = factor(maoriProf, levels=prof_cuts)
+  ) %>%
+  rename("Rating" = response) %>%
+  ggplot(., aes(x=length, y=pred, color=type, fill=type)) +
+  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
+  geom_line(size=1) +
+  xlab("Stimulus length") +
+  ylab("Probability of rating") + 
+  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
+  scale_fill_manual(values = c("Word and\nNonword" = "purple")) + 
+  facet_grid(maoriProf ~ Rating, labeller=label_both, switch="y") +
+  ylim(0, 1) +  
+  theme_bw() + 
+  theme(
+    legend.position="right",
+    legend.title=element_blank(),
+    panel.background = element_blank()
+  )
+
+# 3) Phonotactic score
+FigureS1_mean_3 <- clm_plotdat(modelA, "scoreDictToken", xlevels=25, type="mean") %>%
   mutate(type="Word and\nNonword") %>%
   ggplot(., aes(x=scoreDictToken, y=pred, color=type, fill=type)) +
   geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
   geom_line(size=1) +
   xlab("Phonotactic score") +
   ylab("Predicted mean rating") + 
+  ylim(yrange) +
   scale_color_manual(values = c("Word and\nNonword" = "purple")) +
   scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
-  theme_classic() + 
+  theme_bw() + 
   theme(
     plot.title = element_text(hjust = 0.5, size=15),
     legend.position="none",
@@ -654,7 +815,7 @@ FigureS1_mean_1 <- clm_plotdat(modelA, "scoreDictToken", xlevels=25, type="mean"
     panel.background = element_blank()
   )
 
-FigureS1_dist_1 <- clm_plotdat(modelA, "scoreDictToken", xlevels=25, type="dist") %>%
+FigureS1_dist_3 <- clm_plotdat(modelA, "scoreDictToken", xlevels=25, type="dist") %>%
   mutate(type="Word and\nNonword") %>%
   ggplot(., aes(x=scoreDictToken, y=pred, color=type, fill=type)) +
   geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
@@ -672,17 +833,18 @@ FigureS1_dist_1 <- clm_plotdat(modelA, "scoreDictToken", xlevels=25, type="dist"
     legend.title=element_blank()
   ) 
 
-# 2) Neighbourhood density
-FigureS1_mean_2 <- clm_plotdat(modelA, "n.neighbors", xlevels=25, type="mean") %>%
+# 4) Neighbourhood density
+FigureS1_mean_4 <- clm_plotdat(modelA, "n.neighbors", xlevels=25, type="mean") %>%
   mutate(type="Word and\nNonword") %>%
   ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
   geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
   geom_line(size=1) +
   xlab("Neighbourhood density") +
   ylab("Predicted mean rating") + 
+  ylim(yrange) +
   scale_color_manual(values = c("Word and\nNonword" = "purple")) +
   scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
-  theme_classic() + 
+  theme_bw() + 
   theme(
     plot.title = element_text(hjust = 0.5, size=15),
     legend.position="none",
@@ -690,7 +852,7 @@ FigureS1_mean_2 <- clm_plotdat(modelA, "n.neighbors", xlevels=25, type="mean") %
     panel.background = element_blank()
   )
 
-FigureS1_dist_2 <- clm_plotdat(modelA, "n.neighbors", xlevels=25, type="dist") %>%
+FigureS1_dist_4 <- clm_plotdat(modelA, "n.neighbors", xlevels=25, type="dist") %>%
   mutate(type="Word and\nNonword") %>%
   ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
   geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
@@ -708,7 +870,52 @@ FigureS1_dist_2 <- clm_plotdat(modelA, "n.neighbors", xlevels=25, type="dist") %
     legend.title=element_blank()
   ) 
 
-ggarrange(FigureS1_mean_1, FigureS1_dist_1, FigureS1_mean_2, FigureS1_dist_2, labels=c("a.", "","b.",""),ncol=2, widths=c(1,6))
+# 5) Macron
+FigureS1_mean_5 <- clm_plotdat(modelA, "macron", type="mean") %>%
+  mutate(
+    type="Word and\nNonword",
+    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
+  ) %>%
+  ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
+  geom_point(size=4, position=position_dodge(width=0.2)) +
+  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
+  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
+  xlab("Presence of macron") +
+  ylab("Predicted mean rating") + 
+  ylim(yrange) +
+  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
+  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
+  theme_bw() + 
+  theme(
+    plot.title = element_text(hjust = 0.5, size=15),
+    legend.position="none",
+    legend.title=element_blank(),
+    panel.background = element_blank()
+  )
+
+FigureS1_dist_5 <- clm_plotdat(modelA, "macron", type="dist") %>%
+  mutate(
+    type="Word and\nNonword",
+    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
+  ) %>%
+  ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
+  geom_point(size=4, position=position_dodge(width=0.2)) +
+  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
+  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
+  xlab("Presence of macron") +
+  ylab("Probability of rating") + 
+  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
+  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
+  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
+  ylim(0, 1) +  
+  theme_bw() + 
+  theme(
+    plot.title = element_text(hjust = 0.5, size=15),
+    legend.position="right",
+    legend.title=element_blank()
+  ) 
+
+ggarrange(FigureS1_mean_1, FigureS1_dist_1, FigureS1_mean_2, FigureS1_dist_2, FigureS1_mean_3, FigureS1_dist_3, FigureS1_mean_4, FigureS1_dist_4, FigureS1_mean_5, FigureS1_dist_5, labels=c("a.", "","b.","","c.","","d.","","e.",""),ncol=2, widths=c(1,6), heights=c(1,2,1,1,1))
 ``` 
 
 ### Model B: Participants’ self-reported level of exposure to Māori
@@ -885,7 +1092,7 @@ ggarrange(FigureS3_mean_1, FigureS3_dist_1, FigureS3_mean_2, FigureS3_dist_2, la
 ## Participant exclusions
 ```{r loading_data_Exp2, echo=TRUE, message=FALSE, warning=FALSE}
 # Loading the data to filter out participants
-dataExp2 <- read.delim("./dataAnonNotFilteredExp2_added.txt", sep ="\t", header = TRUE)
+dataExp2 <- read.delim("./dataAnonNotFilteredExp2_added.txt", sep ="\t", header = TRUE, encoding="UTF-8")
 
 # Remove 9 participants whose speakMaori or compMaori is equal to or above 3
 rmParticipant1Exp2 <- unique(dataExp2[dataExp2$speakMaori >= 3 | dataExp2$compMaori >= 3,]$workerId) 
@@ -1027,28 +1234,42 @@ ggplot(accRate, aes(x=scoreRsSeg, y=rate, label=word)) + labs(x= "Phonotactic sc
 ```
 
 ## Modeling accuracy with a generalized linear mixed effects model
+
+[ST: "generalized linear mixed effects model" is a very general-purpose and vague term; I would suggest saying "mixed-effects binary logistic regression model" or something similar]
+
 ### Table 2: Participants’ basic knowledge of Māori with running speech phonotactics
 ```{r Table.2, echo=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
 # Model for Table 2
 # modelTable2 <- glmer(correct ~ c.(scoreRsSeg) + c.(familiarity) + c.(maoriList) + (1 + c.(scoreRsSeg) + c.(familiarity) |workerId) + (1+ c.(maoriList)|word), data=dataExp2, control=glmerControl(optimizer="bobyqa"), family=binomial(link="logit"))
 # saveRDS(modelTable2, file = "modelTable2.rds")
 modelTable2 <- readRDS("./modelTable2.rds")
-kable(xtable(summary(modelTable2)$coef), digits=3, escape=F, full_width=T, caption="Table 2: Model summary for accuracy with a generalized linear mixed effects model. All numeric variables in this model are centered.")
+logistic_table(modelTable2, caption="Table 2: Model summary for accuracy with a generalized linear mixed effects model. All numeric variables in this model are centered.")
 ``` 
 
 ### Figure 7: Effect plot from the model presented in Table 2
+
+[ST: Do you also want to plot other effects from the model?]
+
 ```{r Fig.7, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=3.5,fig.align='center', fig.cap="Figure 7: Effect plot of phonotactic score on accuracy."}
-Fig7 <- as.data.frame(effect(term="c.(scoreRsSeg)", mod=modelTable2))
-ggplot(Fig7, aes(x=scoreRsSeg, y=fit)) + geom_point(aes(color="#00BFC4")) + geom_line(aes(color="#00BFC4")) + geom_ribbon(aes(ymin=lower, ymax=upper, fill="#00BFC4"),alpha=0.1) + labs(x= "Phonotactic score", y="Predicted accuracy") + theme_classic()+ guides(fill=FALSE, color=FALSE)
+Fig7 <- as.data.frame(effect(term="c.(scoreRsSeg)", mod=modelTable2, xlevels=list("scoreRsSeg"=25)))
+ggplot(Fig7, aes(x=scoreRsSeg, y=fit)) + 
+  geom_line(aes(color="#00BFC4")) + 
+  geom_ribbon(aes(ymin=lower, ymax=upper, fill="#00BFC4"),alpha=0.1) + 
+  labs(x= "Phonotactic score", y="Predicted accuracy") + 
+  theme_classic() + 
+  guides(fill=FALSE, color=FALSE)
 ```
 
 ### Table S5: Participants’ self-evaluated level of Māori proficiency with running speech phonotactics
+
+[ST: The narrative reasons for these extra models is not clear to me, and it's a little confusing because they show effects that aren't in the other model (e.g. Fig. 8). Is this all explained in the paper?]
+
 ```{r Table.S5, echo=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
 # Model for Table S5 (Māori proficiency)
 # modelTableS5 <- glmer(correct ~ c.(scoreRsSeg) + c.(familiarity) + c.(maoriProf) + (1 + c.(scoreRsSeg) + c.(familiarity) |workerId) + (1+ c.(maoriProf)|word), data=dataExp2, control=glmerControl(optimizer="bobyqa"), family=binomial(link="logit"))
 # saveRDS(modelTableS5, file = "modelTableS5.rds")
 modelTableS5 <- readRDS("./modelTableS5.rds")   
-kable(xtable(summary(modelTableS5)$coef), digits=3, caption="Table S5 (Māori proficiency): Modeling summary for accuracy with a generalized linear mixed effects model. All numeric variables in this model are centered.")
+logistic_table(modelTableS5, caption="Table S5 (Māori proficiency): Modeling summary for accuracy with a generalized linear mixed effects model. All numeric variables in this model are centered.")
 ``` 
 
 ### Table S6: Participants’ self-reported level of exposure to Māori with running speech phonotactics
@@ -1057,7 +1278,7 @@ kable(xtable(summary(modelTableS5)$coef), digits=3, caption="Table S5 (Māori pr
 # modelTableS6 <- glmer(correct ~ c.(scoreRsSeg) + c.(familiarity) + c.(maoriExpo) + (1 + c.(scoreRsSeg) + c.(familiarity) |workerId) + (1+ c.(maoriExpo)|word), data=dataExp2, control=glmerControl(optimizer="bobyqa"), family=binomial(link="logit")) 
 # saveRDS(modelTableS6, file = "modelTableS6.rds")
 modelTableS6 <- readRDS("./modelTableS6.rds")   
-kable(xtable(summary(modelTableS6)$coef), digits=3, caption="Table S6 (Exposure to Māori): Modeling summary for accuracy with a generalized linear mixed effects model. All numeric variables in this model are centered.")
+logistic_table(modelTableS6, caption="Table S6 (Exposure to Māori): Modeling summary for accuracy with a generalized linear mixed effects model. All numeric variables in this model are centered.")
 ``` 
 
 ### Table S7: Participants’ basic knowledge of Māori with token-based phonotactics
@@ -1066,13 +1287,18 @@ kable(xtable(summary(modelTableS6)$coef), digits=3, caption="Table S6 (Exposure 
 # modelFigure8 <- glmer(correct ~ c.(scoreDictToken) + c.(n.neighbors) + c.(familiarity) + c.(maoriList) + (1 + c.(scoreDictToken) + c.(familiarity)|workerId) + (0 + c.(n.neighbors)|workerId) + (1 + c.(maoriList)|word), data=dataExp2, control=glmerControl(optimizer="bobyqa"), family=binomial(link="logit"))
 # saveRDS(modelFigure8, file = "modelFigure8.rds")
 modelFigure8 <- readRDS("./modelFigure8.rds")
-kable(xtable(summary(modelFigure8)$coef), digits=3, caption="Table S7: Model summary for accuracy with a generalized linear mixed effects model. All numeric variables in this model are centered.")
+logistic_table(modelFigure8, caption="Table S7: Model summary for accuracy with a generalized linear mixed effects model. All numeric variables in this model are centered.")
 ``` 
 
 ### Figure 8: Effect plot from the model presented in Table S7
 ```{r Fig.8, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=3.5,fig.align='center', fig.cap="Figure 8: Effect plot of neighbourhood density on accuracy."}
-Fig8 <- as.data.frame(effect(term="c.(n.neighbors)", mod=modelFigure8))
-ggplot(Fig8, aes(x=n.neighbors, y=fit)) + geom_point(aes(color="#00BFC4")) + geom_line(aes(color="#00BFC4")) + geom_ribbon(aes(ymin=lower, ymax=upper, fill="#00BFC4"),alpha=0.1) + labs(x= "Neighbourhood density", y="Predicted accuracy") + theme_classic()+ guides(fill=FALSE, color=FALSE)
+Fig8 <- as.data.frame(effect(term="c.(n.neighbors)", mod=modelFigure8, xlevels=list("n.neighbors"=25)))
+ggplot(Fig8, aes(x=n.neighbors, y=fit)) + 
+  geom_line(aes(color="#00BFC4")) + 
+  geom_ribbon(aes(ymin=lower, ymax=upper, fill="#00BFC4"),alpha=0.1) + 
+  labs(x= "Neighbourhood density", y="Predicted accuracy") + 
+  theme_classic() + 
+  guides(fill=FALSE, color=FALSE)
 ```
 
 # Supporting Information
@@ -1184,21 +1410,36 @@ $\square$ No
 ## Appendix B: Stimulus materials for Experiments
 ### List of stimuli for Experiment 1 - real words
 ```{r Table.ApB1, echo=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
-realword <- dataExp1[dataExp1$type=="real",]
-listword <- paste(unique(realword$word), collapse=", ")
-kable(listword, caption="Table 4: List of stimuli for Experiment 1 - real words",col.names = NULL)
+dataExp1 %>%
+  filter(type == "real") %>%
+  arrange(word) %>%
+  pull(word) %>%
+  unique() %>%
+  paste(., collapse = ", ") %>%
+  kable(caption="Table 4: List of stimuli for Experiment 1 - real words", col.names = NULL) %>%
+  kable_styling()
 ``` 
 
 ### List of stimuli for Experiment 1 - nonwords
 ```{r Table.ApB2, echo=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
-pseudoword <- dataExp1[dataExp1$type=="non",]
-listword <- paste(unique(pseudoword$word), collapse=", ")
-kable(listword, caption="Table 5: List of stimuli for Experiment 1 - nonwords",col.names = NULL)
+dataExp1 %>%
+  filter(type == "non") %>%
+  arrange(word) %>%
+  pull(word) %>%
+  unique() %>%
+  paste(., collapse = ", ") %>%
+  kable(caption="Table 4: List of stimuli for Experiment 1 - nonwords", col.names = NULL) %>%
+  kable_styling()
 ``` 
 
 ### List of stimuli for Experiment 2
 ```{r Table.ApB3, echo=TRUE, message=FALSE, warning=FALSE, eval=TRUE}
-listword <- paste(unique(dataExp2$word), collapse=", ")
-kable(listword, caption="Table 6: List of stimuli for Experiment 2",col.names = NULL)
+dataExp2 %>%
+  arrange(word) %>%
+  pull(word) %>%
+  unique() %>%
+  paste(., collapse = ", ") %>%
+  kable(caption="Table 6: List of stimuli for Experiment 2", col.names = NULL) %>%
+  kable_styling()
 ``` 
 
