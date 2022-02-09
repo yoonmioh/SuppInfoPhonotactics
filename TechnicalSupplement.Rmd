@@ -1442,4 +1442,3 @@ dataExp2 %>%
   kable(caption="Table 6: List of stimuli for Experiment 2", col.names = NULL) %>%
   kable_styling()
 ``` 
-
