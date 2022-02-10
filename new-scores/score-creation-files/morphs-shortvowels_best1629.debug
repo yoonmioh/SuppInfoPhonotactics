@@ -1,0 +1,4239 @@
++ a k o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( a | + ...) 	= [2gram] 0.04775029 [ -1.321024 ]
+	p( k | a ...) 	= [3gram] 0.1008051 [ -0.9965177 ]
+	p( o | k ...) 	= [3gram] 0.130975 [ -0.8828115 ]
+	p( + | o ...) 	= [3gram] 0.3760643 [ -0.4247379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.347957 ppl= 7.406131 ppl1= 7.406131
+
++ a o r a k i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( a | + ...) 	= [2gram] 0.04775029 [ -1.321024 ]
+	p( o | a ...) 	= [3gram] 0.02756483 [ -1.559645 ]
+	p( r | o ...) 	= [3gram] 0.2067965 [ -0.6844568 ]
+	p( a | r ...) 	= [3gram] 0.2046837 [ -0.6889167 ]
+	p( k | a ...) 	= [3gram] 0.1471421 [ -0.832263 ]
+	p( i | k ...) 	= [3gram] 0.2030274 [ -0.6924453 ]
+	p( + | i ...) 	= [3gram] 0.5851661 [ -0.2327209 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.734337 ppl= 6.946918 ppl1= 6.946918
+
++ a o t e a r o a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( a | + ...) 	= [2gram] 0.04775029 [ -1.321024 ]
+	p( o | a ...) 	= [3gram] 0.02756483 [ -1.559645 ]
+	p( t | o ...) 	= [2gram] 0.09555705 [ -1.019737 ]
+	p( e | t ...) 	= [3gram] 0.112882 [ -0.9473753 ]
+	p( a | e ...) 	= [3gram] 0.07611257 [ -1.118544 ]
+	p( r | a ...) 	= [2gram] 0.1185759 [ -0.9260035 ]
+	p( o | r ...) 	= [3gram] 0.140908 [ -0.8510642 ]
+	p( a | o ...) 	= [3gram] 0.09226832 [ -1.034947 ]
+	p( + | a ...) 	= [3gram] 0.4141885 [ -0.382802 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -9.884008 ppl= 9.736453 ppl1= 9.736453
+
++ a r o h a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( a | + ...) 	= [2gram] 0.04775029 [ -1.321024 ]
+	p( r | a ...) 	= [3gram] 0.1686376 [ -0.7730455 ]
+	p( o | r ...) 	= [3gram] 0.1231972 [ -0.909399 ]
+	p( h | o ...) 	= [3gram] 0.1034707 [ -0.9851828 ]
+	p( a | h ...) 	= [3gram] 0.2194877 [ -0.6585898 ]
+	p( + | a ...) 	= [3gram] 0.3535936 [ -0.4514956 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.821603 ppl= 6.786683 ppl1= 6.786683
+
++ a t u a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( a | + ...) 	= [2gram] 0.04775029 [ -1.321024 ]
+	p( t | a ...) 	= [3gram] 0.08738507 [ -1.058563 ]
+	p( u | t ...) 	= [3gram] 0.144352 [ -0.8405771 ]
+	p( a | u ...) 	= [3gram] 0.1274724 [ -0.8945837 ]
+	p( + | a ...) 	= [3gram] 0.6118036 [ -0.213388 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.051001 ppl= 6.94758 ppl1= 6.94758
+
++ a w a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( a | + ...) 	= [2gram] 0.04775029 [ -1.321024 ]
+	p( w | a ...) 	= [3gram] 0.05090206 [ -1.293265 ]
+	p( a | w ...) 	= [3gram] 0.6096444 [ -0.2149234 ]
+	p( + | a ...) 	= [3gram] 0.3353171 [ -0.4745443 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.026622 ppl= 6.387405 ppl1= 6.387405
+
++ h a e r e m a i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( a | h ...) 	= [3gram] 0.3146911 [ -0.5021155 ]
+	p( e | a ...) 	= [3gram] 0.0512282 [ -1.290491 ]
+	p( r | e ...) 	= [3gram] 0.17134 [ -0.7661412 ]
+	p( e | r ...) 	= [3gram] 0.396733 [ -0.4015017 ]
+	p( m | e ...) 	= [3gram] 0.08321055 [ -1.079822 ]
+	p( a | m ...) 	= [3gram] 0.3947209 [ -0.4037099 ]
+	p( i | a ...) 	= [3gram] 0.07897958 [ -1.102485 ]
+	p( + | i ...) 	= [3gram] 0.341958 [ -0.4660273 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.758912 ppl= 5.968857 ppl1= 5.968857
+
++ h a k a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( a | h ...) 	= [3gram] 0.3146911 [ -0.5021155 ]
+	p( k | a ...) 	= [3gram] 0.135051 [ -0.8695023 ]
+	p( a | k ...) 	= [3gram] 0.3768128 [ -0.4238744 ]
+	p( + | a ...) 	= [3gram] 0.3441764 [ -0.4632189 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.00533 ppl= 4.651093 ppl1= 4.651093
+
++ h a N i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( a | h ...) 	= [3gram] 0.3146911 [ -0.5021155 ]
+	p( N | a ...) 	= [3gram] 0.04967569 [ -1.303856 ]
+	p( i | N ...) 	= [3gram] 0.08973171 [ -1.047054 ]
+	p( + | i ...) 	= [3gram] 0.7699106 [ -0.1135597 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.713204 ppl= 6.102869 ppl1= 6.102869
+
++ h a p u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( a | h ...) 	= [3gram] 0.3146911 [ -0.5021155 ]
+	p( p | a ...) 	= [3gram] 0.1014121 [ -0.9939101 ]
+	p( u | p ...) 	= [3gram] 0.2490124 [ -0.6037791 ]
+	p( + | u ...) 	= [3gram] 0.2949287 [ -0.530283 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.376707 ppl= 5.363535 ppl1= 5.363535
+
++ h i k o i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( i | h ...) 	= [3gram] 0.1645771 [ -0.7836306 ]
+	p( k | i ...) 	= [3gram] 0.1414562 [ -0.8493781 ]
+	p( o | k ...) 	= [3gram] 0.216689 [ -0.6641631 ]
+	p( i | o ...) 	= [3gram] 0.03144886 [ -1.502395 ]
+	p( + | i ...) 	= [3gram] 0.5285927 [ -0.2768788 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.823065 ppl= 6.789947 ppl1= 6.789947
+
++ h o h a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( o | h ...) 	= [3gram] 0.2295846 [ -0.6390572 ]
+	p( h | o ...) 	= [3gram] 0.07115158 [ -1.147815 ]
+	p( a | h ...) 	= [3gram] 0.2189477 [ -0.6596596 ]
+	p( + | a ...) 	= [3gram] 0.3535936 [ -0.4514956 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.644647 ppl= 5.944397 ppl1= 5.944397
+
++ h o k i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( o | h ...) 	= [3gram] 0.2295846 [ -0.6390572 ]
+	p( k | o ...) 	= [3gram] 0.1004657 [ -0.9979823 ]
+	p( i | k ...) 	= [3gram] 0.1560234 [ -0.8068104 ]
+	p( + | i ...) 	= [3gram] 0.5851661 [ -0.2327209 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.42319 ppl= 5.460071 ppl1= 5.460071
+
++ h o N i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( o | h ...) 	= [3gram] 0.2295846 [ -0.6390572 ]
+	p( N | o ...) 	= [3gram] 0.0578886 [ -1.237407 ]
+	p( i | N ...) 	= [3gram] 0.1881025 [ -0.7256055 ]
+	p( + | i ...) 	= [3gram] 0.7699106 [ -0.1135597 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.462248 ppl= 5.54253 ppl1= 5.54253
+
++ h o p e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( o | h ...) 	= [3gram] 0.2295846 [ -0.6390572 ]
+	p( p | o ...) 	= [3gram] 0.1008455 [ -0.9963436 ]
+	p( e | p ...) 	= [3gram] 0.1911903 [ -0.7185342 ]
+	p( + | e ...) 	= [3gram] 0.2635973 [ -0.5790591 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.679613 ppl= 6.024701 ppl1= 6.024701
+
++ h u i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( u | h ...) 	= [3gram] 0.1554963 [ -0.80828 ]
+	p( i | u ...) 	= [3gram] 0.04130381 [ -1.38401 ]
+	p( + | i ...) 	= [3gram] 0.4467237 [ -0.349961 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.28887 ppl= 7.207323 ppl1= 7.207323
+
++ i h u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( i | + ...) 	= [2gram] 0.01847699 [ -1.733369 ]
+	p( h | i ...) 	= [3gram] 0.1112879 [ -0.9535522 ]
+	p( u | h ...) 	= [2gram] 0.06071835 [ -1.21668 ]
+	p( + | u ...) 	= [3gram] 0.4269043 [ -0.3696694 ]
+Hidden events: *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.996137 ppl= 9.982224 ppl1= 9.982224
+
++ i t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( i | + ...) 	= [2gram] 0.01847699 [ -1.733369 ]
+	p( t | i ...) 	= [3gram] 0.1004226 [ -0.9981685 ]
+	p( i | t ...) 	= [3gram] 0.4305754 [ -0.3659508 ]
+	p( + | i ...) 	= [3gram] 0.5108217 [ -0.2917306 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.112085 ppl= 6.643806 ppl1= 6.643806
+
++ i w a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( i | + ...) 	= [2gram] 0.01847699 [ -1.733369 ]
+	p( w | i ...) 	= [3gram] 0.06241545 [ -1.204708 ]
+	p( a | w ...) 	= [3gram] 0.6166742 [ -0.2099442 ]
+	p( + | a ...) 	= [3gram] 0.3353171 [ -0.4745443 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.345431 ppl= 7.397522 ppl1= 7.397522
+
++ i w i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( i | + ...) 	= [2gram] 0.01847699 [ -1.733369 ]
+	p( w | i ...) 	= [3gram] 0.06241545 [ -1.204708 ]
+	p( i | w ...) 	= [3gram] 0.2580862 [ -0.5882351 ]
+	p( + | i ...) 	= [3gram] 0.4014086 [ -0.3964133 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.645591 ppl= 8.494117 ppl1= 8.494117
+
++ k a h a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( h | a ...) 	= [3gram] 0.0801926 [ -1.095866 ]
+	p( a | h ...) 	= [3gram] 0.3213269 [ -0.493053 ]
+	p( + | a ...) 	= [3gram] 0.3535934 [ -0.4514959 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.034339 ppl= 4.703162 ppl1= 4.703162
+
++ k a h u r a N i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( h | a ...) 	= [3gram] 0.0801926 [ -1.095866 ]
+	p( u | h ...) 	= [3gram] 0.212482 [ -0.6726778 ]
+	p( r | u ...) 	= [3gram] 0.175094 [ -0.7567286 ]
+	p( a | r ...) 	= [3gram] 0.2267912 [ -0.6443739 ]
+	p( N | a ...) 	= [3gram] 0.05745425 [ -1.240678 ]
+	p( i | N ...) 	= [3gram] 0.09008506 [ -1.045347 ]
+	p( + | i ...) 	= [3gram] 0.7699106 [ -0.1135597 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.563156 ppl= 5.705787 ppl1= 5.705787
+
++ k a i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( i | a ...) 	= [3gram] 0.06448394 [ -1.190548 ]
+	p( + | i ...) 	= [3gram] 0.3362441 [ -0.4733453 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -3.657819 ppl= 5.389689 ppl1= 5.389689
+
++ k a i m o a n a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( i | a ...) 	= [3gram] 0.06448394 [ -1.190548 ]
+	p( m | i ...) 	= [2gram] 0.04688744 [ -1.328943 ]
+	p( o | m ...) 	= [3gram] 0.1686897 [ -0.7729115 ]
+	p( a | o ...) 	= [3gram] 0.08328971 [ -1.079409 ]
+	p( n | a ...) 	= [2gram] 0.05458807 [ -1.262902 ]
+	p( a | n ...) 	= [3gram] 0.4998077 [ -0.3011971 ]
+	p( + | a ...) 	= [3gram] 0.55194 [ -0.2581081 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.187944 ppl= 6.58862 ppl1= 6.58862
+
++ k a i N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( i | a ...) 	= [3gram] 0.06448394 [ -1.190548 ]
+	p( N | i ...) 	= [3gram] 0.04175374 [ -1.379305 ]
+	p( a | N ...) 	= [3gram] 0.6585883 [ -0.181386 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -4.931102 ppl= 5.06341 ppl1= 5.06341
+
++ k a i t i a k i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( i | a ...) 	= [3gram] 0.06448394 [ -1.190548 ]
+	p( t | i ...) 	= [3gram] 0.08415419 [ -1.074924 ]
+	p( i | t ...) 	= [3gram] 0.3342598 [ -0.4759159 ]
+	p( a | i ...) 	= [3gram] 0.09236998 [ -1.034469 ]
+	p( k | a ...) 	= [3gram] 0.1321182 [ -0.8790374 ]
+	p( i | k ...) 	= [3gram] 0.1744485 [ -0.7583327 ]
+	p( + | i ...) 	= [3gram] 0.5851661 [ -0.2327209 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.639874 ppl= 5.807475 ppl1= 5.807475
+
++ k a i f a k a h a e r e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( i | a ...) 	= [3gram] 0.06448394 [ -1.190548 ]
+	p( f | i ...) 	= [2gram] 0.01831061 [ -1.737297 ]
+	p( a | f ...) 	= [3gram] 0.4664823 [ -0.3311648 ]
+	p( k | a ...) 	= [3gram] 0.1249319 [ -0.9033265 ]
+	p( a | k ...) 	= [3gram] 0.3741767 [ -0.4269233 ]
+	p( h | a ...) 	= [3gram] 0.0801926 [ -1.095866 ]
+	p( a | h ...) 	= [3gram] 0.3213269 [ -0.493053 ]
+	p( e | a ...) 	= [3gram] 0.05122818 [ -1.290491 ]
+	p( r | e ...) 	= [3gram] 0.1713401 [ -0.7661409 ]
+	p( e | r ...) 	= [3gram] 0.396733 [ -0.4015017 ]
+	p( + | e ...) 	= [3gram] 0.479132 [ -0.3195448 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 14 words, 0 OOVs
+0 zeroprobs, logprob= -10.94978 ppl= 6.055184 ppl1= 6.055184
+
++ k a k a r i k i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( k | a ...) 	= [3gram] 0.1063652 [ -0.9732006 ]
+	p( a | k ...) 	= [3gram] 0.3791961 [ -0.4211361 ]
+	p( r | a ...) 	= [3gram] 0.1559847 [ -0.8069179 ]
+	p( i | r ...) 	= [3gram] 0.1895756 [ -0.7222176 ]
+	p( k | i ...) 	= [3gram] 0.1136079 [ -0.9445915 ]
+	p( i | k ...) 	= [3gram] 0.2392831 [ -0.621088 ]
+	p( + | i ...) 	= [3gram] 0.5851661 [ -0.2327209 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -6.715797 ppl= 4.694396 ppl1= 4.694396
+
++ k a p a h a k a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( p | a ...) 	= [3gram] 0.1111168 [ -0.9542203 ]
+	p( a | p ...) 	= [3gram] 0.3379561 [ -0.4711397 ]
+	p( h | a ...) 	= [3gram] 0.08114009 [ -1.090765 ]
+	p( a | h ...) 	= [3gram] 0.3222409 [ -0.4918194 ]
+	p( k | a ...) 	= [3gram] 0.1350509 [ -0.8695025 ]
+	p( a | k ...) 	= [3gram] 0.3768128 [ -0.4238744 ]
+	p( + | a ...) 	= [3gram] 0.3441766 [ -0.4632187 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -6.758464 ppl= 4.740743 ppl1= 4.740743
+
++ k a r a k i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( r | a ...) 	= [3gram] 0.1559846 [ -0.8069181 ]
+	p( a | r ...) 	= [3gram] 0.4250312 [ -0.3715792 ]
+	p( k | a ...) 	= [3gram] 0.147142 [ -0.8322632 ]
+	p( i | k ...) 	= [3gram] 0.2030274 [ -0.6924453 ]
+	p( a | i ...) 	= [3gram] 0.0668997 [ -1.174576 ]
+	p( + | a ...) 	= [3gram] 0.5097418 [ -0.2926497 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -6.164356 ppl= 4.840926 ppl1= 4.840926
+
++ k a r a N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( r | a ...) 	= [3gram] 0.1559846 [ -0.8069181 ]
+	p( a | r ...) 	= [3gram] 0.4250312 [ -0.3715792 ]
+	p( N | a ...) 	= [3gram] 0.05745428 [ -1.240678 ]
+	p( a | N ...) 	= [3gram] 0.7294446 [ -0.1370077 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -4.736045 ppl= 3.90846 ppl1= 3.90846
+
++ k a r u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( r | a ...) 	= [3gram] 0.1559846 [ -0.8069181 ]
+	p( u | r ...) 	= [3gram] 0.0881549 [ -1.054754 ]
+	p( + | u ...) 	= [3gram] 0.5310289 [ -0.2748818 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.130478 ppl= 4.879924 ppl1= 4.879924
+
++ k a t o a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( t | a ...) 	= [3gram] 0.09288622 [ -1.032049 ]
+	p( o | t ...) 	= [3gram] 0.1414498 [ -0.8493977 ]
+	p( a | o ...) 	= [3gram] 0.05055512 [ -1.296235 ]
+	p( + | a ...) 	= [3gram] 0.3846556 [ -0.414928 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.586534 ppl= 6.281687 ppl1= 6.281687
+
++ k a u m a t u a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( u | a ...) 	= [3gram] 0.09124727 [ -1.03978 ]
+	p( m | u ...) 	= [2gram] 0.06690238 [ -1.174558 ]
+	p( a | m ...) 	= [3gram] 0.4581054 [ -0.3390346 ]
+	p( t | a ...) 	= [3gram] 0.1525134 [ -0.8166919 ]
+	p( u | t ...) 	= [3gram] 0.1434837 [ -0.8431973 ]
+	p( a | u ...) 	= [3gram] 0.1274724 [ -0.8945837 ]
+	p( + | a ...) 	= [3gram] 0.6118036 [ -0.213388 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.315159 ppl= 5.389096 ppl1= 5.389096
+
++ k a u p a p a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( u | a ...) 	= [3gram] 0.09124727 [ -1.03978 ]
+	p( p | u ...) 	= [2gram] 0.07228221 [ -1.140969 ]
+	p( a | p ...) 	= [3gram] 0.3337885 [ -0.4765286 ]
+	p( p | a ...) 	= [3gram] 0.08802409 [ -1.055398 ]
+	p( a | p ...) 	= [3gram] 0.3382652 [ -0.4707427 ]
+	p( + | a ...) 	= [3gram] 0.2781675 [ -0.5556936 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -6.733037 ppl= 5.599061 ppl1= 5.599061
+
++ k a w a n a t a N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( w | a ...) 	= [3gram] 0.04371946 [ -1.359325 ]
+	p( a | w ...) 	= [3gram] 0.5755884 [ -0.239888 ]
+	p( n | a ...) 	= [3gram] 0.0642143 [ -1.192368 ]
+	p( a | n ...) 	= [3gram] 0.526133 [ -0.2789044 ]
+	p( t | a ...) 	= [3gram] 0.1236827 [ -0.907691 ]
+	p( a | t ...) 	= [3gram] 0.4159864 [ -0.3809209 ]
+	p( N | a ...) 	= [3gram] 0.04625587 [ -1.334833 ]
+	p( a | N ...) 	= [3gram] 0.7278285 [ -0.1379709 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 12 words, 0 OOVs
+0 zeroprobs, logprob= -8.011765 ppl= 4.652079 ppl1= 4.652079
+
++ k i a k a h a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( i | k ...) 	= [3gram] 0.1407357 [ -0.8515956 ]
+	p( a | i ...) 	= [3gram] 0.0668997 [ -1.174576 ]
+	p( k | a ...) 	= [3gram] 0.1255827 [ -0.9010701 ]
+	p( a | k ...) 	= [3gram] 0.3823729 [ -0.4175129 ]
+	p( h | a ...) 	= [3gram] 0.0801926 [ -1.095866 ]
+	p( a | h ...) 	= [3gram] 0.3213269 [ -0.493053 ]
+	p( + | a ...) 	= [3gram] 0.3535936 [ -0.4514956 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -6.975883 ppl= 5.957967 ppl1= 5.957967
+
++ k i a o r a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( i | k ...) 	= [3gram] 0.1407357 [ -0.8515956 ]
+	p( a | i ...) 	= [3gram] 0.0668997 [ -1.174576 ]
+	p( o | a ...) 	= [3gram] 0.04578108 [ -1.339314 ]
+	p( r | o ...) 	= [3gram] 0.2057142 [ -0.6867356 ]
+	p( a | r ...) 	= [3gram] 0.1992584 [ -0.7005835 ]
+	p( + | a ...) 	= [3gram] 0.3585559 [ -0.4454432 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.788962 ppl= 7.057002 ppl1= 7.057002
+
++ k o h a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( o | k ...) 	= [3gram] 0.2419197 [ -0.6163287 ]
+	p( h | o ...) 	= [3gram] 0.1022731 [ -0.9902387 ]
+	p( a | h ...) 	= [3gram] 0.2137201 [ -0.6701546 ]
+	p( + | a ...) 	= [3gram] 0.3535934 [ -0.4514959 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.318932 ppl= 5.245924 ppl1= 5.245924
+
++ k o h a N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( o | k ...) 	= [3gram] 0.2419197 [ -0.6163287 ]
+	p( h | o ...) 	= [3gram] 0.1022731 [ -0.9902387 ]
+	p( a | h ...) 	= [3gram] 0.2137201 [ -0.6701546 ]
+	p( N | a ...) 	= [3gram] 0.04967569 [ -1.303856 ]
+	p( a | N ...) 	= [3gram] 0.7244489 [ -0.1399922 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.497222 ppl= 4.865784 ppl1= 4.865784
+
++ k o r e r o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( o | k ...) 	= [3gram] 0.2419197 [ -0.6163287 ]
+	p( r | o ...) 	= [3gram] 0.2053288 [ -0.6875501 ]
+	p( e | r ...) 	= [3gram] 0.2439107 [ -0.6127691 ]
+	p( r | e ...) 	= [3gram] 0.1195897 [ -0.9223063 ]
+	p( o | r ...) 	= [3gram] 0.1310248 [ -0.8826466 ]
+	p( + | o ...) 	= [3gram] 0.4211625 [ -0.3755503 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.687865 ppl= 5.140237 ppl1= 5.140237
+
++ k o r o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( o | k ...) 	= [3gram] 0.2419197 [ -0.6163287 ]
+	p( r | o ...) 	= [3gram] 0.2053288 [ -0.6875501 ]
+	p( o | r ...) 	= [3gram] 0.2740531 [ -0.5621653 ]
+	p( + | o ...) 	= [3gram] 0.4211628 [ -0.37555 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -3.832308 ppl= 4.352292 ppl1= 4.352292
+
++ k o r o w a i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( o | k ...) 	= [3gram] 0.2419197 [ -0.6163287 ]
+	p( r | o ...) 	= [3gram] 0.2053288 [ -0.6875501 ]
+	p( o | r ...) 	= [3gram] 0.2740531 [ -0.5621653 ]
+	p( w | o ...) 	= [1gram] 0.0188843 [ -1.723899 ]
+	p( a | w ...) 	= [2gram] 0.4953014 [ -0.3051305 ]
+	p( i | a ...) 	= [3gram] 0.09604627 [ -1.017519 ]
+	p( + | i ...) 	= [3gram] 0.3402281 [ -0.4682298 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -6.971537 ppl= 5.951346 ppl1= 5.951346
+
++ k o r u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( o | k ...) 	= [3gram] 0.2419197 [ -0.6163287 ]
+	p( r | o ...) 	= [3gram] 0.2053288 [ -0.6875501 ]
+	p( u | r ...) 	= [3gram] 0.08797076 [ -1.055662 ]
+	p( + | u ...) 	= [3gram] 0.5310286 [ -0.2748821 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.225137 ppl= 5.060454 ppl1= 5.060454
+
++ k o f a i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( o | k ...) 	= [3gram] 0.2419197 [ -0.6163287 ]
+	p( f | o ...) 	= [2gram] 0.01726407 [ -1.762857 ]
+	p( a | f ...) 	= [2gram] 0.4796618 [ -0.3190649 ]
+	p( i | a ...) 	= [3gram] 0.1110509 [ -0.9544778 ]
+	p( + | i ...) 	= [3gram] 0.343064 [ -0.4646249 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.708067 ppl= 6.537898 ppl1= 6.537898
+
++ k u i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( u | k ...) 	= [3gram] 0.1126367 [ -0.9483202 ]
+	p( i | u ...) 	= [3gram] 0.09162816 [ -1.037971 ]
+	p( a | i ...) 	= [3gram] 0.2849315 [ -0.5452595 ]
+	p( + | a ...) 	= [3gram] 0.7558259 [ -0.1215782 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.243843 ppl= 5.096913 ppl1= 5.096913
+
++ k u r a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( u | k ...) 	= [3gram] 0.1126367 [ -0.9483202 ]
+	p( r | u ...) 	= [3gram] 0.1389125 [ -0.8572586 ]
+	p( a | r ...) 	= [3gram] 0.2416321 [ -0.6168454 ]
+	p( + | a ...) 	= [3gram] 0.3585559 [ -0.4454432 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.458581 ppl= 5.534736 ppl1= 5.534736
+
++ k u r i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( u | k ...) 	= [3gram] 0.1126367 [ -0.9483202 ]
+	p( r | u ...) 	= [3gram] 0.1389125 [ -0.8572586 ]
+	p( i | r ...) 	= [3gram] 0.2007843 [ -0.6972702 ]
+	p( + | i ...) 	= [3gram] 0.5022292 [ -0.299098 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.392661 ppl= 5.396475 ppl1= 5.396475
+
++ m a h i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( h | a ...) 	= [3gram] 0.1262496 [ -0.8987699 ]
+	p( i | h ...) 	= [3gram] 0.2613451 [ -0.5827856 ]
+	p( + | i ...) 	= [3gram] 0.6044125 [ -0.2186666 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -3.694996 ppl= 4.128884 ppl1= 4.128884
+
++ m a n a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( n | a ...) 	= [3gram] 0.09215513 [ -1.03548 ]
+	p( a | n ...) 	= [3gram] 0.5542677 [ -0.2562804 ]
+	p( + | a ...) 	= [3gram] 0.5519397 [ -0.2581084 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -3.544643 ppl= 3.89739 ppl1= 3.89739
+
++ m a n u h i r i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( n | a ...) 	= [3gram] 0.09215513 [ -1.03548 ]
+	p( u | n ...) 	= [3gram] 0.09042332 [ -1.04372 ]
+	p( h | u ...) 	= [2gram] 0.06133371 [ -1.212301 ]
+	p( i | h ...) 	= [3gram] 0.1829723 [ -0.7376146 ]
+	p( r | i ...) 	= [3gram] 0.09499635 [ -1.022293 ]
+	p( i | r ...) 	= [3gram] 0.2710993 [ -0.5668716 ]
+	p( + | i ...) 	= [3gram] 0.5022292 [ -0.299098 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.912152 ppl= 6.183228 ppl1= 6.183228
+
++ m a o r i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( o | a ...) 	= [3gram] 0.0300387 [ -1.522319 ]
+	p( r | o ...) 	= [3gram] 0.2062644 [ -0.6855757 ]
+	p( i | r ...) 	= [3gram] 0.1994862 [ -0.7000871 ]
+	p( + | i ...) 	= [3gram] 0.5022292 [ -0.299098 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.201854 ppl= 5.535055 ppl1= 5.535055
+
++ m a r a e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( r | a ...) 	= [3gram] 0.147963 [ -0.8298469 ]
+	p( a | r ...) 	= [3gram] 0.434288 [ -0.3622222 ]
+	p( e | a ...) 	= [3gram] 0.0231991 [ -1.634529 ]
+	p( + | e ...) 	= [3gram] 0.3903061 [ -0.4085946 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.229967 ppl= 5.586478 ppl1= 5.586478
+
++ m a t a r i k i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( t | a ...) 	= [3gram] 0.1525136 [ -0.8166914 ]
+	p( a | t ...) 	= [3gram] 0.4289135 [ -0.3676302 ]
+	p( r | a ...) 	= [3gram] 0.1697549 [ -0.7701776 ]
+	p( i | r ...) 	= [3gram] 0.1906242 [ -0.7198219 ]
+	p( k | i ...) 	= [3gram] 0.1136079 [ -0.9445915 ]
+	p( i | k ...) 	= [3gram] 0.2392831 [ -0.621088 ]
+	p( + | i ...) 	= [3gram] 0.5851661 [ -0.2327209 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -6.467496 ppl= 4.433529 ppl1= 4.433529
+
++ m a t e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( t | a ...) 	= [3gram] 0.1525136 [ -0.8166914 ]
+	p( e | t ...) 	= [3gram] 0.1088616 [ -0.9631255 ]
+	p( + | e ...) 	= [3gram] 0.3422929 [ -0.4656022 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.240193 ppl= 5.089778 ppl1= 5.089778
+
++ m a u i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( u | a ...) 	= [3gram] 0.05521149 [ -1.257971 ]
+	p( i | u ...) 	= [3gram] 0.06055125 [ -1.217877 ]
+	p( + | i ...) 	= [3gram] 0.458434 [ -0.3387232 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.809345 ppl= 6.332241 ppl1= 6.332241
+
++ m a u N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( u | a ...) 	= [3gram] 0.05521149 [ -1.257971 ]
+	p( N | u ...) 	= [3gram] 0.0446051 [ -1.350616 ]
+	p( a | N ...) 	= [3gram] 0.8415563 [ -0.07491684 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -4.864215 ppl= 4.953223 ppl1= 4.953223
+
++ m a f e r o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( f | a ...) 	= [2gram] 0.01094278 [ -1.960872 ]
+	p( e | f ...) 	= [2gram] 0.2122659 [ -0.6731198 ]
+	p( r | e ...) 	= [3gram] 0.1650368 [ -0.7824192 ]
+	p( o | r ...) 	= [3gram] 0.1221879 [ -0.912972 ]
+	p( + | o ...) 	= [3gram] 0.4211625 [ -0.3755503 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.699708 ppl= 6.87802 ppl1= 6.87802
+
++ m e r e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( e | m ...) 	= [3gram] 0.09310304 [ -1.031036 ]
+	p( r | e ...) 	= [3gram] 0.2083529 [ -0.6812005 ]
+	p( e | r ...) 	= [3gram] 0.4204081 [ -0.3763289 ]
+	p( + | e ...) 	= [3gram] 0.479132 [ -0.3195448 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.107692 ppl= 4.837438 ppl1= 4.837438
+
++ m i h i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( i | m ...) 	= [3gram] 0.1390141 [ -0.8569412 ]
+	p( h | i ...) 	= [3gram] 0.1108995 [ -0.9550705 ]
+	p( i | h ...) 	= [3gram] 0.4351932 [ -0.3613179 ]
+	p( + | i ...) 	= [3gram] 0.6044125 [ -0.2186666 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.091578 ppl= 4.807615 ppl1= 4.807615
+
++ m o a n a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( o | m ...) 	= [3gram] 0.1730241 [ -0.7618935 ]
+	p( a | o ...) 	= [3gram] 0.08328976 [ -1.079408 ]
+	p( n | a ...) 	= [2gram] 0.05458804 [ -1.262902 ]
+	p( a | n ...) 	= [3gram] 0.4998072 [ -0.3011975 ]
+	p( + | a ...) 	= [3gram] 0.5519394 [ -0.2581086 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.363092 ppl= 5.836548 ppl1= 5.836548
+
++ m o k o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( o | m ...) 	= [3gram] 0.1730241 [ -0.7618935 ]
+	p( k | o ...) 	= [3gram] 0.1732693 [ -0.7612784 ]
+	p( o | k ...) 	= [3gram] 0.2540256 [ -0.5951226 ]
+	p( + | o ...) 	= [3gram] 0.3760643 [ -0.4247379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.242614 ppl= 5.09451 ppl1= 5.09451
+
++ m o k o p u n a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( o | m ...) 	= [3gram] 0.1730241 [ -0.7618935 ]
+	p( k | o ...) 	= [3gram] 0.1732693 [ -0.7612784 ]
+	p( o | k ...) 	= [3gram] 0.2540256 [ -0.5951226 ]
+	p( p | o ...) 	= [3gram] 0.07978071 [ -1.098102 ]
+	p( u | p ...) 	= [2gram] 0.1516342 [ -0.8192029 ]
+	p( n | u ...) 	= [3gram] 0.1194875 [ -0.9226775 ]
+	p( a | n ...) 	= [3gram] 0.4166318 [ -0.3802476 ]
+	p( + | a ...) 	= [3gram] 0.5519394 [ -0.2581086 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.296215 ppl= 5.36564 ppl1= 5.36564
+
++ m o r e n a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( o | m ...) 	= [3gram] 0.1730241 [ -0.7618935 ]
+	p( r | o ...) 	= [3gram] 0.1501048 [ -0.8236055 ]
+	p( e | r ...) 	= [3gram] 0.2433186 [ -0.6138246 ]
+	p( n | e ...) 	= [3gram] 0.05214131 [ -1.282818 ]
+	p( a | n ...) 	= [3gram] 0.299093 [ -0.5241938 ]
+	p( + | a ...) 	= [3gram] 0.5519394 [ -0.2581086 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.964026 ppl= 5.565488 ppl1= 5.565488
+
++ m o t u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( o | m ...) 	= [3gram] 0.1730241 [ -0.7618935 ]
+	p( t | o ...) 	= [3gram] 0.1318724 [ -0.8798461 ]
+	p( u | t ...) 	= [3gram] 0.1338641 [ -0.8733358 ]
+	p( + | u ...) 	= [3gram] 0.432905 [ -0.3636074 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.578265 ppl= 5.794876 ppl1= 5.794876
+
++ n o h o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( o | n ...) 	= [3gram] 0.1997302 [ -0.6995564 ]
+	p( h | o ...) 	= [3gram] 0.1765421 [ -0.7531517 ]
+	p( o | h ...) 	= [3gram] 0.2323958 [ -0.6337717 ]
+	p( + | o ...) 	= [3gram] 0.2869925 [ -0.5421295 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.67245 ppl= 6.008162 ppl1= 6.008162
+
++ n u i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( u | n ...) 	= [3gram] 0.10233 [ -0.9899971 ]
+	p( i | u ...) 	= [3gram] 0.1339184 [ -0.8731596 ]
+	p( + | i ...) 	= [3gram] 0.4769779 [ -0.3215017 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.228499 ppl= 7.009707 ppl1= 7.009707
+
++ o n o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( o | + ...) 	= [2gram] 0.02124605 [ -1.672722 ]
+	p( n | o ...) 	= [3gram] 0.08745956 [ -1.058193 ]
+	p( o | n ...) 	= [3gram] 0.2150298 [ -0.6675014 ]
+	p( + | o ...) 	= [3gram] 0.4680491 [ -0.3297086 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.450991 ppl= 7.766013 ppl1= 7.766013
+
++ o r a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( o | + ...) 	= [2gram] 0.02124605 [ -1.672722 ]
+	p( r | o ...) 	= [3gram] 0.2008482 [ -0.6971321 ]
+	p( a | r ...) 	= [3gram] 0.1741484 [ -0.7590804 ]
+	p( + | a ...) 	= [3gram] 0.3585559 [ -0.4454432 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.297244 ppl= 7.235169 ppl1= 7.235169
+
++ p a i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( a | p ...) 	= [3gram] 0.361719 [ -0.4416287 ]
+	p( i | a ...) 	= [3gram] 0.05963572 [ -1.224494 ]
+	p( + | i ...) 	= [3gram] 0.3376965 [ -0.4714735 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -3.759207 ppl= 5.647307 ppl1= 5.647307
+
++ p a k e h a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( a | p ...) 	= [3gram] 0.361719 [ -0.4416287 ]
+	p( k | a ...) 	= [3gram] 0.1267997 [ -0.8968818 ]
+	p( e | k ...) 	= [3gram] 0.1454405 [ -0.8373146 ]
+	p( h | e ...) 	= [3gram] 0.0982468 [ -1.007682 ]
+	p( a | h ...) 	= [3gram] 0.2507792 [ -0.6007085 ]
+	p( + | a ...) 	= [3gram] 0.3535936 [ -0.4514956 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.857322 ppl= 5.39716 ppl1= 5.39716
+
++ p a N o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( a | p ...) 	= [3gram] 0.361719 [ -0.4416287 ]
+	p( N | a ...) 	= [3gram] 0.02833327 [ -1.547703 ]
+	p( o | N ...) 	= [3gram] 0.1219433 [ -0.9138422 ]
+	p( + | o ...) 	= [3gram] 0.4362503 [ -0.3602643 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.88505 ppl= 6.51891 ppl1= 6.51891
+
++ p a p a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( a | p ...) 	= [3gram] 0.361719 [ -0.4416287 ]
+	p( p | a ...) 	= [3gram] 0.08802409 [ -1.055398 ]
+	p( a | p ...) 	= [3gram] 0.3382652 [ -0.4707427 ]
+	p( + | a ...) 	= [3gram] 0.2781675 [ -0.5556936 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.145075 ppl= 4.907336 ppl1= 4.907336
+
++ p a p a t u a n u k u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( a | p ...) 	= [3gram] 0.361719 [ -0.4416287 ]
+	p( p | a ...) 	= [3gram] 0.08802409 [ -1.055398 ]
+	p( a | p ...) 	= [3gram] 0.3382652 [ -0.4707427 ]
+	p( t | a ...) 	= [3gram] 0.1036832 [ -0.9842916 ]
+	p( u | t ...) 	= [3gram] 0.1406989 [ -0.8517094 ]
+	p( a | u ...) 	= [3gram] 0.1274724 [ -0.8945837 ]
+	p( n | a ...) 	= [2gram] 0.05257444 [ -1.279225 ]
+	p( u | n ...) 	= [3gram] 0.09638581 [ -1.015987 ]
+	p( k | u ...) 	= [3gram] 0.1735371 [ -0.7606077 ]
+	p( u | k ...) 	= [3gram] 0.2077455 [ -0.6824684 ]
+	p( + | u ...) 	= [3gram] 0.4842505 [ -0.31493 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 13 words, 0 OOVs
+0 zeroprobs, logprob= -10.37318 ppl= 6.279676 ppl1= 6.279676
+
++ p o i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( o | p ...) 	= [3gram] 0.1877121 [ -0.7265077 ]
+	p( i | o ...) 	= [3gram] 0.04324549 [ -1.364059 ]
+	p( + | i ...) 	= [3gram] 0.577193 [ -0.2386789 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -3.950857 ppl= 6.168384 ppl1= 6.168384
+
++ p o k o h i w i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( o | p ...) 	= [3gram] 0.1877121 [ -0.7265077 ]
+	p( k | o ...) 	= [3gram] 0.2043999 [ -0.6895194 ]
+	p( o | k ...) 	= [3gram] 0.2554033 [ -0.5927734 ]
+	p( h | o ...) 	= [3gram] 0.1022731 [ -0.9902384 ]
+	p( i | h ...) 	= [3gram] 0.2178854 [ -0.6617718 ]
+	p( w | i ...) 	= [3gram] 0.04592869 [ -1.337916 ]
+	p( i | w ...) 	= [3gram] 0.1762805 [ -0.7537956 ]
+	p( + | i ...) 	= [3gram] 0.4014086 [ -0.3964133 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.770547 ppl= 5.98487 ppl1= 5.98487
+
++ p o u n a m u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( o | p ...) 	= [3gram] 0.1877121 [ -0.7265077 ]
+	p( u | o ...) 	= [3gram] 0.09184154 [ -1.036961 ]
+	p( n | u ...) 	= [2gram] 0.05005518 [ -1.300551 ]
+	p( a | n ...) 	= [3gram] 0.394597 [ -0.4038463 ]
+	p( m | a ...) 	= [3gram] 0.08227862 [ -1.084713 ]
+	p( u | m ...) 	= [3gram] 0.1425355 [ -0.846077 ]
+	p( + | u ...) 	= [3gram] 0.552783 [ -0.2574453 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.277712 ppl= 6.436277 ppl1= 6.436277
+
++ p o f i r i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( o | p ...) 	= [3gram] 0.1877121 [ -0.7265077 ]
+	p( f | o ...) 	= [2gram] 0.009460753 [ -2.024074 ]
+	p( i | f ...) 	= [2gram] 0.2393141 [ -0.6210318 ]
+	p( r | i ...) 	= [3gram] 0.1655135 [ -0.7811666 ]
+	p( i | r ...) 	= [3gram] 0.3991457 [ -0.3988686 ]
+	p( + | i ...) 	= [3gram] 0.5022292 [ -0.299098 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.472358 ppl= 6.442357 ppl1= 6.442357
+
++ p u k e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( u | p ...) 	= [3gram] 0.1890023 [ -0.7235329 ]
+	p( k | u ...) 	= [3gram] 0.110937 [ -0.9549234 ]
+	p( e | k ...) 	= [3gram] 0.1928832 [ -0.7147057 ]
+	p( + | e ...) 	= [3gram] 0.5210299 [ -0.2831373 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.297911 ppl= 5.203774 ppl1= 5.203774
+
++ p u k u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( u | p ...) 	= [3gram] 0.1890023 [ -0.7235329 ]
+	p( k | u ...) 	= [3gram] 0.110937 [ -0.9549234 ]
+	p( u | k ...) 	= [3gram] 0.2210621 [ -0.6554856 ]
+	p( + | u ...) 	= [3gram] 0.4842502 [ -0.3149302 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.270483 ppl= 5.149289 ppl1= 5.149289
+
++ r a N a t i r a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( a | r ...) 	= [3gram] 0.3325621 [ -0.4781272 ]
+	p( N | a ...) 	= [3gram] 0.05745425 [ -1.240678 ]
+	p( a | N ...) 	= [3gram] 0.7294446 [ -0.1370077 ]
+	p( t | a ...) 	= [3gram] 0.1258932 [ -0.8999977 ]
+	p( i | t ...) 	= [3gram] 0.1837668 [ -0.735733 ]
+	p( r | i ...) 	= [3gram] 0.100233 [ -0.9989891 ]
+	p( a | r ...) 	= [3gram] 0.2878704 [ -0.540803 ]
+	p( + | a ...) 	= [3gram] 0.3585559 [ -0.4454432 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.195553 ppl= 5.242703 ppl1= 5.242703
+
++ r a N a t i r a t a N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( a | r ...) 	= [3gram] 0.3325621 [ -0.4781272 ]
+	p( N | a ...) 	= [3gram] 0.05745425 [ -1.240678 ]
+	p( a | N ...) 	= [3gram] 0.7294446 [ -0.1370077 ]
+	p( t | a ...) 	= [3gram] 0.1258932 [ -0.8999977 ]
+	p( i | t ...) 	= [3gram] 0.1837668 [ -0.735733 ]
+	p( r | i ...) 	= [3gram] 0.100233 [ -0.9989891 ]
+	p( a | r ...) 	= [3gram] 0.2878704 [ -0.540803 ]
+	p( t | a ...) 	= [3gram] 0.1008835 [ -0.9961801 ]
+	p( a | t ...) 	= [3gram] 0.4198121 [ -0.376945 ]
+	p( N | a ...) 	= [3gram] 0.04625587 [ -1.334833 ]
+	p( a | N ...) 	= [3gram] 0.7278269 [ -0.1379719 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* + *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 14 words, 0 OOVs
+0 zeroprobs, logprob= -9.781978 ppl= 4.997038 ppl1= 4.997038
+
++ r a N i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( a | r ...) 	= [3gram] 0.3325621 [ -0.4781272 ]
+	p( N | a ...) 	= [3gram] 0.05745425 [ -1.240678 ]
+	p( i | N ...) 	= [3gram] 0.09008516 [ -1.045347 ]
+	p( + | i ...) 	= [3gram] 0.7699106 [ -0.1135597 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.596486 ppl= 5.835538 ppl1= 5.835538
+
++ r a N i n u i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( a | r ...) 	= [3gram] 0.3325621 [ -0.4781272 ]
+	p( N | a ...) 	= [3gram] 0.05745425 [ -1.240678 ]
+	p( i | N ...) 	= [3gram] 0.09008516 [ -1.045347 ]
+	p( n | i ...) 	= [2gram] 0.06645642 [ -1.177463 ]
+	p( u | n ...) 	= [3gram] 0.07582006 [ -1.120216 ]
+	p( i | u ...) 	= [3gram] 0.1339185 [ -0.8731594 ]
+	p( + | i ...) 	= [3gram] 0.4769779 [ -0.3215017 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.975266 ppl= 7.693796 ppl1= 7.693796
+
++ r e o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( e | r ...) 	= [3gram] 0.2122292 [ -0.6731949 ]
+	p( o | e ...) 	= [2gram] 0.01590026 [ -1.798596 ]
+	p( + | o ...) 	= [3gram] 0.2843758 [ -0.5461073 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.736672 ppl= 8.857974 ppl1= 8.857974
+
++ r i m a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( i | r ...) 	= [3gram] 0.1707403 [ -0.767664 ]
+	p( m | i ...) 	= [3gram] 0.07845772 [ -1.105364 ]
+	p( a | m ...) 	= [3gram] 0.4523168 [ -0.3445573 ]
+	p( + | a ...) 	= [3gram] 0.2124286 [ -0.672787 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.609147 ppl= 5.863961 ppl1= 5.863961
+
++ r i N a r i N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( i | r ...) 	= [3gram] 0.1707403 [ -0.767664 ]
+	p( N | i ...) 	= [3gram] 0.06585901 [ -1.181385 ]
+	p( a | N ...) 	= [3gram] 0.6599147 [ -0.1805122 ]
+	p( r | a ...) 	= [3gram] 0.1403108 [ -0.8529088 ]
+	p( i | r ...) 	= [3gram] 0.1836109 [ -0.7361016 ]
+	p( N | i ...) 	= [3gram] 0.06585897 [ -1.181385 ]
+	p( a | N ...) 	= [3gram] 0.6599151 [ -0.180512 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -6.98518 ppl= 4.994799 ppl1= 4.994799
+
++ r o t o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( o | r ...) 	= [3gram] 0.1513833 [ -0.819922 ]
+	p( t | o ...) 	= [3gram] 0.123479 [ -0.908407 ]
+	p( o | t ...) 	= [3gram] 0.2080269 [ -0.6818805 ]
+	p( + | o ...) 	= [3gram] 0.305396 [ -0.5151367 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.64412 ppl= 5.943196 ppl1= 5.943196
+
++ r u a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( u | r ...) 	= [3gram] 0.1329384 [ -0.8763497 ]
+	p( a | u ...) 	= [3gram] 0.1048595 [ -0.9793921 ]
+	p( + | a ...) 	= [3gram] 0.5618683 [ -0.2503655 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -3.824881 ppl= 5.820714 ppl1= 5.820714
+
++ t a h i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( h | a ...) 	= [3gram] 0.09022218 [ -1.044687 ]
+	p( i | h ...) 	= [3gram] 0.2432284 [ -0.6139858 ]
+	p( + | i ...) 	= [3gram] 0.6044125 [ -0.2186666 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -3.820169 ppl= 4.332064 ppl1= 4.332064
+
++ t a i a h a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( i | a ...) 	= [3gram] 0.0839111 [ -1.076181 ]
+	p( a | i ...) 	= [3gram] 0.1659061 [ -0.7801375 ]
+	p( h | a ...) 	= [2gram] 0.09068357 [ -1.042471 ]
+	p( a | h ...) 	= [3gram] 0.3172077 [ -0.4986563 ]
+	p( + | a ...) 	= [3gram] 0.3535936 [ -0.4514956 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.791772 ppl= 5.296286 ppl1= 5.296286
+
++ t a i h o a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( i | a ...) 	= [3gram] 0.0839111 [ -1.076181 ]
+	p( h | i ...) 	= [3gram] 0.1493466 [ -0.8258047 ]
+	p( o | h ...) 	= [3gram] 0.1252662 [ -0.9021661 ]
+	p( a | o ...) 	= [3gram] 0.09855498 [ -1.006321 ]
+	p( + | a ...) 	= [3gram] 0.4472466 [ -0.349453 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.102756 ppl= 5.792213 ppl1= 5.792213
+
++ t a m a r i k i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( m | a ...) 	= [3gram] 0.05633986 [ -1.249184 ]
+	p( a | m ...) 	= [3gram] 0.4877282 [ -0.3118222 ]
+	p( r | a ...) 	= [3gram] 0.1479628 [ -0.8298473 ]
+	p( i | r ...) 	= [3gram] 0.1914609 [ -0.7179198 ]
+	p( k | i ...) 	= [3gram] 0.1136079 [ -0.9445915 ]
+	p( i | k ...) 	= [3gram] 0.2392831 [ -0.621088 ]
+	p( + | i ...) 	= [3gram] 0.5851661 [ -0.2327209 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -6.850004 ppl= 4.841728 ppl1= 4.841728
+
++ t a n e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( n | a ...) 	= [3gram] 0.04128159 [ -1.384244 ]
+	p( e | n ...) 	= [3gram] 0.1255547 [ -0.9011672 ]
+	p( + | e ...) 	= [3gram] 0.5734025 [ -0.2415404 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.469781 ppl= 5.558576 ppl1= 5.558576
+
++ t a N a t a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( N | a ...) 	= [3gram] 0.04625586 [ -1.334833 ]
+	p( a | N ...) 	= [3gram] 0.7278285 [ -0.1379709 ]
+	p( t | a ...) 	= [3gram] 0.1258933 [ -0.8999975 ]
+	p( a | t ...) 	= [3gram] 0.4129787 [ -0.3840723 ]
+	p( + | a ...) 	= [3gram] 0.3017963 [ -0.5202861 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.21999 ppl= 4.492611 ppl1= 4.492611
+
++ t a N a t a f e n u a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( N | a ...) 	= [3gram] 0.04625586 [ -1.334833 ]
+	p( a | N ...) 	= [3gram] 0.7278285 [ -0.1379709 ]
+	p( t | a ...) 	= [3gram] 0.1258933 [ -0.8999975 ]
+	p( a | t ...) 	= [3gram] 0.4129787 [ -0.3840723 ]
+	p( f | a ...) 	= [3gram] 0.02431965 [ -1.614043 ]
+	p( e | f ...) 	= [2gram] 0.1808093 [ -0.7427793 ]
+	p( n | e ...) 	= [3gram] 0.1390063 [ -0.8569655 ]
+	p( u | n ...) 	= [3gram] 0.08474581 [ -1.071882 ]
+	p( a | u ...) 	= [3gram] 0.1014554 [ -0.9937248 ]
+	p( + | a ...) 	= [3gram] 0.5476709 [ -0.2614803 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 13 words, 0 OOVs
+0 zeroprobs, logprob= -10.24058 ppl= 6.133902 ppl1= 6.133902
+
++ t a N i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( N | a ...) 	= [3gram] 0.04625586 [ -1.334833 ]
+	p( i | N ...) 	= [3gram] 0.08997085 [ -1.045898 ]
+	p( + | i ...) 	= [3gram] 0.7699106 [ -0.1135597 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.437121 ppl= 5.489341 ppl1= 5.489341
+
++ t a n i f a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( n | a ...) 	= [3gram] 0.04128159 [ -1.384244 ]
+	p( i | n ...) 	= [3gram] 0.1547694 [ -0.8103149 ]
+	p( f | i ...) 	= [2gram] 0.0265952 [ -1.575197 ]
+	p( a | f ...) 	= [3gram] 0.4757681 [ -0.3226047 ]
+	p( + | a ...) 	= [3gram] 0.2417636 [ -0.6166091 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.651799 ppl= 6.783829 ppl1= 6.783829
+
++ t a o N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( o | a ...) 	= [3gram] 0.03106614 [ -1.507713 ]
+	p( N | o ...) 	= [3gram] 0.0621931 [ -1.206258 ]
+	p( a | N ...) 	= [3gram] 0.617397 [ -0.2094355 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.052174 ppl= 5.269133 ppl1= 5.269133
+
++ t a p u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( p | a ...) 	= [3gram] 0.1094268 [ -0.9608763 ]
+	p( u | p ...) 	= [3gram] 0.2588756 [ -0.5869088 ]
+	p( + | u ...) 	= [3gram] 0.2949285 [ -0.5302832 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.020899 ppl= 4.678965 ppl1= 4.678965
+
++ t a r i N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( r | a ...) 	= [3gram] 0.1697549 [ -0.7701777 ]
+	p( i | r ...) 	= [3gram] 0.1906241 [ -0.7198222 ]
+	p( N | i ...) 	= [3gram] 0.06585894 [ -1.181385 ]
+	p( a | N ...) 	= [3gram] 0.6599151 [ -0.180512 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -4.980665 ppl= 4.193563 ppl1= 4.193563
+
++ t e i n a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( e | t ...) 	= [3gram] 0.1152273 [ -0.9384446 ]
+	p( i | e ...) 	= [3gram] 0.04628938 [ -1.334519 ]
+	p( n | i ...) 	= [3gram] 0.1432254 [ -0.8439798 ]
+	p( a | n ...) 	= [3gram] 0.4086451 [ -0.3886538 ]
+	p( + | a ...) 	= [3gram] 0.5519394 [ -0.2581086 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.315468 ppl= 5.745828 ppl1= 5.745828
+
++ t e k a u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( e | t ...) 	= [3gram] 0.1152273 [ -0.9384446 ]
+	p( k | e ...) 	= [3gram] 0.1381758 [ -0.8595681 ]
+	p( a | k ...) 	= [3gram] 0.3122451 [ -0.5055044 ]
+	p( u | a ...) 	= [3gram] 0.09124727 [ -1.03978 ]
+	p( + | u ...) 	= [3gram] 0.4824159 [ -0.3165784 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.211638 ppl= 5.552899 ppl1= 5.552899
+
++ t e n a k o e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( e | t ...) 	= [3gram] 0.1152273 [ -0.9384446 ]
+	p( n | e ...) 	= [3gram] 0.1220374 [ -0.9135072 ]
+	p( a | n ...) 	= [3gram] 0.2581154 [ -0.588186 ]
+	p( k | a ...) 	= [3gram] 0.1480484 [ -0.8295963 ]
+	p( o | k ...) 	= [3gram] 0.1798176 [ -0.7451677 ]
+	p( e | o ...) 	= [3gram] 0.03525415 [ -1.45279 ]
+	p( + | e ...) 	= [3gram] 0.4830021 [ -0.316051 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.335505 ppl= 6.53215 ppl1= 6.53215
+
++ t e n a k o u t o u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( e | t ...) 	= [3gram] 0.1152273 [ -0.9384446 ]
+	p( n | e ...) 	= [3gram] 0.1220374 [ -0.9135072 ]
+	p( a | n ...) 	= [3gram] 0.2581154 [ -0.588186 ]
+	p( k | a ...) 	= [3gram] 0.1480484 [ -0.8295963 ]
+	p( o | k ...) 	= [3gram] 0.1798176 [ -0.7451677 ]
+	p( u | o ...) 	= [3gram] 0.04207503 [ -1.375976 ]
+	p( t | u ...) 	= [2gram] 0.1062737 [ -0.9735742 ]
+	p( o | t ...) 	= [2gram] 0.1419141 [ -0.8479743 ]
+	p( u | o ...) 	= [3gram] 0.06593654 [ -1.180874 ]
+	p( + | u ...) 	= [3gram] 0.5875036 [ -0.2309895 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 12 words, 0 OOVs
+0 zeroprobs, logprob= -10.17605 ppl= 7.047001 ppl1= 7.047001
+
++ t i k a N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( k | i ...) 	= [3gram] 0.1502965 [ -0.8230512 ]
+	p( a | k ...) 	= [3gram] 0.3439042 [ -0.4635625 ]
+	p( N | a ...) 	= [3gram] 0.02953667 [ -1.529639 ]
+	p( a | N ...) 	= [3gram] 0.6986309 [ -0.1557522 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.458897 ppl= 4.812405 ppl1= 4.812405
+
++ t i k i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( k | i ...) 	= [3gram] 0.1502965 [ -0.8230512 ]
+	p( i | k ...) 	= [3gram] 0.2733559 [ -0.5632715 ]
+	p( + | i ...) 	= [3gram] 0.5851661 [ -0.2327209 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -3.919998 ppl= 4.501249 ppl1= 4.501249
+
++ t o h u N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( o | t ...) 	= [3gram] 0.1681785 [ -0.7742295 ]
+	p( h | o ...) 	= [3gram] 0.1456755 [ -0.8366134 ]
+	p( u | h ...) 	= [3gram] 0.1855807 [ -0.7314672 ]
+	p( N | u ...) 	= [3gram] 0.05602798 [ -1.251595 ]
+	p( a | N ...) 	= [3gram] 0.8809999 [ -0.05502415 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.38663 ppl= 4.71334 ppl1= 4.71334
+
++ t o r u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( o | t ...) 	= [3gram] 0.1681785 [ -0.7742295 ]
+	p( r | o ...) 	= [3gram] 0.1427312 [ -0.8454812 ]
+	p( u | r ...) 	= [3gram] 0.08968675 [ -1.047272 ]
+	p( + | u ...) 	= [3gram] 0.5310289 [ -0.2748818 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.493627 ppl= 5.609677 ppl1= 5.609677
+
++ t u a k a n a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( u | t ...) 	= [3gram] 0.1319324 [ -0.8796484 ]
+	p( a | u ...) 	= [3gram] 0.1274725 [ -0.8945835 ]
+	p( k | a ...) 	= [3gram] 0.174407 [ -0.758436 ]
+	p( a | k ...) 	= [3gram] 0.3802457 [ -0.4199357 ]
+	p( n | a ...) 	= [3gram] 0.07400942 [ -1.130713 ]
+	p( a | n ...) 	= [3gram] 0.531645 [ -0.2743783 ]
+	p( + | a ...) 	= [3gram] 0.5519394 [ -0.2581086 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -6.167566 ppl= 4.844904 ppl1= 4.844904
+
++ t u p u n a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( u | t ...) 	= [3gram] 0.1319324 [ -0.8796484 ]
+	p( p | u ...) 	= [3gram] 0.1110676 [ -0.9544127 ]
+	p( u | p ...) 	= [3gram] 0.2979059 [ -0.5259209 ]
+	p( n | u ...) 	= [3gram] 0.1194876 [ -0.9226773 ]
+	p( a | n ...) 	= [3gram] 0.4166318 [ -0.3802476 ]
+	p( + | a ...) 	= [3gram] 0.5519394 [ -0.2581086 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.472778 ppl= 4.83167 ppl1= 4.83167
+
++ t u r i t u r i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( u | t ...) 	= [3gram] 0.1319324 [ -0.8796484 ]
+	p( r | u ...) 	= [3gram] 0.1377048 [ -0.8610508 ]
+	p( i | r ...) 	= [3gram] 0.202386 [ -0.6938195 ]
+	p( t | i ...) 	= [3gram] 0.1282688 [ -0.8918791 ]
+	p( u | t ...) 	= [3gram] 0.1065977 [ -0.9722524 ]
+	p( r | u ...) 	= [3gram] 0.1377049 [ -0.8610506 ]
+	p( i | r ...) 	= [3gram] 0.202386 [ -0.6938195 ]
+	p( + | i ...) 	= [3gram] 0.5022292 [ -0.299098 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.704381 ppl= 5.89438 ppl1= 5.89438
+
++ u p o k o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( u | + ...) 	= [2gram] 0.02063351 [ -1.685427 ]
+	p( p | u ...) 	= [2gram] 0.03830128 [ -1.416787 ]
+	p( o | p ...) 	= [3gram] 0.1715077 [ -0.7657163 ]
+	p( k | o ...) 	= [3gram] 0.2043999 [ -0.6895194 ]
+	p( o | k ...) 	= [3gram] 0.2554036 [ -0.592773 ]
+	p( + | o ...) 	= [3gram] 0.3760643 [ -0.4247379 ]
+Hidden events: *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -6.297826 ppl= 7.937605 ppl1= 7.937605
+
++ u t u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( u | + ...) 	= [2gram] 0.02063351 [ -1.685427 ]
+	p( t | u ...) 	= [3gram] 0.08667914 [ -1.062085 ]
+	p( u | t ...) 	= [3gram] 0.3236175 [ -0.4899681 ]
+	p( + | u ...) 	= [3gram] 0.4329052 [ -0.3636072 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.323954 ppl= 7.324715 ppl1= 7.324715
+
++ w a e w a e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( a | w ...) 	= [3gram] 0.4951034 [ -0.3053041 ]
+	p( e | a ...) 	= [3gram] 0.04928258 [ -1.307307 ]
+	p( w | e ...) 	= [2gram] 0.02224589 [ -1.65275 ]
+	p( a | w ...) 	= [3gram] 0.497007 [ -0.3036375 ]
+	p( e | a ...) 	= [3gram] 0.04928256 [ -1.307307 ]
+	p( + | e ...) 	= [3gram] 0.4115452 [ -0.3855824 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -7.336132 ppl= 8.260692 ppl1= 8.260692
+
++ w a h a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( a | w ...) 	= [3gram] 0.4951034 [ -0.3053041 ]
+	p( h | a ...) 	= [3gram] 0.1220697 [ -0.9133921 ]
+	p( a | h ...) 	= [3gram] 0.3229617 [ -0.490849 ]
+	p( + | a ...) 	= [3gram] 0.3535936 [ -0.4514956 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.235285 ppl= 5.0802 ppl1= 5.0802
+
++ w a h i t a p u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( a | w ...) 	= [3gram] 0.4951034 [ -0.3053041 ]
+	p( h | a ...) 	= [3gram] 0.1220697 [ -0.9133921 ]
+	p( i | h ...) 	= [3gram] 0.2497464 [ -0.6025007 ]
+	p( t | i ...) 	= [3gram] 0.131861 [ -0.8798835 ]
+	p( a | t ...) 	= [3gram] 0.3426322 [ -0.4651718 ]
+	p( p | a ...) 	= [3gram] 0.1094268 [ -0.9608765 ]
+	p( u | p ...) 	= [3gram] 0.2588756 [ -0.5869088 ]
+	p( + | u ...) 	= [3gram] 0.2949287 [ -0.530283 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.318564 ppl= 5.393323 ppl1= 5.393323
+
++ w a h i n e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( a | w ...) 	= [3gram] 0.4951034 [ -0.3053041 ]
+	p( h | a ...) 	= [3gram] 0.1220697 [ -0.9133921 ]
+	p( i | h ...) 	= [3gram] 0.2497464 [ -0.6025007 ]
+	p( n | i ...) 	= [3gram] 0.0984631 [ -1.006727 ]
+	p( e | n ...) 	= [3gram] 0.1794264 [ -0.7461138 ]
+	p( + | e ...) 	= [3gram] 0.5734025 [ -0.2415404 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.889821 ppl= 5.447882 ppl1= 5.447882
+
++ w a i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( a | w ...) 	= [3gram] 0.4951034 [ -0.3053041 ]
+	p( i | a ...) 	= [3gram] 0.09604627 [ -1.017519 ]
+	p( + | i ...) 	= [3gram] 0.3402281 [ -0.4682298 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -3.865297 ppl= 5.930065 ppl1= 5.930065
+
++ w a i a t a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( a | w ...) 	= [3gram] 0.4951034 [ -0.3053041 ]
+	p( i | a ...) 	= [3gram] 0.09604627 [ -1.017519 ]
+	p( a | i ...) 	= [3gram] 0.1661406 [ -0.7795243 ]
+	p( t | a ...) 	= [2gram] 0.126356 [ -0.8984041 ]
+	p( a | t ...) 	= [3gram] 0.4100428 [ -0.3871708 ]
+	p( + | a ...) 	= [3gram] 0.3017963 [ -0.5202861 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.982453 ppl= 5.595084 ppl1= 5.595084
+
++ w a k a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( a | w ...) 	= [3gram] 0.4951034 [ -0.3053041 ]
+	p( k | a ...) 	= [3gram] 0.111462 [ -0.9528732 ]
+	p( a | k ...) 	= [3gram] 0.3783182 [ -0.4221427 ]
+	p( + | a ...) 	= [3gram] 0.3441764 [ -0.4632189 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.217783 ppl= 5.046193 ppl1= 5.046193
+
++ w a n a N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( a | w ...) 	= [3gram] 0.4951034 [ -0.3053041 ]
+	p( n | a ...) 	= [3gram] 0.06421426 [ -1.192369 ]
+	p( a | n ...) 	= [3gram] 0.5261327 [ -0.2789047 ]
+	p( N | a ...) 	= [3gram] 0.04986971 [ -1.302163 ]
+	p( a | N ...) 	= [3gram] 0.7019618 [ -0.1536865 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.492609 ppl= 4.859327 ppl1= 4.859327
+
++ w a r u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( a | w ...) 	= [3gram] 0.4951034 [ -0.3053041 ]
+	p( r | a ...) 	= [3gram] 0.1316963 [ -0.8804264 ]
+	p( u | r ...) 	= [3gram] 0.09013037 [ -1.045129 ]
+	p( + | u ...) 	= [3gram] 0.5310289 [ -0.2748818 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.579985 ppl= 5.798703 ppl1= 5.798703
+
++ f a e a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( e | a ...) 	= [3gram] 0.06577955 [ -1.181909 ]
+	p( a | e ...) 	= [3gram] 0.2026998 [ -0.6931467 ]
+	p( + | a ...) 	= [3gram] 0.8602736 [ -0.06536341 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.361864 ppl= 5.33307 ppl1= 5.33307
+
++ f a k a p a p a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( k | a ...) 	= [3gram] 0.1249319 [ -0.9033265 ]
+	p( a | k ...) 	= [3gram] 0.3741767 [ -0.4269233 ]
+	p( p | a ...) 	= [3gram] 0.1111168 [ -0.9542203 ]
+	p( a | p ...) 	= [3gram] 0.3379563 [ -0.4711394 ]
+	p( p | a ...) 	= [3gram] 0.08802409 [ -1.055398 ]
+	p( a | p ...) 	= [3gram] 0.3382652 [ -0.4707427 ]
+	p( + | a ...) 	= [3gram] 0.2781675 [ -0.5556936 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.258889 ppl= 5.319721 ppl1= 5.319721
+
++ f a k a r o N o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( k | a ...) 	= [3gram] 0.1249319 [ -0.9033265 ]
+	p( a | k ...) 	= [3gram] 0.3741767 [ -0.4269233 ]
+	p( r | a ...) 	= [3gram] 0.1559846 [ -0.8069181 ]
+	p( o | r ...) 	= [3gram] 0.1282781 [ -0.8918476 ]
+	p( N | o ...) 	= [2gram] 0.02262341 [ -1.645442 ]
+	p( o | N ...) 	= [3gram] 0.1697999 [ -0.7700624 ]
+	p( + | o ...) 	= [3gram] 0.4362498 [ -0.3602648 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.226229 ppl= 6.646958 ppl1= 6.646958
+
++ f a n a u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( n | a ...) 	= [3gram] 0.116581 [ -0.9333723 ]
+	p( a | n ...) 	= [3gram] 0.5564995 [ -0.2545352 ]
+	p( u | a ...) 	= [3gram] 0.0304227 [ -1.516802 ]
+	p( + | u ...) 	= [3gram] 0.3918881 [ -0.4068379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.532992 ppl= 6.172022 ppl1= 6.172022
+
++ f a N a i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( N | a ...) 	= [3gram] 0.07120507 [ -1.147489 ]
+	p( a | N ...) 	= [3gram] 0.7456454 [ -0.1274676 ]
+	p( i | a ...) 	= [3gram] 0.04146876 [ -1.382279 ]
+	p( + | i ...) 	= [3gram] 0.3138473 [ -0.5032816 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.581962 ppl= 6.272246 ppl1= 6.272246
+
++ f a r e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( r | a ...) 	= [3gram] 0.1232863 [ -0.9090853 ]
+	p( e | r ...) 	= [3gram] 0.1674171 [ -0.7762001 ]
+	p( + | e ...) 	= [3gram] 0.479132 [ -0.3195448 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.426274 ppl= 5.466539 ppl1= 5.466539
+
++ f e n u a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( e | f ...) 	= [3gram] 0.2334172 [ -0.6318672 ]
+	p( n | e ...) 	= [3gram] 0.1390062 [ -0.8569658 ]
+	p( u | n ...) 	= [3gram] 0.08474562 [ -1.071883 ]
+	p( a | u ...) 	= [3gram] 0.1014554 [ -0.9937248 ]
+	p( + | a ...) 	= [3gram] 0.5476709 [ -0.2614803 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.921191 ppl= 7.012686 ppl1= 7.012686
+
++ f e r o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( e | f ...) 	= [3gram] 0.2334172 [ -0.6318672 ]
+	p( r | e ...) 	= [3gram] 0.1650368 [ -0.7824192 ]
+	p( o | r ...) 	= [3gram] 0.1221878 [ -0.9129722 ]
+	p( + | o ...) 	= [3gram] 0.4211625 [ -0.3755503 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.808079 ppl= 6.329165 ppl1= 6.329165
+
++ f i t u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( i | f ...) 	= [3gram] 0.2379281 [ -0.6235542 ]
+	p( t | i ...) 	= [3gram] 0.2079751 [ -0.6819887 ]
+	p( u | t ...) 	= [3gram] 0.08464872 [ -1.07238 ]
+	p( + | u ...) 	= [3gram] 0.432905 [ -0.3636074 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.8468 ppl= 6.423918 ppl1= 6.423918
+
++ a h a t i a t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( a | + ...) 	= [2gram] 0.04775029 [ -1.321024 ]
+	p( h | a ...) 	= [3gram] 0.1164905 [ -0.9337096 ]
+	p( a | h ...) 	= [3gram] 0.3250824 [ -0.4880066 ]
+	p( t | a ...) 	= [3gram] 0.07643306 [ -1.116719 ]
+	p( i | t ...) 	= [3gram] 0.1857372 [ -0.731101 ]
+	p( a | i ...) 	= [3gram] 0.09236998 [ -1.034469 ]
+	p( t | a ...) 	= [2gram] 0.1191734 [ -0.9238205 ]
+	p( i | t ...) 	= [3gram] 0.1836334 [ -0.7360482 ]
+	p( + | i ...) 	= [3gram] 0.5108214 [ -0.2917309 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.299495 ppl= 6.760043 ppl1= 6.760043
+
++ a h i a h a k e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( a | + ...) 	= [2gram] 0.04775029 [ -1.321024 ]
+	p( h | a ...) 	= [3gram] 0.1164905 [ -0.9337096 ]
+	p( i | h ...) 	= [3gram] 0.2715843 [ -0.5660954 ]
+	p( a | i ...) 	= [3gram] 0.09220037 [ -1.035267 ]
+	p( h | a ...) 	= [2gram] 0.09683864 [ -1.013951 ]
+	p( a | h ...) 	= [3gram] 0.3194674 [ -0.4955735 ]
+	p( k | a ...) 	= [3gram] 0.1350509 [ -0.8695025 ]
+	p( e | k ...) 	= [3gram] 0.1424898 [ -0.8462162 ]
+	p( + | e ...) 	= [3gram] 0.5210305 [ -0.2831368 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.087343 ppl= 6.437752 ppl1= 6.437752
+
++ a m u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( a | + ...) 	= [2gram] 0.04775029 [ -1.321024 ]
+	p( m | a ...) 	= [3gram] 0.05655201 [ -1.247552 ]
+	p( u | m ...) 	= [3gram] 0.2448506 [ -0.6110988 ]
+	p( + | u ...) 	= [3gram] 0.552783 [ -0.2574453 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.159986 ppl= 6.791992 ppl1= 6.791992
+
++ a p e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( a | + ...) 	= [2gram] 0.04775029 [ -1.321024 ]
+	p( p | a ...) 	= [3gram] 0.07230424 [ -1.140836 ]
+	p( e | p ...) 	= [3gram] 0.09939751 [ -1.002625 ]
+	p( + | e ...) 	= [3gram] 0.2635973 [ -0.5790591 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.76641 ppl= 8.980116 ppl1= 8.980116
+
++ a p e h i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( a | + ...) 	= [2gram] 0.04775029 [ -1.321024 ]
+	p( p | a ...) 	= [3gram] 0.07230424 [ -1.140836 ]
+	p( e | p ...) 	= [3gram] 0.09939751 [ -1.002625 ]
+	p( h | e ...) 	= [3gram] 0.1094496 [ -0.9607859 ]
+	p( i | h ...) 	= [3gram] 0.2623332 [ -0.5811467 ]
+	p( a | i ...) 	= [3gram] 0.09220037 [ -1.035267 ]
+	p( + | a ...) 	= [3gram] 0.5857877 [ -0.2322598 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.99681 ppl= 7.492061 ppl1= 7.492061
+
++ a r a n e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( a | + ...) 	= [2gram] 0.04775029 [ -1.321024 ]
+	p( r | a ...) 	= [3gram] 0.1686376 [ -0.7730455 ]
+	p( a | r ...) 	= [3gram] 0.4453654 [ -0.3512836 ]
+	p( n | a ...) 	= [3gram] 0.05352388 [ -1.271452 ]
+	p( e | n ...) 	= [3gram] 0.124179 [ -0.905952 ]
+	p( + | e ...) 	= [3gram] 0.5734025 [ -0.2415404 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.587164 ppl= 6.282989 ppl1= 6.282989
+
++ a r i o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( a | + ...) 	= [2gram] 0.04775029 [ -1.321024 ]
+	p( r | a ...) 	= [3gram] 0.1686376 [ -0.7730455 ]
+	p( i | r ...) 	= [3gram] 0.1937174 [ -0.7128313 ]
+	p( o | i ...) 	= [2gram] 0.02305396 [ -1.637254 ]
+	p( + | o ...) 	= [3gram] 0.374656 [ -0.4263673 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.593388 ppl= 8.555225 ppl1= 8.555225
+
++ e h a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( e | + ...) 	= [2gram] 0.01338299 [ -1.873447 ]
+	p( h | e ...) 	= [3gram] 0.1684006 [ -0.7736564 ]
+	p( a | h ...) 	= [3gram] 0.2039959 [ -0.6903787 ]
+	p( + | a ...) 	= [3gram] 0.3535936 [ -0.4514956 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.511844 ppl= 7.986725 ppl1= 7.986725
+
++ e k o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( e | + ...) 	= [2gram] 0.01338299 [ -1.873447 ]
+	p( k | e ...) 	= [3gram] 0.1519588 [ -0.818274 ]
+	p( o | k ...) 	= [3gram] 0.1345842 [ -0.871006 ]
+	p( + | o ...) 	= [3gram] 0.3760643 [ -0.4247379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.710331 ppl= 8.751171 ppl1= 8.751171
+
++ h a e o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( a | h ...) 	= [3gram] 0.3146911 [ -0.5021155 ]
+	p( e | a ...) 	= [3gram] 0.0512282 [ -1.290491 ]
+	p( o | e ...) 	= [2gram] 0.01375557 [ -1.861521 ]
+	p( + | o ...) 	= [3gram] 0.2860735 [ -0.5435224 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.944269 ppl= 9.788396 ppl1= 9.788396
+
++ h a k a a t u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( a | h ...) 	= [3gram] 0.3146911 [ -0.5021155 ]
+	p( k | a ...) 	= [3gram] 0.135051 [ -0.8695023 ]
+	p( a | k ...) 	= [3gram] 0.3768128 [ -0.4238744 ]
+	p( a | a ...) 	= [2gram] 0.01895247 [ -1.722334 ]
+	p( t | a ...) 	= [2gram] 0.0850256 [ -1.07045 ]
+	p( u | t ...) 	= [3gram] 0.1437419 [ -0.8424168 ]
+	p( + | u ...) 	= [3gram] 0.432905 [ -0.3636074 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.54092 ppl= 6.88462 ppl1= 6.88462
+
++ h a n o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( a | h ...) 	= [3gram] 0.3146911 [ -0.5021155 ]
+	p( n | a ...) 	= [3gram] 0.07471874 [ -1.12657 ]
+	p( o | n ...) 	= [3gram] 0.1042763 [ -0.9818144 ]
+	p( + | o ...) 	= [3gram] 0.4680491 [ -0.3297086 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.686828 ppl= 6.041405 ppl1= 6.041405
+
++ h e p a u a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( e | h ...) 	= [3gram] 0.1354223 [ -0.86831 ]
+	p( p | e ...) 	= [2gram] 0.0682497 [ -1.165899 ]
+	p( a | p ...) 	= [3gram] 0.3633314 [ -0.439697 ]
+	p( u | a ...) 	= [3gram] 0.0265874 [ -1.575324 ]
+	p( a | u ...) 	= [3gram] 0.1566418 [ -0.8050923 ]
+	p( + | a ...) 	= [3gram] 0.6293269 [ -0.2011237 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.802065 ppl= 7.083667 ppl1= 7.083667
+
++ h e p i t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( e | h ...) 	= [3gram] 0.1354223 [ -0.86831 ]
+	p( p | e ...) 	= [2gram] 0.0682497 [ -1.165899 ]
+	p( i | p ...) 	= [2gram] 0.1205613 [ -0.918792 ]
+	p( t | i ...) 	= [3gram] 0.1746578 [ -0.757812 ]
+	p( i | t ...) 	= [3gram] 0.4275136 [ -0.36905 ]
+	p( + | i ...) 	= [3gram] 0.5108214 [ -0.2917309 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.118213 ppl= 5.818039 ppl1= 5.818039
+
++ h e w e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( e | h ...) 	= [3gram] 0.1354223 [ -0.86831 ]
+	p( w | e ...) 	= [2gram] 0.02526304 [ -1.597514 ]
+	p( e | w ...) 	= [3gram] 0.3746951 [ -0.426322 ]
+	p( + | e ...) 	= [3gram] 0.2935199 [ -0.5323625 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.171128 ppl= 7.275362 ppl1= 7.275362
+
++ h i a m u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( i | h ...) 	= [3gram] 0.1645771 [ -0.7836306 ]
+	p( a | i ...) 	= [3gram] 0.09220042 [ -1.035267 ]
+	p( m | a ...) 	= [2gram] 0.07940533 [ -1.10015 ]
+	p( u | m ...) 	= [3gram] 0.1293153 [ -0.88835 ]
+	p( + | u ...) 	= [3gram] 0.552783 [ -0.2574453 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.811462 ppl= 6.764083 ppl1= 6.764083
+
++ h i N i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( i | h ...) 	= [3gram] 0.1645771 [ -0.7836306 ]
+	p( N | i ...) 	= [3gram] 0.0396789 [ -1.40144 ]
+	p( i | N ...) 	= [3gram] 0.1402786 [ -0.8530085 ]
+	p( + | i ...) 	= [3gram] 0.7699106 [ -0.1135597 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.898258 ppl= 6.552037 ppl1= 6.552037
+
++ h i u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( i | h ...) 	= [3gram] 0.1645771 [ -0.7836306 ]
+	p( u | i ...) 	= [2gram] 0.01879136 [ -1.726042 ]
+	p( + | u ...) 	= [3gram] 0.3745224 [ -0.4265223 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.682814 ppl= 8.640974 ppl1= 8.640974
+
++ h o e N a i m a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( o | h ...) 	= [3gram] 0.2295846 [ -0.6390572 ]
+	p( e | o ...) 	= [2gram] 0.01575004 [ -1.802718 ]
+	p( N | e ...) 	= [2gram] 0.04616419 [ -1.335695 ]
+	p( a | N ...) 	= [3gram] 0.6695004 [ -0.1742492 ]
+	p( i | a ...) 	= [3gram] 0.04146881 [ -1.382278 ]
+	p( m | i ...) 	= [2gram] 0.04379564 [ -1.358569 ]
+	p( a | m ...) 	= [3gram] 0.4658543 [ -0.3317499 ]
+	p( + | a ...) 	= [3gram] 0.2124287 [ -0.6727867 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -9.443723 ppl= 8.797763 ppl1= 8.797763
+
++ h o i h o k o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( o | h ...) 	= [3gram] 0.2295846 [ -0.6390572 ]
+	p( i | o ...) 	= [3gram] 0.05757316 [ -1.23978 ]
+	p( h | i ...) 	= [2gram] 0.07978873 [ -1.098058 ]
+	p( o | h ...) 	= [3gram] 0.1877802 [ -0.7263503 ]
+	p( k | o ...) 	= [3gram] 0.1004656 [ -0.9979825 ]
+	p( o | k ...) 	= [3gram] 0.2515886 [ -0.599309 ]
+	p( + | o ...) 	= [3gram] 0.3760643 [ -0.4247379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.471894 ppl= 6.764107 ppl1= 6.764107
+
++ h o k e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( o | h ...) 	= [3gram] 0.2295846 [ -0.6390572 ]
+	p( k | o ...) 	= [3gram] 0.1004657 [ -0.9979823 ]
+	p( e | k ...) 	= [3gram] 0.1653348 [ -0.7816358 ]
+	p( + | e ...) 	= [3gram] 0.5210299 [ -0.2831373 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.448431 ppl= 5.513219 ppl1= 5.513219
+
++ h o r e t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( o | h ...) 	= [3gram] 0.2295846 [ -0.6390572 ]
+	p( r | o ...) 	= [3gram] 0.1703899 [ -0.7685561 ]
+	p( e | r ...) 	= [3gram] 0.2444882 [ -0.611742 ]
+	p( t | e ...) 	= [3gram] 0.1139658 [ -0.9432256 ]
+	p( i | t ...) 	= [3gram] 0.2460099 [ -0.6090474 ]
+	p( + | i ...) 	= [3gram] 0.5108214 [ -0.2917309 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.609978 ppl= 5.026287 ppl1= 5.026287
+
++ h o w a k a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( o | h ...) 	= [3gram] 0.2295846 [ -0.6390572 ]
+	p( w | o ...) 	= [1gram] 0.01306192 [ -1.883993 ]
+	p( a | w ...) 	= [2gram] 0.4957214 [ -0.3047624 ]
+	p( k | a ...) 	= [3gram] 0.111462 [ -0.9528732 ]
+	p( a | k ...) 	= [3gram] 0.3783184 [ -0.4221425 ]
+	p( + | a ...) 	= [3gram] 0.3441766 [ -0.4632187 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.412666 ppl= 6.332617 ppl1= 6.332617
+
++ h u e N i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( u | h ...) 	= [3gram] 0.1554963 [ -0.80828 ]
+	p( e | u ...) 	= [3gram] 0.03394269 [ -1.469254 ]
+	p( N | e ...) 	= [2gram] 0.05226422 [ -1.281796 ]
+	p( i | N ...) 	= [3gram] 0.1206069 [ -0.9186277 ]
+	p( + | i ...) 	= [3gram] 0.7699106 [ -0.1135597 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -6.338136 ppl= 8.043553 ppl1= 8.043553
+
++ h u k u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( u | h ...) 	= [3gram] 0.1554963 [ -0.80828 ]
+	p( k | u ...) 	= [3gram] 0.1326026 [ -0.8774478 ]
+	p( u | k ...) 	= [3gram] 0.2081718 [ -0.6815782 ]
+	p( + | u ...) 	= [3gram] 0.4842499 [ -0.3149304 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.428855 ppl= 5.471956 ppl1= 5.471956
+
++ h u m o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( u | h ...) 	= [3gram] 0.1554963 [ -0.80828 ]
+	p( m | u ...) 	= [2gram] 0.04878575 [ -1.311707 ]
+	p( o | m ...) 	= [2gram] 0.1623251 [ -0.7896144 ]
+	p( + | o ...) 	= [3gram] 0.2975663 [ -0.5264163 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.182637 ppl= 7.307567 ppl1= 7.307567
+
++ h u N e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( u | h ...) 	= [3gram] 0.1554963 [ -0.80828 ]
+	p( N | u ...) 	= [3gram] 0.05602804 [ -1.251595 ]
+	p( e | N ...) 	= [2gram] 0.01956017 [ -1.708627 ]
+	p( + | e ...) 	= [3gram] 0.4033357 [ -0.3943334 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.909454 ppl= 9.658486 ppl1= 9.658486
+
++ h u p u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( h | + ...) 	= [2gram] 0.09467756 [ -1.023753 ]
+	p( u | h ...) 	= [3gram] 0.1554963 [ -0.80828 ]
+	p( p | u ...) 	= [2gram] 0.05766714 [ -1.239072 ]
+	p( u | p ...) 	= [3gram] 0.2030112 [ -0.6924801 ]
+	p( + | u ...) 	= [3gram] 0.2949287 [ -0.530283 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.016734 ppl= 6.856812 ppl1= 6.856812
+
++ i h i r i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( i | + ...) 	= [2gram] 0.01847699 [ -1.733369 ]
+	p( h | i ...) 	= [3gram] 0.1112879 [ -0.9535522 ]
+	p( i | h ...) 	= [3gram] 0.4969339 [ -0.3037014 ]
+	p( r | i ...) 	= [3gram] 0.09499635 [ -1.022293 ]
+	p( i | r ...) 	= [3gram] 0.2710993 [ -0.5668716 ]
+	p( + | i ...) 	= [3gram] 0.5022292 [ -0.299098 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.601751 ppl= 6.313209 ppl1= 6.313209
+
++ i k a u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( i | + ...) 	= [2gram] 0.01847699 [ -1.733369 ]
+	p( k | i ...) 	= [3gram] 0.09642751 [ -1.015799 ]
+	p( a | k ...) 	= [3gram] 0.3309695 [ -0.480212 ]
+	p( u | a ...) 	= [3gram] 0.09124732 [ -1.03978 ]
+	p( + | u ...) 	= [3gram] 0.4824159 [ -0.3165784 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.308604 ppl= 7.669506 ppl1= 7.669506
+
++ i k o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( i | + ...) 	= [2gram] 0.01847699 [ -1.733369 ]
+	p( k | i ...) 	= [3gram] 0.09642751 [ -1.015799 ]
+	p( o | k ...) 	= [3gram] 0.2014261 [ -0.6958842 ]
+	p( + | o ...) 	= [3gram] 0.3760643 [ -0.4247379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.592656 ppl= 8.289555 ppl1= 8.289555
+
++ i N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( i | + ...) 	= [2gram] 0.01847699 [ -1.733369 ]
+	p( N | i ...) 	= [3gram] 0.08753353 [ -1.057826 ]
+	p( a | N ...) 	= [3gram] 0.6754036 [ -0.1704366 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -3.870435 ppl= 5.944112 ppl1= 5.944112
+
++ i N i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( i | + ...) 	= [2gram] 0.01847699 [ -1.733369 ]
+	p( N | i ...) 	= [3gram] 0.08753353 [ -1.057826 ]
+	p( i | N ...) 	= [3gram] 0.1871592 [ -0.7277889 ]
+	p( + | i ...) 	= [3gram] 0.7699106 [ -0.1135597 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.355409 ppl= 7.431591 ppl1= 7.431591
+
++ i n i a t a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( i | + ...) 	= [2gram] 0.01847699 [ -1.733369 ]
+	p( n | i ...) 	= [3gram] 0.2256197 [ -0.6466229 ]
+	p( i | n ...) 	= [3gram] 0.2513803 [ -0.5996687 ]
+	p( a | i ...) 	= [3gram] 0.09300419 [ -1.031497 ]
+	p( t | a ...) 	= [2gram] 0.117824 [ -0.9287663 ]
+	p( a | t ...) 	= [3gram] 0.413382 [ -0.3836484 ]
+	p( + | a ...) 	= [3gram] 0.3017963 [ -0.5202861 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.566725 ppl= 6.619735 ppl1= 6.619735
+
++ i n o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( i | + ...) 	= [2gram] 0.01847699 [ -1.733369 ]
+	p( n | i ...) 	= [3gram] 0.2256197 [ -0.6466229 ]
+	p( o | n ...) 	= [3gram] 0.1012285 [ -0.9946973 ]
+	p( + | o ...) 	= [3gram] 0.4680486 [ -0.3297091 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.427264 ppl= 7.68162 ppl1= 7.68162
+
++ i r e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( i | + ...) 	= [2gram] 0.01847699 [ -1.733369 ]
+	p( r | i ...) 	= [3gram] 0.1397901 [ -0.8545237 ]
+	p( e | r ...) 	= [3gram] 0.1393699 [ -0.8558311 ]
+	p( + | e ...) 	= [3gram] 0.479132 [ -0.3195448 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.486134 ppl= 7.892724 ppl1= 7.892724
+
++ i r u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( i | + ...) 	= [2gram] 0.01847699 [ -1.733369 ]
+	p( r | i ...) 	= [3gram] 0.1397901 [ -0.8545237 ]
+	p( u | r ...) 	= [2gram] 0.02943865 [ -1.531082 ]
+	p( + | u ...) 	= [3gram] 0.5310289 [ -0.2748818 ]
+Hidden events: *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -5.116723 ppl= 10.55224 ppl1= 10.55224
+
++ k a w a a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( w | a ...) 	= [3gram] 0.04371946 [ -1.359325 ]
+	p( a | w ...) 	= [3gram] 0.5755884 [ -0.239888 ]
+	p( a | a ...) 	= [2gram] 0.01664496 [ -1.778717 ]
+	p( + | a ...) 	= [2gram] 0.09277828 [ -1.032554 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -6.404409 ppl= 8.220828 ppl1= 8.220828
+
++ k a w e r o n i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( w | a ...) 	= [3gram] 0.04371946 [ -1.359325 ]
+	p( e | w ...) 	= [3gram] 0.3396097 [ -0.4690199 ]
+	p( r | e ...) 	= [3gram] 0.1765442 [ -0.7531466 ]
+	p( o | r ...) 	= [3gram] 0.1229367 [ -0.9103184 ]
+	p( n | o ...) 	= [3gram] 0.04882053 [ -1.311398 ]
+	p( i | n ...) 	= [3gram] 0.1330501 [ -0.8759847 ]
+	p( + | i ...) 	= [3gram] 0.5751825 [ -0.2401943 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.913311 ppl= 6.184878 ppl1= 6.184878
+
++ k a f a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( f | a ...) 	= [2gram] 0.01789571 [ -1.747251 ]
+	p( a | f ...) 	= [3gram] 0.4467119 [ -0.3499725 ]
+	p( + | a ...) 	= [3gram] 0.2417636 [ -0.6166091 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.707757 ppl= 6.090126 ppl1= 6.090126
+
++ k a f a k a f a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( f | a ...) 	= [2gram] 0.01789571 [ -1.747251 ]
+	p( a | f ...) 	= [3gram] 0.4467119 [ -0.3499725 ]
+	p( k | a ...) 	= [3gram] 0.1249319 [ -0.9033265 ]
+	p( a | k ...) 	= [3gram] 0.3741767 [ -0.4269233 ]
+	p( f | a ...) 	= [2gram] 0.01789573 [ -1.747251 ]
+	p( a | f ...) 	= [3gram] 0.4467116 [ -0.3499727 ]
+	p( + | a ...) 	= [3gram] 0.2417633 [ -0.6166096 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.135231 ppl= 6.509132 ppl1= 6.509132
+
++ k a f a n i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( f | a ...) 	= [2gram] 0.01789571 [ -1.747251 ]
+	p( a | f ...) 	= [3gram] 0.4467119 [ -0.3499725 ]
+	p( n | a ...) 	= [3gram] 0.1165809 [ -0.9333725 ]
+	p( i | n ...) 	= [3gram] 0.1502014 [ -0.8233261 ]
+	p( a | i ...) 	= [3gram] 0.09300409 [ -1.031498 ]
+	p( + | a ...) 	= [3gram] 0.5986593 [ -0.2228203 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.102165 ppl= 6.153603 ppl1= 6.153603
+
++ k a f a f a n i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( a | k ...) 	= [3gram] 0.3951749 [ -0.4032106 ]
+	p( f | a ...) 	= [2gram] 0.01789571 [ -1.747251 ]
+	p( a | f ...) 	= [3gram] 0.4467119 [ -0.3499725 ]
+	p( f | a ...) 	= [2gram] 0.01298486 [ -1.886563 ]
+	p( a | f ...) 	= [3gram] 0.4421759 [ -0.3544049 ]
+	p( n | a ...) 	= [3gram] 0.1165809 [ -0.9333725 ]
+	p( i | n ...) 	= [3gram] 0.1502014 [ -0.8233261 ]
+	p( + | i ...) 	= [3gram] 0.5751825 [ -0.2401943 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.329009 ppl= 6.80614 ppl1= 6.80614
+
++ k e m o r a m o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( e | k ...) 	= [3gram] 0.1094125 [ -0.960933 ]
+	p( m | e ...) 	= [3gram] 0.07886689 [ -1.103105 ]
+	p( o | m ...) 	= [3gram] 0.1811697 [ -0.7419145 ]
+	p( r | o ...) 	= [3gram] 0.1501048 [ -0.8236055 ]
+	p( a | r ...) 	= [3gram] 0.1947055 [ -0.7106218 ]
+	p( m | a ...) 	= [3gram] 0.06676014 [ -1.175483 ]
+	p( o | m ...) 	= [3gram] 0.1450731 [ -0.8384132 ]
+	p( + | o ...) 	= [3gram] 0.2975663 [ -0.5264163 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.471207 ppl= 7.032677 ppl1= 7.032677
+
++ k e p i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( e | k ...) 	= [3gram] 0.1094125 [ -0.960933 ]
+	p( p | e ...) 	= [2gram] 0.0722308 [ -1.141278 ]
+	p( i | p ...) 	= [2gram] 0.1231527 [ -0.9095562 ]
+	p( + | i ...) 	= [3gram] 0.411122 [ -0.3860292 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.98851 ppl= 6.782946 ppl1= 6.782946
+
++ k i N i r o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( i | k ...) 	= [3gram] 0.1407357 [ -0.8515956 ]
+	p( N | i ...) 	= [3gram] 0.04003751 [ -1.397533 ]
+	p( i | N ...) 	= [3gram] 0.1425759 [ -0.8459539 ]
+	p( r | i ...) 	= [2gram] 0.1065636 [ -0.9723911 ]
+	p( o | r ...) 	= [3gram] 0.1575942 [ -0.8024597 ]
+	p( + | o ...) 	= [3gram] 0.4211625 [ -0.3755503 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.836198 ppl= 7.153601 ppl1= 7.153601
+
++ k i t o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( i | k ...) 	= [3gram] 0.1407357 [ -0.8515956 ]
+	p( t | i ...) 	= [3gram] 0.1402765 [ -0.8530149 ]
+	p( o | t ...) 	= [3gram] 0.1459019 [ -0.8359389 ]
+	p( + | o ...) 	= [3gram] 0.305396 [ -0.5151367 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.6464 ppl= 5.948399 ppl1= 5.948399
+
++ k o i o r o m a p a r a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( o | k ...) 	= [3gram] 0.2419197 [ -0.6163287 ]
+	p( i | o ...) 	= [3gram] 0.03144886 [ -1.502395 ]
+	p( o | i ...) 	= [2gram] 0.01894906 [ -1.722412 ]
+	p( r | o ...) 	= [3gram] 0.1928701 [ -0.714735 ]
+	p( o | r ...) 	= [3gram] 0.2764372 [ -0.5584035 ]
+	p( m | o ...) 	= [3gram] 0.08033915 [ -1.095073 ]
+	p( a | m ...) 	= [3gram] 0.4158576 [ -0.3810554 ]
+	p( p | a ...) 	= [3gram] 0.04640624 [ -1.333424 ]
+	p( a | p ...) 	= [3gram] 0.3452492 [ -0.4618673 ]
+	p( r | a ...) 	= [3gram] 0.2503899 [ -0.6013832 ]
+	p( a | r ...) 	= [3gram] 0.4381872 [ -0.3583403 ]
+	p( + | a ...) 	= [3gram] 0.3585559 [ -0.4454432 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* + *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 14 words, 0 OOVs
+0 zeroprobs, logprob= -11.38157 ppl= 6.500842 ppl1= 6.500842
+
++ k o m e k u a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( o | k ...) 	= [3gram] 0.2419197 [ -0.6163287 ]
+	p( m | o ...) 	= [3gram] 0.08114463 [ -1.09074 ]
+	p( e | m ...) 	= [3gram] 0.111632 [ -0.9522111 ]
+	p( k | e ...) 	= [3gram] 0.1599614 [ -0.7959847 ]
+	p( u | k ...) 	= [3gram] 0.06936742 [ -1.158844 ]
+	p( a | u ...) 	= [3gram] 0.08311915 [ -1.080299 ]
+	p( + | a ...) 	= [3gram] 0.5390646 [ -0.2683592 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.553482 ppl= 6.906782 ppl1= 6.906782
+
++ k o m u a f i u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( o | k ...) 	= [3gram] 0.2419197 [ -0.6163287 ]
+	p( m | o ...) 	= [3gram] 0.08114463 [ -1.09074 ]
+	p( u | m ...) 	= [2gram] 0.05645409 [ -1.248305 ]
+	p( a | u ...) 	= [2gram] 0.06225992 [ -1.205791 ]
+	p( f | a ...) 	= [2gram] 0.03371739 [ -1.472146 ]
+	p( i | f ...) 	= [3gram] 0.3688726 [ -0.4331236 ]
+	p( u | i ...) 	= [3gram] 0.0683938 [ -1.164983 ]
+	p( + | u ...) 	= [3gram] 0.6697114 [ -0.1741123 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.996244 ppl= 7.936416 ppl1= 7.936416
+
++ k o u a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( o | k ...) 	= [3gram] 0.2419197 [ -0.6163287 ]
+	p( u | o ...) 	= [3gram] 0.042075 [ -1.375976 ]
+	p( a | u ...) 	= [3gram] 0.1382823 [ -0.8592334 ]
+	p( + | a ...) 	= [3gram] 0.5945064 [ -0.2258434 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.668096 ppl= 5.998131 ppl1= 5.998131
+
++ k u h a t a p o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( u | k ...) 	= [3gram] 0.1126367 [ -0.9483202 ]
+	p( h | u ...) 	= [3gram] 0.08026782 [ -1.095459 ]
+	p( a | h ...) 	= [3gram] 0.3101167 [ -0.5084748 ]
+	p( t | a ...) 	= [3gram] 0.07643306 [ -1.116719 ]
+	p( a | t ...) 	= [3gram] 0.4152973 [ -0.3816409 ]
+	p( p | a ...) 	= [3gram] 0.1094268 [ -0.9608765 ]
+	p( o | p ...) 	= [3gram] 0.1379682 [ -0.8602209 ]
+	p( + | o ...) 	= [3gram] 0.2193778 [ -0.6588073 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.121232 ppl= 6.488185 ppl1= 6.488185
+
++ k u p o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( u | k ...) 	= [3gram] 0.1126367 [ -0.9483202 ]
+	p( p | u ...) 	= [3gram] 0.1251149 [ -0.9026909 ]
+	p( o | p ...) 	= [3gram] 0.1631872 [ -0.7873139 ]
+	p( + | o ...) 	= [3gram] 0.2193776 [ -0.6588078 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.887847 ppl= 6.525911 ppl1= 6.525911
+
++ k u r o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( u | k ...) 	= [3gram] 0.1126367 [ -0.9483202 ]
+	p( r | u ...) 	= [3gram] 0.1389125 [ -0.8572586 ]
+	p( o | r ...) 	= [2gram] 0.07166032 [ -1.144721 ]
+	p( + | o ...) 	= [3gram] 0.4211625 [ -0.3755503 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.916564 ppl= 6.598229 ppl1= 6.598229
+
++ k u f a t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( k | + ...) 	= [2gram] 0.1355663 [ -0.8678482 ]
+	p( u | k ...) 	= [3gram] 0.1126367 [ -0.9483202 ]
+	p( f | u ...) 	= [2gram] 0.02066431 [ -1.684779 ]
+	p( a | f ...) 	= [2gram] 0.4819236 [ -0.3170218 ]
+	p( t | a ...) 	= [3gram] 0.1231556 [ -0.9095459 ]
+	p( i | t ...) 	= [3gram] 0.1952679 [ -0.7093692 ]
+	p( + | i ...) 	= [3gram] 0.5108214 [ -0.2917309 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.451481 ppl= 6.403762 ppl1= 6.403762
+
++ m a h e n e k e t o a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( h | a ...) 	= [3gram] 0.1262496 [ -0.8987699 ]
+	p( e | h ...) 	= [3gram] 0.08600323 [ -1.065485 ]
+	p( n | e ...) 	= [3gram] 0.06607945 [ -1.179934 ]
+	p( e | n ...) 	= [3gram] 0.4036719 [ -0.3939714 ]
+	p( k | e ...) 	= [3gram] 0.1328462 [ -0.8766508 ]
+	p( e | k ...) 	= [3gram] 0.2479417 [ -0.6056504 ]
+	p( t | e ...) 	= [3gram] 0.1252224 [ -0.902318 ]
+	p( o | t ...) 	= [2gram] 0.1225458 [ -0.9117017 ]
+	p( a | o ...) 	= [3gram] 0.05055509 [ -1.296235 ]
+	p( + | a ...) 	= [3gram] 0.384656 [ -0.4149275 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 13 words, 0 OOVs
+0 zeroprobs, logprob= -10.54042 ppl= 6.468467 ppl1= 6.468467
+
++ m a k e i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( k | a ...) 	= [3gram] 0.1136574 [ -0.9444025 ]
+	p( e | k ...) 	= [3gram] 0.1476979 [ -0.8306258 ]
+	p( i | e ...) 	= [3gram] 0.0360615 [ -1.442956 ]
+	p( + | i ...) 	= [3gram] 0.4479833 [ -0.3487382 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.561497 ppl= 6.230165 ppl1= 6.230165
+
++ m a m a t o h i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( m | a ...) 	= [3gram] 0.05544464 [ -1.25614 ]
+	p( a | m ...) 	= [3gram] 0.480682 [ -0.3181422 ]
+	p( t | a ...) 	= [3gram] 0.1525135 [ -0.8166916 ]
+	p( o | t ...) 	= [3gram] 0.1211063 [ -0.9168334 ]
+	p( h | o ...) 	= [3gram] 0.1456756 [ -0.8366132 ]
+	p( i | h ...) 	= [3gram] 0.2301237 [ -0.6380386 ]
+	p( + | i ...) 	= [3gram] 0.6044125 [ -0.2186666 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -6.9959 ppl= 5.007143 ppl1= 5.007143
+
++ m a N o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( N | a ...) 	= [3gram] 0.02542823 [ -1.594684 ]
+	p( o | N ...) 	= [3gram] 0.1176323 [ -0.9294734 ]
+	p( + | o ...) 	= [3gram] 0.4362503 [ -0.3602643 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.879196 ppl= 6.504281 ppl1= 6.504281
+
++ m a o r a w a u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( o | a ...) 	= [3gram] 0.0300387 [ -1.522319 ]
+	p( r | o ...) 	= [3gram] 0.2062644 [ -0.6855757 ]
+	p( a | r ...) 	= [3gram] 0.2020223 [ -0.6946006 ]
+	p( w | a ...) 	= [3gram] 0.0556516 [ -1.254522 ]
+	p( a | w ...) 	= [3gram] 0.5834769 [ -0.2339764 ]
+	p( u | a ...) 	= [3gram] 0.0409847 [ -1.387378 ]
+	p( + | u ...) 	= [3gram] 0.454637 [ -0.3423352 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.115481 ppl= 6.479599 ppl1= 6.479599
+
++ m a o r u a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( o | a ...) 	= [3gram] 0.0300387 [ -1.522319 ]
+	p( r | o ...) 	= [3gram] 0.2062644 [ -0.6855757 ]
+	p( u | r ...) 	= [3gram] 0.09115304 [ -1.040229 ]
+	p( a | u ...) 	= [3gram] 0.1048595 [ -0.9793921 ]
+	p( + | a ...) 	= [3gram] 0.5618686 [ -0.2503653 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.472655 ppl= 6.442907 ppl1= 6.442907
+
++ m a u t a m u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( u | a ...) 	= [3gram] 0.05521149 [ -1.257971 ]
+	p( t | u ...) 	= [3gram] 0.1331963 [ -0.8755078 ]
+	p( a | t ...) 	= [3gram] 0.3382656 [ -0.4707422 ]
+	p( m | a ...) 	= [3gram] 0.05633987 [ -1.249184 ]
+	p( u | m ...) 	= [3gram] 0.1692421 [ -0.7714915 ]
+	p( + | u ...) 	= [3gram] 0.552783 [ -0.2574453 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -6.877116 ppl= 5.809302 ppl1= 5.809302
+
++ m a w i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( a | m ...) 	= [3gram] 0.5067663 [ -0.2951922 ]
+	p( w | a ...) 	= [2gram] 0.01657871 [ -1.780449 ]
+	p( i | w ...) 	= [2gram] 0.06750574 [ -1.170659 ]
+	p( + | i ...) 	= [3gram] 0.4014086 [ -0.3964133 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.342296 ppl= 7.769314 ppl1= 7.769314
+
++ m e a h u a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( e | m ...) 	= [3gram] 0.09310304 [ -1.031036 ]
+	p( a | e ...) 	= [2gram] 0.0465318 [ -1.33225 ]
+	p( h | a ...) 	= [2gram] 0.1013997 [ -0.9939632 ]
+	p( u | h ...) 	= [3gram] 0.190432 [ -0.7202601 ]
+	p( a | u ...) 	= [3gram] 0.1390655 [ -0.8567805 ]
+	p( + | a ...) 	= [3gram] 0.6215705 [ -0.2065096 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.840382 ppl= 7.162221 ppl1= 7.162221
+
++ m e r o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( e | m ...) 	= [3gram] 0.09310304 [ -1.031036 ]
+	p( r | e ...) 	= [3gram] 0.2083529 [ -0.6812005 ]
+	p( o | r ...) 	= [3gram] 0.1221597 [ -0.9130721 ]
+	p( + | o ...) 	= [3gram] 0.4211625 [ -0.3755503 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.700441 ppl= 6.073049 ppl1= 6.073049
+
++ m i e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( i | m ...) 	= [3gram] 0.1390141 [ -0.8569412 ]
+	p( e | i ...) 	= [2gram] 0.008737907 [ -2.058593 ]
+	p( + | e ...) 	= [3gram] 0.3934613 [ -0.405098 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -5.020214 ppl= 10.09352 ppl1= 10.09352
+
++ m i h e a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( i | m ...) 	= [3gram] 0.1390141 [ -0.8569412 ]
+	p( h | i ...) 	= [3gram] 0.1108995 [ -0.9550705 ]
+	p( e | h ...) 	= [3gram] 0.1091441 [ -0.9619997 ]
+	p( a | e ...) 	= [3gram] 0.09931798 [ -1.002972 ]
+	p( + | a ...) 	= [3gram] 0.7592744 [ -0.1196012 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.596167 ppl= 6.301622 ppl1= 6.301622
+
++ m i n i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( i | m ...) 	= [3gram] 0.1390141 [ -0.8569412 ]
+	p( n | i ...) 	= [3gram] 0.1349564 [ -0.8698065 ]
+	p( i | n ...) 	= [3gram] 0.2429693 [ -0.6144485 ]
+	p( + | i ...) 	= [3gram] 0.5751825 [ -0.2401943 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.280972 ppl= 5.170058 ppl1= 5.170058
+
++ m o a p i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( o | m ...) 	= [3gram] 0.1730241 [ -0.7618935 ]
+	p( a | o ...) 	= [3gram] 0.08328976 [ -1.079408 ]
+	p( p | a ...) 	= [2gram] 0.08129779 [ -1.089921 ]
+	p( i | p ...) 	= [3gram] 0.1423775 [ -0.8465586 ]
+	p( + | i ...) 	= [3gram] 0.411122 [ -0.3860292 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.863393 ppl= 6.88062 ppl1= 6.88062
+
++ m o e o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( o | m ...) 	= [3gram] 0.1730241 [ -0.7618935 ]
+	p( e | o ...) 	= [3gram] 0.04523858 [ -1.344491 ]
+	p( o | e ...) 	= [2gram] 0.0173274 [ -1.761267 ]
+	p( + | o ...) 	= [3gram] 0.2944498 [ -0.5309887 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -6.098222 ppl= 10.38413 ppl1= 10.38413
+
++ m o h a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( o | m ...) 	= [3gram] 0.1730241 [ -0.7618935 ]
+	p( h | o ...) 	= [3gram] 0.1005194 [ -0.99775 ]
+	p( a | h ...) 	= [3gram] 0.2032082 [ -0.6920588 ]
+	p( + | a ...) 	= [3gram] 0.3535936 [ -0.4514956 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.60278 ppl= 5.849651 ppl1= 5.849651
+
++ m o N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( o | m ...) 	= [3gram] 0.1730241 [ -0.7618935 ]
+	p( N | o ...) 	= [2gram] 0.01731756 [ -1.761513 ]
+	p( a | N ...) 	= [3gram] 0.6047657 [ -0.2184129 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.627339 ppl= 5.905045 ppl1= 5.905045
+
++ m u N i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( u | m ...) 	= [3gram] 0.0878003 [ -1.056504 ]
+	p( N | u ...) 	= [2gram] 0.02553963 [ -1.592785 ]
+	p( i | N ...) 	= [2gram] 0.05768325 [ -1.23895 ]
+	p( + | i ...) 	= [3gram] 0.7699106 [ -0.1135597 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.701381 ppl= 8.917235 ppl1= 8.917235
+
++ m u p a t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( m | + ...) 	= [2gram] 0.1055077 [ -0.9767159 ]
+	p( u | m ...) 	= [3gram] 0.0878003 [ -1.056504 ]
+	p( p | u ...) 	= [2gram] 0.07986296 [ -1.097655 ]
+	p( a | p ...) 	= [3gram] 0.3393371 [ -0.4693687 ]
+	p( t | a ...) 	= [3gram] 0.1036832 [ -0.9842916 ]
+	p( i | t ...) 	= [3gram] 0.1926919 [ -0.7151365 ]
+	p( + | i ...) 	= [3gram] 0.5108214 [ -0.2917309 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.314268 ppl= 6.155786 ppl1= 6.155786
+
++ n a i p u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( a | n ...) 	= [3gram] 0.374515 [ -0.4265308 ]
+	p( i | a ...) 	= [3gram] 0.03762224 [ -1.424555 ]
+	p( p | i ...) 	= [2gram] 0.05395117 [ -1.267999 ]
+	p( u | p ...) 	= [3gram] 0.1879429 [ -0.7259741 ]
+	p( + | u ...) 	= [3gram] 0.2949287 [ -0.530283 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -6.419183 ppl= 8.260877 ppl1= 8.260877
+
++ n a N a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( a | n ...) 	= [3gram] 0.374515 [ -0.4265308 ]
+	p( N | a ...) 	= [3gram] 0.04986974 [ -1.302163 ]
+	p( a | N ...) 	= [3gram] 0.7019614 [ -0.1536868 ]
+	p( + | a ...) 	= [3gram] 0.6517216 [ -0.1859379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.112159 ppl= 4.845737 ppl1= 4.845737
+
++ n a t o i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( a | n ...) 	= [3gram] 0.374515 [ -0.4265308 ]
+	p( t | a ...) 	= [3gram] 0.1236827 [ -0.907691 ]
+	p( o | t ...) 	= [3gram] 0.1481109 [ -0.8294129 ]
+	p( i | o ...) 	= [3gram] 0.03881672 [ -1.410981 ]
+	p( + | i ...) 	= [3gram] 0.5574652 [ -0.2537823 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.872239 ppl= 6.900671 ppl1= 6.900671
+
++ n e e t i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( e | n ...) 	= [3gram] 0.1562075 [ -0.8062983 ]
+	p( e | e ...) 	= [1gram] 0.00798275 [ -2.097847 ]
+	p( t | e ...) 	= [2gram] 0.1159923 [ -0.9355707 ]
+	p( i | t ...) 	= [3gram] 0.3004833 [ -0.5221796 ]
+	p( a | i ...) 	= [3gram] 0.09236998 [ -1.034469 ]
+	p( + | a ...) 	= [3gram] 0.6213631 [ -0.2066545 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -7.646861 ppl= 9.033532 ppl1= 9.033532
+
++ n e m a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( e | n ...) 	= [3gram] 0.1562075 [ -0.8062983 ]
+	p( m | e ...) 	= [2gram] 0.06495635 [ -1.187378 ]
+	p( a | m ...) 	= [3gram] 0.4871734 [ -0.3123164 ]
+	p( + | a ...) 	= [3gram] 0.2124285 [ -0.6727872 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.022621 ppl= 6.872322 ppl1= 6.872322
+
++ N a e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( N | + ...) 	= [2gram] 0.03180183 [ -1.497548 ]
+	p( a | N ...) 	= [3gram] 0.5859405 [ -0.2321465 ]
+	p( e | a ...) 	= [3gram] 0.02739 [ -1.562408 ]
+	p( + | e ...) 	= [3gram] 0.3698362 [ -0.4319906 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.446959 ppl= 7.751608 ppl1= 7.751608
+
++ N a e n a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( N | + ...) 	= [2gram] 0.03180183 [ -1.497548 ]
+	p( a | N ...) 	= [3gram] 0.5859405 [ -0.2321465 ]
+	p( e | a ...) 	= [3gram] 0.02739 [ -1.562408 ]
+	p( n | e ...) 	= [3gram] 0.08254347 [ -1.083317 ]
+	p( a | n ...) 	= [3gram] 0.2688707 [ -0.5704565 ]
+	p( + | a ...) 	= [3gram] 0.5519394 [ -0.2581086 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.926851 ppl= 7.025754 ppl1= 7.025754
+
++ N a p o t o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( N | + ...) 	= [2gram] 0.03180183 [ -1.497548 ]
+	p( a | N ...) 	= [3gram] 0.5859405 [ -0.2321465 ]
+	p( p | a ...) 	= [2gram] 0.09172555 [ -1.03751 ]
+	p( o | p ...) 	= [3gram] 0.1798566 [ -0.7450736 ]
+	p( t | o ...) 	= [3gram] 0.08997741 [ -1.045866 ]
+	p( o | t ...) 	= [3gram] 0.2196564 [ -0.6582561 ]
+	p( + | o ...) 	= [3gram] 0.305396 [ -0.5151367 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.454403 ppl= 6.409149 ppl1= 6.409149
+
++ N a f a n i t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( N | + ...) 	= [2gram] 0.03180183 [ -1.497548 ]
+	p( a | N ...) 	= [3gram] 0.5859405 [ -0.2321465 ]
+	p( f | a ...) 	= [2gram] 0.02838025 [ -1.546984 ]
+	p( a | f ...) 	= [3gram] 0.4743051 [ -0.3239422 ]
+	p( n | a ...) 	= [3gram] 0.1165809 [ -0.9333725 ]
+	p( i | n ...) 	= [3gram] 0.1502014 [ -0.8233261 ]
+	p( t | i ...) 	= [3gram] 0.1462371 [ -0.8349423 ]
+	p( i | t ...) 	= [3gram] 0.337802 [ -0.4713378 ]
+	p( + | i ...) 	= [3gram] 0.5108214 [ -0.2917309 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.678196 ppl= 5.858947 ppl1= 5.858947
+
++ N e h i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( N | + ...) 	= [2gram] 0.03180183 [ -1.497548 ]
+	p( e | N ...) 	= [3gram] 0.07299397 [ -1.136713 ]
+	p( h | e ...) 	= [2gram] 0.07538075 [ -1.12274 ]
+	p( i | h ...) 	= [3gram] 0.2270582 [ -0.6438627 ]
+	p( + | i ...) 	= [3gram] 0.6044125 [ -0.2186666 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.342396 ppl= 7.769611 ppl1= 7.769611
+
++ N e m a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( N | + ...) 	= [2gram] 0.03180183 [ -1.497548 ]
+	p( e | N ...) 	= [3gram] 0.07299397 [ -1.136713 ]
+	p( m | e ...) 	= [2gram] 0.05807098 [ -1.236041 ]
+	p( a | m ...) 	= [3gram] 0.4304886 [ -0.3660383 ]
+	p( + | a ...) 	= [3gram] 0.2124285 [ -0.6727872 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.631993 ppl= 8.682915 ppl1= 8.682915
+
++ N e m e t a t a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( N | + ...) 	= [2gram] 0.03180183 [ -1.497548 ]
+	p( e | N ...) 	= [3gram] 0.07299397 [ -1.136713 ]
+	p( m | e ...) 	= [2gram] 0.05807098 [ -1.236041 ]
+	p( e | m ...) 	= [3gram] 0.1465885 [ -0.8339 ]
+	p( t | e ...) 	= [3gram] 0.1073616 [ -0.969151 ]
+	p( a | t ...) 	= [3gram] 0.30231 [ -0.5195475 ]
+	p( t | a ...) 	= [3gram] 0.08337535 [ -1.078962 ]
+	p( a | t ...) 	= [3gram] 0.4195357 [ -0.3772311 ]
+	p( + | a ...) 	= [3gram] 0.3017966 [ -0.5202856 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.892245 ppl= 7.748623 ppl1= 7.748623
+
++ N e p a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( N | + ...) 	= [2gram] 0.03180183 [ -1.497548 ]
+	p( e | N ...) 	= [3gram] 0.07299397 [ -1.136713 ]
+	p( p | e ...) 	= [2gram] 0.06548608 [ -1.183851 ]
+	p( a | p ...) 	= [3gram] 0.3638618 [ -0.4390635 ]
+	p( + | a ...) 	= [3gram] 0.2781675 [ -0.5556936 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.535735 ppl= 8.368016 ppl1= 8.368016
+
++ N o a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( N | + ...) 	= [2gram] 0.03180183 [ -1.497548 ]
+	p( o | N ...) 	= [3gram] 0.1856423 [ -0.731323 ]
+	p( a | o ...) 	= [2gram] 0.05881103 [ -1.230541 ]
+	p( + | a ...) 	= [3gram] 0.3571097 [ -0.4471984 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.629476 ppl= 8.431315 ppl1= 8.431315
+
++ N u e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( N | + ...) 	= [2gram] 0.03180183 [ -1.497548 ]
+	p( u | N ...) 	= [3gram] 0.07403669 [ -1.130553 ]
+	p( e | u ...) 	= [2gram] 0.01694746 [ -1.770895 ]
+	p( + | e ...) 	= [3gram] 0.4205697 [ -0.3761621 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -5.498024 ppl= 12.57781 ppl1= 12.57781
+
++ N u t a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( N | + ...) 	= [2gram] 0.03180183 [ -1.497548 ]
+	p( u | N ...) 	= [3gram] 0.07403669 [ -1.130553 ]
+	p( t | u ...) 	= [2gram] 0.1007493 [ -0.996758 ]
+	p( a | t ...) 	= [3gram] 0.3533681 [ -0.4517727 ]
+	p( + | a ...) 	= [3gram] 0.3017963 [ -0.5202861 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.319784 ppl= 7.70248 ppl1= 7.70248
+
++ n i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( i | n ...) 	= [3gram] 0.1666583 [ -0.778173 ]
+	p( a | i ...) 	= [3gram] 0.09300414 [ -1.031498 ]
+	p( + | a ...) 	= [3gram] 0.5986589 [ -0.2228205 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.076332 ppl= 6.535313 ppl1= 6.535313
+
++ n i a i r e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( i | n ...) 	= [3gram] 0.1666583 [ -0.778173 ]
+	p( a | i ...) 	= [3gram] 0.09300414 [ -1.031498 ]
+	p( i | a ...) 	= [2gram] 0.04044445 [ -1.393141 ]
+	p( r | i ...) 	= [3gram] 0.09473429 [ -1.023493 ]
+	p( e | r ...) 	= [3gram] 0.1542126 [ -0.8118801 ]
+	p( + | e ...) 	= [3gram] 0.479132 [ -0.3195448 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -7.40157 ppl= 8.417755 ppl1= 8.417755
+
++ n i a k a f a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( i | n ...) 	= [3gram] 0.1666583 [ -0.778173 ]
+	p( a | i ...) 	= [3gram] 0.09300414 [ -1.031498 ]
+	p( k | a ...) 	= [3gram] 0.130789 [ -0.8834288 ]
+	p( a | k ...) 	= [3gram] 0.3843727 [ -0.4152474 ]
+	p( f | a ...) 	= [2gram] 0.01789573 [ -1.747251 ]
+	p( a | f ...) 	= [3gram] 0.4467116 [ -0.3499727 ]
+	p( + | a ...) 	= [3gram] 0.2417636 [ -0.6166091 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.86602 ppl= 7.481734 ppl1= 7.481734
+
++ n i a p u k a u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( i | n ...) 	= [3gram] 0.1666583 [ -0.778173 ]
+	p( a | i ...) 	= [3gram] 0.09300414 [ -1.031498 ]
+	p( p | a ...) 	= [2gram] 0.09896079 [ -1.004537 ]
+	p( u | p ...) 	= [3gram] 0.2143252 [ -0.6689267 ]
+	p( k | u ...) 	= [3gram] 0.1109371 [ -0.9549232 ]
+	p( a | k ...) 	= [3gram] 0.2782154 [ -0.5556188 ]
+	p( u | a ...) 	= [3gram] 0.09124727 [ -1.03978 ]
+	p( + | u ...) 	= [3gram] 0.4824164 [ -0.3165779 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.393875 ppl= 6.90856 ppl1= 6.90856
+
++ n i a u t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( i | n ...) 	= [3gram] 0.1666583 [ -0.778173 ]
+	p( a | i ...) 	= [3gram] 0.09300414 [ -1.031498 ]
+	p( u | a ...) 	= [2gram] 0.03653428 [ -1.437299 ]
+	p( t | u ...) 	= [3gram] 0.1201236 [ -0.9203715 ]
+	p( i | t ...) 	= [3gram] 0.1587043 [ -0.7994113 ]
+	p( + | i ...) 	= [3gram] 0.5108214 [ -0.2917309 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -7.302325 ppl= 8.180702 ppl1= 8.180702
+
++ n i a f a n i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( i | n ...) 	= [3gram] 0.1666583 [ -0.778173 ]
+	p( a | i ...) 	= [3gram] 0.09300414 [ -1.031498 ]
+	p( f | a ...) 	= [2gram] 0.03558546 [ -1.448727 ]
+	p( a | f ...) 	= [3gram] 0.4288968 [ -0.3676472 ]
+	p( n | a ...) 	= [3gram] 0.1165809 [ -0.9333725 ]
+	p( i | n ...) 	= [3gram] 0.1502014 [ -0.8233261 ]
+	p( + | i ...) 	= [3gram] 0.5751825 [ -0.2401943 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.666779 ppl= 7.109914 ppl1= 7.109914
+
++ n i a f i h i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( i | n ...) 	= [3gram] 0.1666583 [ -0.778173 ]
+	p( a | i ...) 	= [3gram] 0.09300414 [ -1.031498 ]
+	p( f | a ...) 	= [2gram] 0.03558546 [ -1.448727 ]
+	p( i | f ...) 	= [3gram] 0.3260586 [ -0.4867043 ]
+	p( h | i ...) 	= [2gram] 0.05748246 [ -1.240465 ]
+	p( i | h ...) 	= [3gram] 0.3706089 [ -0.4310842 ]
+	p( a | i ...) 	= [3gram] 0.09220047 [ -1.035267 ]
+	p( + | a ...) 	= [3gram] 0.5857864 [ -0.2322607 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.72802 ppl= 7.461085 ppl1= 7.461085
+
++ n i t o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( i | n ...) 	= [3gram] 0.1666583 [ -0.778173 ]
+	p( t | i ...) 	= [3gram] 0.1462372 [ -0.8349421 ]
+	p( o | t ...) 	= [3gram] 0.1438382 [ -0.8421257 ]
+	p( + | o ...) 	= [3gram] 0.305396 [ -0.5151367 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.014218 ppl= 6.850197 ppl1= 6.850197
+
++ n i t u m a o t a h a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( i | n ...) 	= [3gram] 0.1666583 [ -0.778173 ]
+	p( t | i ...) 	= [3gram] 0.1462372 [ -0.8349421 ]
+	p( u | t ...) 	= [3gram] 0.1067569 [ -0.9716041 ]
+	p( m | u ...) 	= [3gram] 0.1020574 [ -0.9911556 ]
+	p( a | m ...) 	= [3gram] 0.3943834 [ -0.4040813 ]
+	p( o | a ...) 	= [3gram] 0.03003867 [ -1.522319 ]
+	p( t | o ...) 	= [2gram] 0.09629018 [ -1.016418 ]
+	p( a | t ...) 	= [3gram] 0.3763451 [ -0.4244137 ]
+	p( h | a ...) 	= [3gram] 0.09022206 [ -1.044687 ]
+	p( a | h ...) 	= [3gram] 0.3223293 [ -0.4917002 ]
+	p( + | a ...) 	= [3gram] 0.3535932 [ -0.4514961 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 13 words, 0 OOVs
+0 zeroprobs, logprob= -10.97483 ppl= 6.985827 ppl1= 6.985827
+
++ n o i t i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( o | n ...) 	= [3gram] 0.1997302 [ -0.6995564 ]
+	p( i | o ...) 	= [3gram] 0.06408554 [ -1.19324 ]
+	p( t | i ...) 	= [2gram] 0.1093657 [ -0.9611189 ]
+	p( i | t ...) 	= [3gram] 0.2696127 [ -0.5692596 ]
+	p( a | i ...) 	= [3gram] 0.09236998 [ -1.034469 ]
+	p( + | a ...) 	= [3gram] 0.6213631 [ -0.2066545 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.708139 ppl= 6.894732 ppl1= 6.894732
+
++ n o p o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( o | n ...) 	= [3gram] 0.1997302 [ -0.6995564 ]
+	p( p | o ...) 	= [2gram] 0.07271129 [ -1.138398 ]
+	p( o | p ...) 	= [3gram] 0.1774837 [ -0.7508416 ]
+	p( + | o ...) 	= [3gram] 0.2193776 [ -0.6588078 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.291445 ppl= 7.619166 ppl1= 7.619166
+
++ n u e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( u | n ...) 	= [3gram] 0.10233 [ -0.9899971 ]
+	p( e | u ...) 	= [2gram] 0.01138371 [ -1.943716 ]
+	p( + | e ...) 	= [3gram] 0.335609 [ -0.4741664 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -5.451721 ppl= 12.31244 ppl1= 12.31244
+
++ n u h i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( u | n ...) 	= [3gram] 0.10233 [ -0.9899971 ]
+	p( h | u ...) 	= [2gram] 0.06133374 [ -1.212301 ]
+	p( i | h ...) 	= [3gram] 0.1829723 [ -0.7376146 ]
+	p( + | i ...) 	= [3gram] 0.6044125 [ -0.2186666 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.20242 ppl= 7.363257 ppl1= 7.363257
+
++ n u r e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( u | n ...) 	= [3gram] 0.10233 [ -0.9899971 ]
+	p( r | u ...) 	= [2gram] 0.08413812 [ -1.075007 ]
+	p( e | r ...) 	= [3gram] 0.197812 [ -0.7037473 ]
+	p( + | e ...) 	= [3gram] 0.479132 [ -0.3195448 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.132137 ppl= 7.16731 ppl1= 7.16731
+
++ n u t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( n | + ...) 	= [2gram] 0.0477557 [ -1.320975 ]
+	p( u | n ...) 	= [3gram] 0.10233 [ -0.9899971 ]
+	p( t | u ...) 	= [2gram] 0.09593398 [ -1.018028 ]
+	p( i | t ...) 	= [3gram] 0.1730709 [ -0.761776 ]
+	p( + | i ...) 	= [3gram] 0.5108214 [ -0.2917309 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.105372 ppl= 7.094069 ppl1= 7.094069
+
++ p a h a p a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( a | p ...) 	= [3gram] 0.361719 [ -0.4416287 ]
+	p( h | a ...) 	= [3gram] 0.08114004 [ -1.090765 ]
+	p( a | h ...) 	= [3gram] 0.3222409 [ -0.4918194 ]
+	p( p | a ...) 	= [3gram] 0.1014121 [ -0.9939101 ]
+	p( a | p ...) 	= [3gram] 0.3398742 [ -0.4686818 ]
+	p( + | a ...) 	= [3gram] 0.2781675 [ -0.5556936 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.66411 ppl= 5.105211 ppl1= 5.105211
+
++ p a h a p a k o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( a | p ...) 	= [3gram] 0.361719 [ -0.4416287 ]
+	p( h | a ...) 	= [3gram] 0.08114004 [ -1.090765 ]
+	p( a | h ...) 	= [3gram] 0.3222409 [ -0.4918194 ]
+	p( p | a ...) 	= [3gram] 0.1014121 [ -0.9939101 ]
+	p( a | p ...) 	= [3gram] 0.3398742 [ -0.4686818 ]
+	p( k | a ...) 	= [3gram] 0.1267996 [ -0.8968821 ]
+	p( o | k ...) 	= [3gram] 0.1537003 [ -0.8133254 ]
+	p( + | o ...) 	= [3gram] 0.3760643 [ -0.4247379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.243361 ppl= 5.300736 ppl1= 5.300736
+
++ p a i h o u i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( a | p ...) 	= [3gram] 0.361719 [ -0.4416287 ]
+	p( i | a ...) 	= [3gram] 0.05963572 [ -1.224494 ]
+	p( h | i ...) 	= [3gram] 0.1485423 [ -0.8281498 ]
+	p( o | h ...) 	= [3gram] 0.1252261 [ -0.9023051 ]
+	p( u | o ...) 	= [3gram] 0.07344964 [ -1.13401 ]
+	p( i | u ...) 	= [2gram] 0.03577969 [ -1.446363 ]
+	p( + | i ...) 	= [3gram] 0.4158631 [ -0.3810496 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.979612 ppl= 7.702355 ppl1= 7.702355
+
++ p a u k i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( a | p ...) 	= [3gram] 0.361719 [ -0.4416287 ]
+	p( u | a ...) 	= [3gram] 0.02658742 [ -1.575324 ]
+	p( k | u ...) 	= [3gram] 0.1164753 [ -0.9337661 ]
+	p( i | k ...) 	= [3gram] 0.1785146 [ -0.7483263 ]
+	p( + | i ...) 	= [3gram] 0.5851661 [ -0.2327209 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.553377 ppl= 6.213547 ppl1= 6.213547
+
++ p a u r o u n u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( a | p ...) 	= [3gram] 0.361719 [ -0.4416287 ]
+	p( u | a ...) 	= [3gram] 0.02658742 [ -1.575324 ]
+	p( r | u ...) 	= [3gram] 0.1228074 [ -0.9107754 ]
+	p( o | r ...) 	= [2gram] 0.07288993 [ -1.137332 ]
+	p( u | o ...) 	= [3gram] 0.05757581 [ -1.23976 ]
+	p( n | u ...) 	= [2gram] 0.05417864 [ -1.266172 ]
+	p( u | n ...) 	= [3gram] 0.1748437 [ -0.75735 ]
+	p( + | u ...) 	= [3gram] 0.5619105 [ -0.2503328 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -9.200286 ppl= 8.318186 ppl1= 8.318186
+
++ p a f i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( a | p ...) 	= [3gram] 0.361719 [ -0.4416287 ]
+	p( f | a ...) 	= [2gram] 0.01305473 [ -1.884232 ]
+	p( i | f ...) 	= [3gram] 0.2719047 [ -0.5655832 ]
+	p( + | i ...) 	= [3gram] 0.3047227 [ -0.5160952 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.02915 ppl= 6.889564 ppl1= 6.889564
+
++ p e u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( e | p ...) 	= [3gram] 0.1352536 [ -0.8688512 ]
+	p( u | e ...) 	= [2gram] 0.009782582 [ -2.009547 ]
+	p( + | u ...) 	= [3gram] 0.5063653 [ -0.295536 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.795545 ppl= 9.101417 ppl1= 9.101417
+
++ p e w e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( e | p ...) 	= [3gram] 0.1352536 [ -0.8688512 ]
+	p( w | e ...) 	= [2gram] 0.017211 [ -1.764194 ]
+	p( e | w ...) 	= [3gram] 0.3859497 [ -0.4134693 ]
+	p( + | e ...) 	= [3gram] 0.2935199 [ -0.5323625 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.200488 ppl= 7.357801 ppl1= 7.357801
+
++ p i e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( i | p ...) 	= [3gram] 0.1261154 [ -0.8992319 ]
+	p( e | i ...) 	= [2gram] 0.007387478 [ -2.131504 ]
+	p( + | e ...) 	= [3gram] 0.3447291 [ -0.462522 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -5.114869 ppl= 10.54323 ppl1= 10.54323
+
++ p i h u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( i | p ...) 	= [3gram] 0.1261154 [ -0.8992319 ]
+	p( h | i ...) 	= [3gram] 0.1002204 [ -0.9990437 ]
+	p( u | h ...) 	= [2gram] 0.08335265 [ -1.079081 ]
+	p( + | u ...) 	= [3gram] 0.4269048 [ -0.369669 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.968637 ppl= 6.731411 ppl1= 6.731411
+
++ p i k e k o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( i | p ...) 	= [3gram] 0.1261154 [ -0.8992319 ]
+	p( k | i ...) 	= [3gram] 0.1343226 [ -0.871851 ]
+	p( e | k ...) 	= [3gram] 0.103149 [ -0.9865348 ]
+	p( k | e ...) 	= [3gram] 0.1527462 [ -0.8160295 ]
+	p( o | k ...) 	= [3gram] 0.1680954 [ -0.7744441 ]
+	p( + | o ...) 	= [3gram] 0.3760643 [ -0.4247379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.394441 ppl= 6.299486 ppl1= 6.299486
+
++ p i N i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( i | p ...) 	= [3gram] 0.1261154 [ -0.8992319 ]
+	p( N | i ...) 	= [2gram] 0.02025437 [ -1.693481 ]
+	p( i | N ...) 	= [3gram] 0.1214231 [ -0.9156985 ]
+	p( + | i ...) 	= [3gram] 0.7699106 [ -0.1135597 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.243583 ppl= 7.480497 ppl1= 7.480497
+
++ p o r a k i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( o | p ...) 	= [3gram] 0.1877121 [ -0.7265077 ]
+	p( r | o ...) 	= [3gram] 0.1549677 [ -0.8097589 ]
+	p( a | r ...) 	= [3gram] 0.1848451 [ -0.733192 ]
+	p( k | a ...) 	= [3gram] 0.1471421 [ -0.832263 ]
+	p( i | k ...) 	= [3gram] 0.2030274 [ -0.6924453 ]
+	p( + | i ...) 	= [3gram] 0.5851661 [ -0.2327209 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.648499 ppl= 5.082324 ppl1= 5.082324
+
++ p o r a k i p u k a u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( o | p ...) 	= [3gram] 0.1877121 [ -0.7265077 ]
+	p( r | o ...) 	= [3gram] 0.1549677 [ -0.8097589 ]
+	p( a | r ...) 	= [3gram] 0.1848451 [ -0.733192 ]
+	p( k | a ...) 	= [3gram] 0.1471421 [ -0.832263 ]
+	p( i | k ...) 	= [3gram] 0.2030274 [ -0.6924453 ]
+	p( p | i ...) 	= [2gram] 0.08842473 [ -1.053426 ]
+	p( u | p ...) 	= [3gram] 0.1883329 [ -0.7250738 ]
+	p( k | u ...) 	= [3gram] 0.1109371 [ -0.9549232 ]
+	p( a | k ...) 	= [3gram] 0.2782158 [ -0.5556183 ]
+	p( u | a ...) 	= [3gram] 0.09124717 [ -1.039781 ]
+	p( + | u ...) 	= [3gram] 0.4824164 [ -0.3165779 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 13 words, 0 OOVs
+0 zeroprobs, logprob= -10.06118 ppl= 5.942057 ppl1= 5.942057
+
++ p o t e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( o | p ...) 	= [3gram] 0.1877121 [ -0.7265077 ]
+	p( t | o ...) 	= [3gram] 0.08997741 [ -1.045866 ]
+	p( e | t ...) 	= [3gram] 0.1068983 [ -0.971029 ]
+	p( + | e ...) 	= [3gram] 0.342293 [ -0.4656019 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.830616 ppl= 6.384145 ppl1= 6.384145
+
++ p u k a u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( u | p ...) 	= [3gram] 0.1890023 [ -0.7235329 ]
+	p( k | u ...) 	= [3gram] 0.110937 [ -0.9549234 ]
+	p( a | k ...) 	= [3gram] 0.2782154 [ -0.5556188 ]
+	p( u | a ...) 	= [3gram] 0.09124732 [ -1.03978 ]
+	p( + | u ...) 	= [3gram] 0.4824159 [ -0.3165784 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.212045 ppl= 5.553641 ppl1= 5.553641
+
++ p u k a u n i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( u | p ...) 	= [3gram] 0.1890023 [ -0.7235329 ]
+	p( k | u ...) 	= [3gram] 0.110937 [ -0.9549234 ]
+	p( a | k ...) 	= [3gram] 0.2782154 [ -0.5556188 ]
+	p( u | a ...) 	= [3gram] 0.09124732 [ -1.03978 ]
+	p( n | u ...) 	= [3gram] 0.08668081 [ -1.062077 ]
+	p( i | n ...) 	= [3gram] 0.1829669 [ -0.7376275 ]
+	p( a | i ...) 	= [3gram] 0.09300419 [ -1.031497 ]
+	p( + | a ...) 	= [3gram] 0.5986593 [ -0.2228203 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.949489 ppl= 6.236614 ppl1= 6.236614
+
++ p u m e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( u | p ...) 	= [3gram] 0.1890023 [ -0.7235329 ]
+	p( m | u ...) 	= [2gram] 0.03498147 [ -1.456162 ]
+	p( e | m ...) 	= [3gram] 0.1087363 [ -0.9636254 ]
+	p( + | e ...) 	= [3gram] 0.2994886 [ -0.5236197 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.288551 ppl= 7.610711 ppl1= 7.610711
+
++ p u n o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( u | p ...) 	= [3gram] 0.1890023 [ -0.7235329 ]
+	p( n | u ...) 	= [3gram] 0.1194876 [ -0.9226773 ]
+	p( o | n ...) 	= [2gram] 0.03713015 [ -1.430273 ]
+	p( + | o ...) 	= [3gram] 0.4680491 [ -0.3297086 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.027803 ppl= 6.886003 ppl1= 6.886003
+
++ p u o r a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( u | p ...) 	= [3gram] 0.1890023 [ -0.7235329 ]
+	p( o | u ...) 	= [1gram] 0.006468057 [ -2.189226 ]
+	p( r | o ...) 	= [2gram] 0.1995541 [ -0.6999393 ]
+	p( a | r ...) 	= [3gram] 0.1747468 [ -0.7575908 ]
+	p( + | a ...) 	= [3gram] 0.3585559 [ -0.4454432 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -6.437344 ppl= 8.310373 ppl1= 8.310373
+
++ p u r a f a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( u | p ...) 	= [3gram] 0.1890023 [ -0.7235329 ]
+	p( r | u ...) 	= [3gram] 0.1672431 [ -0.7766519 ]
+	p( a | r ...) 	= [3gram] 0.2172356 [ -0.663069 ]
+	p( f | a ...) 	= [2gram] 0.01529512 [ -1.815447 ]
+	p( a | f ...) 	= [3gram] 0.4778439 [ -0.320714 ]
+	p( + | a ...) 	= [3gram] 0.2417636 [ -0.6166091 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.537635 ppl= 6.564542 ppl1= 6.564542
+
++ p u t i o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( u | p ...) 	= [3gram] 0.1890023 [ -0.7235329 ]
+	p( t | u ...) 	= [3gram] 0.09956287 [ -1.001903 ]
+	p( i | t ...) 	= [3gram] 0.1564527 [ -0.8056169 ]
+	p( o | i ...) 	= [3gram] 0.03813943 [ -1.418626 ]
+	p( + | o ...) 	= [3gram] 0.4456222 [ -0.3510332 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.922323 ppl= 7.015298 ppl1= 7.015298
+
++ p u f i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( p | + ...) 	= [2gram] 0.1262568 [ -0.8987454 ]
+	p( u | p ...) 	= [3gram] 0.1890023 [ -0.7235329 ]
+	p( f | u ...) 	= [2gram] 0.01276258 [ -1.894062 ]
+	p( i | f ...) 	= [2gram] 0.2394321 [ -0.6208177 ]
+	p( + | i ...) 	= [3gram] 0.3047227 [ -0.5160952 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.376119 ppl= 7.870816 ppl1= 7.870816
+
++ r a h u e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( a | r ...) 	= [3gram] 0.3325621 [ -0.4781272 ]
+	p( h | a ...) 	= [3gram] 0.08748741 [ -1.058054 ]
+	p( u | h ...) 	= [3gram] 0.2142405 [ -0.6690984 ]
+	p( e | u ...) 	= [3gram] 0.03394267 [ -1.469254 ]
+	p( + | e ...) 	= [3gram] 0.4672979 [ -0.3304062 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.723714 ppl= 6.571636 ppl1= 6.571636
+
++ r a N u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( a | r ...) 	= [3gram] 0.3325621 [ -0.4781272 ]
+	p( N | a ...) 	= [3gram] 0.05745425 [ -1.240678 ]
+	p( u | N ...) 	= [3gram] 0.05103124 [ -1.292164 ]
+	p( + | u ...) 	= [3gram] 0.4343543 [ -0.3621559 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.091899 ppl= 7.057483 ppl1= 7.057483
+
++ r a p e i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( a | r ...) 	= [3gram] 0.3325621 [ -0.4781272 ]
+	p( p | a ...) 	= [3gram] 0.09743483 [ -1.011286 ]
+	p( e | p ...) 	= [3gram] 0.1126386 [ -0.9483128 ]
+	p( i | e ...) 	= [3gram] 0.06871181 [ -1.162969 ]
+	p( a | i ...) 	= [3gram] 0.1291829 [ -0.8887949 ]
+	p( + | a ...) 	= [3gram] 0.6773356 [ -0.1691961 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.37746 ppl= 6.268772 ppl1= 6.268772
+
++ r a p u k o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( a | r ...) 	= [3gram] 0.3325621 [ -0.4781272 ]
+	p( p | a ...) 	= [3gram] 0.09743483 [ -1.011286 ]
+	p( u | p ...) 	= [3gram] 0.2463965 [ -0.6083655 ]
+	p( k | u ...) 	= [3gram] 0.1109371 [ -0.9549232 ]
+	p( o | k ...) 	= [2gram] 0.1166225 [ -0.9332175 ]
+	p( + | o ...) 	= [3gram] 0.3760643 [ -0.4247379 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.129431 ppl= 5.836855 ppl1= 5.836855
+
++ r e r u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( e | r ...) 	= [3gram] 0.2122292 [ -0.6731949 ]
+	p( r | e ...) 	= [3gram] 0.1195897 [ -0.9223063 ]
+	p( u | r ...) 	= [3gram] 0.1042936 [ -0.9817424 ]
+	p( + | u ...) 	= [3gram] 0.5310289 [ -0.2748818 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.570899 ppl= 5.778519 ppl1= 5.778519
+
++ r o w a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( o | r ...) 	= [3gram] 0.1513833 [ -0.819922 ]
+	p( w | o ...) 	= [1gram] 0.0188843 [ -1.723899 ]
+	p( a | w ...) 	= [2gram] 0.4953014 [ -0.3051305 ]
+	p( + | a ...) 	= [3gram] 0.3353173 [ -0.474544 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.04227 ppl= 6.924338 ppl1= 6.924338
+
++ r o f a o h i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( o | r ...) 	= [3gram] 0.1513833 [ -0.819922 ]
+	p( f | o ...) 	= [2gram] 0.01825664 [ -1.738579 ]
+	p( a | f ...) 	= [2gram] 0.4814233 [ -0.3174729 ]
+	p( o | a ...) 	= [3gram] 0.04802022 [ -1.318576 ]
+	p( h | o ...) 	= [2gram] 0.08229362 [ -1.084634 ]
+	p( i | h ...) 	= [3gram] 0.1981183 [ -0.7030754 ]
+	p( + | i ...) 	= [3gram] 0.6044125 [ -0.2186666 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.9197 ppl= 7.585193 ppl1= 7.585193
+
++ r u k o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( u | r ...) 	= [3gram] 0.1329384 [ -0.8763497 ]
+	p( k | u ...) 	= [3gram] 0.1726043 [ -0.7629485 ]
+	p( o | k ...) 	= [2gram] 0.1277249 [ -0.8937244 ]
+	p( + | o ...) 	= [3gram] 0.3760643 [ -0.4247379 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.676535 ppl= 6.017588 ppl1= 6.017588
+
++ r u m e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( u | r ...) 	= [3gram] 0.1329384 [ -0.8763497 ]
+	p( m | u ...) 	= [3gram] 0.08606657 [ -1.065166 ]
+	p( e | m ...) 	= [3gram] 0.142497 [ -0.8461943 ]
+	p( + | e ...) 	= [3gram] 0.2994886 [ -0.5236197 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.030103 ppl= 6.892084 ppl1= 6.892084
+
++ r u m o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( u | r ...) 	= [3gram] 0.1329384 [ -0.8763497 ]
+	p( m | u ...) 	= [3gram] 0.08606657 [ -1.065166 ]
+	p( o | m ...) 	= [2gram] 0.1243666 [ -0.9052963 ]
+	p( + | o ...) 	= [3gram] 0.2975663 [ -0.5264163 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.092002 ppl= 7.057762 ppl1= 7.057762
+
++ r u n e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( u | r ...) 	= [3gram] 0.1329384 [ -0.8763497 ]
+	p( n | u ...) 	= [2gram] 0.04132631 [ -1.383773 ]
+	p( e | n ...) 	= [3gram] 0.1444358 [ -0.8403251 ]
+	p( + | e ...) 	= [3gram] 0.5734025 [ -0.2415404 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.060763 ppl= 6.973655 ppl1= 6.973655
+
++ r u N u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( u | r ...) 	= [3gram] 0.1329384 [ -0.8763497 ]
+	p( N | u ...) 	= [3gram] 0.046095 [ -1.336346 ]
+	p( u | N ...) 	= [2gram] 0.02927012 [ -1.533576 ]
+	p( + | u ...) 	= [3gram] 0.4343543 [ -0.3621559 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.827201 ppl= 9.35837 ppl1= 9.35837
+
++ r u p a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( u | r ...) 	= [3gram] 0.1329384 [ -0.8763497 ]
+	p( p | u ...) 	= [3gram] 0.09711053 [ -1.012734 ]
+	p( a | p ...) 	= [3gram] 0.3067669 [ -0.5131915 ]
+	p( + | a ...) 	= [3gram] 0.2781675 [ -0.5556936 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.676743 ppl= 6.018068 ppl1= 6.018068
+
++ r u p o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( r | + ...) 	= [2gram] 0.1009467 [ -0.9959081 ]
+	p( u | r ...) 	= [3gram] 0.1329384 [ -0.8763497 ]
+	p( p | u ...) 	= [3gram] 0.09711053 [ -1.012734 ]
+	p( o | p ...) 	= [3gram] 0.1728632 [ -0.7622974 ]
+	p( + | o ...) 	= [3gram] 0.2193776 [ -0.6588078 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.028963 ppl= 6.889067 ppl1= 6.889067
+
++ t a e t u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( e | a ...) 	= [3gram] 0.02900942 [ -1.537461 ]
+	p( t | e ...) 	= [2gram] 0.08605981 [ -1.0652 ]
+	p( u | t ...) 	= [3gram] 0.125032 [ -0.9029789 ]
+	p( + | u ...) 	= [3gram] 0.432905 [ -0.3636074 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.812077 ppl= 6.76545 ppl1= 6.76545
+
++ t a h u m a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( h | a ...) 	= [3gram] 0.09022218 [ -1.044687 ]
+	p( u | h ...) 	= [3gram] 0.221087 [ -0.6554368 ]
+	p( m | u ...) 	= [2gram] 0.04878578 [ -1.311707 ]
+	p( a | m ...) 	= [3gram] 0.4911542 [ -0.3087821 ]
+	p( + | a ...) 	= [3gram] 0.2124285 [ -0.6727872 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.93623 ppl= 5.521139 ppl1= 5.521139
+
++ t a k a m i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( k | a ...) 	= [3gram] 0.1210212 [ -0.9171385 ]
+	p( a | k ...) 	= [3gram] 0.3763323 [ -0.4244285 ]
+	p( m | a ...) 	= [3gram] 0.06488934 [ -1.187827 ]
+	p( i | m ...) 	= [2gram] 0.09892303 [ -1.004703 ]
+	p( a | i ...) 	= [2gram] 0.06625316 [ -1.178793 ]
+	p( + | a ...) 	= [3gram] 0.6011411 [ -0.2210236 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -6.876743 ppl= 5.808749 ppl1= 5.808749
+
++ t a k a p i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( k | a ...) 	= [3gram] 0.1210212 [ -0.9171385 ]
+	p( a | k ...) 	= [3gram] 0.3763323 [ -0.4244285 ]
+	p( p | a ...) 	= [3gram] 0.1111168 [ -0.9542203 ]
+	p( i | p ...) 	= [3gram] 0.156496 [ -0.8054967 ]
+	p( + | i ...) 	= [3gram] 0.411122 [ -0.3860292 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.430143 ppl= 4.772742 ppl1= 4.772742
+
++ t a m a r u t o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( m | a ...) 	= [3gram] 0.05633986 [ -1.249184 ]
+	p( a | m ...) 	= [3gram] 0.4877282 [ -0.3118222 ]
+	p( r | a ...) 	= [3gram] 0.1479628 [ -0.8298473 ]
+	p( u | r ...) 	= [3gram] 0.08367174 [ -1.077421 ]
+	p( t | u ...) 	= [3gram] 0.1114996 [ -0.9527268 ]
+	p( o | t ...) 	= [2gram] 0.1350983 [ -0.86935 ]
+	p( + | o ...) 	= [3gram] 0.305396 [ -0.5151367 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.748319 ppl= 5.954316 ppl1= 5.954316
+
++ t a o N i r u a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( o | a ...) 	= [3gram] 0.03106614 [ -1.507713 ]
+	p( N | o ...) 	= [3gram] 0.0621931 [ -1.206258 ]
+	p( i | N ...) 	= [3gram] 0.1772548 [ -0.7514019 ]
+	p( r | i ...) 	= [2gram] 0.1065635 [ -0.9723916 ]
+	p( u | r ...) 	= [2gram] 0.09931623 [ -1.00298 ]
+	p( a | u ...) 	= [3gram] 0.1048594 [ -0.9793925 ]
+	p( + | a ...) 	= [3gram] 0.5618686 [ -0.2503653 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.613332 ppl= 7.266632 ppl1= 7.266632
+
++ t a p o p a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( p | a ...) 	= [3gram] 0.1094268 [ -0.9608763 ]
+	p( o | p ...) 	= [3gram] 0.1379684 [ -0.8602204 ]
+	p( p | o ...) 	= [3gram] 0.06472949 [ -1.188898 ]
+	p( a | p ...) 	= [3gram] 0.3641248 [ -0.4387498 ]
+	p( + | a ...) 	= [3gram] 0.2781675 [ -0.5556936 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.947268 ppl= 5.538709 ppl1= 5.538709
+
++ t a r o r a N i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( r | a ...) 	= [3gram] 0.1697549 [ -0.7701777 ]
+	p( o | r ...) 	= [3gram] 0.1269918 [ -0.8962243 ]
+	p( r | o ...) 	= [3gram] 0.1338283 [ -0.8734519 ]
+	p( a | r ...) 	= [3gram] 0.2149677 [ -0.6676269 ]
+	p( N | a ...) 	= [3gram] 0.05745425 [ -1.240678 ]
+	p( i | N ...) 	= [3gram] 0.09008506 [ -1.045347 ]
+	p( + | i ...) 	= [3gram] 0.7699106 [ -0.1135597 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.549896 ppl= 5.688393 ppl1= 5.688393
+
++ t a t u h e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( t | a ...) 	= [3gram] 0.08337533 [ -1.078962 ]
+	p( u | t ...) 	= [3gram] 0.1386764 [ -0.8579974 ]
+	p( h | u ...) 	= [3gram] 0.07173168 [ -1.144289 ]
+	p( e | h ...) 	= [2gram] 0.09877424 [ -1.005356 ]
+	p( + | e ...) 	= [3gram] 0.4501087 [ -0.3466825 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.376118 ppl= 6.266351 ppl1= 6.266351
+
++ t a f e N a f i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( a | t ...) 	= [3gram] 0.4063803 [ -0.3910674 ]
+	p( f | a ...) 	= [3gram] 0.02431965 [ -1.614043 ]
+	p( e | f ...) 	= [2gram] 0.1808093 [ -0.7427793 ]
+	p( N | e ...) 	= [2gram] 0.03111378 [ -1.507047 ]
+	p( a | N ...) 	= [3gram] 0.6779628 [ -0.1687942 ]
+	p( f | a ...) 	= [2gram] 0.02838025 [ -1.546984 ]
+	p( i | f ...) 	= [3gram] 0.251906 [ -0.5987616 ]
+	p( + | i ...) 	= [3gram] 0.3047227 [ -0.5160952 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.637334 ppl= 7.306904 ppl1= 7.306904
+
++ t e a o r i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( e | t ...) 	= [3gram] 0.1152273 [ -0.9384446 ]
+	p( a | e ...) 	= [3gram] 0.07611261 [ -1.118543 ]
+	p( o | a ...) 	= [2gram] 0.02332429 [ -1.632192 ]
+	p( r | o ...) 	= [3gram] 0.2028053 [ -0.6929207 ]
+	p( i | r ...) 	= [3gram] 0.2033683 [ -0.6917167 ]
+	p( + | i ...) 	= [3gram] 0.5022292 [ -0.299098 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.924678 ppl= 7.338119 ppl1= 7.338119
+
++ t e m i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( e | t ...) 	= [3gram] 0.1152273 [ -0.9384446 ]
+	p( m | e ...) 	= [2gram] 0.05368871 [ -1.270117 ]
+	p( i | m ...) 	= [3gram] 0.1407926 [ -0.8514202 ]
+	p( + | i ...) 	= [3gram] 0.4050015 [ -0.3925433 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.004288 ppl= 6.824141 ppl1= 6.824141
+
++ t e t o h e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( e | t ...) 	= [3gram] 0.1152273 [ -0.9384446 ]
+	p( t | e ...) 	= [3gram] 0.09148888 [ -1.038632 ]
+	p( o | t ...) 	= [2gram] 0.1151346 [ -0.9387941 ]
+	p( h | o ...) 	= [3gram] 0.1456756 [ -0.8366132 ]
+	p( e | h ...) 	= [3gram] 0.1604807 [ -0.7945771 ]
+	p( + | e ...) 	= [3gram] 0.4501087 [ -0.3466825 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.445506 ppl= 6.392758 ppl1= 6.392758
+
++ t e t o u a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( e | t ...) 	= [3gram] 0.1152273 [ -0.9384446 ]
+	p( t | e ...) 	= [3gram] 0.09148888 [ -1.038632 ]
+	p( o | t ...) 	= [2gram] 0.1151346 [ -0.9387941 ]
+	p( u | o ...) 	= [3gram] 0.06593654 [ -1.180874 ]
+	p( a | u ...) 	= [3gram] 0.1444261 [ -0.8403544 ]
+	p( + | a ...) 	= [3gram] 0.5916939 [ -0.2279029 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -6.716764 ppl= 6.91187 ppl1= 6.91187
+
++ t e u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( e | t ...) 	= [3gram] 0.1152273 [ -0.9384446 ]
+	p( u | e ...) 	= [2gram] 0.01304636 [ -1.884511 ]
+	p( + | u ...) 	= [3gram] 0.5164292 [ -0.2869892 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.661707 ppl= 8.557393 ppl1= 8.557393
+
++ t i a h u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( a | i ...) 	= [3gram] 0.09236998 [ -1.034469 ]
+	p( h | a ...) 	= [2gram] 0.09543805 [ -1.020278 ]
+	p( u | h ...) 	= [3gram] 0.1923174 [ -0.7159815 ]
+	p( + | u ...) 	= [3gram] 0.4269048 [ -0.369669 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.441353 ppl= 5.988749 ppl1= 5.988749
+
++ t i e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( e | i ...) 	= [2gram] 0.009314348 [ -2.030848 ]
+	p( + | e ...) 	= [3gram] 0.3489661 [ -0.4572167 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.789019 ppl= 9.074105 ppl1= 9.074105
+
++ t i k a w e n e r i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( k | i ...) 	= [3gram] 0.1502965 [ -0.8230512 ]
+	p( a | k ...) 	= [3gram] 0.3439042 [ -0.4635625 ]
+	p( w | a ...) 	= [3gram] 0.04371946 [ -1.359325 ]
+	p( e | w ...) 	= [3gram] 0.3396097 [ -0.4690199 ]
+	p( n | e ...) 	= [3gram] 0.08978498 [ -1.046796 ]
+	p( e | n ...) 	= [3gram] 0.4657208 [ -0.3318744 ]
+	p( r | e ...) 	= [2gram] 0.07699131 [ -1.113558 ]
+	p( i | r ...) 	= [3gram] 0.1547848 [ -0.8102717 ]
+	p( + | i ...) 	= [3gram] 0.5022292 [ -0.299098 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 12 words, 0 OOVs
+0 zeroprobs, logprob= -9.017512 ppl= 5.642341 ppl1= 5.642341
+
++ t i k i h i k i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( k | i ...) 	= [3gram] 0.1502965 [ -0.8230512 ]
+	p( i | k ...) 	= [3gram] 0.2733559 [ -0.5632715 ]
+	p( h | i ...) 	= [3gram] 0.08088165 [ -1.09215 ]
+	p( i | h ...) 	= [3gram] 0.2948814 [ -0.5303526 ]
+	p( k | i ...) 	= [3gram] 0.1414562 [ -0.8493781 ]
+	p( i | k ...) 	= [3gram] 0.2442151 [ -0.6122274 ]
+	p( + | i ...) 	= [3gram] 0.5851661 [ -0.2327209 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.004107 ppl= 5.016614 ppl1= 5.016614
+
++ t i k o h a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( k | i ...) 	= [3gram] 0.1502965 [ -0.8230512 ]
+	p( o | k ...) 	= [3gram] 0.2095837 [ -0.6786425 ]
+	p( h | o ...) 	= [3gram] 0.1022731 [ -0.9902387 ]
+	p( a | h ...) 	= [3gram] 0.2137199 [ -0.670155 ]
+	p( + | a ...) 	= [3gram] 0.3535936 [ -0.4514956 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.914538 ppl= 5.486776 ppl1= 5.486776
+
++ t i k u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( k | i ...) 	= [3gram] 0.1502965 [ -0.8230512 ]
+	p( u | k ...) 	= [2gram] 0.06865453 [ -1.163331 ]
+	p( + | u ...) 	= [3gram] 0.4842499 [ -0.3149304 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.602267 ppl= 5.848501 ppl1= 5.848501
+
++ t i p e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( p | i ...) 	= [3gram] 0.1001971 [ -0.999145 ]
+	p( e | p ...) 	= [2gram] 0.1132207 [ -0.946074 ]
+	p( + | e ...) 	= [3gram] 0.2635973 [ -0.5790591 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.825233 ppl= 6.370969 ppl1= 6.370969
+
++ t i p o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( p | i ...) 	= [3gram] 0.1001971 [ -0.999145 ]
+	p( o | p ...) 	= [3gram] 0.166095 [ -0.7796435 ]
+	p( + | o ...) 	= [3gram] 0.2193776 [ -0.6588078 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.738551 ppl= 6.162523 ppl1= 6.162523
+
++ t i t a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( t | i ...) 	= [3gram] 0.1405192 [ -0.8522644 ]
+	p( a | t ...) 	= [3gram] 0.3146402 [ -0.5021858 ]
+	p( + | a ...) 	= [3gram] 0.3017963 [ -0.5202861 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.175691 ppl= 4.965335 ppl1= 4.965335
+
++ t i t a p a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( t | i ...) 	= [3gram] 0.1405192 [ -0.8522644 ]
+	p( a | t ...) 	= [3gram] 0.3146402 [ -0.5021858 ]
+	p( p | a ...) 	= [3gram] 0.1094268 [ -0.9608765 ]
+	p( a | p ...) 	= [3gram] 0.3362836 [ -0.4732943 ]
+	p( + | a ...) 	= [3gram] 0.2781675 [ -0.5556936 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.645269 ppl= 5.077602 ppl1= 5.077602
+
++ t i t a p a p u k a u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( t | i ...) 	= [3gram] 0.1405192 [ -0.8522644 ]
+	p( a | t ...) 	= [3gram] 0.3146402 [ -0.5021858 ]
+	p( p | a ...) 	= [3gram] 0.1094268 [ -0.9608765 ]
+	p( a | p ...) 	= [3gram] 0.3362836 [ -0.4732943 ]
+	p( p | a ...) 	= [3gram] 0.08802409 [ -1.055398 ]
+	p( u | p ...) 	= [3gram] 0.2534323 [ -0.596138 ]
+	p( k | u ...) 	= [3gram] 0.1109371 [ -0.9549232 ]
+	p( a | k ...) 	= [3gram] 0.2782158 [ -0.5556183 ]
+	p( u | a ...) 	= [3gram] 0.09124717 [ -1.039781 ]
+	p( + | u ...) 	= [3gram] 0.4824164 [ -0.3165779 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 13 words, 0 OOVs
+0 zeroprobs, logprob= -9.608012 ppl= 5.483753 ppl1= 5.483753
+
++ t i f i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( i | t ...) 	= [3gram] 0.1781591 [ -0.749192 ]
+	p( f | i ...) 	= [3gram] 0.03853884 [ -1.414101 ]
+	p( i | f ...) 	= [3gram] 0.3590489 [ -0.4448464 ]
+	p( + | i ...) 	= [3gram] 0.3047227 [ -0.5160952 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.675998 ppl= 6.016348 ppl1= 6.016348
+
++ t o h i a h i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( o | t ...) 	= [3gram] 0.1681785 [ -0.7742295 ]
+	p( h | o ...) 	= [3gram] 0.1456755 [ -0.8366134 ]
+	p( i | h ...) 	= [3gram] 0.2301238 [ -0.6380384 ]
+	p( a | i ...) 	= [3gram] 0.09220042 [ -1.035267 ]
+	p( h | a ...) 	= [2gram] 0.09683854 [ -1.013952 ]
+	p( i | h ...) 	= [3gram] 0.2137598 [ -0.670074 ]
+	p( a | i ...) 	= [3gram] 0.09220037 [ -1.035267 ]
+	p( + | a ...) 	= [3gram] 0.5857877 [ -0.2322598 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.787464 ppl= 6.008228 ppl1= 6.008228
+
++ t o k e t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( o | t ...) 	= [3gram] 0.1681785 [ -0.7742295 ]
+	p( k | o ...) 	= [3gram] 0.1477134 [ -0.8305802 ]
+	p( e | k ...) 	= [3gram] 0.1750984 [ -0.7567179 ]
+	p( t | e ...) 	= [3gram] 0.1252224 [ -0.902318 ]
+	p( i | t ...) 	= [3gram] 0.2471676 [ -0.6070085 ]
+	p( + | i ...) 	= [3gram] 0.5108214 [ -0.2917309 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.714348 ppl= 5.179567 ppl1= 5.179567
+
++ t o u k i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( o | t ...) 	= [3gram] 0.1681785 [ -0.7742295 ]
+	p( u | o ...) 	= [3gram] 0.0659365 [ -1.180874 ]
+	p( k | u ...) 	= [2gram] 0.1145578 [ -0.9409752 ]
+	p( i | k ...) 	= [3gram] 0.1643495 [ -0.7842317 ]
+	p( + | i ...) 	= [3gram] 0.5851661 [ -0.2327209 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.464794 ppl= 6.035106 ppl1= 6.035106
+
++ t u a n a p u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( u | t ...) 	= [3gram] 0.1319324 [ -0.8796484 ]
+	p( a | u ...) 	= [3gram] 0.1274725 [ -0.8945835 ]
+	p( n | a ...) 	= [2gram] 0.05257441 [ -1.279226 ]
+	p( a | n ...) 	= [3gram] 0.4642525 [ -0.3332458 ]
+	p( p | a ...) 	= [3gram] 0.09557038 [ -1.019677 ]
+	p( u | p ...) 	= [3gram] 0.2180372 [ -0.6614695 ]
+	p( + | u ...) 	= [3gram] 0.2949287 [ -0.530283 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.149895 ppl= 6.229208 ppl1= 6.229208
+
++ t u k e i a t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( u | t ...) 	= [3gram] 0.1319324 [ -0.8796484 ]
+	p( k | u ...) 	= [3gram] 0.1342102 [ -0.8722143 ]
+	p( e | k ...) 	= [3gram] 0.1828507 [ -0.7379034 ]
+	p( i | e ...) 	= [3gram] 0.03606152 [ -1.442956 ]
+	p( a | i ...) 	= [3gram] 0.1132046 [ -0.946136 ]
+	p( t | a ...) 	= [2gram] 0.1224177 [ -0.9121556 ]
+	p( i | t ...) 	= [3gram] 0.1825325 [ -0.7386599 ]
+	p( + | i ...) 	= [3gram] 0.5108214 [ -0.2917309 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.373167 ppl= 6.875697 ppl1= 6.875697
+
++ t u m e i r o r u a r e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( u | t ...) 	= [3gram] 0.1319324 [ -0.8796484 ]
+	p( m | u ...) 	= [3gram] 0.1020574 [ -0.9911556 ]
+	p( e | m ...) 	= [3gram] 0.171288 [ -0.766273 ]
+	p( i | e ...) 	= [2gram] 0.02731963 [ -1.563525 ]
+	p( r | i ...) 	= [3gram] 0.1300006 [ -0.8860545 ]
+	p( o | r ...) 	= [3gram] 0.1660078 [ -0.7798715 ]
+	p( r | o ...) 	= [3gram] 0.1338283 [ -0.8734522 ]
+	p( u | r ...) 	= [3gram] 0.09529679 [ -1.020922 ]
+	p( a | u ...) 	= [3gram] 0.1048595 [ -0.9793921 ]
+	p( r | a ...) 	= [3gram] 0.1424398 [ -0.8463688 ]
+	p( e | r ...) 	= [3gram] 0.1786052 [ -0.748106 ]
+	p( + | e ...) 	= [3gram] 0.479132 [ -0.3195448 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 14 words, 0 OOVs
+0 zeroprobs, logprob= -12.20608 ppl= 7.444964 ppl1= 7.444964
+
++ t u f e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( t | + ...) 	= [2gram] 0.148287 [ -0.8288968 ]
+	p( u | t ...) 	= [3gram] 0.1319324 [ -0.8796484 ]
+	p( f | u ...) 	= [2gram] 0.02091459 [ -1.679551 ]
+	p( e | f ...) 	= [2gram] 0.229795 [ -0.6386595 ]
+	p( + | e ...) 	= [3gram] 0.2385735 [ -0.6223779 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.371999 ppl= 7.858383 ppl1= 7.858383
+
++ u k e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( u | + ...) 	= [2gram] 0.02063351 [ -1.685427 ]
+	p( k | u ...) 	= [3gram] 0.1551269 [ -0.8093128 ]
+	p( e | k ...) 	= [3gram] 0.217009 [ -0.6635222 ]
+	p( + | e ...) 	= [3gram] 0.5210302 [ -0.2831371 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.164265 ppl= 6.80539 ppl1= 6.80539
+
++ u k o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( u | + ...) 	= [2gram] 0.02063351 [ -1.685427 ]
+	p( k | u ...) 	= [3gram] 0.1551269 [ -0.8093128 ]
+	p( o | k ...) 	= [2gram] 0.08040732 [ -1.094704 ]
+	p( + | o ...) 	= [3gram] 0.3760643 [ -0.4247379 ]
+Hidden events: *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.737048 ppl= 8.859508 ppl1= 8.859508
+
++ u n a t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( u | + ...) 	= [2gram] 0.02063351 [ -1.685427 ]
+	p( n | u ...) 	= [3gram] 0.08862301 [ -1.052454 ]
+	p( a | n ...) 	= [3gram] 0.417092 [ -0.3797681 ]
+	p( t | a ...) 	= [3gram] 0.1236827 [ -0.907691 ]
+	p( i | t ...) 	= [3gram] 0.186323 [ -0.7297335 ]
+	p( + | i ...) 	= [3gram] 0.5108214 [ -0.2917309 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.76967 ppl= 6.671732 ppl1= 6.671732
+
++ u r o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( u | + ...) 	= [2gram] 0.02063351 [ -1.685427 ]
+	p( r | u ...) 	= [3gram] 0.1798758 [ -0.7450273 ]
+	p( o | r ...) 	= [2gram] 0.04223967 [ -1.374279 ]
+	p( + | o ...) 	= [3gram] 0.4211625 [ -0.3755503 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.90315 ppl= 9.563789 ppl1= 9.563789
+
++ u t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( u | + ...) 	= [2gram] 0.02063351 [ -1.685427 ]
+	p( t | u ...) 	= [3gram] 0.08667914 [ -1.062085 ]
+	p( i | t ...) 	= [3gram] 0.1527512 [ -0.8160152 ]
+	p( + | i ...) 	= [3gram] 0.5108214 [ -0.2917309 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.578124 ppl= 8.234266 ppl1= 8.234266
+
++ w a e m u r a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( a | w ...) 	= [3gram] 0.4951034 [ -0.3053041 ]
+	p( e | a ...) 	= [3gram] 0.04928258 [ -1.307307 ]
+	p( m | e ...) 	= [2gram] 0.05255975 [ -1.279347 ]
+	p( u | m ...) 	= [3gram] 0.09658741 [ -1.015079 ]
+	p( r | u ...) 	= [3gram] 0.223861 [ -0.6500216 ]
+	p( a | r ...) 	= [3gram] 0.2272326 [ -0.6435294 ]
+	p( + | a ...) 	= [3gram] 0.3585559 [ -0.4454432 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.720275 ppl= 7.207893 ppl1= 7.207893
+
++ w a w e m i t i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( a | w ...) 	= [3gram] 0.4951034 [ -0.3053041 ]
+	p( w | a ...) 	= [3gram] 0.07202629 [ -1.142509 ]
+	p( e | w ...) 	= [3gram] 0.3364775 [ -0.4730439 ]
+	p( m | e ...) 	= [2gram] 0.03979358 [ -1.400187 ]
+	p( i | m ...) 	= [3gram] 0.140219 [ -0.8531933 ]
+	p( t | i ...) 	= [3gram] 0.1334084 [ -0.8748169 ]
+	p( i | t ...) 	= [3gram] 0.3887775 [ -0.4102988 ]
+	p( + | i ...) 	= [3gram] 0.5108214 [ -0.2917309 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.825328 ppl= 6.060839 ppl1= 6.060839
+
++ w e h a o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( e | w ...) 	= [3gram] 0.3538108 [ -0.4512289 ]
+	p( h | e ...) 	= [3gram] 0.123379 [ -0.9087589 ]
+	p( a | h ...) 	= [3gram] 0.2152402 [ -0.6670766 ]
+	p( o | a ...) 	= [3gram] 0.03631454 [ -1.439919 ]
+	p( + | o ...) 	= [3gram] 0.4733359 [ -0.3248305 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.866058 ppl= 6.886655 ppl1= 6.886655
+
++ w e r e u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( e | w ...) 	= [3gram] 0.3538108 [ -0.4512289 ]
+	p( r | e ...) 	= [3gram] 0.1765443 [ -0.7531464 ]
+	p( e | r ...) 	= [3gram] 0.4148728 [ -0.3820851 ]
+	p( u | e ...) 	= [2gram] 0.01343718 [ -1.871692 ]
+	p( + | u ...) 	= [3gram] 0.3826917 [ -0.417151 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.949547 ppl= 7.078404 ppl1= 7.078404
+
++ f a h a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( h | a ...) 	= [2gram] 0.05288769 [ -1.276645 ]
+	p( a | h ...) 	= [3gram] 0.3210312 [ -0.4934528 ]
+	p( + | a ...) 	= [3gram] 0.3535936 [ -0.4514956 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.643038 ppl= 5.940728 ppl1= 5.940728
+
++ f a h u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( h | a ...) 	= [2gram] 0.05288769 [ -1.276645 ]
+	p( u | h ...) 	= [3gram] 0.2099427 [ -0.6778991 ]
+	p( + | u ...) 	= [3gram] 0.4269048 [ -0.369669 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.745658 ppl= 6.179353 ppl1= 6.179353
+
++ f a i e +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( i | a ...) 	= [3gram] 0.1110509 [ -0.954478 ]
+	p( e | i ...) 	= [2gram] 0.008963531 [ -2.047521 ]
+	p( + | e ...) 	= [3gram] 0.4357758 [ -0.3607368 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.78418 ppl= 9.205132 ppl1= 9.205132
+
++ f a k o i a w e a h u a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( k | a ...) 	= [3gram] 0.1249319 [ -0.9033265 ]
+	p( o | k ...) 	= [3gram] 0.1492984 [ -0.8259449 ]
+	p( i | o ...) 	= [3gram] 0.03144886 [ -1.502395 ]
+	p( a | i ...) 	= [3gram] 0.2250699 [ -0.6476827 ]
+	p( w | a ...) 	= [2gram] 0.04104045 [ -1.386788 ]
+	p( e | w ...) 	= [3gram] 0.349305 [ -0.4567952 ]
+	p( a | e ...) 	= [3gram] 0.07000791 [ -1.154853 ]
+	p( h | a ...) 	= [2gram] 0.09906564 [ -1.004077 ]
+	p( u | h ...) 	= [3gram] 0.1805564 [ -0.7433872 ]
+	p( a | u ...) 	= [3gram] 0.1390654 [ -0.856781 ]
+	p( + | a ...) 	= [3gram] 0.6215705 [ -0.2065096 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 14 words, 0 OOVs
+0 zeroprobs, logprob= -12.10998 ppl= 7.328226 ppl1= 7.328226
+
++ f a N a k i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( N | a ...) 	= [3gram] 0.07120507 [ -1.147489 ]
+	p( a | N ...) 	= [3gram] 0.7456454 [ -0.1274676 ]
+	p( k | a ...) 	= [3gram] 0.1277412 [ -0.8936691 ]
+	p( i | k ...) 	= [3gram] 0.1694193 [ -0.7710371 ]
+	p( + | i ...) 	= [3gram] 0.5851661 [ -0.2327209 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -5.593828 ppl= 5.002977 ppl1= 5.002977
+
++ f a n i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( n | a ...) 	= [3gram] 0.116581 [ -0.9333723 ]
+	p( i | n ...) 	= [3gram] 0.1502014 [ -0.8233261 ]
+	p( + | i ...) 	= [3gram] 0.5751825 [ -0.2401943 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -4.418337 ppl= 5.449912 ppl1= 5.449912
+
++ f a n i k a f a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( n | a ...) 	= [3gram] 0.116581 [ -0.9333723 ]
+	p( i | n ...) 	= [3gram] 0.1502014 [ -0.8233261 ]
+	p( k | i ...) 	= [3gram] 0.1383601 [ -0.8589892 ]
+	p( a | k ...) 	= [3gram] 0.3536794 [ -0.4513903 ]
+	p( f | a ...) 	= [2gram] 0.01789573 [ -1.747251 ]
+	p( a | f ...) 	= [3gram] 0.4467116 [ -0.3499727 ]
+	p( + | a ...) 	= [3gram] 0.2417633 [ -0.6166096 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.202355 ppl= 6.610518 ppl1= 6.610518
+
++ f a n i n i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( n | a ...) 	= [3gram] 0.116581 [ -0.9333723 ]
+	p( i | n ...) 	= [3gram] 0.1502014 [ -0.8233261 ]
+	p( n | i ...) 	= [3gram] 0.0895137 [ -1.04811 ]
+	p( i | n ...) 	= [3gram] 0.2284007 [ -0.6413026 ]
+	p( a | i ...) 	= [3gram] 0.09300419 [ -1.031497 ]
+	p( + | a ...) 	= [3gram] 0.5986586 [ -0.2228208 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -7.121874 ppl= 6.18471 ppl1= 6.18471
+
++ f a n i p o r a k i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( n | a ...) 	= [3gram] 0.116581 [ -0.9333723 ]
+	p( i | n ...) 	= [3gram] 0.1502014 [ -0.8233261 ]
+	p( p | i ...) 	= [2gram] 0.08199266 [ -1.086225 ]
+	p( o | p ...) 	= [3gram] 0.1807775 [ -0.7428555 ]
+	p( r | o ...) 	= [3gram] 0.1549676 [ -0.8097591 ]
+	p( a | r ...) 	= [3gram] 0.1848451 [ -0.733192 ]
+	p( k | a ...) 	= [3gram] 0.1471421 [ -0.832263 ]
+	p( i | k ...) 	= [3gram] 0.2030272 [ -0.6924458 ]
+	p( + | i ...) 	= [3gram] 0.5851667 [ -0.2327204 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 12 words, 0 OOVs
+0 zeroprobs, logprob= -9.307604 ppl= 5.965318 ppl1= 5.965318
+
++ f a n i t i t a p a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( n | a ...) 	= [3gram] 0.116581 [ -0.9333723 ]
+	p( i | n ...) 	= [3gram] 0.1502014 [ -0.8233261 ]
+	p( t | i ...) 	= [3gram] 0.1462373 [ -0.8349419 ]
+	p( i | t ...) 	= [3gram] 0.337802 [ -0.4713378 ]
+	p( t | i ...) 	= [3gram] 0.140519 [ -0.8522649 ]
+	p( a | t ...) 	= [3gram] 0.3146402 [ -0.5021858 ]
+	p( p | a ...) 	= [3gram] 0.1094268 [ -0.9608765 ]
+	p( a | p ...) 	= [3gram] 0.3362836 [ -0.4732943 ]
+	p( + | a ...) 	= [3gram] 0.2781675 [ -0.5556936 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 12 words, 0 OOVs
+0 zeroprobs, logprob= -8.828737 ppl= 5.441619 ppl1= 5.441619
+
++ f a n i f a n i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( n | a ...) 	= [3gram] 0.116581 [ -0.9333723 ]
+	p( i | n ...) 	= [3gram] 0.1502014 [ -0.8233261 ]
+	p( f | i ...) 	= [2gram] 0.0265952 [ -1.575197 ]
+	p( a | f ...) 	= [3gram] 0.4757681 [ -0.3226047 ]
+	p( n | a ...) 	= [3gram] 0.1165809 [ -0.9333725 ]
+	p( i | n ...) 	= [3gram] 0.1502014 [ -0.8233261 ]
+	p( + | i ...) 	= [3gram] 0.5751819 [ -0.2401948 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.072838 ppl= 6.416287 ppl1= 6.416287
+
++ f a t a i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( a | f ...) 	= [3gram] 0.4828647 [ -0.3161745 ]
+	p( t | a ...) 	= [3gram] 0.1231556 [ -0.9095459 ]
+	p( a | t ...) 	= [3gram] 0.426512 [ -0.3700688 ]
+	p( i | a ...) 	= [3gram] 0.08391117 [ -1.07618 ]
+	p( + | i ...) 	= [3gram] 0.3400003 [ -0.4685206 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.24576 ppl= 5.615576 ppl1= 5.615576
+
++ f e h u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( e | f ...) 	= [3gram] 0.2334172 [ -0.6318672 ]
+	p( h | e ...) 	= [2gram] 0.06089163 [ -1.215442 ]
+	p( u | h ...) 	= [3gram] 0.1852053 [ -0.7323465 ]
+	p( + | u ...) 	= [3gram] 0.4269048 [ -0.369669 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.054595 ppl= 6.957168 ppl1= 6.957168
+
++ f e n e p o n a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( e | f ...) 	= [3gram] 0.2334172 [ -0.6318672 ]
+	p( n | e ...) 	= [3gram] 0.1390062 [ -0.8569658 ]
+	p( e | n ...) 	= [3gram] 0.49292 [ -0.3072236 ]
+	p( p | e ...) 	= [2gram] 0.07658002 [ -1.115885 ]
+	p( o | p ...) 	= [2gram] 0.1829368 [ -0.737699 ]
+	p( n | o ...) 	= [3gram] 0.05196845 [ -1.28426 ]
+	p( a | n ...) 	= [3gram] 0.4196075 [ -0.3771567 ]
+	p( + | a ...) 	= [3gram] 0.5519394 [ -0.2581086 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -7.674436 ppl= 5.853876 ppl1= 5.853876
+
++ f e N o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( e | f ...) 	= [3gram] 0.2334172 [ -0.6318672 ]
+	p( N | e ...) 	= [2gram] 0.0311138 [ -1.507047 ]
+	p( o | N ...) 	= [2gram] 0.1107239 [ -0.9557586 ]
+	p( + | o ...) 	= [3gram] 0.4362503 [ -0.3602643 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.560207 ppl= 8.446974 ppl1= 8.446974
+
++ f e t o +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( e | f ...) 	= [3gram] 0.2334172 [ -0.6318672 ]
+	p( t | e ...) 	= [3gram] 0.1230596 [ -0.9098845 ]
+	p( o | t ...) 	= [2gram] 0.08328564 [ -1.07943 ]
+	p( + | o ...) 	= [3gram] 0.305396 [ -0.5151367 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.241588 ppl= 7.474773 ppl1= 7.474773
+
++ f e u +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( e | f ...) 	= [3gram] 0.2334172 [ -0.6318672 ]
+	p( u | e ...) 	= [2gram] 0.01036315 [ -1.984508 ]
+	p( + | u ...) 	= [3gram] 0.5620753 [ -0.2502055 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -4.971851 ppl= 9.871205 ppl1= 9.871205
+
++ f i h i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( i | f ...) 	= [3gram] 0.2379281 [ -0.6235542 ]
+	p( h | i ...) 	= [2gram] 0.05748246 [ -1.240465 ]
+	p( i | h ...) 	= [3gram] 0.3706089 [ -0.4310842 ]
+	p( a | i ...) 	= [3gram] 0.09220037 [ -1.035267 ]
+	p( + | a ...) 	= [3gram] 0.5857877 [ -0.2322598 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -5.6679 ppl= 6.452084 ppl1= 6.452084
+
++ f i h i a n i a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( i | f ...) 	= [3gram] 0.2379281 [ -0.6235542 ]
+	p( h | i ...) 	= [2gram] 0.05748246 [ -1.240465 ]
+	p( i | h ...) 	= [3gram] 0.3706089 [ -0.4310842 ]
+	p( a | i ...) 	= [3gram] 0.09220037 [ -1.035267 ]
+	p( n | a ...) 	= [2gram] 0.06069002 [ -1.216883 ]
+	p( i | n ...) 	= [3gram] 0.156812 [ -0.8046207 ]
+	p( a | i ...) 	= [3gram] 0.09300409 [ -1.031498 ]
+	p( + | a ...) 	= [3gram] 0.598658 [ -0.2228212 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.711463 ppl= 7.432695 ppl1= 7.432695
+
++ f u r i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( u | f ...) 	= [3gram] 0.02909645 [ -1.53616 ]
+	p( r | u ...) 	= [2gram] 0.1480639 [ -0.8295507 ]
+	p( i | r ...) 	= [3gram] 0.2030497 [ -0.6923976 ]
+	p( + | i ...) 	= [3gram] 0.5022292 [ -0.299098 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -5.462476 ppl= 8.136033 ppl1= 8.136033
+
++ f u t a r i r a r i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( f | + ...) 	= [2gram] 0.04145684 [ -1.382404 ]
+	p( u | f ...) 	= [3gram] 0.02909645 [ -1.53616 ]
+	p( t | u ...) 	= [2gram] 0.1133762 [ -0.945478 ]
+	p( a | t ...) 	= [3gram] 0.3448495 [ -0.4623704 ]
+	p( r | a ...) 	= [3gram] 0.1697548 [ -0.7701778 ]
+	p( i | r ...) 	= [3gram] 0.1906242 [ -0.7198219 ]
+	p( r | i ...) 	= [3gram] 0.09719207 [ -1.012369 ]
+	p( a | r ...) 	= [3gram] 0.2885305 [ -0.5398083 ]
+	p( r | a ...) 	= [3gram] 0.1096786 [ -0.959878 ]
+	p( i | r ...) 	= [3gram] 0.1869759 [ -0.7282143 ]
+	p( + | i ...) 	= [3gram] 0.5022292 [ -0.299098 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* *noevent*
+0 sentences, 12 words, 0 OOVs
+0 zeroprobs, logprob= -10.07865 ppl= 6.916512 ppl1= 6.916512
+
++ w i k u r u t a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( i | w ...) 	= [3gram] 0.09586475 [ -1.018341 ]
+	p( k | i ...) 	= [2gram] 0.08968133 [ -1.047298 ]
+	p( u | k ...) 	= [2gram] 0.08056511 [ -1.093853 ]
+	p( r | u ...) 	= [3gram] 0.1389125 [ -0.8572588 ]
+	p( u | r ...) 	= [3gram] 0.3016949 [ -0.520432 ]
+	p( t | u ...) 	= [3gram] 0.1114997 [ -0.9527264 ]
+	p( a | t ...) 	= [3gram] 0.3632056 [ -0.4398475 ]
+	p( + | a ...) 	= [3gram] 0.3017966 [ -0.5202856 ]
+Hidden events: *noevent* *noevent* *noevent* + *noevent* *noevent* *noevent* + *noevent* *noevent*
+0 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -8.524286 ppl= 7.119158 ppl1= 7.119158
+
++ w u r a +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( u | w ...) 	= [2gram] 0.004821818 [ -2.316789 ]
+	p( r | u ...) 	= [2gram] 0.1480639 [ -0.8295507 ]
+	p( a | r ...) 	= [3gram] 0.2347757 [ -0.6293468 ]
+	p( + | a ...) 	= [3gram] 0.3585559 [ -0.4454432 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -6.295374 ppl= 11.20028 ppl1= 11.20028
+
++ w u r i +
+	p( + |  ) 	= [1gram] 0.1892928 [ -0.722866 ]
+	p( w | + ...) 	= [2gram] 0.04452686 [ -1.351378 ]
+	p( u | w ...) 	= [2gram] 0.004821818 [ -2.316789 ]
+	p( r | u ...) 	= [2gram] 0.1480639 [ -0.8295507 ]
+	p( i | r ...) 	= [3gram] 0.2030497 [ -0.6923976 ]
+	p( + | i ...) 	= [3gram] 0.5022292 [ -0.299098 ]
+Hidden events: *noevent* *noevent* *noevent* *noevent* *noevent* *noevent*
+0 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -6.212079 ppl= 10.84792 ppl1= 10.84792
+
+file ../../../mental_lexicon_yoonmi/new-scores/stimuli-shortvowels_morphs.txt: 0 sentences, 2532 words, 0 OOVs
+0 zeroprobs, logprob= -2033.305 ppl= 6.353938 ppl1= 6.353938
