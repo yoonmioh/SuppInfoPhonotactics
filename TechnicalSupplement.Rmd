@@ -357,7 +357,7 @@ dataExp1$macron <- as.factor(dataExp1$macron)
 The data is structured as follows:
 
   - <span style="color:blue">*workerId*</span> is the unique ID for each participant.
-  - <span style="color:blue">*enteredResponse*</span> is the wellformedness rating for each stimulus.
+  - <span style="color:blue">*enteredResponse*</span> is the confidence rating for each stimulus.
   - <span style="color:blue">*reactionTime*</span> is the reaction time for each rating (seconds).
   - <span style="color:blue">*type*</span> is the classification of each stimulus: nonword ('non') or word ('real').
   - <span style="color:blue">*length*</span> is the phoneme length of each stimulus.
@@ -1512,15 +1512,15 @@ exp2ML_1[exp2ML_1$maoriList=="2",]$maoriList1 <- "Basic knowledge = 2"
 exp2ML_1[exp2ML_1$maoriList=="4",]$maoriList1 <- "Basic knowledge = 4"
 exp2ML_1[exp2ML_1$maoriList=="7",]$maoriList1 <- "Basic knowledge = 7"
 exp2ML_1[exp2ML_1$maoriList=="9",]$maoriList1 <- "Basic knowledge = 9"
-exp2ML_1$type <- "Word and\nNonword"
-F_Exp2ML_1 <- ggplot(exp2ML_1, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + facet_grid(. ~ maoriList1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word and\nNonword" = "purple")) + scale_fill_manual(values = c("Word and\nNonword" = "purple")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 12, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 12, face="bold")) 
+exp2ML_1$type <- "Word"
+F_Exp2ML_1 <- ggplot(exp2ML_1, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + facet_grid(. ~ maoriList1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 12, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 12, face="bold")) 
 
 # 2) Macron
 exp2ML_2 <- as.data.frame(effect(term="macron", mod=mExp2MaoriList))
 exp2ML_2$Macron <- "Macron = FALSE"
 exp2ML_2[exp2ML_2$macron=="TRUE",]$Macron <- "Macron = TRUE"
-exp2ML_2$type <- "Word and\nNonword"
-F_Exp2ML_2 <- ggplot(exp2ML_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word and\nNonword" = "purple")) + scale_fill_manual(values = c("Word and\nNonword" = "purple")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=15), legend.position="right", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
+exp2ML_2$type <- "Word"
+F_Exp2ML_2 <- ggplot(exp2ML_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=15), legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
 
 ggarrange(F_Exp2ML_1, F_Exp2ML_2, labels=c("a.","b."), ncol=2, widths=c(5,1))
 ```
@@ -1572,15 +1572,15 @@ exp2MP_1[exp2MP_1$maoriProf=="1",]$maoriProf1 <- "Proficiency = 1"
 exp2MP_1[exp2MP_1$maoriProf=="2",]$maoriProf1 <- "Proficiency = 2"
 exp2MP_1[exp2MP_1$maoriProf=="3",]$maoriProf1 <- "Proficiency = 3"
 exp2MP_1[exp2MP_1$maoriProf=="4",]$maoriProf1 <- "Proficiency = 4"
-exp2MP_1$type <- "Word and\nNonword"
-F_Exp2MP_1 <- ggplot(exp2MP_1, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + facet_grid(. ~ maoriProf1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word and\nNonword" = "purple")) + scale_fill_manual(values = c("Word and\nNonword" = "purple")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 12, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 12, face="bold"))
+exp2MP_1$type <- "Word"
+F_Exp2MP_1 <- ggplot(exp2MP_1, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + facet_grid(. ~ maoriProf1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 12, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 12, face="bold"))
 
 # 2) Macron
 exp2MP_2 <- as.data.frame(effect(term="macron", mod=mExp2MaoriProf))
 exp2MP_2$Macron <- "Macron = FALSE"
 exp2MP_2[exp2MP_2$macron=="TRUE",]$Macron <- "Macron = TRUE"
-exp2MP_2$type <- "Word and\nNonword"
-F_Exp2MP_2 <- ggplot(exp2MP_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word and\nNonword" = "purple")) + scale_fill_manual(values = c("Word and\nNonword" = "purple")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=15), legend.position="right", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
+exp2MP_2$type <- "Word"
+F_Exp2MP_2 <- ggplot(exp2MP_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=15), legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
 
 ggarrange(F_Exp2MP_1, F_Exp2MP_2, labels=c("a.","b."), ncol=2, widths=c(5,1))
 ```
@@ -1643,21 +1643,21 @@ exp2ME_1[exp2ME_1$maoriExpo=="4",]$maoriExpo1 <- "Exposure = 4"
 exp2ME_1[exp2ME_1$maoriExpo=="6",]$maoriExpo1 <- "Exposure = 6"
 exp2ME_1[exp2ME_1$maoriExpo=="8",]$maoriExpo1 <- "Exposure = 8"
 exp2ME_1[exp2ME_1$maoriExpo=="10",]$maoriExpo1 <- "Exposure = 10"
-exp2ME_1$type <- "Word and\nNonword"
+exp2ME_1$type <- "Word"
 exp2ME_1$maoriExpo1 <- factor(exp2ME_1$maoriExpo1, levels=c("Exposure = 2","Exposure = 4","Exposure = 6","Exposure = 8","Exposure = 10"))
-F_Exp2ME_1 <- ggplot(exp2ME_1, aes(x=n.neighbors, y=fit, color = type, fill=type)) + geom_line(size=1) + facet_grid(. ~ maoriExpo1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Neighbourhood density", y="Accuracy") + scale_color_manual(values = c("Word and\nNonword" = "purple")) + scale_fill_manual(values = c("Word and\nNonword" = "purple")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=9), axis.title=element_text(size = 9, face = "bold"),legend.text=element_text(size=9), strip.text = element_text(size = 9, face="bold"))
+F_Exp2ME_1 <- ggplot(exp2ME_1, aes(x=n.neighbors, y=fit, color = type, fill=type)) + geom_line(size=1) + facet_grid(. ~ maoriExpo1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Neighbourhood density", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=9), axis.title=element_text(size = 9, face = "bold"),legend.text=element_text(size=9), strip.text = element_text(size = 9, face="bold"))
 
 # 2) Macron
 exp2ME_2 <- as.data.frame(effect(term="macron", mod=mExp2MaoriExpo))
 exp2ME_2$Macron <- "Macron = FALSE"
 exp2ME_2[exp2ME_2$macron=="TRUE",]$Macron <- "Macron = TRUE"
-exp2ME_2$type <- "Word and\nNonword"
-F_Exp2ME_2 <- ggplot(exp2ME_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word and\nNonword" = "purple")) + scale_fill_manual(values = c("Word and\nNonword" = "purple")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=9), legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=9), axis.title=element_text(size = 9, face = "bold"),legend.text=element_text(size=9), strip.text = element_text(size = 9, face="bold"))
+exp2ME_2$type <- "Word"
+F_Exp2ME_2 <- ggplot(exp2ME_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=9), legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=9), axis.title=element_text(size = 9, face = "bold"),legend.text=element_text(size=9), strip.text = element_text(size = 9, face="bold"))
 
 # 3) Familiarity
 exp2ME_3 <- as.data.frame(effect(term="c.(familiarity)", mod=mExp2MaoriExpo))
-exp2ME_3$type <- "Word and\nNonword"
-F_Exp2ME_3 <- ggplot(exp2ME_3, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word and\nNonword" = "purple")) + scale_fill_manual(values = c("Word and\nNonword" = "purple")) + theme_bw() + theme(legend.position="right", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 10, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 10, face="bold"))
+exp2ME_3$type <- "Word"
+F_Exp2ME_3 <- ggplot(exp2ME_3, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 10, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 10, face="bold"))
 
 ggarrange(F_Exp2ME_1, labels=c("a."))
 ggarrange(F_Exp2ME_2, F_Exp2ME_3, labels=c("b.","c."), ncol=2, widths=c(1,1))
@@ -2097,16 +2097,15 @@ ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score",
 # exp2ML_1[exp2ML_1$maoriList=="4",]$maoriList1 <- "Basic knowledge = 4"
 # exp2ML_1[exp2ML_1$maoriList=="7",]$maoriList1 <- "Basic knowledge = 7"
 # exp2ML_1[exp2ML_1$maoriList=="9",]$maoriList1 <- "Basic knowledge = 9"
-# exp2ML_1$type <- "Word and\nNonword"
-F_Exp2ML_1 <- ggplot(exp2ML_1, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + facet_grid(. ~ maoriList1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word and\nNonword" = "purple")) + scale_fill_manual(values = c("Word and\nNonword" = "purple")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 12, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 12, face="bold")) 
+# exp2ML_1$type <- "Word"
+F_Exp2ML_1 <- ggplot(exp2ML_1, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + facet_grid(. ~ maoriList1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 12, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 12, face="bold")) 
 
 # 2) Macron
 # exp2ML_2 <- as.data.frame(effect(term="macron", mod=mExp2MaoriList))
 # exp2ML_2$Macron <- "Macron = FALSE"
 # exp2ML_2[exp2ML_2$macron=="TRUE",]$Macron <- "Macron = TRUE"
-# exp2ML_2$type <- "Word and\nNonword"
-F_Exp2ML_2 <- ggplot(exp2ML_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word and\nNonword" = "purple")) + scale_fill_manual(values = c("Word and\nNonword" = "purple")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=15), legend.position="right", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
+# exp2ML_2$type <- "Word"
+F_Exp2ML_2 <- ggplot(exp2ML_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=15), legend.position="none", panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
 
 ggarrange(F_Exp2ML_1, F_Exp2ML_2, labels=c("a.","b."), ncol=2, widths=c(5,1))
 ```
-
