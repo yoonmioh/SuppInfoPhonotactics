@@ -262,16 +262,6 @@ display_table = function(dat, caption, digits=3, highlight=c()) {
     kable_styling()
   return(table)
 }
-
-# A function to highlight the minimum value in a column, for presentation in a kable
-# Highlighting is accomplished by coloring red
-highlight_min = function(col, digits=1) {
-  rounded <- round(col, digits)
-  i <- which(rounded==min(rounded))
-  highlighted <- cell_spec(format(rounded, nsmall=digits), align="r")
-  highlighted[i] <- cell_spec(format(rounded[i], nsmall=digits), align="r", color="red")
-  return(highlighted)
-}
 ```
 
 # 0 Introduction {.unnumbered}
@@ -456,24 +446,27 @@ ggplot(Fig4T, aes(x=score, y=mean, group=Type, label=word)) + labs(x= "Phonotact
 
 ## Statistical analyses
 
-### Comparing the AIC score of four statistical models with measures for evaluationg participants
+### Modeling confidence ratings without participants' individual differences by an ordinal mixed-effects model
 
-```{r AIC (Exp1), echo=F, message=F, warning=F, eval=T}
-mExp1Dprime <- readRDS("exp1Dprime.rds")
-mExp1MaoriList <- readRDS("./exp1MaoriList.rds")
-mExp1MaoriProf <- readRDS("./exp1MaoriProf.rds")
-mExp1MaoriExpo <- readRDS("./exp1MaoriExpo.rds")
-tibble(
-  "Evaluation measure"=c("Dprime",
-                          "Basic knowledge",
-                          "Proficiency",
-                          "Exposure"),
-  "AIC" = c(AIC(mExp1Dprime),
-          AIC(mExp1MaoriList),
-          AIC(mExp1MaoriProf),
-          AIC(mExp1MaoriExpo))
-) %>%
-display_table(digits=1, highlight=c("AIC"), caption="Comparison of the AIC score (Experiment 1)")
+The model fitting procedure is described in the code below.
+
+```{r simple model (Exp1), echo=T, message=F, warning=F, eval=T}
+# Modify confidence ratings as discrete variables
+dataExp1$enteredResponse <- as.factor(dataExp1$enteredResponse)
+
+# Model fitting: fixed-effects & mixed-effects 
+# m1 <- clm(enteredResponse ~ (c.(n.neighbors)*c.(score) + c.(score)*macron + c.(n.neighbors)*macron + c.(length))*type, data=dataExp1)
+# anova(m1, type="III") # remove score:macron:type
+# m2 <- update(m1, . ~ . -c.(score):macron:type)
+# anova(m2, type="III") # remove n.neighbors:macron:type
+# m3 <- update(m2, . ~ . -c.(n.neighbors):macron:type)
+# anova(m3, type="III") # remove length:type
+# m4 <- update(m3, . ~ . -c.(length):type)
+# anova(m4, type="III")
+# m5 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(n.neighbors) + c.(score) + c.(length) + type|workerId) + (1 + macron|workerId) + (1|word), data=dataExp1)
+# Model didn't converge -> remove a random slope (length) by workerId
+#  m6 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(n.neighbors) + c.(score) + type|workerId) + (1 + macron|workerId) + (1|word), data=dataExp1)
+# summary(m6)
 ```
 
 ### Modeling confidence ratings with participants' d' by an ordinal mixed-effects model
@@ -1421,34 +1414,35 @@ multiplot(Fig2Exp2Gender, Fig2Exp2Education, Fig2Exp2ML, Fig2Exp2Age, Fig2Exp2Pl
 
 ## Rate of accurate definitions per word
 
-```{r accuracy rate, echo=F, message=F, warning=F, eval=T, fig.width=8, fig.height=6, fig.cap="Rate of accurate definitions per word. Words are displayed according to their phonotactic score on the x-axis and their accuracy rates are represented on the y-axis. Overlapping labels are not shown."}
-Fig6 <- dataExp2[,c("workerId","word","correct","familiarity","score")]
+```{r accuracy rate, echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=5, fig.cap="Rate of accurate definitions per word. Words are displayed according to their phonotactic score on the x-axis and their accuracy rates are represented on the y-axis. Right panel contains words without a macron and left panel displays words with a macron (or macrons). Overlapping labels are not shown."}
+Fig6 <- dataExp2[,c("workerId","word","correct","familiarity","score","macron")]
 Fig6$correct1 <- 0;Fig6[Fig6$correct=="TRUE",]$correct1 <- 1;Fig6$correct1 <- as.numeric(Fig6$correct1)
 accRate <- aggregate(Fig6$correct1, by=list(Fig6$word),  FUN=sum)
 colnames(accRate) <- c("word","nbCorrect")
 total <- length(unique(Fig6$workerId));accRate$rate <- accRate$nbCorrect/total
-wordScore <- unique(Fig6[,c("word","familiarity","score")])
-accRate <- merge(accRate, wordScore, by="word")
-ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"))
+wordScoreMacron <- unique(Fig6[,c("word","familiarity","score","macron")])
+accRate <- merge(accRate, wordScoreMacron, by="word")
+accRate$macron1 <- "Macron = TRUE"
+accRate[accRate$macron=="FALSE",]$macron1 <- "Macron = FALSE"
+ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),strip.text = element_text(size = 13, face="bold")) + xlim(c(-1.05, -0.55)) + facet_wrap(vars(macron1))
+# nrow(unique(wordScoreMacron[wordScoreMacron$macron=="TRUE",])) # 23 words containing a macron
+# nrow(unique(wordScoreMacron[wordScoreMacron$macron=="FALSE",])) # 95 words without a macron
 ```
 
 ## Statistical analyses
 
-### Comparing the AIC score of four statistical models with measures for evaluationg participants
+### Modeling accuracy without participants' individual differences by a mixed-effects binary logistic regression model
 
-```{r AIC (Exp2), echo=F, message=F, warning=F, eval=T}
-mExp2MaoriList <- readRDS("./exp2MaoriList.rds")
-mExp2MaoriProf <- readRDS("./exp2MaoriProf.rds")
-mExp2MaoriExpo <- readRDS("./exp2MaoriExpo.rds")
-tibble(
-  "Evaluation measure"=c("Basic knowledge",
-                          "Proficiency",
-                          "Exposure"),
-  "AIC" = c(AIC(mExp2MaoriList),
-          AIC(mExp2MaoriProf),
-          AIC(mExp2MaoriExpo))
-) %>%
-display_table(digits=1, highlight=c("AIC"), caption="Comparison of the AIC score (Experiment 2)")
+The model fitting procedure is described in the code below.
+
+```{r simple model (Exp2), echo=T, message=F, warning=F, eval=T}
+# Model fitting: fixed-effects & mixed-effects
+# m1 <- glm(correct ~ macron*c.(familiarity) + c.(score) + c.(n.neighbors) + c.(length), data=dataExp2, family=binomial(link="logit"))
+# summary(m1) # remove score
+# m2 <- update(m1, . ~ . -c.(score))
+# anova(m1, m2, test="Chisq") # not significant, choose m2 (remove score)
+# m3 <- glmer(correct ~ macron*c.(familiarity) + c.(score) + c.(n.neighbors) + c.(length) + (1 + macron*c.(familiarity) + c.(score) + c.(n.neighbors) + c.(length)|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# summary(m3)
 ```
 
 ### Modeling accuracy with participants' basic knowledge of Māori by a mixed-effects binary logistic regression model
@@ -2075,15 +2069,19 @@ ggarrange(dprime_mean_1, dprime_dist_1, dprime_mean_2, dprime_dist_2, dprime_mea
 
 ## Figure 6
 
-```{r Figure 6, echo=F, message=F, warning=F, eval=T, fig.width=8, fig.height=6, fig.cap="Figure 6: Rate of accurate definitions per word. Words are displayed according to their phonotactic score on the x-axis and their accuracy rates are represented on the y-axis. Overlapping labels are not shown."}
-Fig6 <- dataExp2[,c("workerId","word","correct","familiarity","score")]
+```{r Figure 6, echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=5, fig.cap="Figure 6: Rate of accurate definitions per word. Words are displayed according to their phonotactic score on the x-axis and their accuracy rates are represented on the y-axis. Right panel contains words without a macron and left panel displays words with a macron (or macrons). Overlapping labels are not shown."}
+Fig6 <- dataExp2[,c("workerId","word","correct","familiarity","score","macron")]
 Fig6$correct1 <- 0;Fig6[Fig6$correct=="TRUE",]$correct1 <- 1;Fig6$correct1 <- as.numeric(Fig6$correct1)
 accRate <- aggregate(Fig6$correct1, by=list(Fig6$word),  FUN=sum)
 colnames(accRate) <- c("word","nbCorrect")
 total <- length(unique(Fig6$workerId));accRate$rate <- accRate$nbCorrect/total
-wordScore <- unique(Fig6[,c("word","familiarity","score")])
-accRate <- merge(accRate, wordScore, by="word")
-ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"))
+wordScoreMacron <- unique(Fig6[,c("word","familiarity","score","macron")])
+accRate <- merge(accRate, wordScoreMacron, by="word")
+accRate$macron1 <- "Macron = TRUE"
+accRate[accRate$macron=="FALSE",]$macron1 <- "Macron = FALSE"
+ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),strip.text = element_text(size = 13, face="bold")) + xlim(c(-1.05, -0.55)) + facet_wrap(vars(macron1))
+# nrow(unique(wordScoreMacron[wordScoreMacron$macron=="TRUE",])) # 23 words containing a macron (or macrons)
+# nrow(unique(wordScoreMacron[wordScoreMacron$macron=="FALSE",])) # 95 words without a macron
 ```
 
 ## Figure 7
