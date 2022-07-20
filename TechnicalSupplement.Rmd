@@ -338,7 +338,7 @@ cut <- mean(median_RT$median)-2*sd(median_RT$median)
 
 # Add a column to indicate the presence of macrons
 dataExp1$macron <- FALSE
-dataExp1[grepl("ā|ē|ī|ō|ū",dataExp1$word),]$macron <- TRUE
+dataExp1[grepl("\U0101|\U0113|\U012B|\U014D|\U016B",dataExp1$word),]$macron <- TRUE
 dataExp1$macron <- as.factor(dataExp1$macron)
 ```
 
@@ -1329,7 +1329,7 @@ dataExp2 <- dataExp2[!dataExp2$workerId=="eaed6b4d",]
 
 # Add a column to indicate the presence of macrons
 dataExp2$macron <- FALSE
-dataExp2[grepl("ā|ē|ī|ō|ū",dataExp2$word),]$macron <- TRUE
+dataExp2[grepl("\U0101|\U0113|\U012B|\U014D|\U016B",dataExp2$word),]$macron <- TRUE
 dataExp2$macron <- as.factor(dataExp2$macron)
 ```
 
