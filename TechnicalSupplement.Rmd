@@ -450,7 +450,7 @@ ggplot(Fig4T, aes(x=score, y=mean, group=Type, label=word)) + labs(x= "Phonotact
 
 The model fitting procedure is described in the code below.
 
-```{r simple model (Exp1), echo=T, message=F, warning=F, eval=T}
+```{r model1 (Exp1), echo=T, message=F, warning=F, eval=T}
 # Modify confidence ratings as discrete variables
 dataExp1$enteredResponse <- as.factor(dataExp1$enteredResponse)
 
@@ -466,7 +466,107 @@ dataExp1$enteredResponse <- as.factor(dataExp1$enteredResponse)
 # m5 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(n.neighbors) + c.(score) + c.(length) + type|workerId) + (1 + macron|workerId) + (1|word), data=dataExp1)
 # Model didn't converge -> remove a random slope (length) by workerId
 #  m6 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(n.neighbors) + c.(score) + type|workerId) + (1 + macron|workerId) + (1|word), data=dataExp1)
-# summary(m6)
+# summary(m6) # Model didn't converge -> remove random slopes (lenght and macron) by workerId
+# m7 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(n.neighbors) + c.(score) + type|workerId) + (1|word), data=dataExp1)
+# Model didn't converge -> remove random slopes (length, macron and type) by workerId
+# m8 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1|word), data=dataExp1)
+# summary(m8) # remove score:macron
+# m9 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(n.neighbors)*macron + c.(length) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1|word), data=dataExp1)
+# anova(m8, m9) # not significant, choose m9 (remove score:macron)
+# summary(m9) # remove n.neighbors:macron
+# m10 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(length) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1|word), data=dataExp1)
+# anova(m9, m10) # not significant, choose m10 (remove n.neighbors:macron)
+# summary(m10) # remove type:macron
+# m11 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron + c.(length) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1|word), data=dataExp1)
+# anova(m10, m11) # not significant, choose m11 (remove type:macron) -> add random slopes (length and macron) by workerId
+# m12 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron + c.(length) + (1 + c.(n.neighbors) + c.(score) + c.(length) + macron|workerId) + (1|word), data=dataExp1)
+# summary(m12) # remove length
+# m13 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron + (1 + c.(n.neighbors) + c.(score) + macron|workerId) + (1|word), data=dataExp1)
+# anova(m12, m13) # not significant, choose m12 (do not remove length) 
+# saveRDS(m12, file = "exp1.rds")
+mExp1 <- readRDS("exp1.rds")
+clm_table(mExp1, caption="Model summary of confidence ratings without participants' individual differences. All numeric variables in this model are centered.")
+```
+
+### Effect plots from the model without participants' individual differences
+
+```{r model1 (Exp1) effect, echo=F, message=F, warning=F, eval=T, fig.width=13, fig.height=7, fig.cap="Effect plots of: the interaction between the neighbourhood density, the distinction between non vs. real word stimuli, and phonotactic score (Fig.a); and the presence of macrons (Fig.b). For plots involving interactions with neighbourhood density, the upper panel represents stimuli with high neighbourhood density, and the lower panel represents stimuli with low neighbourhood density. Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings."}
+nn_cuts = c(32, 16)
+score_cuts = c(-0.5, -0.8)
+
+# 1) Type*Neighbourhood density*Phonotactic score
+exp1_mean_1 <- clm_plotdat(mExp1, c("type", "n.neighbors", "score"), xlevels=list(n.neighbors=nn_cuts), type="mean") %>%
+  mutate(
+    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
+    n.neighbors = factor(n.neighbors, levels=nn_cuts)
+  ) %>%
+  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
+  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
+  geom_line(size=1) +
+  xlab("Phonotactic score") +
+  ylab("Predicted mean rating") + 
+  facet_grid(n.neighbors ~ ., labeller=label_both, switch="y") +
+  ylim(c(2.3, 5)) +
+  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
+  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
+  theme_bw() + 
+  theme(legend.position="none", panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face   = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
+
+exp1_dist_1 <- clm_plotdat(mExp1, c("type", "n.neighbors", "score"), xlevels=list(n.neighbors=nn_cuts), type="dist") %>%
+  mutate(
+    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
+    n.neighbors = factor(n.neighbors, levels=nn_cuts)
+  ) %>%
+  rename("Rating" = response) %>%
+  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
+  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
+  geom_line(size=1) +
+  xlab("Phonotactic score") +
+  ylab("Probability of rating") + 
+  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
+  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
+  facet_grid(n.neighbors ~ Rating, labeller=label_both, switch="y") +
+  ylim(0, 1) +  
+  theme_bw() + 
+  theme(legend.position="right", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
+
+# 2) Macron
+exp1_mean_2 <- clm_plotdat(mExp1, "macron", type="mean") %>%
+  mutate(
+    type="Word and\nNonword",
+    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
+  ) %>%
+  ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
+  geom_point(size=4, position=position_dodge(width=0.2)) +
+  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
+  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
+  xlab("Presence of macron") +
+  ylab("Predicted mean rating") + 
+  ylim(c(2.3, 5)) +
+  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
+  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
+  theme_bw() + 
+  theme(plot.title = element_text(hjust = 0.5, size=15),legend.position="none",legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),   legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
+
+exp1_dist_2 <- clm_plotdat(mExp1, "macron", type="dist") %>%
+  mutate(
+    type="Word and\nNonword",
+    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
+  ) %>%
+  ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
+  geom_point(size=4, position=position_dodge(width=0.2)) +
+  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
+  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
+  xlab("Presence of macron") +
+  ylab("Probability of rating") + 
+  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
+  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
+  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
+  ylim(0, 1) +  
+  theme_bw() + 
+  theme(plot.title = element_text(hjust = 0.5, size=15),legend.position="right",legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face= "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
+
+ggarrange(exp1_mean_1, exp1_dist_1,exp1_mean_2, exp1_dist_2, labels=c("a.","","b.",""), ncol=2, widths=c(1,6), heights=c(2,1))
 ```
 
 ### Modeling confidence ratings with participants' d' by an ordinal mixed-effects model
@@ -1414,7 +1514,7 @@ multiplot(Fig2Exp2Gender, Fig2Exp2Education, Fig2Exp2ML, Fig2Exp2Age, Fig2Exp2Pl
 
 ## Rate of accurate definitions per word
 
-```{r accuracy rate, echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=5, fig.cap="Rate of accurate definitions per word. Words are displayed according to their phonotactic score on the x-axis and their accuracy rates are represented on the y-axis. Right panel contains words without a macron and left panel displays words with a macron (or macrons). Overlapping labels are not shown."}
+```{r accuracy rate, echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=5, fig.cap="Rate of accurate definitions per word. Words are displayed according to their phonotactic score on the x-axis and their accuracy rates are represented on the y-axis."}
 Fig6 <- dataExp2[,c("workerId","word","correct","familiarity","score","macron")]
 Fig6$correct1 <- 0;Fig6[Fig6$correct=="TRUE",]$correct1 <- 1;Fig6$correct1 <- as.numeric(Fig6$correct1)
 accRate <- aggregate(Fig6$correct1, by=list(Fig6$word),  FUN=sum)
@@ -1424,26 +1524,12 @@ wordScoreMacron <- unique(Fig6[,c("word","familiarity","score","macron")])
 accRate <- merge(accRate, wordScoreMacron, by="word")
 accRate$macron1 <- "Macron = TRUE"
 accRate[accRate$macron=="FALSE",]$macron1 <- "Macron = FALSE"
-ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),strip.text = element_text(size = 13, face="bold")) + xlim(c(-1.05, -0.55)) + facet_wrap(vars(macron1))
+ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold")) + xlim(c(-1.05, -0.55)) # + facet_wrap(vars(macron1))
 # nrow(unique(wordScoreMacron[wordScoreMacron$macron=="TRUE",])) # 23 words containing a macron
 # nrow(unique(wordScoreMacron[wordScoreMacron$macron=="FALSE",])) # 95 words without a macron
 ```
 
 ## Statistical analyses
-
-### Modeling accuracy without participants' individual differences by a mixed-effects binary logistic regression model
-
-The model fitting procedure is described in the code below.
-
-```{r simple model (Exp2), echo=T, message=F, warning=F, eval=T}
-# Model fitting: fixed-effects & mixed-effects
-# m1 <- glm(correct ~ macron*c.(familiarity) + c.(score) + c.(n.neighbors) + c.(length), data=dataExp2, family=binomial(link="logit"))
-# summary(m1) # remove score
-# m2 <- update(m1, . ~ . -c.(score))
-# anova(m1, m2, test="Chisq") # not significant, choose m2 (remove score)
-# m3 <- glmer(correct ~ macron*c.(familiarity) + c.(score) + c.(n.neighbors) + c.(length) + (1 + macron*c.(familiarity) + c.(score) + c.(n.neighbors) + c.(length)|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# summary(m3)
-```
 
 ### Modeling accuracy with participants' basic knowledge of Māori by a mixed-effects binary logistic regression model
 
