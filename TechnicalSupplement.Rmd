@@ -1531,6 +1531,62 @@ ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score",
 
 ## Statistical analyses
 
+### Modeling accuracy without participants' individual differences by a mixed-effects binary logistic regression model
+
+The model fitting procedure is described in the code below.
+
+```{r model2 (Exp2), echo=T, message=F, warning=F, eval=T}
+# Model fitting: fixed-effects & mixed-effects
+# m1 <- glm(correct ~ (c.(score) + c.(n.neighbors) + c.(familiarity) + macron)^2 + c.(length), data=dataExp2, family=binomial(link="logit"))
+# summary(m1) # remove familiarity:macron
+# m2 <- update(m1, . ~ . -c.(familiarity):macron)
+# anova(m1, m2, test="Chisq") # not significant, choose m2 (remove familiarity:macron)
+# summary(m2) # remove score:n.neighbors
+# m3 <- update(m2, . ~ . -c.(score):c.(n.neighbors))
+# anova(m2, m3, test="Chisq") # not significant, choose m3 (remove score:n.neighbors)
+# summary(m3) # remove score:familiarity
+# m4 <- update(m3, . ~ . -c.(score):c.(familiarity))
+# anova(m3, m4, test="Chisq") # not significant, choose m4 (remove score:familiarity)
+# m5 <- glmer(correct ~ c.(n.neighbors)*c.(familiarity) + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(score) + c.(length) + c.(n.neighbors) + c.(familiarity) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# summary(m5) # remove n.neighbors:familiarity
+# m6 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(score) + c.(length) + c.(n.neighbors) + c.(familiarity) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# anova(m5, m6) # not significant, choose m6 (remove n.neighbors:familiarity)
+# summary(m6) # singular fit, remove random slopes (n.neighbors, length and macron) by workerId
+# m7 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(score) + c.(familiarity)|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# summary(m7) # remove macron:score
+# m8 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + c.(score) + c.(length) + (1 + c.(score) + c.(familiarity)|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# anova(m7, m8) # not significant, choose m8 (remove macron:score)
+# summary(m8) # remove score
+# m9 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + c.(length) + (1 + c.(familiarity)|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# anova(m8, m9) # not significant, choose m9 (remove score)
+# summary(m9) # add random slopes (length and macron) by workerId
+# m10 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + c.(length) + (1 + c.(familiarity) + c.(length) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# summary(m10) # remove n.neighbors:macron
+# m11 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors) + macron + c.(length) + (1 + c.(familiarity) + c.(length) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# anova(m10, m11) # not significant, choose m11 (remove n.neighbors:macron)
+# summary(m11) # remove n.neighbors
+# m12 <- glmer(correct ~ c.(familiarity) + macron + c.(length) + (1 + c.(familiarity) + c.(length) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# anova(m11, m12) # not significant, choose m12 (remove n.neighbors)
+# summary(m12) # remove length 
+# m13 <- glmer(correct ~ c.(familiarity) + macron + (1 + c.(familiarity) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# anova(m12, m13) # significant, choose m12 (do not remove length)
+# summary(m12) # remove macron
+# m14 <- glmer(correct ~ c.(familiarity) + c.(length) + (1 + c.(familiarity) + c.(length)|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# anova(m12, m14) # significant, choose m12 (do not remove macron)
+# saveRDS(m12, file = "exp2.rds")
+mExp2 <- readRDS("./exp2.rds")
+logistic_table(mExp2, caption="Model summary of accuracy without participants' individual differences. All numeric variables in this model are centered.")
+```
+
+### Effect plot from the model without participants' individual differences
+
+```{r model2 (Exp2) effect, echo=F, message=F, warning=F, eval=T, fig.width=5, fig.height=3.5, fig.cap="Effect plot of familiarity."}
+# 1) Familiarity
+exp2_1 <- as.data.frame(effect(term="c.(familiarity)", mod=mExp2))
+exp2_1$type <- "Word"
+ggplot(exp2_1, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 10, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 10, face="bold"))
+```
+
 ### Modeling accuracy with participants' basic knowledge of Māori by a mixed-effects binary logistic regression model
 
 The model fitting procedure is described in the code below.
