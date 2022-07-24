@@ -1559,32 +1559,38 @@ The model fitting procedure is described in the code below.
 # summary(m8) # remove score
 # m9 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + c.(length) + (1 + c.(familiarity)|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
 # anova(m8, m9) # not significant, choose m9 (remove score)
-# summary(m9) # add random slopes (length and macron) by workerId
-# m10 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + c.(length) + (1 + c.(familiarity) + c.(length) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# summary(m9) # add a random slope (macron) by workerId
+# m10 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + c.(length) + (1 + c.(familiarity) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
 # summary(m10) # remove n.neighbors:macron
-# m11 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors) + macron + c.(length) + (1 + c.(familiarity) + c.(length) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# m11 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors) + macron + c.(length) + (1 + c.(familiarity) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
 # anova(m10, m11) # not significant, choose m11 (remove n.neighbors:macron)
 # summary(m11) # remove n.neighbors
-# m12 <- glmer(correct ~ c.(familiarity) + macron + c.(length) + (1 + c.(familiarity) + c.(length) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# m12 <- glmer(correct ~ c.(familiarity) + macron + c.(length) + (1 + c.(familiarity) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
 # anova(m11, m12) # not significant, choose m12 (remove n.neighbors)
 # summary(m12) # remove length 
 # m13 <- glmer(correct ~ c.(familiarity) + macron + (1 + c.(familiarity) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# anova(m12, m13) # significant, choose m12 (do not remove length)
-# summary(m12) # remove macron
-# m14 <- glmer(correct ~ c.(familiarity) + c.(length) + (1 + c.(familiarity) + c.(length)|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# anova(m12, m14) # significant, choose m12 (do not remove macron)
-# saveRDS(m12, file = "exp2.rds")
+# anova(m12, m13) # not significant, choose m13 (remove length)
+# saveRDS(m13, file = "exp2.rds")
 mExp2 <- readRDS("./exp2.rds")
 logistic_table(mExp2, caption="Model summary of accuracy without participants' individual differences. All numeric variables in this model are centered.")
 ```
 
-### Effect plot from the model without participants' individual differences
+### Effect plots from the model without participants' individual differences
 
-```{r model2 (Exp2) effect, echo=F, message=F, warning=F, eval=T, fig.width=5, fig.height=3.5, fig.cap="Effect plot of familiarity."}
+```{r model2 (Exp2) effect, echo=F, message=F, warning=F, eval=T, fig.width=7, fig.height=2.5, fig.cap="Effect plots of: familiarity (Fig.a); and the presence of macrons (Fig.b)."}
 # 1) Familiarity
 exp2_1 <- as.data.frame(effect(term="c.(familiarity)", mod=mExp2))
 exp2_1$type <- "Word"
-ggplot(exp2_1, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 10, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 10, face="bold"))
+F_Exp2_1 <- ggplot(exp2_1, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 10, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 10, face="bold"))
+
+# 2) Macron
+exp2_2 <- as.data.frame(effect(term="macron", mod=mExp2))
+exp2_2$Macron <- "Macron = FALSE"
+exp2_2[exp2_2$macron=="TRUE",]$Macron <- "Macron = TRUE"
+exp2_2$type <- "Word"
+F_Exp2_2 <- ggplot(exp2_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=15), legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
+
+ggarrange(F_Exp2_1, F_Exp2_2, labels=c("a.","b."), ncol=2)
 ```
 
 ### Modeling accuracy with participants' basic knowledge of Māori by a mixed-effects binary logistic regression model
