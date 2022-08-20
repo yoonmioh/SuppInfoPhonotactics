@@ -1522,7 +1522,7 @@ multiplot(Fig2Exp2Gender, Fig2Exp2Education, Fig2Exp2ML, Fig2Exp2Age, Fig2Exp2Pl
 
 ## Rate of accurate definitions per word
 
-```{r accuracy rate, echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=5, fig.cap="Rate of accurate definitions per word. Words are displayed according to their phonotactic score on the x-axis and their accuracy rates are represented on the y-axis."}
+```{r accuracy rate, echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=10, fig.cap="Rate of accurate definitions per word. Words are displayed according to their phonotactic score (Fig.a) / neighbourhood density (Fig.b) on the x-axis and their accuracy rates are represented on the y-axis."}
 Fig6 <- dataExp2[,c("workerId","word","correct","familiarity","score","macron")]
 Fig6$correct1 <- 0;Fig6[Fig6$correct=="TRUE",]$correct1 <- 1;Fig6$correct1 <- as.numeric(Fig6$correct1)
 accRate <- aggregate(Fig6$correct1, by=list(Fig6$word),  FUN=sum)
@@ -1530,11 +1530,18 @@ colnames(accRate) <- c("word","nbCorrect")
 total <- length(unique(Fig6$workerId));accRate$rate <- accRate$nbCorrect/total
 wordScoreMacron <- unique(Fig6[,c("word","familiarity","score","macron")])
 accRate <- merge(accRate, wordScoreMacron, by="word")
-accRate$macron1 <- "Macron = TRUE"
-accRate[accRate$macron=="FALSE",]$macron1 <- "Macron = FALSE"
-ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold")) + xlim(c(-1.05, -0.55)) # + facet_wrap(vars(macron1))
-# nrow(unique(wordScoreMacron[wordScoreMacron$macron=="TRUE",])) # 23 words containing a macron
-# nrow(unique(wordScoreMacron[wordScoreMacron$macron=="FALSE",])) # 95 words without a macron
+Fig6_PS <- ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"))
+
+Fig6_ND <- dataExp2[,c("workerId","word","correct","familiarity","n.neighbors","macron")]
+Fig6_ND$correct1 <- 0;Fig6_ND[Fig6_ND$correct=="TRUE",]$correct1 <- 1;Fig6_ND$correct1 <- as.numeric(Fig6_ND$correct1)
+accRate <- aggregate(Fig6_ND$correct1, by=list(Fig6_ND$word),  FUN=sum)
+colnames(accRate) <- c("word","nbCorrect")
+total <- length(unique(Fig6_ND$workerId));accRate$rate <- accRate$nbCorrect/total
+wordNDMacron <- unique(Fig6_ND[,c("word","familiarity","n.neighbors","macron")])
+accRate <- merge(accRate, wordNDMacron, by="word")
+Fig6_ND <- ggplot(accRate, aes(x=n.neighbors, y=rate, label=word)) + labs(x= "Neighbourhood density", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"))
+
+ggarrange(Fig6_PS, Fig6_ND, labels=c("a.","b."))
 ```
 
 ## Statistical analyses
@@ -2298,7 +2305,7 @@ ggarrange(exp1_mean_1, exp1_dist_1,exp1_mean_2, exp1_dist_2, labels=c("a.","","b
 
 ## Figure 6
 
-```{r Figure 6, echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=5, fig.cap="Figure 6: Rate of accurate definitions per word. Words are displayed according to their phonotactic score on the x-axis and their accuracy rates are represented on the y-axis."}
+```{r Figure 6, echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=10, fig.cap="Figure 6: Rate of accurate definitions per word. Words are displayed according to their phonotactic score (Fig.a) / neighbourhood density (Fig.b) on the x-axis and their accuracy rates are represented on the y-axis."}
 Fig6 <- dataExp2[,c("workerId","word","correct","familiarity","score","macron")]
 Fig6$correct1 <- 0;Fig6[Fig6$correct=="TRUE",]$correct1 <- 1;Fig6$correct1 <- as.numeric(Fig6$correct1)
 accRate <- aggregate(Fig6$correct1, by=list(Fig6$word),  FUN=sum)
@@ -2306,11 +2313,18 @@ colnames(accRate) <- c("word","nbCorrect")
 total <- length(unique(Fig6$workerId));accRate$rate <- accRate$nbCorrect/total
 wordScoreMacron <- unique(Fig6[,c("word","familiarity","score","macron")])
 accRate <- merge(accRate, wordScoreMacron, by="word")
-accRate$macron1 <- "Macron = TRUE"
-accRate[accRate$macron=="FALSE",]$macron1 <- "Macron = FALSE"
-ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold")) + xlim(c(-1.05, -0.55)) # + facet_wrap(vars(macron1))
-# nrow(unique(wordScoreMacron[wordScoreMacron$macron=="TRUE",])) # 23 words containing a macron
-# nrow(unique(wordScoreMacron[wordScoreMacron$macron=="FALSE",])) # 95 words without a macron
+Fig6_PS <- ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"))
+
+Fig6_ND <- dataExp2[,c("workerId","word","correct","familiarity","n.neighbors","macron")]
+Fig6_ND$correct1 <- 0;Fig6_ND[Fig6_ND$correct=="TRUE",]$correct1 <- 1;Fig6_ND$correct1 <- as.numeric(Fig6_ND$correct1)
+accRate <- aggregate(Fig6_ND$correct1, by=list(Fig6_ND$word),  FUN=sum)
+colnames(accRate) <- c("word","nbCorrect")
+total <- length(unique(Fig6_ND$workerId));accRate$rate <- accRate$nbCorrect/total
+wordNDMacron <- unique(Fig6_ND[,c("word","familiarity","n.neighbors","macron")])
+accRate <- merge(accRate, wordNDMacron, by="word")
+Fig6_ND <- ggplot(accRate, aes(x=n.neighbors, y=rate, label=word)) + labs(x= "Neighbourhood density", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"))
+
+ggarrange(Fig6_PS, Fig6_ND, labels=c("a.","b."))
 ```
 
 ## Figure 7
