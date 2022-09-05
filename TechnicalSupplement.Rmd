@@ -19,7 +19,7 @@ output:
     toc: yes
     toc_depth: '3'
   word_document: default
-subtitle: Participant filtering, statistical analysis, plots and tables
+subtitle: Supplementary materials
 ---
 
 ```{r setup, echo=F, message=F, warning=F}
@@ -41,19 +41,10 @@ library(MASS)
 library(kableExtra)
 library(ggrepel)
 
-knitr::opts_chunk$set(echo=T, message=F, warning=F, fig.show='hold', results='hold', fig.align='center')
-```
+knitr::opts_chunk$set(echo=F, message=F, warning=F, fig.show='hold', results='hold', fig.align='center')
 
-<style>
-caption, .caption {
-font-weight: normal;
-font-size: 100%;
-text-align: left}
-a[hreflang]:before{}
-</style>
-
-```{r local_functions, echo=F}
 # Local functions
+
 # A function to center variables
 c. <- function (x) scale(x, scale = FALSE)
 
@@ -264,16 +255,40 @@ display_table = function(dat, caption, digits=3, highlight=c()) {
 }
 ```
 
+<style>
+caption, .caption {
+font-weight: normal;
+font-size: 100%;
+text-align: left}
+a[hreflang]:before{}
+</style>
+
 # 0 Introduction {.unnumbered}
 
-This R Markdown script contains all the code used for outlier detection, data analysis and plotting; including additional statistical analyses and all the statistical models with summaries.
+This R Markdown document contains all the code used for outlier detection, data analysis, and plotting, including all the statistical models with summaries. It also lists the questions from the post-experiment questionnaire and the stimuli used in both experiments.
 
 # Experiment 1
-## Participant exclusions
 
-The participant filtering process of Experiment 1 is detailed in the code below.
+Oh et al. (2020) found that non-Māori-speaking New Zealanders were able to distinguish real Māori words from Māori-like nonwords, and that their ratings in this task were affected by the phonotactic probability of a stimulus (word or nonword): the higher the phonotactic probability of the stimulus, the more confident participants were that it was a real Māori word. These effects held for words of all frequencies. Panther et al. (under review) replicated these effects, and their raw data suggested that the effect of phonotactic probability may be weaker for high-frequency words (which participants are likely to have encountered often and thus may know or recognize explicitly) than for low-frequency words (which participants are less likely to know explicitly). In Experiment 1, we investigate this idea, by asking whether the effects of phonotactic probability can be replicated among words of which participants are likely to have explicit awareness and recognition. Experiment 1 also serves to establish which words participants are, indeed, readily able to recognize, to feed into our investigation of their knowledge of those words in Experiment 2.
 
-```{r data (Exp1), echo=T, message=F, warning=F, eval=T}
+In Experiment 1, participants were presented with a series of word and non-word stimuli, one at a time, and rated how confident they were that each was a real word of Māori. The real words were carefully hand-selected based on the intuition that many non-Māori-speaking New Zealanders are assumed to be exposed to them and to have some degree of knowledge of them; this intuition stems from their frequency of use in Māori and in New Zealand English (as borrowings). Due to these selection criteria, we expected non-Māori-speaking New Zealanders to be able to recognize many of the words in the experiment. The non-words were constructed by concatenating valid Māori syllables in such a way as to span a similar range of lengths as the real words, and were then filtered to remove items with low phonotactic probability.
+
+## Data
+
+### Exclusions
+
+For Experiment 1, we excluded:  
+
+* 11 participants with suspicious patterns of responses, suggesting they did not complete the experiment in good faith;  
+* 4 participants with a negative $d^\prime$, indicating that they rated a higher proportion of nonwords than real words with 4 or 5 ('confident that is IS a real word'), thus performing worse than chance (which is highly unexpected given the high-profile nature of the real words);  
+* 1 participant who was not a native speaker of English;  
+* 11 participants who indicated above-basic ability to speak or comprehend te reo Māori (i.e. rated greater than 2 on a scale of 0-5 for either speaking or comprehension);  
+* 2 participants who learned their English outside NZ and have been living outside NZ for more than 2 years;  
+* all responses to the stimulus *whanau*, which was supposed to be *whānau* (with a macron).
+
+The exclusion process for Experiment 1 is detailed in the code below.
+
+```{r data (Exp1)}
 # Loading the data to filter out participants
 dataExp1 <- read.delim("./dataAnonNotFilteredExp1_added.txt", sep ="\t", header = TRUE, encoding="UTF-8")
 
@@ -345,7 +360,7 @@ dataExp1$macron <- as.factor(dataExp1$macron)
 dataExp1 <- dataExp1[!dataExp1$word=="whanau",]
 ```
 
-## Dataset structure
+### Dataset structure
 
 The data is structured as follows:
 
@@ -374,14 +389,17 @@ The data is structured as follows:
   - <span style="color:blue">*whichPolynesian*</span> is the information regarding participants' knowledge of Polynesian languages, if they know any.
   - <span style="color:blue">*impairments*</span> is the answer to the question whether participants have a history of any speech or language impairments.
   - <span style="color:blue">*maoriExpo*</span> is each participant's level of exposure to Māori (with a scale ranging from 0 to 10).
-  - <span style="color:blue">*score*</span> is the phonotactic score based on the 1,629 most frequent morph types derived from all words in the dictionary, normalized by the phonemic length of stimuli, ignoring vowel length distinctions, assuming that participants are attempting to parse stimuli into morphs.
+  - <span style="color:blue">*score*</span> is the phonotactic score (i.e. triphone-based phonotactic probability, normalized by phonemic length) that Oh et al. (2020) identified as most closely explaining non-Māori-speaking New Zealanders' wellformedness ratings of nonwords. It ignores vowel length distinctions (signalled orthographically by a macron) and is based on the 1,629 most frequent morph types derived from all words in the Te Aka dictionary, assuming that participants are attempting to parse stimuli into morphs.
+  - <span style="color:blue">*macron*</span> indicates whether or not the stimulus includes a macron, which orthgraphically indicates a long vowel. We include the presence of macrons in our analysis because it is visually salient, but is not otherwise reflected in terms such as phonotactic score.
   - <span style="color:blue">*n.neighbors*</span> is the the number of words (from the Māori dictionary) that can be reached by adding, deleting, or substituting one phoneme in each stimulus.
   - <span style="color:blue">*mean.neighbor.logfreq*</span> is the frequency-weighted phonological neighbourhood density.
-  - <span style="color:blue">*dprime*</span> is the measure of sensitivity for each participant's performance.
+  - <span style="color:blue">*dprime*</span> is the measure of sensitivity for each participant's performance, reflecting a normalized difference between a participant's *hit rate* (proportion of real words given a rating of 4 or 5) and their *false alarm rate* (proportion of nonwords given a rating of 4 or 5).
 
-## Overview of participants’ sociolinguistic profile in Experiment 1
+## Participants
 
-```{r participant profile (Exp1), echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=6, fig.cap="Overview of participants' sociolinguistic profile in Experiment 1. Bars are labeled with their counts for each category."} 
+After exclusions, we were left with data from 101 participants. A summary of the demographics of the participants is presented below.
+
+```{r participant profile (Exp1), fig.width=9, fig.height=6, fig.cap="Overview of participants' sociolinguistic profile in Experiment 1. Bars are labeled with their counts for each category."} 
 # 1) Gender
 Exp1Gender <- unique(dataExp1[,c("gender","workerId")])
 Exp1GenderT <- as.data.frame(table(Exp1Gender$gender));names(Exp1GenderT) <- c("gender","freq")
@@ -422,108 +440,261 @@ Fig1Exp1ME <- ggplot(Exp1ME, aes(x=maoriExpo, color=maoriExpo, fill=maoriExpo))+
 multiplot(Fig1Exp1Gender, Fig1Exp1Education, Fig1Exp1ML, Fig1Exp1Age, Fig1Exp1Place, Fig1Exp1ME, cols=2) 
 ```
 
-## Length distribution of real word stimuli
+## Stimuli
 
-```{r stimuli length, echo=F, message=F, warning=F, eval=T, fig.width=8, fig.height=4.5, fig.cap="Length distribution of real word stimuli. The length of stimulus (the number of phonemes) is represented on the x-axis and the number of stimuli is represented on the y-axis."} 
-lengthT <- unique(dataExp1[c("word", "length","type")]);lengthT <- lengthT[lengthT$type=="real",]
-lengthT$length <- as.factor(lengthT$length)
-lengthTT <- as.data.frame(table(lengthT$length));names(lengthTT) <- c("length","freq")
+The dataset contains responses to 131 real Māori words and 209 non-words. The properties of these stimuli are illustrated below.
 
-ggplot(lengthT, aes(x = length, color= length, fill= length))  + theme_classic() + 
-geom_bar(aes(fill= length, color= length),size=.1,show.legend=F) + labs(x = "Length", y = "Number of stimuli") + geom_text(data=lengthTT, aes(x=length, y=freq, label=freq),color="black", vjust=-0.2, size=3) + 
-theme(legend.position="none")
+```{r stimuli (Exp1), fig.width=8, fig.height=6, fig.cap="Overview of word and non-word stimulus properties for Experiment 1. Distributions of non-word properties are shown in the left facets; distributions of word properties are shown in the right facets."} 
+stimuliExp1 = dataExp1 %>% 
+  dplyr::select(word, type, macron, length, score, n.neighbors, mean.neighbor.logfreq, enteredResponse) %>% 
+  group_by(word, type, macron, length, score, n.neighbors, mean.neighbor.logfreq) %>%
+  summarise(
+    mean.rating = mean(as.numeric(enteredResponse))
+  ) %>%
+  ungroup() %>%
+  mutate(
+    type = factor(type, levels=c("non", "real"), labels=c("Nonwords", "Words"))
+  )
+
+score_plot = stimuliExp1 %>%
+  ggplot(., aes(x=score)) +
+  geom_density(show.legend=F) +
+  facet_grid(~ type) +
+  labs(x="Phonotactic score", y="Density") +
+  theme_bw() +
+  theme(
+    panel.grid = element_blank(),
+    strip.text = element_text(size=12)
+  )
+
+macron_plot = stimuliExp1 %>%
+  mutate(
+    macron = factor(macron, levels=c(TRUE, FALSE), labels=c("Has macron(s)", "No macron(s)"))
+  ) %>%
+  count(across(c(type, macron)), .drop=FALSE) %>%
+  ggplot(., aes(x=macron, y=n, fill=factor(macron))) +
+  geom_col(show.legend=F) +
+  geom_text(aes(label=n), vjust=-0.2) +
+  facet_grid(~ type) +
+  labs(x="Presence of macron", y="Number of stimuli") +
+  scale_y_continuous(expand=expansion(add=c(0,45))) +
+  theme_bw() +
+  theme(
+    panel.grid = element_blank(),
+    strip.text = element_text(size=12)
+  )
+
+length_plot = stimuliExp1 %>%
+  mutate(
+    length = factor(length, levels=min(length):max(length))
+  ) %>%
+  count(across(c(type, length)), .drop=FALSE) %>%
+  ggplot(., aes(x=length, y=n, fill=factor(length))) +
+  geom_col(show.legend=F) +
+  geom_text(aes(label=n), vjust=-0.2) +
+  facet_grid(~ type) +
+  labs(x="Length", y="Number of stimuli") +
+  scale_y_continuous(expand=expansion(add=c(0,25))) +
+  theme_bw() +
+  theme(
+    panel.grid = element_blank(),
+    strip.text = element_text(size=12)
+  )
+
+neighbor_plot = stimuliExp1 %>%
+  ggplot(., aes(x=n.neighbors)) +
+  geom_density(show.legend=F) +
+  facet_grid(~ type) +
+  labs(x="Number of phonological neighbors", y="Density") +
+  theme_bw() +
+  theme(
+    panel.grid = element_blank(),
+    strip.text = element_text(size=12)
+  )
+
+ggarrange(score_plot, macron_plot, length_plot, neighbor_plot, ncol=1) 
+remove(score_plot, macron_plot, length_plot, neighbor_plot)
+
 ```
 
-## Average rating per word
+## Summary of raw data
 
-```{r mean rating, echo=F, message=F, warning=F, eval=T, fig.width=10, fig.height=5, fig.cap="Average word ratings by phonotactic score. The average rating per word is represented on the y-axis and the phonotactic score is represented on the x-axis. Overlapping labels are omitted."} 
-meanRatings <- aggregate(dataExp1$enteredResponse, by=list(dataExp1$word),  FUN=mean)
-colnames(meanRatings) <- c("word","mean")
-Fig4T <- unique(dataExp1[c("word","type","score")])
-Fig4T <- merge(Fig4T, meanRatings, by="word")
-Fig4T$Type <- "Nonword";Fig4T[Fig4T$type=="real",]$Type <- "Word"
-Fig4T$id <- seq_along(Fig4T$word);listID <- Fig4T$id[seq.int(1, length(Fig4T$id),5)]
-Fig4T <- Fig4T[order(Fig4T$score, decreasing=FALSE),]
-ggplot(Fig4T, aes(x=score, y=mean, group=Type, label=word)) + labs(x= "Phonotactic score", y="Average rating") + theme_classic() + theme(legend.title=element_blank()) + geom_point(aes(color=Type,shape=Type),size=3, alpha=0.2) + geom_text(aes(color=Type), hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + scale_shape_manual(values = c("Nonword" = 19, "Word" = 17)) +  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) + scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) + facet_wrap(vars(Type))  + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) + xlim(c(-1.2, -0.55))
+The plots below shows the mean response for each stimulus, broken down by type (word vs. nonword) and phonotactic score, presence of macron, length, and number of neighbors. As can be seen, words tend to get higher ratings than nonwords. Other apparent patterns include the tendency for stimuli (both words and nonwords) with high phonotactic scores or macrons to get higher ratings than stimuli with low phonotactic scores or no macrons.
+
+```{r mean rating, fig.width=8, fig.height=12, fig.cap="Average stimulus ratings for nonwords (left) and words (right), broken down by various stimulus properties."} 
+score_plot = ggplot(stimuliExp1, aes(x=score, y=mean.rating, color=type, shape=type, label=word)) + 
+  geom_point(size=3, alpha=0.2) + 
+  geom_text(hjust=0.2, vjust=-0.7, check_overlap=TRUE, size=4) + 
+  scale_shape_manual(values = c("Nonwords" = 19, "Words" = 17)) +  
+  scale_color_manual(values = c("Nonwords" = "black", "Words" = "blue")) + 
+  facet_grid( ~ type) + 
+  labs(x= "Phonotactic score", y="Average rating") + 
+  scale_x_continuous(expand=expansion(mult=0.1)) +
+  ylim(1, 5.1) +
+  theme_bw() + 
+  theme(
+    legend.position = "none", 
+    legend.title = element_blank(),
+    panel.background = element_blank(), 
+    axis.text = element_text(size=13), 
+    axis.title = element_text(size=13, face="bold"), 
+    legend.text = element_text(size=12), 
+    strip.text = element_text(size = 13, face="bold")
+  )
+
+macron_plot = ggplot(stimuliExp1, aes(x=macron, y=mean.rating, color=type, fill=type, label=word)) + 
+  geom_violin(alpha=0.3, color=NA) + 
+  geom_text(hjust=0.5, vjust=-0.7, check_overlap=TRUE, size=4) + 
+  scale_color_manual(values = c("Nonwords" = "black", "Words" = "blue")) + 
+  scale_fill_manual(values = c("Nonwords" = "black", "Words" = "blue")) + 
+  facet_grid( ~ type) + 
+  labs(x= "Presence of macron", y="Average rating") +
+  ylim(1, 5.1) +
+  theme_bw() + 
+  theme(
+    legend.position = "none", 
+    legend.title = element_blank(),
+    panel.background = element_blank(), 
+    axis.text = element_text(size=13), 
+    axis.title = element_text(size=13, face="bold"), 
+    legend.text = element_text(size=12), 
+    strip.text = element_text(size = 13, face="bold")
+  )
+
+length_plot = ggplot(stimuliExp1, aes(x=length, y=mean.rating, color=type, shape=type, label=word)) + 
+  geom_point(size=3, alpha=0.2) + 
+  geom_text(hjust=0.2, vjust=-0.7, check_overlap=TRUE, size=4) + 
+  scale_shape_manual(values = c("Nonwords" = 19, "Words" = 17)) +  
+  scale_color_manual(values = c("Nonwords" = "black", "Words" = "blue")) + 
+  facet_grid( ~ type) + 
+  labs(x= "Length (in phonemes)", y="Average rating") +
+  scale_x_continuous(expand=expansion(mult=0.1)) +
+  ylim(1, 5.1) +
+  theme_bw() + 
+  theme(
+    legend.position = "none", 
+    legend.title = element_blank(),
+    panel.background = element_blank(), 
+    axis.text = element_text(size=13), 
+    axis.title = element_text(size=13, face="bold"), 
+    legend.text = element_text(size=12), 
+    strip.text = element_text(size = 13, face="bold")
+  )
+
+neighbor_plot = ggplot(stimuliExp1, aes(x=n.neighbors, y=mean.rating, color=type, shape=type, label=word)) + 
+  geom_point(size=3, alpha=0.2) + 
+  geom_text(hjust=0.2, vjust=-0.7, check_overlap=TRUE, size=4) + 
+  scale_shape_manual(values = c("Nonwords" = 19, "Words" = 17)) +  
+  scale_color_manual(values = c("Nonwords" = "black", "Words" = "blue")) + 
+  facet_grid( ~ type) + 
+  labs(x= "Number of phonological neighbors", y="Average rating") +
+  scale_x_continuous(expand=expansion(mult=0.1)) +
+  ylim(1, 5.1) +
+  theme_bw() + 
+  theme(
+    legend.position = "none", 
+    legend.title = element_blank(),
+    panel.background = element_blank(), 
+    axis.text = element_text(size=13), 
+    axis.title = element_text(size=13, face="bold"), 
+    legend.text = element_text(size=12), 
+    strip.text = element_text(size = 13, face="bold")
+  )
+
+ggarrange(score_plot, macron_plot, length_plot, neighbor_plot, ncol=1) 
+remove(score_plot, macron_plot, length_plot, neighbor_plot)
 ```
 
-## Statistical analyses
+## Statistical analysis
 
-### Modeling confidence ratings without participants' individual differences by an ordinal mixed-effects model
+Because the word and nonword stimuli differ along a number of dimensions (e.g. phonotactic score and neighborhood density), it is possible that the higher rating of words than nonwords is affected (in whole or in part) by these differences. To confirm that participants do indeed have knowledge of what is or is not a word of Māori, above and beyond effects of other attributes of stimuli, and that this knowledge is shared by participants in general, rather than held by a select few, we conduct (logit) ordinal mixed-effects regression. For an introduction to ordinal regression, see Section 5.1 of the Detailed Materials and Methods of Oh et al. (2020).
 
-The model fitting procedure is described in the code below.
+The predictors considered in the analysis are:
 
-```{r model1 (Exp1), echo=T, message=F, warning=F, eval=T}
+* `score`: Stimulus phonotactic score (centered)  
+* `type`: Stimulus type: word or nonword (binary factor)  
+* `macron`: Presence of a macron not found in English words (binary factor)  
+   * Note: we include this predictor both because it captures a visual component that is distinct from phonotactics, and because macrons indicate vowel length, which is not captured in our phonotactic scores following Oh et al. (2020)  
+* `length`: Stimulus length in phonemes (centered)  
+* `n.neighbors`: Number of phonological neighbors (centered)  
+
+We consider `score` and `type` to be the predictors of primary interest, following Oh et al. (2020), while `macron`, `length` and `n.neighbors` are control predictors.
+  
+We take a stepwise approach to model fitting, broken into stages in order to minimize the computational burden of estimating many random slopes. In the first stage, we consider fixed effects only (`clm`), with a model containing all two-way interactions between a predictor of primary interest (`score` and `type`) and a control predictor (`macron`, `length` and `n.neighbors`), as well as the interaction between the two predictors of primary interest. We remove terms one at a time if they do not make a significant contribution to the model's explanatory power, assessed via Analysis of Deviance (using a type III test from the `anova` function), starting with the term with the least contribution. We do not consider the removal of a main effect until all interactions in which that predictor participates have also been removed. Once there are no more candidate terms for removal, we transition to the second stage, where we re-fit the model in a mixed-effects setting (`clmm`) with the minimal random effect structure of intercepts by participant and stimulus. We identify candidate fixed effects for removal in this setting if their coefficient is not significant in the model; after performing each removal, we confirm that it was justified via model comparison, using a likelihood ratio test with $\alpha=0.1$. Once there are no more candidate terms for removal in this stage, we transition to the third stage, where we add by-participant random slopes for each remaining term in the model; in the event of failure of convergence, we try removing the correlations between slopes, starting with differentiating clusters whose predictors are in an interaction with each other. Other than as required for convergence, we do not remove predictors at the third stage.
+
+The model table and partial effects plots are shown below. The main effect of `type` shows that participants rate real words higher than non-words. The main effect of `score` shows that participants rate nonwords higher the higher their phonotactic probability; however, the interaction between `score` and `type` shows that the same is not true for real words, where all words are rated equally high regardless of their phonotactics. Taken together, these results confirm the patterns suggested earlier by the high-frequency words studied by Panther et al. (under review): participants have phonotactic knowledge, and they recruit it to inform ratings when they do not recognize a stimulus, but do not need to recruit when they do recognize a stimulus (in this case, because it is a well known Māori word and perhaps a borrowing into New Zealand English). In addition, the main effect of `macron` shows that the visual presence of a macron is highly salient for participants and causes them to rate stimuli higher, consistent with earlier work (Oh et al., 2020; Panther et al., under review). Finally, the main effect of `n.neighbors` shows that participants rate stimuli that closely resemble many real Māori words higher than those that resemble few words, supporting the conclusion of Oh et al. (2020) that they have a proto-lexicon of a large number of Māori words or word-parts, and suggesting that they can leverage this knowledge to do more than just judge phonotactic probability.
+
+
+```{r model (Exp1)}
 # Modify confidence ratings as discrete variables
 dataExp1$enteredResponse <- as.factor(dataExp1$enteredResponse)
 
-# Model fitting: fixed-effects & mixed-effects 
-# m1 <- clm(enteredResponse ~ (c.(n.neighbors)*c.(score) + c.(score)*macron + c.(n.neighbors)*macron + c.(length))*type, data=dataExp1)
-# anova(m1, type="III") # remove score:macron:type
-# m2 <- update(m1, . ~ . -c.(score):macron:type)
-# anova(m2, type="III") # remove n.neighbors:macron:type
-# m3 <- update(m2, . ~ . -c.(n.neighbors):macron:type)
-# anova(m3, type="III") # remove length:type
-# m4 <- update(m3, . ~ . -c.(length):type)
-# anova(m4, type="III")
-# m5 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(n.neighbors) + c.(score) + c.(length) + type|workerId) + (1 + macron|workerId) + (1|word), data=dataExp1)
-# Model didn't converge -> remove a random slope (length) by workerId
-#  m6 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(n.neighbors) + c.(score) + type|workerId) + (1 + macron|workerId) + (1|word), data=dataExp1)
-# summary(m6) # Model didn't converge -> remove random slopes (length and macron) by workerId
-# m7 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(n.neighbors) + c.(score) + type|workerId) + (1|word), data=dataExp1)
-# Model didn't converge -> remove random slopes (length, macron and type) by workerId
-# m8 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1|word), data=dataExp1)
-# summary(m8) # remove score:macron
-# m9 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(n.neighbors)*macron + c.(length) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1|word), data=dataExp1)
-# anova(m8, m9) # not significant, choose m9 (remove score:macron)
-# summary(m9) # remove n.neighbors:macron
-# m10 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron*type + c.(length) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1|word), data=dataExp1)
-# anova(m9, m10) # not significant, choose m10 (remove n.neighbors:macron)
-# summary(m10) # remove type:macron
-# m11 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron + c.(length) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1|word), data=dataExp1)
-# anova(m10, m11) # not significant, choose m11 (remove type:macron) -> add random slopes (length and macron) by workerId
-# m12 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron + c.(length) + (1 + c.(n.neighbors) + c.(score) + c.(length) + macron|workerId) + (1|word), data=dataExp1)
-# summary(m12) # remove length
-# m13 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron + (1 + c.(n.neighbors) + c.(score) + macron|workerId) + (1|word), data=dataExp1)
-# anova(m12, m13) # significant, choose m12 (do not remove length) 
-# summary(m12) # remove n.neighbors:score:type
-# m14 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score) + c.(score)*type + c.(n.neighbors)*type + macron + c.(length) + (1 + c.(n.neighbors) + c.(score) + c.(length) + macron|workerId) + (1|word), data=dataExp1)
-# anova(m12, m14) # significant, choose m12 (do not remove n.neighbors:score:type) -> add an uncorrelated random effect (type) by workerId
-# m12_1 <- clmm(enteredResponse ~ c.(n.neighbors)*c.(score)*type + macron + c.(length) + (1 + c.(n.neighbors) + c.(score) + c.(length) + macron|workerId) + (0 + type|workerId) + (1|word), data=dataExp1)
-# Model didn't converge, stay with m12
-# saveRDS(m12, file = "exp1.rds")
-mExp1 <- readRDS("exp1.rds")
-clm_table(mExp1, caption="Model summary of confidence ratings without participants' individual differences. All numeric variables in this model are centered.")
+# # Stage 1: fixed effects only
+# m1 <- clm(enteredResponse ~ (c.(score) + type) * (macron + c.(length) + c.(n.neighbors)) + c.(score):type, data=dataExp1)
+# anova(m1, type="III") # Remove c.(score):c.(length)
+# m2 <- update(m1, . ~ . - c.(score):c.(length))
+# anova(m2, type="III") # Remove type:c.(length)
+# m3 <- update(m2, . ~ . - type:c.(length))
+# anova(m3, type="III") # Remove c.(score):c.(n.neighbors)
+# m4 <- update(m3, . ~ . - c.(score):c.(n.neighbors))
+# anova(m4, type="III") # No further candidate predictors for removal.
+# 
+# # Stage 2: mixed effects, random intercepts only.
+# m5 <- clmm(enteredResponse ~ c.(score)*type + macron*(c.(score)+type) + c.(length) + c.(n.neighbors)*type + (1|workerId) + (1|word), data=dataExp1)
+# summary(m5) # Removal candidate: c.(score):macron
+# 
+# m6 <- update(m5, . ~ . - c.(score):macron)
+# anova(m5, m6) # Removal justified
+# summary(m6) # Removal candidate: type:macron
+# 
+# m7 <- update(m6, . ~ . - type:macron)
+# anova(m6, m7) # Removal justified
+# summary(m7) # Removal candidate: c.(length)
+# 
+# m8 <- update(m7, . ~ . - c.(length))
+# anova(m7, m8) # Removal justified
+# summary(m8) # Removal candidate: type:c.(n.neighbors)
+# 
+# m9 <- update(m8, . ~ . - type:c.(n.neighbors))
+# anova(m8, m9) # Removal justified
+# summary(m9) # Removal candidate: c.(n.(neighbors))
+# 
+# m10 <- update(m9, . ~ . - c.(n.neighbors))
+# anova(m9, m10) # p = 0.08065; removal NOT justified, so retain m9. No further candidates for removal
+# 
+# # Stage 3: mixed effects, random slopes
+# m11a <- clmm(enteredResponse ~ c.(score) * type + macron + c.(n.neighbors) + (1 + c.(score) * type + macron + c.(n.neighbors) | workerId) + (1 | word), data=dataExp1) # Did not converge; try moving score*type slopes to not be correlated with the others
+# 
+# m11b <- clmm(enteredResponse ~ c.(score) * type + macron + c.(n.neighbors) + (1 + macron + c.(n.neighbors) | workerId) + (0 + c.(score)*type | workerId) + (1 | word), data=dataExp1)
+# summary(m11b) # Converged
+# 
+# saveRDS(m11b, "model_exp1.rds")
+
+mExp1 <- readRDS("model_exp1.rds")
+clm_table(mExp1, caption="Model summary of confidence ratings. All numeric variables in this model are centered.")
 ```
 
-### Effect plots from the model without participants' individual differences
+```{r model1 (Exp1), fig.width=13, fig.height=7, fig.cap="Effect plots of: the interaction between phonotactic score and the distinction between non vs. real word stimuli (Fig.a); the presence of macrons (Fig.b); and number of phonological neighbors (Fig.c). Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings."}
 
-```{r model1 (Exp1) effect, echo=F, message=F, warning=F, eval=T, fig.width=13, fig.height=7, fig.cap="Effect plots of: the interaction between the neighbourhood density, the distinction between non vs. real word stimuli, and phonotactic score (Fig.a); and the presence of macrons (Fig.b). For plots involving interactions with neighbourhood density, the upper panel represents stimuli with high neighbourhood density, and the lower panel represents stimuli with low neighbourhood density. Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings."}
-nn_cuts = c(32, 16)
-score_cuts = c(-0.5, -0.8)
-
-# 1) Type*Neighbourhood density*Phonotactic score
-exp1_mean_1 <- clm_plotdat(mExp1, c("type", "n.neighbors", "score"), xlevels=list(n.neighbors=nn_cuts), type="mean") %>%
+# 1) Phonotactic score * type
+exp1_mean_1 <- clm_plotdat(mExp1, c("type", "score"), xlevels=list(score=25), type="mean") %>%
   mutate(
     type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
-    n.neighbors = factor(n.neighbors, levels=nn_cuts)
   ) %>%
   ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
   geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
   geom_line(size=1) +
   xlab("Phonotactic score") +
   ylab("Predicted mean rating") + 
-  facet_grid(n.neighbors ~ ., labeller=label_both, switch="y") +
-  ylim(c(2.3, 5)) +
+  ylim(1, 5) +
   scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
   scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
   theme_bw() + 
   theme(legend.position="none", panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face   = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
 
-exp1_dist_1 <- clm_plotdat(mExp1, c("type", "n.neighbors", "score"), xlevels=list(n.neighbors=nn_cuts), type="dist") %>%
+exp1_dist_1 <- clm_plotdat(mExp1, c("type", "score"), xlevels=list(score=25), type="dist") %>%
   mutate(
     type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
-    n.neighbors = factor(n.neighbors, levels=nn_cuts)
   ) %>%
   rename("Rating" = response) %>%
   ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
@@ -533,7 +704,7 @@ exp1_dist_1 <- clm_plotdat(mExp1, c("type", "n.neighbors", "score"), xlevels=lis
   ylab("Probability of rating") + 
   scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
   scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  facet_grid(n.neighbors ~ Rating, labeller=label_both, switch="y") +
+  facet_grid(. ~ Rating, labeller=label_both, switch="y") +
   ylim(0, 1) +  
   theme_bw() + 
   theme(legend.position="right", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
@@ -574,12 +745,78 @@ exp1_dist_2 <- clm_plotdat(mExp1, "macron", type="dist") %>%
   theme_bw() + 
   theme(plot.title = element_text(hjust = 0.5, size=15),legend.position="right",legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face= "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
 
-ggarrange(exp1_mean_1, exp1_dist_1,exp1_mean_2, exp1_dist_2, labels=c("a.","","b.",""), ncol=2, widths=c(1,6), heights=c(2,1))
+# 3) Number of neighbors
+exp1_mean_3 <- clm_plotdat(mExp1, c("n.neighbors"), xlevels=list(n.neighbors=25), type="mean") %>%
+  mutate(
+    type = "Word and\nNonword"
+  ) %>%
+  ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
+  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
+  geom_line(size=1) +
+  xlab("Number of neighors") +
+  ylab("Predicted mean rating") + 
+  ylim(1, 5) +
+  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
+  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
+  theme_bw() + 
+  theme(legend.position="none", panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face   = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
+
+exp1_dist_3 <- clm_plotdat(mExp1, c("n.neighbors"), xlevels=list(n.neighbors=25), type="dist") %>%
+  mutate(
+    type = "Word and\nNonword"
+  ) %>%
+  rename("Rating" = response) %>%
+  ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
+  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
+  geom_line(size=1) +
+  xlab("Number of neighbors") +
+  ylab("Probability of rating") + 
+  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
+  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
+  facet_grid(. ~ Rating, labeller=label_both, switch="y") +
+  ylim(0, 1) +  
+  theme_bw() + 
+  theme(legend.position="right", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
+
+ggarrange(exp1_mean_1, exp1_dist_1, exp1_mean_2, exp1_dist_2, exp1_mean_3, exp1_dist_3, labels=c("a.","","b.","","c.",""), ncol=2, widths=c(1,6))
+remove(exp1_mean_1, exp1_dist_1, exp1_mean_2, exp1_dist_2, exp1_mean_3, exp1_dist_3)
 ```
 
-### Modeling confidence ratings with participants' d' by an ordinal mixed-effects model
+## Investigation of individual differences
 
-The model fitting procedure is described in the code below.
+Given the suggestion that phonotactic sensitivity loses its relevance for participants who actually know the words in the experiment, we now ask whether the patterns we see hold in general or whether they are different for people with different degrees of apparent knowledge of Māori.
+
+To measure a participant's apparent knowledge of Māori, we use $d^\prime$ (d-prime), which indicates their sensitivity to real words vs. nonwords in the experiment. $d^prime$ is the difference between a participant's $z$-scored *hit rate* (proportion of real words given a rating of 4 or 5) and their $z-scored$ *false alarm rate* (proportion of nonwords given a rating of 4 or 5); thus, participants with high $d^\prime$ give many words and few nonwords a rating of 4 or 5, while participants with low $d^\prime$ give fewer words and more nonwords this rating (but still give a higher proportion of words than nonwords a rating of 4 or 5, due to our exclusion of participants with a negative $d^\prime$). The formula for $d^\prime$ is as follows, where the function $z\left(\cdot\right)$ uses the function `qnorm()` in `R`:
+
+$$
+d^\prime = z\left(\frac{\text{# real words rated 4 or 5}}{\text{total # real words seen}}\right) - z\left(\frac{\text{# nonwords rated 4 or 5}}{\text{total # nonwords seen}}\right)
+$$
+
+In this formulation, $d^\prime$ is undefined if a participant either gives *every* real word stimulus a 4 or 5 rating (correctly identifying every real word), or if they give *no* nonword stimulus a 4 or 5 rating (correctly rejecting every nonword). In our dataset, 5 participants have undefined $d^\prime$s (4 who correctly identified every real word, and 1 who correctly rejected every nonword). These participants are not included in the analysis that follows.
+
+The distribution of $d^\prime$ values across participants is shown in the figure below.
+
+```{r dprime_fig, fig.width=4, fig.height=4, fig.cap="Distribtion of d-prime values across participants in Experiment 1."}
+dataExp1 %>%
+  filter(is.finite(dprime)) %>%
+  group_by(workerId) %>%
+  summarise(dprime = first(dprime)) %>%
+  ggplot(., aes(x=dprime)) +
+  geom_histogram(binwidth=0.1) +
+  theme_bw() +
+  theme(
+    panel.background = element_blank(),
+    axis.text = element_text(size=12), 
+    axis.title = element_text(size = 14)
+  )
+```
+
+From the definition of $d^\prime$, it follows that sensitivity to the `type` variable in Experiment 1 will have increased with $d^\prime$: participants with high $d^\prime$ will have given higher ratings to real words and lower ratings to nonwords, on average, than participants with low $d^\prime$. $d^\prime$ might therefore be thought of as capturing *how much* Māori word knowledge participants have. In this analysis, we are interested in whether participants with different degrees of word knowledge show different degrees of sensitivity to phonotactic `score`, presence of a `macron`, and `n.neighbors`. Thus, we build on the previous ordinal regression model to allow every term to interact with $d^\prime$, and we investigate the nature of these interactions. 
+
+To avoid unnecessary computational burden, we follow the same strategy as previously, removing fixed effects from the model in stages. Note that, because our focus here is on the interactions with $d^\prime$, at each stage we only consider removing terms that involve $d^\prime$ as an interactant. In the first stage, we start with fixed effects only (`clm`), where we take all of the fixed effects that remained in the previous model, and allow each of them to interact with $d^\prime$. We remove terms that do not contribute significantly to model fit, as assessed by Analysis of Deviance. In the second stage, we transition to a basic mixed effects model (`clmm`), adding random intercepts by participant and word. We identify potential removal candidates based on their $p$-value in the model summary, and confirm they can be removed without damaging model fit by a likelihood comparison test. In the third stage, we add random slopes, in the same structure as previously identified; because $d^\prime$ is a participant-level variable, we add it as a by-word slope, and do not include random effects for any interactions involving $d^\prime$. In the event of convergence issues, we consider making the by-word $d^\prime$ slope uncorrelated with the word random intercept, and then consider dropping it altogether. Other than as required for convergence, we do not remove predictors at the third stage.
+
+The summary of the model is shown below, together with partial effect plots. As expected from the definition of $d^\prime$, participants with a lot of Māori word knowledge (high $d^\prime$) show a higher degree of separation between ratings for words and nonwords than participants with less Māori word knowledge (low $d^\prime$). But beyond this simple effect, there are many differences in degree of sensitivity to other factors as well: as a participant's word knowledge increases, they make less use of phonotactic score in rating nonwords, less use of the presence of macrons, and more use of phonological neighbors. In sum, this suggests that a higher degree of word knowledge allows a participant to use more *specific* and *explicit* knowledge in this task: rather than using presence of a macron as a proxy, or a sort of generalized "Māori-like-ness" offered by phonotactic score, they make their ratings based on confident awareness of the existence of a word where possible, and based in part on awareness of specific highly-similar words (phonological neighbors) in other cases. 
+
 
 ```{r dprime (Exp1), echo=T, message=F, warning=F, eval=T}
 # Modify confidence ratings as discrete variables
@@ -588,364 +825,96 @@ dataExp1$enteredResponse <- as.factor(dataExp1$enteredResponse)
 # Discard participants with infinite dprime
 dataExp1DprimeFinite <- dataExp1[is.finite(dataExp1$dprime),]
 
-# Model fitting: fixed-effects & mixed-effects
-# m1 <- clm(enteredResponse ~ macron*type*c.(dprime) + c.(n.neighbors)*type*c.(dprime) + c.(length)*type*c.(dprime) + c.(score)*type*c.(dprime), data=dataExp1DprimeFinite)
-# anova(m1, type="III") # remove type:c.(dprime):c.(length) 
-# m2 <- clm(enteredResponse ~ macron*type*c.(dprime) + c.(n.neighbors)*type*c.(dprime) + c.(length)*type +  c.(length)*c.(dprime) + c.(score)*type*c.(dprime), data=dataExp1DprimeFinite)
-# anova(m2, type="III") # remove c.(score):type:c.(dprime) 
-# m3 <- clm(enteredResponse ~ macron*type*c.(dprime) + c.(n.neighbors)*type*c.(dprime) + c.(length)*type + c.(length)*c.(dprime) + c.(score)*type + c.(score)*c.(dprime), data=dataExp1DprimeFinite)
-# anova(m3, type="III") # remove c.(dprime):c.(score)
-# m4 <- clm(enteredResponse ~ macron*type*c.(dprime) + c.(n.neighbors)*type*c.(dprime) + c.(length)*type + c.(length)*c.(dprime) + c.(score)*type, data=dataExp1DprimeFinite)
-# anova(m4, type="III") # remove type:c.(length)
-# m5 <- clm(enteredResponse ~ macron*type*c.(dprime) + c.(n.neighbors)*type*c.(dprime) + c.(length)*c.(dprime) + c.(score)*type, data=dataExp1DprimeFinite)
-# anova(m5, type="III")
-# m6 <- clmm(enteredResponse ~ macron*type*c.(dprime) + c.(n.neighbors)*type*c.(dprime) + c.(length)*c.(dprime) + c.(score)*type + (1 + macron*type + c.(n.neighbors)*type + c.(length)|workerId) + (1 + c.(score)*type|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# Model didn't converge -> remove random slopes by workerId for all interactions 
-# m7 <- clmm(enteredResponse ~ macron*type*c.(dprime) + c.(n.neighbors)*type*c.(dprime) + c.(length)*c.(dprime) + c.(score)*type + (1 + macron + type + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(length)|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# Model didn't converge -> remove a random slope (length) by workerId
-# m8 <- clmm(enteredResponse ~ macron*type*c.(dprime) + c.(n.neighbors)*type*c.(dprime) + c.(length)*c.(dprime) + c.(score)*type + (1 + macron + type + c.(n.neighbors) + c.(score)|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# summary(m8) # model converged -> remove type:dprime:n.neighbors
-# m9 <- clmm(enteredResponse ~ macron*type*c.(dprime) + c.(n.neighbors)*c.(dprime) + type*c.(n.neighbors) + c.(length)*c.(dprime) + c.(score)*type + (1 + macron + type + c.(n.neighbors) + c.(score)|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# anova(m8, m9) # significant, choose m8 (do not remove type:dprime:n.neighbors) 
-# summary(m8) # remove type:score
-# m10 <- clmm(enteredResponse ~ macron*type*c.(dprime) + c.(n.neighbors)*type*c.(dprime) + c.(length)*c.(dprime) + c.(score) + (1 + macron + type + c.(n.neighbors) + c.(score)|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# Model didn't converge -> remove random slopes (length and macron) by workerId
-# m11 <- clmm(enteredResponse ~ macron*type*c.(dprime) + c.(n.neighbors)*type*c.(dprime) + c.(length)*c.(dprime) + c.(score) + (1 + type + c.(n.neighbors) + c.(score)|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# Model didn't converge -> remove random slopes (length, macron and type) by workerId
-# m12 <- clmm(enteredResponse ~ macron*type*c.(dprime) + c.(n.neighbors)*type*c.(dprime) + c.(length)*c.(dprime) + c.(score) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# summary(m12) # model converged -> remove macron:type:dprime
-# m13 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(dprime) + macron*type + macron*c.(dprime) + c.(length)*c.(dprime) + c.(score) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# anova(m12, m13) # not significant, choose m13 (remove macron:type:dprime) 
-# summary(m13) # remove type:macron
-# m14 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(dprime) + macron*c.(dprime) + c.(length)*c.(dprime) + c.(score) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# anova(m13, m14) -> significant, choose m13 (do not remove type:macron) 
-# summary(m13) # remove n.neighbors:type:dprime
-# m15 <- clmm(enteredResponse ~ c.(n.neighbors)*type + type*c.(dprime) + c.(n.neighbors)*c.(dprime) + macron*type + macron*c.(dprime) + c.(length)*c.(dprime) + c.(score) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# anova(m13, m15) # significant, choose m13 (do not remove n.neighbors:type:dprime)
-# summary(m13) # remove dprime:length
-# m16 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(dprime) + macron*type + macron*c.(dprime) + c.(length) + c.(score) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# anova(m13, m16) # significant, choose m13 (do not remove dprime:length) 
-# summary(m13) # remove dprime:macron
-# m17 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(dprime) + macron*type + c.(length)*c.(dprime) + c.(score) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# anova(m13, m17) # significant, choose m13 (do not remove dprime:macron) 
-# summary(m13) # add random slopes (type and macron) by workerId to m13
-# m13_1 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(dprime) + macron*type + macron*c.(dprime) + c.(length)*c.(dprime) + c.(score) + (1 + c.(n.neighbors) + c.(score) + type + macron|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# Model didn't converge -> add a random slope (type) by workerId to m13
-# m13_2 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(dprime) + macron*type + macron*c.(dprime) + c.(length)*c.(dprime) + c.(score) + (1 + c.(n.neighbors) + c.(score) + type|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# Model didn't converge -> add a random slope (macron) by workerId to m13
-# m13_3 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(dprime) + macron*type + macron*c.(dprime) + c.(length)*c.(dprime) + c.(score) + (1 + c.(n.neighbors) + c.(score) + macron|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# summary(m13_3) # Model converged -> add an uncorrelated random effect (type) by workerId to m13_3
-# m13_4 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(dprime) + macron*type + macron*c.(dprime) + c.(length)*c.(dprime) + c.(score) + (1 + c.(n.neighbors) + c.(score) + macron|workerId) + (0 + type|workerId) + (1+ c.(dprime)|word), data=dataExp1DprimeFinite)
-# Model didn't converge, stay with m13_3
-# saveRDS(m13_3, file = "exp1Dprime.rds")
-mExp1Dprime <- readRDS("exp1Dprime.rds")
+# # Stage 1: fixed effects
+# m1 <- clm(enteredResponse ~ c.(dprime) * (c.(score) * type + macron + c.(n.neighbors)), data=dataExp1DprimeFinite)
+# anova(m1, type="III") # Remove c.(dprime):c.(score):type
+# m2 <- update(m1, . ~ . - c.(dprime):c.(score):type)
+# anova(m2, type="III") # No further removal candidates
+# 
+# # Stage 2: mixed effects, random intercepts only
+# m3 <- clmm(enteredResponse ~ c.(dprime) * (c.(score) + type + macron + c.(n.neighbors)) + c.(score):type + (1 | workerId) + (1 | word), data=dataExp1DprimeFinite)
+# summary(m3) # No removal candidates among dprime interaction terms
+# 
+# # Stage 3: mixed effects, random slopes (inheriting uncorrelated slopes from earlier model, and adding dprime as a slope by word)
+# m4a <- clmm(enteredResponse ~ c.(dprime) * (c.(score) + type + macron + c.(n.neighbors)) + c.(score):type + (1 + macron + c.(n.neighbors) | workerId) + (0 + c.(score)*type | workerId) + (1 + dprime | word), data=dataExp1DprimeFinite) # Did not converge; try removing the correlation between the by-word dprime slope and intercept
+# 
+# m4b <- clmm(enteredResponse ~ c.(dprime) * (c.(score) + type + macron + c.(n.neighbors)) + c.(score):type + (1 + macron + c.(n.neighbors) | workerId) + (0 + c.(score)*type | workerId) + (1 | word) + (0 + dprime | word), data=dataExp1DprimeFinite)
+# summary(m4b) # Did not converge; try removing dprime slope
+# 
+# m4c <- clmm(enteredResponse ~ c.(dprime) * (c.(score) + type + macron + c.(n.neighbors)) + c.(score):type + (1 + macron + c.(n.neighbors) | workerId) + (0 + c.(score)*type | workerId) + (1 | word), data=dataExp1DprimeFinite)
+# summary(m4c) # Converged
+# 
+# saveRDS(m4c, "model_exp1_dprime.rds")
+
+mExp1Dprime <- readRDS("model_exp1_dprime.rds")
 clm_table(mExp1Dprime, caption="Model summary of confidence ratings with participants' d'. All numeric variables in this model are centered.")
 ``` 
 
-### Effect plots from the model with participants' d'
+```{r model1 (Exp1) effect, echo=F, message=F, warning=F, eval=T, fig.width=13, fig.height=10, fig.cap="Effect plots of the interaction between dprime and: the interaction between phonotactic score and the distinction between non vs. real word stimuli (Fig.a); the presence of macrons (Fig.b); and number of phonological neighbors (Fig.c). Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings; top panels in each case show predictions for a high-dprime participant (dprime=3; 93rd percentile in our data), while bottom panels show predictions for a low-dprime participant (dprime=1; 5th percentile in our data). Note that dprime was modeled as a continuous variable, and has been broken into dichotomous values here for illustrative purposes only."}
 
-```{r dprime (Exp1) effect, echo=F, message=F, warning=F, eval=T, fig.width=13, fig.height=14, fig.cap="Effect plots of: the interaction between the neighbourhood density, the distinction between non vs. real word stimuli, and participant d' (Fig.a); the interaction between the stimulus length and participant d' (Fig.b); the interaction between the presence of macrons and participant d' (Fig.c); and the phonotactic score (Fig.d). For plots involving interactions with paricipant d', the upper panel represents participants with high d', and the lower panel represents participants with low d'. Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings."}
-dprimes = dataExp1DprimeFinite %>% group_by(workerId, dprime) %>% summarise() %>% pull(dprime)
-dprime_cuts = c(3, 1)
-yrange = c(2.3, 5)
+# Get dprime values to plot
+dprime_cuts = c(1, 3)
 
-# 1) Type*Neighbourhood density*Dprime
-dprime_mean_1 <- clm_plotdat(mExp1Dprime, c("type", "n.neighbors", "dprime"), xlevels=list(dprime=dprime_cuts), type="mean") %>%
+# 1) dprime with Phonotactic score * type
+exp1d_mean_1 <- clm_plotdat(mExp1Dprime, c("type", "score", "dprime"), xlevels=list(score=25, dprime=dprime_cuts), type="mean") %>%
   mutate(
     type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
-    dprime = factor(dprime, levels=dprime_cuts)
+    dprime = factor(dprime, levels=rev(dprime_cuts), labels=c("High d-prime", "Low d-prime"))
   ) %>%
-  ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
+  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
   geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
   geom_line(size=1) +
-  xlab("Neighbourhood density") +
+  facet_grid(dprime ~ ., switch="y") +
+  xlab("Phonotactic score") +
   ylab("Predicted mean rating") + 
-  facet_grid(dprime ~ ., labeller=label_both, switch="y") +
-  ylim(yrange) +
+  ylim(1, 5) +
   scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
   scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
   theme_bw() + 
   theme(legend.position="none", panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face   = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
 
-dprime_dist_1 <- clm_plotdat(mExp1Dprime, c("type", "n.neighbors", "dprime"), xlevels=list(dprime=dprime_cuts), type="dist") %>%
+exp1d_dist_1 <- clm_plotdat(mExp1Dprime, c("type", "score", "dprime"), xlevels=list(score=25, dprime=dprime_cuts), type="dist") %>%
   mutate(
     type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
-    dprime = factor(dprime, levels=dprime_cuts)
+    dprime = factor(dprime, levels=rev(dprime_cuts), labels=c("High d-prime", "Low d-prime"))
   ) %>%
-  rename("Rating" = response) %>%
-  ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
+  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
   geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
   geom_line(size=1) +
-  xlab("Neighbourhood density") +
+  xlab("Phonotactic score") +
   ylab("Probability of rating") + 
   scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
   scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  facet_grid(dprime ~ Rating, labeller=label_both, switch="y") +
+  facet_grid(dprime ~ response, labeller=as_labeller(list(response=function(x) str_c("Rating: ", x))), switch="y") +
   ylim(0, 1) +  
   theme_bw() + 
   theme(legend.position="right", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
 
-# 2) Dprime*Length
-dprime_mean_2 <- clm_plotdat(mExp1Dprime, c("length", "dprime"), xlevels=list(dprime=dprime_cuts, length=25), type="mean") %>%
-  mutate(
-    dprime = factor(dprime, levels=dprime_cuts),
-    type = "Word and\nNonword"
-  ) %>%
-  ggplot(., aes(x=length, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
-  geom_line(size=1) +
-  xlab("Stimulus length") +
-  ylab("Predicted mean rating") + 
-  facet_grid(dprime ~ ., labeller=label_both, switch="y") +
-  ylim(yrange) +
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) + 
-  theme_bw() + 
-  theme(legend.position="none",panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face   = "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
-
-dprime_dist_2 <- clm_plotdat(mExp1Dprime, c("length", "dprime"), xlevels=list(dprime=dprime_cuts, length=25), type="dist") %>%
-  mutate(
-    dprime = factor(dprime, levels=dprime_cuts),
-    type = "Word and\nNonword"
-  ) %>%
-  rename("Rating" = response) %>%
-  ggplot(., aes(x=length, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
-  geom_line(size=1) +
-  xlab("Stimulus length") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +
-  facet_grid(dprime ~ Rating, labeller=label_both, switch="y") +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(legend.position="right", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
-
-# 3) Macron*Dprime
-dprime_mean_3 <- clm_plotdat(mExp1Dprime, c("macron", "dprime"), xlevels=list(dprime=dprime_cuts), type="mean") %>%
-  mutate(
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE"),
-    dprime = factor(dprime, levels=dprime_cuts),
-    type = "Word and\nNonword"
-  ) %>%
-  ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
-  geom_point(size=4, position=position_dodge(width=0.2)) +
-  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
-  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
-  xlab("Presence of macron") +
-  ylab("Predicted mean rating") + 
-  facet_grid(dprime ~ ., labeller=label_both, switch="y") +
-  ylim(yrange) +
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +
-  theme_bw() + 
-  theme(legend.position="none", panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
-
-dprime_dist_3 <- clm_plotdat(mExp1Dprime, c("macron", "dprime"), xlevels=list(dprime=dprime_cuts), type="dist") %>%
-  mutate(
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE"),
-    dprime = factor(dprime, levels=dprime_cuts),
-    type = "Word and\nNonword"
-  ) %>%
-  rename("Rating" = response) %>%
-  ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
-  geom_point(size=4, position=position_dodge(width=0.2)) +
-  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
-  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
-  xlab("Presence of macron") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +
-  facet_grid(dprime ~ Rating, labeller=label_both, switch="y") +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(legend.position="right", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
-
-# 4) Phonotactic score
-dprime_mean_4 <- clm_plotdat(mExp1Dprime, "score", xlevels=25, type="mean") %>%
-  mutate(type="Word and\nNonword") %>%
-  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
-  geom_line(size=1) +
-  xlab("Phonotactic score") +
-  ylab("Predicted mean rating") + 
-  ylim(yrange) +
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
-  theme_bw() +
-  theme(legend.position="none",panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"), legend.text=element_text(size=12)) 
-
-dprime_dist_4 <- clm_plotdat(mExp1Dprime, "score", xlevels=25, type="dist") %>%
-  mutate(type="Word and\nNonword") %>%
-  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
-  geom_line(size=1) +
-  xlab("Phonotactic score") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(legend.position="right", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face="bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
-
-ggarrange(dprime_mean_1, dprime_dist_1, dprime_mean_2, dprime_dist_2, dprime_mean_3, dprime_dist_3, dprime_mean_4, dprime_dist_4, labels=c("a.","","b.","","c.","","d.",""),ncol=2, widths=c(1,6), heights=c(2,2,2,1))
-```
-
-### Modeling confidence ratings with participants’ self-rated Māori proficiency by an ordinal mixed-effects model
-
-The model fitting procedure is described in the code below.
-
-```{r māoriProf (Exp1), echo=T, message=F, warning=F, eval=T}
-# Model fitting: fixed-effects and mixed-effects
-# m1 <- clm(enteredResponse ~ macron*type*c.(maoriProf) + c.(n.neighbors)*type*c.(maoriProf) + c.(length)*type*c.(maoriProf) + c.(score)*type*c.(maoriProf), data=dataExp1)
-# anova(m1, type="III") # remove macron:type:c.(maoriProf)
-# m2 <- clm(enteredResponse ~ macron*c.(maoriProf) + macron*type + c.(n.neighbors)*type*c.(maoriProf) + c.(length)*type*c.(maoriProf) + c.(score)*type*c.(maoriProf), data=dataExp1)
-# anova(m2, type="III") # remove c.(maoriProf):type:c.(score)
-# m3 <- clm(enteredResponse ~ macron*c.(maoriProf) + macron*type + c.(n.neighbors)*type*c.(maoriProf) + c.(length)*type*c.(maoriProf) + c.(score)*type + c.(score)*c.(maoriProf), data=dataExp1)
-# anova(m3, type="III") # remove c.(maoriProf):type:c.(length) 
-# m4 <- clm(enteredResponse ~ macron*c.(maoriProf) + macron*type + c.(n.neighbors)*type*c.(maoriProf) + c.(length)*type + c.(length)*c.(maoriProf) + c.(score)*type + c.(score)*c.(maoriProf), data=dataExp1)
-# anova(m4, type="III") # remove type:c.(length) 
-# m5 <- clm(enteredResponse ~ macron*c.(maoriProf) + macron*type + c.(n.neighbors)*type*c.(maoriProf) + c.(length)*c.(maoriProf) + c.(score)*type + c.(score)*c.(maoriProf), data=dataExp1)
-# anova(m5, type="III") # remove macron:c.(maoriProf) 
-# m6 <- clm(enteredResponse ~ macron*type + c.(n.neighbors)*type*c.(maoriProf) + c.(length)*c.(maoriProf) + c.(score)*type + c.(score)*c.(maoriProf), data=dataExp1)
-# anova(m6, type="III") # remove c.(maoriProf):c.(length)
-# m7 <- clm(enteredResponse ~ macron*type + c.(n.neighbors)*type*c.(maoriProf) + c.(length) + c.(score)*type + c.(score)*c.(maoriProf), data=dataExp1)
-# anova(m7, type="III") # remove c.(maoriProf):c.(score)
-# m8 <- clm(enteredResponse ~ macron*type + c.(n.neighbors)*type*c.(maoriProf) + c.(length) + c.(score)*type, data=dataExp1)
-# anova(m8, type="III")
-# m9 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriProf) + macron*type + c.(score)*type + c.(length) + (1 + c.(n.neighbors)*type + macron*type|workerId) + (1 + c.(score)*type + c.(length)|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# Model didn't converge -> remove random slopes by workerId for all interactions
-# m10 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriProf) + macron*type + c.(score)*type + c.(length) + (1 + c.(n.neighbors) + type + macron + c.(score)|workerId) + (1 + c.(length)|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# Model didn't converge -> remove a random slope (length) by workerId
-# m11 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriProf) + macron*type + c.(score)*type + c.(length) + (1 + c.(n.neighbors) + type + macron + c.(score)|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# Model didn't converge -> remove random slopes (macron and length) by workerId
-# m12 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriProf) + macron*type + c.(score)*type + c.(length) + (1 + c.(n.neighbors) + c.(score) + type|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# Model didn't converge -> remove random slopes (macron, length and type) by workerId
-# m13 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriProf) + macron*type + c.(score)*type + c.(length) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# summary(m13) # model converged -> remove type:macron
-# m14 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriProf) + macron + c.(score)*type + c.(length) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# anova(m13, m14) # not significant, choose m14 (remove type:macron) 
-# summary(m14) # remove length
-# m15 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriProf) + macron + c.(score)*type + (1 + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# anova(m14, m15) # not significant, choose m15 (remove length) 
-# summary(m15) # (AIC: 71199.80) remove n.neighbors:type:maoriProf
-# m16 <- clmm(enteredResponse ~ c.(n.neighbors)*type + type*c.(maoriProf) + c.(n.neighbors)*c.(maoriProf) + c.(score)*type + macron + (1 + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# anova(m15, m16) # significant, choose m15 (do not remove n.neighbors:type:maoriProf) 
-# summary(m15) # remove type:score
-# m17 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriProf) + macron + c.(score) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# anova(m15, m17) # significant, choose m15 (do not remove type:score) 
-# summary(m15) # remove macron
-# m18 <- clmm(enteredResponse ~ c.(n.neighbors)*type + type*c.(maoriProf) + c.(n.neighbors)*c.(maoriProf) + c.(score)*type + (1 + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# anova(m15, m18) # significant, choose m15 (do not remove macron) -> add random slopes (type and macron) by workerId to m15
-# m15_1 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriProf) + macron + c.(score)*type + (1 + c.(n.neighbors) + c.(score) + macron + type|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# Model didn't converge -> add a random slope (type) by workerId to m15
-# m15_2 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriProf) + macron + c.(score)*type + (1 + c.(n.neighbors) + c.(score) + type|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# Model didn't converge -> add a random slope (macron) by workerId to m15
-# m15_3 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriProf) + macron + c.(score)*type + (1 + c.(n.neighbors) + c.(score) + macron|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# summary(m15_3) # model converged (AIC: 70772.44) 
-# anova(m15, m15_3) # choose m15_3 (model with a lower AIC score) -> add an uncorrelated random effect (type) by workerId to m15_3
-# m15_4 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriProf) + macron + c.(score)*type + (1 + c.(n.neighbors) + c.(score) + macron|workerId) + (0 + type|workerId) + (1 + c.(maoriProf)|word), data=dataExp1)
-# Model didn't converge, stay with m15_3
-# saveRDS(m15_3, file = "exp1MaoriProf.rds")
-mExp1MaoriProf <- readRDS("./exp1MaoriProf.rds")
-clm_table(mExp1MaoriProf, caption="Model summary of confidence ratings with participants’ self-rated Māori proficiency. All numeric variables in this model are centered.")
-```
-
-### Effect plots from the model with participants’ self-rated Māori proficiency
-
-```{r māoriProf (Exp1) effect, echo=F, message=F, warning=F, eval=T, fig.width=13, fig.height=9.5, fig.cap="Effect plots of: the interaction between the neighbourhood density, self-rated Māori proficiency and the distinction between non vs. real word stimuli (Fig.a); the interaction between the phonotactic score and the distinction between non vs. real word stimuli (Fig.b); and the presence of macrons (Fig.c). For plots involving interactions with paricipants' self-rated Māori proficiency, the upper panel represents participants with low proficiency, and the lower panel represents participants with high proficiency. Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings."}
-prof_cuts = c(2, 4)
-yrange = c(2.3, 5)
-
-# 1) Type*Neighbourhood density*Proficiency
-maoriProf_mean_1 <- clm_plotdat(mExp1MaoriProf, c("type", "n.neighbors", "maoriProf"), xlevels=list(maoriProf=prof_cuts), type="mean") %>%
-  mutate(
-    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
-    maoriProf = factor(maoriProf)
-  ) %>%
-  ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
-  geom_line(size=1) +
-  xlab("Neighbourhood density") +
-  ylab("Predicted mean rating") +
-  facet_grid(maoriProf ~ ., labeller=label_both, switch="y") +
-  ylim(yrange) +
-  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  theme_bw() + 
-  theme(legend.position="none",panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
-
-maoriProf_dist_1 <- clm_plotdat(mExp1MaoriProf, c("type", "n.neighbors","maoriProf"), xlevels=list(maoriProf=prof_cuts), type="dist") %>%
-  mutate(
-    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
-    maoriProf = factor(maoriProf)
-  ) %>%
-  rename("Rating" = response) %>%
-  ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
-  geom_line(size=1) +
-  xlab("Neighbourhood density") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  facet_grid(maoriProf ~ Rating, labeller=label_both, switch="y") +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(legend.position="right",  legend.title=element_blank(),panel.background = element_blank(),axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
-
-# 2) Phonotactic score*Type
-maoriProf_mean_2 <- clm_plotdat(mExp1MaoriProf, c("type","score"), xlevels=25, type="mean") %>%
-  mutate(    
-    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word")
-  ) %>%
-  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
-  geom_line(size=1) +
-  xlab("Phonotactic score") +
-  ylab("Predicted mean rating") + 
-  ylim(yrange) +
-  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +   
-  theme_bw() + 
-  theme(plot.title = element_text(hjust = 0.5, size=15),legend.position="none",legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face= "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
-
-maoriProf_dist_2 <- clm_plotdat(mExp1MaoriProf, c("type","score"), xlevels=25, type="dist") %>%
-  mutate(type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word")) %>%
-  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
-  geom_line(size=1) +
-  xlab("Phonotactic score") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +    
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(plot.title = element_text(hjust = 0.5, size=15),legend.position="right",legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face= "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
-
-# 3) Macron
-maoriProf_mean_3 <- clm_plotdat(mExp1MaoriProf, "macron", type="mean") %>%
+# 2) dprime with Macron
+exp1d_mean_2 <- clm_plotdat(mExp1Dprime, c("macron", "dprime"), xlevels=list(dprime=dprime_cuts), type="mean") %>%
   mutate(
     type="Word and\nNonword",
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
+    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE"),
+    dprime = factor(dprime, levels=rev(dprime_cuts), labels=c("High d-prime", "Low d-prime"))
   ) %>%
   ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
   geom_point(size=4, position=position_dodge(width=0.2)) +
   geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
   geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
+  facet_grid(dprime ~ ., switch="y") +
   xlab("Presence of macron") +
   ylab("Predicted mean rating") + 
-  ylim(yrange) +
+  ylim(c(2.3, 5)) +
   scale_color_manual(values = c("Word and\nNonword" = "purple")) +
   scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
   theme_bw() + 
   theme(plot.title = element_text(hjust = 0.5, size=15),legend.position="none",legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),   legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
 
-maoriProf_dist_3 <- clm_plotdat(mExp1MaoriProf, "macron", type="dist") %>%
+exp1d_dist_2 <- clm_plotdat(mExp1Dprime, c("macron", "dprime"), xlevels=list(dprime=dprime_cuts), type="dist") %>%
   mutate(
     type="Word and\nNonword",
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
+    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE"),
+    dprime = factor(dprime, levels=rev(dprime_cuts), labels=c("High d-prime", "Low d-prime"))
   ) %>%
   ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
   geom_point(size=4, position=position_dodge(width=0.2)) +
@@ -955,454 +924,71 @@ maoriProf_dist_3 <- clm_plotdat(mExp1MaoriProf, "macron", type="dist") %>%
   ylab("Probability of rating") + 
   scale_color_manual(values = c("Word and\nNonword" = "purple")) +
   scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
+  facet_grid(dprime ~ response, labeller=as_labeller(list(response=function(x) str_c("Rating: ", x))), switch="y") +
   ylim(0, 1) +  
   theme_bw() + 
   theme(plot.title = element_text(hjust = 0.5, size=15),legend.position="right",legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face= "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
 
-ggarrange(maoriProf_mean_1, maoriProf_dist_1, maoriProf_mean_2, maoriProf_dist_2, maoriProf_mean_3, maoriProf_dist_3, labels=c("a.", "","b.","","c.",""), ncol=2, widths=c(1,6), heights=c(2,1,1))
-``` 
-
-### Modeling confidence ratings with participants’ self-rated exposure to Māori by an ordinal mixed-effects model
-
-The model fitting procedure is described in the code below.
-
-```{r māoriExpo (Exp1), echo=T, message=F, warning=F, eval=T}
-# Model fitting: fixed-effects and mixed-effects
-# m1 <- clm(enteredResponse ~ macron*type*c.(maoriExpo) + c.(n.neighbors)*type*c.(maoriExpo) + c.(length)*type*c.(maoriExpo) + c.(score)*type*c.(maoriExpo), data=dataExp1)
-# anova(m1, type="III") # remove type:c.(maoriExpo):c.(n.neighbors)
-# m2 <- clm(enteredResponse ~ macron*type*c.(maoriExpo) + c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriExpo) + c.(length)*type*c.(maoriExpo) + c.(score)*type*c.(maoriExpo), data=dataExp1)
-# anova(m2, type="III") # remove type:c.(maoriExpo):c.(score)
-# m3 <- clm(enteredResponse ~ macron*type*c.(maoriExpo) + c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriExpo) + c.(length)*type*c.(maoriExpo) + c.(score)*type + c.(score)*c.(maoriExpo), data=dataExp1)
-# anova(m3, type="III") # remove type:c.(maoriExpo):c.(length)
-# m4 <- clm(enteredResponse ~ macron*type*c.(maoriExpo) + c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriExpo) + c.(length)*type + c.(length)*c.(maoriExpo) + c.(score)*type + c.(score)*c.(maoriExpo), data=dataExp1)
-# anova(m4, type="III") # remove macron:type:c.(maoriExpo)
-# m5 <- clm(enteredResponse ~ macron*type + macron*c.(maoriExpo) + c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriExpo) + c.(length)*type + c.(length)*c.(maoriExpo) + c.(score)*type + c.(score)*c.(maoriExpo), data=dataExp1)
-# anova(m5, type="III") # remove type:c.(length) 
-# m6 <- clm(enteredResponse ~ macron*type + macron*c.(maoriExpo) + c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriExpo) + c.(length)*c.(maoriExpo) + c.(score)*type + c.(score)*c.(maoriExpo), data=dataExp1)
-# anova(m6, type="III") # remove c.(maoriExpo):c.(score) 
-# m7 <- clm(enteredResponse ~ macron*type + macron*c.(maoriExpo) + c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriExpo) + c.(length)*c.(maoriExpo) + c.(score)*type, data=dataExp1)
-# anova(m7, type="III") # remove c.(maoriExpo):c.(length)
-# m8 <- clm(enteredResponse ~ macron*type + macron*c.(maoriExpo) + c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriExpo) + c.(length) + c.(score)*type, data=dataExp1)
-# anova(m8, type="III") # remove macron:c.(maoriExpo) 
-# m9 <- clm(enteredResponse ~ macron*type + c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriExpo) + c.(length) + c.(score)*type, data=dataExp1)
-# anova(m9, type="III")
-# m10 <- clmm(enteredResponse ~ macron*type + c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriExpo) + c.(length) + c.(score)*type + (1 + macron*type + c.(n.neighbors)*type + c.(length)|workerId) + (1 + c.(score)*type|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# Model didn't converge -> remove random slopes by workerId for all interactions
-# m11 <- clmm(enteredResponse ~ macron*type + c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriExpo) + c.(length) + c.(score)*type + (1 + macron + type + c.(n.neighbors) + c.(length)|workerId) + (1 + c.(score)|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# Model didn't converge -> remove a random slope (length) by workerId
-# m12 <- clmm(enteredResponse ~ macron*type + c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriExpo) + c.(length) + c.(score)*type + (1 + macron + type + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# Model didn't converge -> remove random slopes (length and macron) by workerId
-# m13 <- clmm(enteredResponse ~ macron*type + c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriExpo) + c.(length) + c.(score)*type + (1 + type + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# Model didn't converge -> remove random slopes (length, macron, and type) by workerId
-# m14 <- clmm(enteredResponse ~ macron*type + c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriExpo) + c.(length) + c.(score)*type + (1 + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# summary(m14) # Model converged -> remove n.neighbors:maoriExpo
-# m15 <- clmm(enteredResponse ~ macron*type + c.(n.neighbors)*type + c.(score)*type + c.(maoriExpo) + c.(length) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# anova(m14, m15) # not significant, choose m15 (remove n.neighbors:maoriExpo) 
-# summary(m15) # remove macron:type
-# m16 <- clmm(enteredResponse ~ macron + c.(n.neighbors)*type + c.(score)*type + c.(maoriExpo) + c.(length) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# anova(m15, m16) # not significant, choose m16 (remove macron:type) 
-# summary(m16) # remove n.neighbors:type
-# m17 <- clmm(enteredResponse ~ macron + c.(n.neighbors) + c.(score)*type + c.(maoriExpo) + c.(length) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# anova(m16, m17) # not significant, choose m17 (remove n.neighbors:type) 
-# summary(m17) # remove length
-# m18 <- clmm(enteredResponse ~ macron + c.(n.neighbors) + c.(score)*type + c.(maoriExpo) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# anova(m17, m18) # not significant, choose m18 (remove length)  
-# summary(m18) # remove score:type
-# m19 <- clmm(enteredResponse ~ macron + c.(n.neighbors) + c.(score) + type + c.(maoriExpo) + (1 + c.(n.neighbors) + c.(score)|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# anova(m18, m19) # not significant, choose m19 (remove score:type) 
-# summary(m19) # AIC: 71359.49, remove n.neighbors
-# m20 <- clmm(enteredResponse ~ macron + c.(score) + type + c.(maoriExpo) + (1 + c.(score)|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# anova(m19, m20) # significant, choose m19 (do not remove n.neighbors) -> add random slopes (type and macron) by workerId to m19
-# m19_1 <- clmm(enteredResponse ~ macron + c.(n.neighbors) + c.(score) + type + c.(maoriExpo) + (1 + c.(n.neighbors) + c.(score) + type + macron|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# Model didn't converge -> add a random slope (type) by workerId to m19
-# m19_2 <- clmm(enteredResponse ~ macron + c.(n.neighbors) + c.(score) + type + c.(maoriExpo) + (1 + c.(n.neighbors) + c.(score) + type|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# Model didn't converge -> add a random slope (macron) by workerId to m19
-# m19_3 <- clmm(enteredResponse ~ macron + c.(n.neighbors) + c.(score) + type + c.(maoriExpo) + (1 + c.(n.neighbors) + c.(score) + macron|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# anova(m19, m19_3) #choose m19_3 (model with a lower AIC score)
-# summary(m19_3) # AIC: 70915.73, remove n.neighbors
-# m20 <- clmm(enteredResponse ~ macron + c.(score) + type + c.(maoriExpo) + (1 + c.(score) + macron|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# anova(m19_3, m20) # significant, choose m19_3 (do not remove n.neighbors) -> add an uncorrelated random effect (type) by workerId to m19_3
-# m19_4 <- clmm(enteredResponse ~ macron + c.(n.neighbors) + c.(score) + type + c.(maoriExpo) + (1 + c.(n.neighbors) + c.(score) + macron|workerId) + (0 + type|workerId) + (1 + c.(maoriExpo)|word), data=dataExp1)
-# Model didn't converged, stay with m19_3
-# saveRDS(m19_3, file = "exp1MaoriExpo.rds")
-mExp1MaoriExpo <- readRDS("./exp1MaoriExpo.rds") 
-clm_table(mExp1MaoriExpo, caption="Model summary of confidence ratings with participants' self-rated exposure to Māori. All numeric variables in this model are centered.")
-```
-
-### Effect plots from the model with participants’ self-rated exposure to Māori
-
-```{r māoriExpo (Exp1) effect, echo=F, message=F, warning=F, eval=T, fig.width=13, fig.height=13, fig.cap="Effect plots of: phonotactic score (Fig.a); the presence of macrons (Fig.b); the distinction between non vs. real word stimuli (Fig.c); participants' self-rated exposure to Māori (Fig.d); and neighbourhood density (Fig.e). Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings."}
-yrange = c(2.3, 5)
-  
-# 1) Phonotactic score
-maoriExpo_mean_1 <- clm_plotdat(mExp1MaoriExpo, "score", xlevels=25, type="mean") %>%
-  mutate(type="Word and\nNonword") %>%
-  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
-  geom_line(size=1) +
-  ylim(yrange) +
-  xlab("Phonotactic score") +
-  ylab("Predicted mean rating") + 
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
-  theme_bw() +
-  theme(legend.position="none", panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"), legend.text=element_text(size=12)) 
-
-maoriExpo_dist_1 <- clm_plotdat(mExp1MaoriExpo, "score", xlevels=25, type="dist") %>%
-  mutate(type="Word and\nNonword") %>%
-  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
-  geom_line(size=1) +
-  xlab("Phonotactic score") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(legend.position="right", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face="bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
-
-# 2) Macron
-maoriExpo_mean_2 <- clm_plotdat(mExp1MaoriExpo, "macron", type="mean") %>%
+# 3) dprime with Number of neighbors
+exp1d_mean_3 <- clm_plotdat(mExp1Dprime, c("n.neighbors", "dprime"), xlevels=list(n.neighbors=25, dprime=dprime_cuts), type="mean") %>%
   mutate(
-    type="Word and\nNonword",
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
-  ) %>%
-  ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
-  geom_point(size=4, position=position_dodge(width=0.2)) +
-  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
-  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
-  xlab("Presence of macron") +
-  ylab("Predicted mean rating") + 
-  ylim(yrange) +
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
-  theme_bw() + 
-  theme(
-  plot.title = element_text(hjust = 0.5, size=15),
-  legend.position="none",
-  legend.title=element_blank(),
-  panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face   = "bold"),  legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
-
-maoriExpo_dist_2 <- clm_plotdat(mExp1MaoriExpo, "macron", type="dist") %>%
-  mutate(
-    type="Word and\nNonword",
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
-  ) %>%
-  ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
-  geom_point(size=4, position=position_dodge(width=0.2)) +
-  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
-  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
-  xlab("Presence of macron") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(
-    plot.title = element_text(hjust = 0.5, size=15),
-    legend.position="right",
-    legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face= "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")
-  ) 
-
-# 3) Type
-maoriExpo_mean_3 <- clm_plotdat(mExp1MaoriExpo,"type", type="mean") %>%
-  mutate(    
-    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word")
-  ) %>%
-  ggplot(., aes(x=type, y=pred, color=type, fill=type)) +
-  geom_point(size=4, position=position_dodge(width=0.2)) +
-  geom_line(aes(x=as.integer(type)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
-  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
-  xlab("Non vs. real word stimuli") +
-  ylab("Predicted mean rating") + 
-  ylim(yrange) +
-  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) + 
-  theme_bw() + 
-  theme(
-    plot.title = element_text(hjust = 0.5, size=15),
-    legend.position="none",
-    legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face= "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")
-  )
-
-maoriExpo_dist_3 <- clm_plotdat(mExp1MaoriExpo, "type", type="dist") %>%
-  mutate(
-    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word")
-  ) %>%
-  ggplot(., aes(x=type, y=pred, color=type, fill=type, shape=type)) +
-  geom_point(size=4, position=position_dodge(width=0.2)) +
-  geom_line(aes(x=as.integer(type)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
-  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
-  xlab("Distinction between non vs. real word stimuli") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) + 
-  scale_shape_manual(values = c("Nonword" = 19, "Word" = 17)) +
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(
-    plot.title = element_text(hjust = 0.5, size=15),
-    legend.position="right",
-    legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face= "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")
-  ) 
-
-# 4) Exposure
-maoriExpo_mean_4 <- clm_plotdat(mExp1MaoriExpo, "maoriExpo", xlevels=25, type="mean") %>%
-  mutate(type="Word and\nNonword") %>%
-  ggplot(., aes(x=maoriExpo, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
-  geom_line(size=1) +
-  ylim(yrange) +
-  xlab("Exposure to Māori") +
-  ylab("Predicted mean rating") + 
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
-   theme_bw() +
-  theme(legend.position="none", panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"), legend.text=element_text(size=12)) 
-
-maoriExpo_dist_4  <- clm_plotdat(mExp1MaoriExpo, "maoriExpo", xlevels=25, type="dist") %>%
-  mutate(
-    type="Word and\nNonword"
-    ) %>%
-  ggplot(., aes(x=maoriExpo, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
-  geom_line(size=1) +
-  xlab("Exposure to Māori") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(
-    plot.title = element_text(hjust = 0.5, size=15),  legend.position="right", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"), legend.text=element_text(size=12),strip.text = element_text(size = 13, face="bold")) 
-
-# 5) Neighbourhood density
-maoriExpo_mean_5 <- clm_plotdat(mExp1MaoriExpo, "n.neighbors", xlevels=25, type="mean") %>%
-  mutate(type="Word and\nNonword") %>%
-  ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
-  geom_line(size=1) +
-  xlab("Neighbourhood density") +
-  ylab("Predicted mean rating") + 
-  ylim(yrange) +
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
-  theme_bw() + 
-  theme(plot.title = element_text(hjust = 0.5, size=15),legend.position="none",legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"), legend.text=element_text(size=12))
-
-maoriExpo_dist_5 <- clm_plotdat(mExp1MaoriExpo, "n.neighbors", xlevels=25, type="dist") %>%
-  mutate(type="Word and\nNonword") %>%
-  ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
-  geom_line(size=1) +
-  xlab("Neighbourhood density") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(plot.title = element_text(hjust = 0.5, size=15),legend.position="right",legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"), legend.text=element_text(size=12),strip.text = element_text(size = 13, face="bold")) 
-
-ggarrange(maoriExpo_mean_1, maoriExpo_dist_1, maoriExpo_mean_2, maoriExpo_dist_2, maoriExpo_mean_3, maoriExpo_dist_3,maoriExpo_mean_4, maoriExpo_dist_4, maoriExpo_mean_5, maoriExpo_dist_5, labels=c("a.", "","b.","","c.","","d.","","e.",""), ncol=2, widths=c(1,6), heights=c(1,1,1,1,1))
-```
-
-### Modeling confidence ratings with participants’ self-rated basic knowledge of Māori by an ordinal mixed-effects model
-
-The model fitting procedure is described in the code below.
-
-```{r māoriList (Exp1), echo=T, message=F, warning=F, eval=T}
-# Model fitting: fixed-effects and mixed-effects
-# m1 <- clm(enteredResponse ~ macron*type*c.(maoriList) + c.(n.neighbors)*type*c.(maoriList) + c.(length)*type*c.(maoriList) + c.(score)*type*c.(maoriList), data=dataExp1)
-# anova(m1, type="III") # remove type:c.(maoriList):c.(score)
-# m2 <- clm(enteredResponse ~ macron*type*c.(maoriList) + c.(n.neighbors)*type*c.(maoriList) + c.(length)*type*c.(maoriList) + c.(score)*c.(maoriList) + c.(score)*type, data=dataExp1)
-# anova(m2, type="III") # remove macron:type:c.(maoriList) 
-# m3 <- clm(enteredResponse ~ macron*c.(maoriList) + macron*type + c.(n.neighbors)*type*c.(maoriList) + c.(length)*type*c.(maoriList) + c.(score)*c.(maoriList) + c.(score)*type, data=dataExp1)
-# anova(m3, type="III") # remove c.(maoriList):type:c.(length) 
-# m4 <- clm(enteredResponse ~ macron*c.(maoriList) + macron*type + c.(n.neighbors)*type*c.(maoriList) + c.(length)*type + c.(length)*c.(maoriList) + c.(score)*c.(maoriList) + c.(score)*type, data=dataExp1)
-# anova(m4, type="III") # remove type:c.(length)  
-# m5 <- clm(enteredResponse ~ macron*c.(maoriList) + macron*type + c.(n.neighbors)*type*c.(maoriList) + c.(length)*c.(maoriList) + c.(score)*c.(maoriList) + c.(score)*type, data=dataExp1)
-# anova(m5, type="III") # remove c.(maoriList):c.(length)  
-# m6 <- clm(enteredResponse ~ macron*c.(maoriList) + macron*type + c.(n.neighbors)*type*c.(maoriList) + c.(length) + c.(score)*c.(maoriList) + c.(score)*type, data=dataExp1)
-# anova(m6, type="III")
-# m7 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron*c.(maoriList) + macron*type + c.(score)*c.(maoriList) + c.(score)*type + c.(length) + (1 + macron*type + c.(n.neighbors)*type| workerId) + (1 + c.(score)*type + c.(length)|workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# Model didn't converge -> remove random slopes by workerId for all interactions
-# m8 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron*c.(maoriList) + macron*type + c.(score)*c.(maoriList) + c.(score)*type + c.(length) + (1 + macron + type + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(length)|workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# Model didn't converge -> remove a random slope (length) by workerId
-# m9 <- clmm(enteredResponse ~ macron*c.(maoriList) + macron*type + c.(n.neighbors)*type*c.(maoriList) + c.(length) + c.(score)*c.(maoriList) + c.(score)*type + (1 + macron + type + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# Model didn't converge -> remove random slopes (length and macron) by workerId
-# m10 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron*c.(maoriList) + macron*type + c.(score)*c.(maoriList) + c.(score)*type + c.(length) + (1 + type + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# summary(m10) # remove type:macron
-# m11 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron*c.(maoriList) + c.(score)*c.(maoriList) + c.(score)*type + c.(length) + (1 + type + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# Model didn't converge -> remove random slopes (length, macron and type) by workerId
-# m12 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron*c.(maoriList) + c.(score)*c.(maoriList) + c.(score)*type + c.(length) + (1 + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# summary(m12) -> model converged -> rerun m10 after removing random slopes (type, length and macron) by workerId
-# m10_1 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron*c.(maoriList) + macron*type + c.(score)*c.(maoriList) + c.(score)*type + c.(length) + (1 + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# anova(m10_1, m12) -> not significant, choose m12 (remove type:macron) 
-# summary(m12) # remove maoriList:score
-# m13 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron*c.(maoriList) + c.(score)*type + c.(length) + (1 + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# anova(m12, m13) # not significant, choose m13 (remove maoriList:score) 
-# summary(m13) # remove n.neighbors:type:maoriList
-# m14 <- clmm(enteredResponse ~ c.(n.neighbors)*type + c.(n.neighbors)*c.(maoriList) + type*c.(maoriList) + macron*c.(maoriList) + c.(score)*type + c.(length) + (1 + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# anova(m13, m14) # significant, choose m13 (do not remove n.neighbors:type:maoriList) 
-# summary(m13) # remove length
-# m15 <-  clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron*c.(maoriList) + c.(score)*type + (1 + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# anova(m13, m15) # not significant, choose m15 (remove length) 
-# summary(m15) # remove type:score
-# m16 <-  clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron*c.(maoriList) + c.(score) + (1 + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# anova(m15, m16) # not significant, choose m16 (remove type:score) 
-# summary(m16) # remove macron:maoriList
-# m17 <-  clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron + c.(score) + (1 + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# anova(m16, m17) # significant, choose m16 (do not remove macron:maoriList) 
-# summary(m16) # add a random slope (type) by workerId to m16
-# m16_1 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron*c.(maoriList) + c.(score) + (1 + type + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# Model didn't converge -> add a random slope (macron) by workerId to m16
-# m16_2 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron*c.(maoriList) + c.(score) + (1 + macron + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# anova(m16, m16_2) # choose m16_2 (model with a lower AIC score) 
-# summary(m16_2) # AIC: 70256.67, remove macron:maoriList
-# m18 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron + c.(score) + (1 + macron + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# summary(m18) # AIC: 70257.84 
-# anova(m16_2, m18) # not significant, choose m18 (remove macron:maoriList) -> add a random slope (type) by workerId to m18
-# m18_1 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron + c.(score) + (1 + macron + type + c.(n.neighbors) + c.(score)| workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# summary(m18_1) -> model didn't converge, stay with m18 -> add an uncorrelated random effect (type) by workerId to m18
-# m18_2 <- clmm(enteredResponse ~ c.(n.neighbors)*type*c.(maoriList) + macron + c.(score) + (1 + macron + c.(n.neighbors) + c.(score)| workerId) + (0 + type | workerId) + (1 + c.(maoriList)|word), data=dataExp1)
-# summary(m18_2) -> model didn't converge, stay with m18 
-# saveRDS(m18, file = "exp1MaoriList.rds")
-mExp1MaoriList <- readRDS("./exp1MaoriList.rds")   
-clm_table(mExp1MaoriList, caption="Model summary of confidence ratings with participants’ self-rated basic knowledge of Māori. All numeric variables in this model are centered.")
-```
-
-### Effect plots from the model with participants’ basic knowledge of Māori
-
-```{r māoriList (Exp1) effect, echo=F, message=F, warning=F, eval=T, fig.width=13, fig.height=9.5, fig.cap="Effect plots of: the interaction between the neighbourhood density, self-rated basic knowledge of Māori and the distinction between non vs. real word stimuli (Fig.a); phonotactic score (Fig.b); and the presence of macrons (Fig.c). For plots involving interactions with participants' basic knowledge of Māori, the upper panel represents participants with high level of knowledge, and the lower panel represents participants with low level of knowledge. Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings."}
-list_cuts = c(7, 3)
-yrange = c(2.3, 5)
-
-# 1) Type*Neighbourhood density*Basic knowledge
-maoriList_mean_1 <- clm_plotdat(mExp1MaoriList, c("type", "n.neighbors", "maoriList"), xlevels=list(maoriList=list_cuts), type="mean") %>%
-  mutate(
-    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
-    maoriList = factor(maoriList, levels=list_cuts)
+    type = "Word and\nNonword",
+    dprime = factor(dprime, levels=rev(dprime_cuts), labels=c("High d-prime", "Low d-prime"))
   ) %>%
   ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
   geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
   geom_line(size=1) +
-  xlab("Neighbourhood density") +
+  facet_grid(dprime ~ ., switch="y") +
+  xlab("Number of neighors") +
   ylab("Predicted mean rating") + 
-  facet_grid(maoriList ~ ., labeller=label_both, switch="y") +
-  ylim(yrange) +
-  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
+  ylim(1, 5) +
+  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
+  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
   theme_bw() + 
-  theme(
-  legend.position="none",
-  panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face   = "bold"),       
-  legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")
-  )
+  theme(legend.position="none", panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face   = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
 
-maoriList_dist_1 <- clm_plotdat(mExp1MaoriList, c("type", "n.neighbors","maoriList"), xlevels=list(maoriList=list_cuts), type="dist") %>%
+exp1d_dist_3 <- clm_plotdat(mExp1Dprime, c("n.neighbors", "dprime"), xlevels=list(n.neighbors=25, dprime=dprime_cuts), type="dist") %>%
   mutate(
-    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
-    maoriList = factor(maoriList, levels=list_cuts)
+    type = "Word and\nNonword",
+    dprime = factor(dprime, levels=rev(dprime_cuts), labels=c("High d-prime", "Low d-prime"))
   ) %>%
-  rename("Rating" = response) %>%
   ggplot(., aes(x=n.neighbors, y=pred, color=type, fill=type)) +
   geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
   geom_line(size=1) +
-  xlab("Neighbourhood density") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  facet_grid(maoriList ~ Rating, labeller=label_both, switch="y") +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(
-  legend.position="right", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
-
-# 2) Phonotactic score
-maoriList_mean_2 <- clm_plotdat(mExp1MaoriList, "score", xlevels=25, type="mean") %>%
-  mutate(type="Word and\nNonword") %>%
-  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
-  geom_line(size=1) +
-  ylim(yrange) +
-  xlab("Phonotactic score") +
-  ylab("Predicted mean rating") + 
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
-  theme_bw() +
-  theme(legend.position="none", panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"), legend.text=element_text(size=12)) 
-
-maoriList_dist_2 <- clm_plotdat(mExp1MaoriList, "score", xlevels=25, type="dist") %>%
-  mutate(type="Word and\nNonword") %>%
-  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.3, color=NA) +
-  geom_line(size=1) +
-  xlab("Phonotactic score") +
+  xlab("Number of neighbors") +
   ylab("Probability of rating") + 
   scale_color_manual(values = c("Word and\nNonword" = "purple")) +
   scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
+  facet_grid(dprime ~ response, labeller=as_labeller(list(response=function(x) str_c("Rating: ", x))), switch="y") +
   ylim(0, 1) +  
   theme_bw() + 
-  theme(legend.position="right", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face="bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
+  theme(legend.position="right", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
 
-# 3) Macron
-maoriList_mean_3 <- clm_plotdat(mExp1MaoriList, "macron", type="mean") %>%
-  mutate(
-    type="Word and\nNonword",
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
-  ) %>%
-  ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
-  geom_point(size=4, position=position_dodge(width=0.2)) +
-  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
-  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
-  xlab("Presence of macron") +
-  ylab("Predicted mean rating") + 
-  ylim(yrange) +
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
-  theme_bw() + 
-  theme(
-  plot.title = element_text(hjust = 0.5, size=15),
-  legend.position="none",
-  legend.title=element_blank(),
-  panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face   = "bold"),  legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
-
-maoriList_dist_3 <- clm_plotdat(mExp1MaoriList, "macron", type="dist") %>%
-  mutate(
-    type="Word and\nNonword",
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
-  ) %>%
-  ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
-  geom_point(size=4, position=position_dodge(width=0.2)) +
-  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
-  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
-  xlab("Presence of macron") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(
-    plot.title = element_text(hjust = 0.5, size=15),
-    legend.position="right",
-    legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face= "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
-
-ggarrange(maoriList_mean_1, maoriList_dist_1, maoriList_mean_2, maoriList_dist_2, maoriList_mean_3, maoriList_dist_3, labels=c("a.", "","b.","","c.",""), ncol=2, widths=c(1,6), heights=c(2,1,1))
+ggarrange(exp1d_mean_1, exp1d_dist_1, exp1d_mean_2, exp1d_dist_2, exp1d_mean_3, exp1d_dist_3, labels=c("a.","","b.","","c.",""), ncol=2, widths=c(1,6))
+remove(exp1d_mean_1, exp1d_dist_1, exp1d_mean_2, exp1d_dist_2, exp1d_mean_3, exp1d_dist_3)
 ```
+
 
 # Experiment 2
 
-## Participant exclusions
+Experiment 1 confirmed the findings of Oh et al. (2020) and Panther et al. (under review): non-Māori-speaking New Zealanders are able to distinguish real Māori words from Māori-like nonwords, and their ratings in this task are affected by factors that depend on knowledge of a larger set of words (phonotactic score and number of phonological neighbors), as well as the presence of a visually salient macron. In particular, Experiment 1 extended on these previous studies to show that the effects of such factors persist even when participants are tasked with recognizing potential borrowings, i.e. words that are highly salient through their frequency of use in both Māori and New Zealand English, but that their degree of use varies between words and nonwords, and between participants with different degrees of Māori word knowledge. This result suggests that, for at least some stimuli, at least some non-Māori-speaking New Zealanders recruit explicit knowledge in a way that circumvents the need for the application of implicit knowledge.
 
-The participant filtering process of Experiment 2 is detailed in the code below.
+In Experiment 2, we ask what level of explicit knowledge of Māori words non-Māori-speaking New Zealanders actually have. Do they just know that the words exist, or do they also know how they are used? We also ask how the various factors that we saw have an effect on word identification in Experiment 1 affect the level of explicit knowledge that non-Māori-speaking New Zealanders develop. Do these factors facilitate knowledge of the meanings of words, in the same way that they facilitate recognition of the existence of words?
+
+In Experiment 2, participants were presented with a series of words, one at a time, and asked to define them. The words were chosen from among the real word stimuli used in Experiment 1 that had consistently high ratings across participants, so that we could be sure that participants would be familiar with them. We hand-scored the definitions for accuracy, following a consistent protocol and discussing any areas of uncertainty. Accuracy scores were simplified and converted to a binary variable (correct or incorrect) for the purposes of the present analysis.
+
+## Data
+
+### Exclusions
+
+For Experiment 2, we excluded:  
+
+* 9 participants who indicated above-basic ability to speak or comprehend te reo Māori (i.e. rated greater than 2 on a scale of 0-5 for either speaking or comprehension);  
+* 1 participant who learned their English outside NZ and have been living outside NZ for more than 2 years;  
+* 1 participant who gave joke definitions;  
+* all responses to the stimulus *whanau*, which was supposed to be *whānau* (with a macron).
+
+The exclusion process for Experiment 2 is detailed in the code below.
 
 ```{r data (Exp2), echo=T, message=F, warning=F, eval=T}
 # Loading the data to filter out participants
@@ -1441,7 +1027,7 @@ dataExp2$macron <- as.factor(dataExp2$macron)
 dataExp2 <- dataExp2[!dataExp2$word=="whanau",]
 ```
 
-## Dataset structure
+### Dataset structure
 
 The data is structured as follows:
 
@@ -1451,6 +1037,7 @@ The data is structured as follows:
   - <span style="color:blue">*correct*</span> is binary: either the definition is correct (TRUE) or incorrect (FALSE).
   - <span style="color:blue">*confidence*</span> is each participant's confidence rating for each definition. (on a scale from 0 to 5). 
   - <span style="color:blue">*familiarity*</span> is the average rating for each Māori word obtained from 101 NMS New Zealanders in Experiment 1.
+  - <span style="color:blue">*familiarity.latent*</span> is the prediction from the model (without $d^\prime$) of Experiment 1 for the average rating for each Māori word, in the latent space. It is a version of `familiarity` that is transformed to be approximately linearly distributed, and that accounts for the influence of individual participants, neither of which are true of the previous `familiarity` variable. 
   - <span style="color:blue">*reactionTime*</span> is the reaction time for each rating (seconds).
   - <span style="color:blue">*length*</span> is the phoneme length of each stimulus.
   - <span style="color:blue">*word*</span> is the stimulus used for the rating.
@@ -1476,8 +1063,11 @@ The data is structured as follows:
   - <span style="color:blue">*score*</span> is the phonotactic score based on the 1,629 most frequent morph types derived from all words in the dictionary, normalized by the phonemic length of stimuli, ignoring vowel length distinctions, assuming that participants are attempting to parse stimuli into morphs.
   - <span style="color:blue">*n.neighbors*</span> is the the number of words (from the Māori dictionary) that can be reached by adding, deleting, or substituting one phoneme in each stimulus.
   - <span style="color:blue">*mean.neighbor.logfreq*</span> is the frequency-weighted phonological neighbourhood density.
+  - <span style="color:blue">*macron*</span> indicates whether or not the word includes a macron, which orthgraphically indicates a long vowel. We include the presence of macrons in our analysis because it is visually salient, but is not otherwise reflected in terms such as phonotactic score.
 
-## Overview of participants’ sociolinguistic profile in Experiment 2
+## Participants
+
+After exclusions, we were left with data from 123 participants. A summary of the demographics of the participants is presented below.
 
 ```{r participant profile (Exp2), echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=6, fig.cap="Overview of participants’ sociolinguistic profile in Experiment 2. Bars are labeled with their counts for each category."} 
 # 1) Gender
@@ -1520,298 +1110,273 @@ Fig2Exp2ME <- ggplot(Exp2ME, aes(x=maoriExpo, color=maoriExpo, fill=maoriExpo))+
 multiplot(Fig2Exp2Gender, Fig2Exp2Education, Fig2Exp2ML, Fig2Exp2Age, Fig2Exp2Place, Fig2Exp2ME, cols=2)
 ```
 
-## Rate of accurate definitions per word
+## Stimuli
 
-```{r accuracy rate, echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=5, fig.cap="Rate of accurate definitions per word. Words are displayed according to their phonotactic score on the x-axis and their accuracy rates are represented on the y-axis."}
-Fig6 <- dataExp2[,c("workerId","word","correct","familiarity","score","macron")]
-Fig6$correct1 <- 0;Fig6[Fig6$correct=="TRUE",]$correct1 <- 1;Fig6$correct1 <- as.numeric(Fig6$correct1)
-accRate <- aggregate(Fig6$correct1, by=list(Fig6$word),  FUN=sum)
-colnames(accRate) <- c("word","nbCorrect")
-total <- length(unique(Fig6$workerId));accRate$rate <- accRate$nbCorrect/total
-wordScoreMacron <- unique(Fig6[,c("word","familiarity","score","macron")])
-accRate <- merge(accRate, wordScoreMacron, by="word")
-accRate$macron1 <- "Macron = TRUE"
-accRate[accRate$macron=="FALSE",]$macron1 <- "Macron = FALSE"
-ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold")) + xlim(c(-1.05, -0.55)) # + facet_wrap(vars(macron1))
-# nrow(unique(wordScoreMacron[wordScoreMacron$macron=="TRUE",])) # 23 words containing a macron
-# nrow(unique(wordScoreMacron[wordScoreMacron$macron=="FALSE",])) # 95 words without a macron
+The dataset contains responses to 117 real Māori words, constituting all words from Experiment 1 that were given a mean rating of at least 4, except for *Aotearoa* ('New Zealand'), *Māori* ('New Zealander of indigenous descent'), and *Pākehā* ('New Zealander of European descent'), which are highly salient words that all New Zealanders can be expected to be able to define.
+
+For each word, we calculated the predicted mean response to that word in Experiment 1, using the mixed-effects model from Experiment 1 (without $d^\prime$). We kept this prediction in the latent space assumed by logit ordinal regression, to avoid inducing artificial nonlinearities. This number is the `familiarity.latent` of the word. Note that familiarity reflects a combination of "actual" familiarity with "induced" familiarity through factors such as phonotactic probability, presence of a macron, and number of phonological neighbors.
+
+Distributions of the properties of these stimuli are shown below:
+
+```{r stimuli (Exp2), fig.width=8, fig.height=4, fig.cap="Overview of stimulus properties for Experiment 2."} 
+stimuliExp2 = dataExp2 %>% 
+  dplyr::select(word, macron, length, score, n.neighbors, mean.neighbor.logfreq, familiarity.latent, correct) %>% 
+  group_by(word, macron, length, score, n.neighbors, mean.neighbor.logfreq, familiarity.latent) %>%
+  summarise(
+    prop.correct = mean(correct)
+  ) %>%
+  ungroup()
+
+familiarity_plot = stimuliExp2 %>%
+  ggplot(., aes(x=familiarity.latent)) +
+  geom_density(show.legend=F) +
+  labs(x="Familiarity", y="Density") +
+  theme_bw() +
+  theme(
+    panel.grid = element_blank(),
+    strip.text = element_text(size=12)
+  )
+
+score_plot = stimuliExp2 %>%
+  ggplot(., aes(x=score)) +
+  geom_density(show.legend=F) +
+  labs(x="Phonotactic score", y="Density") +
+  theme_bw() +
+  theme(
+    panel.grid = element_blank(),
+    strip.text = element_text(size=12)
+  )
+
+macron_plot = stimuliExp2 %>%
+  mutate(
+    macron = factor(macron, levels=c(TRUE, FALSE), labels=c("Has macron(s)", "No macron(s)"))
+  ) %>%
+  count(across(c(macron)), .drop=FALSE) %>%
+  ggplot(., aes(x=macron, y=n, fill=factor(macron))) +
+  geom_col(show.legend=F) +
+  geom_text(aes(label=n), vjust=-0.2) +
+  labs(x="Presence of macron", y="Number of stimuli") +
+  scale_y_continuous(expand=expansion(add=c(0,45))) +
+  theme_bw() +
+  theme(
+    panel.grid = element_blank(),
+    strip.text = element_text(size=12)
+  )
+
+length_plot = stimuliExp2 %>%
+  mutate(
+    length = factor(length, levels=min(length):max(length))
+  ) %>%
+  count(across(c(length)), .drop=FALSE) %>%
+  ggplot(., aes(x=length, y=n, fill=factor(length))) +
+  geom_col(show.legend=F) +
+  geom_text(aes(label=n), vjust=-0.2) +
+  labs(x="Length", y="Number of stimuli") +
+  scale_y_continuous(expand=expansion(add=c(0,25))) +
+  theme_bw() +
+  theme(
+    panel.grid = element_blank(),
+    strip.text = element_text(size=12)
+  )
+
+neighbor_plot = stimuliExp2 %>%
+  ggplot(., aes(x=n.neighbors)) +
+  geom_density(show.legend=F) +
+  labs(x="Number of phonological neighbors", y="Density") +
+  theme_bw() +
+  theme(
+    panel.grid = element_blank(),
+    strip.text = element_text(size=12)
+  )
+
+ggarrange(familiarity_plot, score_plot, macron_plot, length_plot, neighbor_plot, ncol=3) 
+remove(familiarity_plot, score_plot, macron_plot, length_plot, neighbor_plot)
+
 ```
 
-## Statistical analyses
+## Summary of raw data
 
-### Modeling accuracy without participants' individual differences by a mixed-effects binary logistic regression model
+The plots below show the accuracy rate (proportion correct definitions) for each stimulus, broken down by familiarity, phonotactic score, presence of macron, length, and number of neighbors. It is clear that words that were recognized more consistently in Experiment 1 are also defined more accurately in Experiment 2; however, it is also clear that participants' generally struggle to accurately define a large proportion of these words, even though they recognize them readily as real Māori words. It is difficult to see clear effects of aspects other than familiarity, other than perhaps for the presence of macrons: participants seem less able to accurately define words with macrons than words without macrons. This may in part reflect the fact that, in terms of *actual word knowledge*, the familiarity threshold for including words with macrons in the experiment was effectively lower than that for words without macrons, since macrons inflated the ratings that participants gave in Experiment 1, and it was on the basis of these ratings that stimuli were selected for this experiment.
 
-The model fitting procedure is described in the code below.
 
-```{r model2 (Exp2), echo=T, message=F, warning=F, eval=T}
-# Model fitting: fixed-effects & mixed-effects
-# m1 <- glm(correct ~ (c.(score) + c.(n.neighbors) + c.(familiarity) + macron)^2 + c.(length), data=dataExp2, family=binomial(link="logit"))
-# summary(m1) # remove familiarity:macron
-# m2 <- update(m1, . ~ . -c.(familiarity):macron)
-# anova(m1, m2, test="Chisq") # not significant, choose m2 (remove familiarity:macron)
-# summary(m2) # remove score:n.neighbors
-# m3 <- update(m2, . ~ . -c.(score):c.(n.neighbors))
-# anova(m2, m3, test="Chisq") # not significant, choose m3 (remove score:n.neighbors)
-# summary(m3) # remove score:familiarity
-# m4 <- update(m3, . ~ . -c.(score):c.(familiarity))
-# anova(m3, m4, test="Chisq") # not significant, choose m4 (remove score:familiarity)
-# m5 <- glmer(correct ~ c.(n.neighbors)*c.(familiarity) + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(score) + c.(length) + c.(n.neighbors) + c.(familiarity) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# summary(m5) # remove n.neighbors:familiarity
-# m6 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(score) + c.(length) + c.(n.neighbors) + c.(familiarity) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# anova(m5, m6) # not significant, choose m6 (remove n.neighbors:familiarity)
-# summary(m6) # singular fit, remove random slopes (n.neighbors, length and macron) by workerId
-# m7 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + c.(score)*macron + c.(length) + (1 + c.(score) + c.(familiarity)|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# summary(m7) # remove macron:score
-# m8 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + c.(score) + c.(length) + (1 + c.(score) + c.(familiarity)|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# anova(m7, m8) # not significant, choose m8 (remove macron:score)
-# summary(m8) # remove score
-# m9 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + c.(length) + (1 + c.(familiarity)|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# anova(m8, m9) # not significant, choose m9 (remove score)
-# summary(m9) # add a random slope (macron) by workerId
-# m10 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + c.(length) + (1 + c.(familiarity) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# summary(m10) # remove length
-# m11 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors)*macron + (1 + c.(familiarity) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# anova(m10, m11) # not significant, choose m11 (remove length)
-# summary(m11) # remove n.neighbors:macron
-# m12 <- glmer(correct ~ c.(familiarity) + c.(n.neighbors) + macron + (1 + c.(familiarity) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# anova(m11, m12) # not significant, choose m12 (remove n.neighbors:macron)
-# summary(m12) # remove n.neighbors
-# m13 <- glmer(correct ~ c.(familiarity) + macron + (1 + c.(familiarity) + macron|workerId) + (1|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# anova(m12, m13) # not significant, choose m13 (remove n.neighbors)
-# saveRDS(m13, file = "exp2.rds")
-mExp2 <- readRDS("./exp2.rds")
-logistic_table(mExp2, caption="Model summary of accuracy without participants' individual differences. All numeric variables in this model are centered.")
+```{r accuracy rate, fig.width=7, fig.height=9, fig.cap="Rate of accurate definitions per word, broken down by various stimulus properties."}
+
+familiarity_plot = ggplot(stimuliExp2, aes(x=familiarity.latent, y=prop.correct, label=word)) + 
+  geom_point(size=3, alpha=0.2, shape=17, color="blue") + 
+  geom_text(hjust=0.2, vjust=-0.7, check_overlap=TRUE, size=4, color="blue") + 
+  labs(x= "Exp1 familiarity (latent)", y="Accuracy rate") + 
+  ylim(0, 1.05)+
+  scale_x_continuous(expand=expansion(mult=0.2)) +
+  theme_bw() + 
+  theme(
+    legend.position = "none", 
+    legend.title = element_blank(),
+    panel.background = element_blank(), 
+    axis.text = element_text(size=13), 
+    axis.title = element_text(size=13, face="bold"), 
+    legend.text = element_text(size=12), 
+    strip.text = element_text(size = 13, face="bold")
+  )
+
+score_plot = ggplot(stimuliExp2, aes(x=score, y=prop.correct, label=word)) + 
+  geom_point(size=3, alpha=0.2, shape=17, color="blue") + 
+  geom_text(hjust=0.2, vjust=-0.7, check_overlap=TRUE, size=4, color="blue") + 
+  labs(x= "Phonotactic score", y="Accuracy rate") + 
+  scale_x_continuous(expand=expansion(mult=0.1)) +
+  ylim(0, 1.05)+
+  theme_bw() + 
+  theme(
+    legend.position = "none", 
+    legend.title = element_blank(),
+    panel.background = element_blank(), 
+    axis.text = element_text(size=13), 
+    axis.title = element_text(size=13, face="bold"), 
+    legend.text = element_text(size=12), 
+    strip.text = element_text(size = 13, face="bold")
+  )
+
+macron_plot = ggplot(stimuliExp2, aes(x=macron, y=prop.correct, label=word)) + 
+  geom_violin(alpha=0.3, fill="blue") + 
+  geom_text(hjust=0.5, vjust=-0.7, check_overlap=TRUE, size=4, color="blue") + 
+  labs(x= "Presence of macron", y="Accuracy rate") +
+  ylim(0, 1.05)+
+  theme_bw() + 
+  theme(
+    legend.position = "none", 
+    legend.title = element_blank(),
+    panel.background = element_blank(), 
+    axis.text = element_text(size=13), 
+    axis.title = element_text(size=13, face="bold"), 
+    legend.text = element_text(size=12), 
+    strip.text = element_text(size = 13, face="bold")
+  )
+
+length_plot = ggplot(stimuliExp2, aes(x=length, y=prop.correct, label=word)) + 
+  geom_point(size=3, alpha=0.2, shape=17, color="blue") + 
+  geom_text(hjust=0.2, vjust=-0.7, check_overlap=TRUE, size=4, color="blue") + 
+  labs(x= "Length (in phonemes)", y="Accuracy rate") +
+  xlim(1, 15) +
+  ylim(0, 1.05)+ 
+  theme_bw() + 
+  theme(
+    legend.position = "none", 
+    legend.title = element_blank(),
+    panel.background = element_blank(), 
+    axis.text = element_text(size=13), 
+    axis.title = element_text(size=13, face="bold"), 
+    legend.text = element_text(size=12), 
+    strip.text = element_text(size = 13, face="bold")
+  )
+
+neighbor_plot = ggplot(stimuliExp2, aes(x=n.neighbors, y=prop.correct, label=word)) + 
+  geom_point(size=3, alpha=0.2, shape=17, color="blue") + 
+  geom_text(hjust=0.2, vjust=-0.7, check_overlap=TRUE, size=4, color="blue") + 
+  labs(x= "Number of phonological neighbors", y="Accuracy rate") +
+  scale_x_continuous(expand=expansion(mult=0.1)) +
+  ylim(0, 1.05)+
+  theme_bw() + 
+  theme(
+    legend.position = "none", 
+    legend.title = element_blank(),
+    panel.background = element_blank(), 
+    axis.text = element_text(size=13), 
+    axis.title = element_text(size=13, face="bold"), 
+    legend.text = element_text(size=12), 
+    strip.text = element_text(size = 13, face="bold")
+  )
+
+ggarrange(familiarity_plot, score_plot, macron_plot, length_plot, neighbor_plot, ncol=2) 
+remove(familiarity_plot, score_plot, macron_plot, length_plot, neighbor_plot)
 ```
 
-### Effect plots from the model without participants' individual differences
+## Statistical analysis
 
-```{r model2 (Exp2) effect, echo=F, message=F, warning=F, eval=T, fig.width=7, fig.height=2.5, fig.cap="Effect plots of: familiarity (Fig.a); and the presence of macrons (Fig.b)."}
-# 1) Familiarity
-exp2_1 <- as.data.frame(effect(term="c.(familiarity)", mod=mExp2))
-exp2_1$type <- "Word"
-F_Exp2_1 <- ggplot(exp2_1, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 10, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 10, face="bold"))
+To assess the extent to which various factors affected participants' ability to accurately define words, we use mixed-effects logistic regression. In particular, we are interested to know if the factors that affected awareness / recognition of words in Experiment 1 -- phonotactic score, presence of a macron, and number of phonological neighbors -- offer additional advantages in being able to *define* words as well.
+
+The predictors considered in the analysis are:
+
+* `familiarity.latent`: Predicted mean rating for the stimulus in Experiment 1, in the latent space (centered)  
+* `score`: Stimulus phonotactic score (centered)  
+* `macron`: Presence of a macron not found in English words (binary factor)  
+   * Note: we include this predictor both because it captures a visual component that is distinct from phonotactics, and because macrons indicate vowel length, which is not captured in our phonotactic scores following Oh et al. (2020)  
+* `length`: Stimulus length in phonemes (centered)  
+* `n.neighbors`: Number of phonological neighbors (centered)  
+
+We observed in Experiment 1 that participants' sensitivities to word properties differed with their degree of apparent Māori word knowledge. In a similar way, it is possible that participants' sensitivity to word properties in being able to define words accurately in Experiment 2 will differ based on how widely known the word is. For this reason, we include interactions between `familiarity.latent` and the predictors that showed an effect in Experiment 1 -- `score`, `macron`, and `n.neighbors`. We do not include additional interactions, since we have no theoretical reason to suspect them, and since the number of words for which we have data is relatively small.
+
+We again take a stepwise approach to model fitting, with some slight changes due to the greater efficiency with which logistic regression models can be fit compared to (logit) ordinal regression. In the first stage, we consider a mixed-effects (`glmer`) model where the only random effects are intercepts by participant and word. We use this model to prune unnecessary interaction terms from the model, to avoid the explosion of computational effort they bring for estimating random slopes: we remove non-significant interaction terms one at a time, starting with the term with highest $p$ value, confirming via a likelihood ratio test ($\alpha=0.1$) after each removal that the term did not make a significant contribution to the model's explanatory power. We do not consider removing main effects at the first stage. Once there are no further candidate interaction terms to remove, we move to the second stage, where we add correlated by-participant random slopes for all remaining terms. In the event of convergence issues, we try removing correlations between random slopes before removing any slopes altogether. Other than as required for convergence, we do not remove predictors at the second stage.
+
+The model summary table and partial effects plots are below. Only `familiarity.latent` has a significant effect in the final model: the accuracy with which a word could be defined was higher the more consistently and confidently that word could be recognized in Experiment 1, but was not otherwise significantly affected by other factors. The marginal effect of `macron`, whereby words with a macron were numerically less likely to be accurately defined than words without a macron, is likely an artifact of the fact that words with a macron received inflated ratings in Experiment 1 -- and thus inflated `familiarity.latent` -- due to the salience of the macron, rather than actual familiarity; it is also affected by the fact that almost all participants confused *mauī* ('left (direction)') with *Māui* (a demigod who is commonly known through myths).
+
+In interpreting the results of Experiment 2, it is important to remember that participants' ratings of words in Experiment 1 were affected by properties of those words, such as phonotactic score and phonological neighborhood density. Thus, while these properties do not appear to offer *additional* advantages in tying explicit semantic knowledge to wordforms, they do offer advantages in the logical precursors of building awareness and recognition of the wordforms in the first place.
+
+The results also speak to an intriguing question raised in recent lines of work: where does the knowledge of phonotactic probability and phonological neighbors that bestows advantages in awareness and recognition come from? Traditionally in phonological theory, both phonotactic probability and neighborhood density are assumed to derive from generalization over the mental lexicon. Oh et al. (2020) showed that non-Māori-speaking New Zealanders are able to track Māori phonotactic probabilities surprisingly well, to an extent that is best modeled through generalization over the forms of some 1,500 frequent Māori words and word-parts. But the mental lexicon of non-Māori-speaking New Zealanders cannot be anywhere near this size, at least on an understanding of the term "mental lexicon" as a store of forms *together with associated semantic (and syntactic, etc.) knowledge*, because the results of Experiment 2 clearly show that participants do not have explicit semantic knowledge of many words at all. Experiment 2 thus further supports Oh et al.'s claim that non-Māori-speaking New Zealanders have a Māori *proto-lexicon*, consisting of implicit knowledge of a large number of forms without necessarily any semantic associations. This claim is further supported by the finding from Experiment 1 that participants are sensitive to phonological neighborhood density, since the calculation of phonological neighbors requires specific knowledge of entire wordforms, above and beyond the general awareness of phoneme transition probabilities that may be sufficient for calculating phonotactic probabilities.
+
+
+```{r model2 (Exp2)}
+
+# # Stage 1: mixed effects, intercepts only, removing interaction terms only
+# m1 <-  glmer(correct ~ c.(familiarity.latent) * (c.(score) + macron + c.(n.neighbors)) + c.(length) + (1 | workerId) + (1 | word), family="binomial", data=dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# summary(m1) # Removal candidate: c.(familiarity.latent):macron
+# m2 <- update(m1, . ~ . - c.(familiarity.latent):macron)
+# anova(m1, m2, test="LRT") # Removal justified
+# summary(m2) # Removal candidate: c.(familiarity.latent):c.(score)
+# m3 <- update(m2, . ~ . - c.(familiarity.latent):c.(score))
+# anova(m2, m3, test="LRT") # Removal justified
+# summary(m3) # Removal candidate: c.(familiarity.latent):c.(n.neighbors)
+# m4 <- update(m3, . ~ . - c.(familiarity.latent):c.(n.neighbors))
+# anova(m3, m4, test="LRT") # Removal justified
+# summary(m4) # All interactions removed; no further candidates for removal
+# 
+# # Stage 2: add by-participant random slopes
+# m5 <- glmer(correct ~ c.(familiarity.latent) + c.(score) + macron + c.(n.neighbors) + c.(length) + (1 + c.(familiarity.latent) + c.(score) + macron + c.(n.neighbors) + c.(length) | workerId) + (1 | word), family="binomial", data=dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# summary(m5) # Boundary (singular) fit. Random slope for c.(n.neighbors) has extremely low variance: try making it uncorrelated
+# 
+# m5a <- glmer(correct ~ c.(familiarity.latent) + c.(score) + macron + c.(n.neighbors) + c.(length) + (1 + c.(familiarity.latent) + c.(score) + macron + c.(length) | workerId) + (0 + c.(n.neighbors) | workerId) + (1 | word), family="binomial", data=dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# summary(m5a) # Boundary (singular) fit. Random slope for c.(n.neighbors) is estimated to zero: remove
+# 
+# m5b <- glmer(correct ~ c.(familiarity.latent) + c.(score) + macron + c.(n.neighbors) + c.(length) + (1 + c.(familiarity.latent) + c.(score) + macron + c.(length) | workerId) + (1 | word), family="binomial", data=dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# summary(m5b) # Boundary (singular) fit. Random slope for c.(score) shows lowest correlations: try making it uncorrelated
+# 
+# m5c <- glmer(correct ~ c.(familiarity.latent) + c.(score) + macron + c.(n.neighbors) + c.(length) + (1 + c.(familiarity.latent) + macron + c.(length) | workerId) + (0 + c.(score) | workerId) + (1 | word), family="binomial", data=dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
+# summary(m5c) # No issues with fit
+# 
+# saveRDS(m5c, file = "model_exp2.rds")
+
+mExp2 <- readRDS("model_exp2.rds")
+logistic_table(mExp2, caption="Model summary of accuracy of participants' definitions. All numeric variables in this model are centered.")
+```
+
+
+```{r model2 (Exp2) effect, fig.width=8, fig.height=4, fig.cap="Effect plots of familiarity (Fig.a) and presence of a macron (Fig.b)."}
+
+# 1) familiarity
+exp2_mean_1 <- Effect("familiarity.latent", mExp2, xlevels=list(familiarity.latent = 25)) %>%
+  as_tibble() %>%
+  ggplot(., aes(x=familiarity.latent, y=fit)) +
+  geom_ribbon(aes(ymin=lower, ymax=upper), alpha=0.2, color=NA, fill="blue") +
+  geom_line(size=1, color="blue") +
+  xlab("Exp1 familiarity (latent)") +
+  ylab("Predicted definition accuracy") + 
+  ylim(0, 1) +
+  theme_bw() + 
+  theme(legend.position="none", panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face   = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
 
 # 2) Macron
-exp2_2 <- as.data.frame(effect(term="macron", mod=mExp2))
-exp2_2$Macron <- "Macron = FALSE"
-exp2_2[exp2_2$macron=="TRUE",]$Macron <- "Macron = TRUE"
-exp2_2$type <- "Word"
-F_Exp2_2 <- ggplot(exp2_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=10), legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 10, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 10, face="bold")) 
+exp2_mean_2 <- Effect("macron", mExp2) %>%
+  as_tibble() %>%
+  ggplot(., aes(x=macron, y=fit)) +
+  geom_point(size=4, position=position_dodge(width=0.2), color="blue") +
+  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2), color="blue") +
+  geom_errorbar(aes(ymin=lower, ymax=upper), size=1, width=0.3, position=position_dodge(width=0.2), color="blue") +
+  xlab("Presence of macron") +
+  ylab("Predicted mean rating") + 
+  ylim(0, 1) +
+  theme_bw() + 
+  theme(plot.title = element_text(hjust = 0.5, size=15),legend.position="none",legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),   legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
 
-ggarrange(F_Exp2_1, F_Exp2_2, labels=c("a.","b."), ncol=2)
-```
-
-### Modeling accuracy with participants' basic knowledge of Māori by a mixed-effects binary logistic regression model
-
-The model fitting procedure is described in the code below.
-
-```{r māorilist (Exp2), echo=T, message=F, warning=F, eval=T}
-# Model fitting: fixed-effects & mixed-effects
-# m1 <- glm(correct ~ (c.(score) + c.(n.neighbors) + c.(familiarity) + c.(length) + macron)*c.(maoriList), data=dataExp2, family=binomial(link="logit"))
-# summary(m1) # remove score:maoriList
-# m2 <- update(m1, . ~ . -c.(score):c.(maoriList))
-# anova(m1, m2, test="Chisq") # not significant, choose m2 (remove score:maoriList)
-# summary(m2) # remove macron:maoriList
-# m3 <- update(m2, . ~ . -macron:c.(maoriList))
-# anova(m2, m3, test="Chisq") # not significant, choose m3 (remove macron:maoriList)
-# summary(m3) # remove length:maoriList
-# m4 <- update(m3, . ~ . -c.(length):c.(maoriList)) 
-# anova(m3, m4, test="Chisq") # not significant, choose m4 (remove length)
-# summary(m4) # remove score
-# m5 <- update(m4, . ~ . -c.(score))
-# anova(m4, m5, test="Chisq") # not significant, choose m5 (remove score)
-# summary(m5) # remove n.neighbors:maoriList
-# m6 <- update(m5, . ~ . -c.(n.neighbors):c.(maoriList))
-# anova(m5, m6, test="Chisq") # significant, choose m5 (do not remove n.neighbors:maoriList)
-# summary(m5) # remove familiarity:maoriList
-# m7 <- update(m5, . ~ . -c.(familiarity):c.(maoriList))
-# anova(m5, m7, test="Chisq") # significant, choose m5 (do not remove familiarity:maoriList)
-# m8 <- glmer(correct ~ c.(n.neighbors)*c.(maoriList) + c.(familiarity)*c.(maoriList) + c.(length) + macron + (1 + c.(length) + c.(n.neighbors) + c.(familiarity) + macron|workerId) + (1+ c.(maoriList)|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# summary(m8) # singular fit, remove a random slope (length) by workerId 
-# m9 <- glmer(correct ~ c.(n.neighbors)*c.(maoriList) + c.(familiarity)*c.(maoriList) + c.(length) + macron + (1 + c.(n.neighbors) + c.(familiarity) + macron|workerId) + (1+ c.(maoriList)|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# summary(m9) # singular fit, remove random slopes (length and n.neighbors) by workerId 
-# m10 <- glmer(correct ~ c.(n.neighbors)*c.(maoriList) + c.(familiarity)*c.(maoriList) + c.(length) + macron + (1 + macron + c.(familiarity)|workerId) + (1+ c.(maoriList)|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# summary(m10)  # remove length
-# m11 <- glmer(correct ~ c.(n.neighbors)*c.(maoriList) + c.(familiarity)*c.(maoriList) + macron + (1 + macron + c.(familiarity)|workerId) + (1+ c.(maoriList)|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# anova(m10, m11) # not significant, choose m11 (remove length)
-# summary(m11) # remove n.neighbors:maoriList
-# m12 <- glmer(correct ~ c.(n.neighbors) + c.(familiarity)*c.(maoriList) + macron + (1 + macron + c.(familiarity)|workerId) + (1+ c.(maoriList)|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# anova(m11, m12) # not significant, choose m12 (remove n.neighbors:maoriList)
-# summary(m12) # remove n.neighbors
-# m13 <- glmer(correct ~ c.(familiarity)*c.(maoriList) + macron + (1 + macron + c.(familiarity)|workerId) + (1+ c.(maoriList)|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# anova(m12, m13) # not significant, choose m13 (remove n.neighbors)
-# summary(m13) # AIC: 12288.7, remove familiarity:maoriList
-# m14 <- glmer(correct ~ c.(familiarity) + c.(maoriList) + macron + (1 + macron + c.(familiarity)|workerId) + (1+ c.(maoriList)|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# anova(m13, m14) # significant, choose m13 (do not remove familiarity:maoriList) -> add an uncorrelated random effect (n.neighbors) by workerId to m13
-# m13_1 <- glmer(correct ~ c.(familiarity)*c.(maoriList) + macron + (1 + macron + c.(familiarity)|workerId) + (0 + c.(n.neighbors)|workerId) + (1+ c.(maoriList)|word), family = binomial(link = "logit"), data = dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)))
-# summary(m13_1) # 12290.7
-# anova(m13, m13_1) # choose m13 (model with a lower AIC score)
-# saveRDS(m13, file = "exp2MaoriList.rds")
-mExp2MaoriList <- readRDS("./exp2MaoriList.rds")
-logistic_table(mExp2MaoriList, caption="Model summary of accuracy with participants’ self-rated basic knowledge of Māori. All numeric variables in this model are centered.")
-``` 
-
-### Effect plots from the model with participants’ basic knowledge of Māori
-
-```{r māorilist (Exp2) effect, echo=F, message=F, warning=F, eval=T, fig.width=14, fig.height=3.5, fig.cap="Effect plots of: the interaction between familiarity and participants’ basic knowledge of Māori (Fig.a); and the presence of macrons (Fig.b)."}
-# 1) Familiarity*Basic knowledge
-exp2ML_1 <- as.data.frame(effect(term="c.(familiarity):c.(maoriList)", mod=mExp2MaoriList))
-exp2ML_1$maoriList1 <- "Basic knowledge = 0"
-exp2ML_1[exp2ML_1$maoriList=="0",]$maoriList1 <- "Basic knowledge = 0"
-exp2ML_1[exp2ML_1$maoriList=="2",]$maoriList1 <- "Basic knowledge = 2"
-exp2ML_1[exp2ML_1$maoriList=="4",]$maoriList1 <- "Basic knowledge = 4"
-exp2ML_1[exp2ML_1$maoriList=="7",]$maoriList1 <- "Basic knowledge = 7"
-exp2ML_1[exp2ML_1$maoriList=="9",]$maoriList1 <- "Basic knowledge = 9"
-exp2ML_1$type <- "Word"
-F_Exp2ML_1 <- ggplot(exp2ML_1, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + facet_grid(. ~ maoriList1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 12, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 12, face="bold")) 
-
-# 2) Macron
-exp2ML_2 <- as.data.frame(effect(term="macron", mod=mExp2MaoriList))
-exp2ML_2$Macron <- "Macron = FALSE"
-exp2ML_2[exp2ML_2$macron=="TRUE",]$Macron <- "Macron = TRUE"
-exp2ML_2$type <- "Word"
-F_Exp2ML_2 <- ggplot(exp2ML_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=15), legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
-
-ggarrange(F_Exp2ML_1, F_Exp2ML_2, labels=c("a.","b."), ncol=2, widths=c(5,1))
-```
-
-### Modeling accuracy with participants’ self-rated Māori proficiency by a mixed-effects binary logistic regression model
-
-The model fitting procedure is described in the code below.
-
-```{r māoriProf (Exp2), echo=T, message=F, warning=F, eval=T}
-# Model fitting: fixed-effects and mixed-effects
-# m1 <- glm(correct ~ (c.(score) + c.(n.neighbors) + c.(familiarity) + c.(length) + macron)*c.(maoriProf), data=dataExp2, family=binomial(link="logit"))
-# summary(m1) # remove score:maoriProf
-# m2 <- update(m1, . ~ . -c.(score):c.(maoriProf))
-# anova(m1, m2, test="Chisq") # not significant, choose m2 (remove score:maoriProf) 
-# summary(m2) # remove macron:maoriProf
-# m3 <- update(m2, . ~ . -macron:c.(maoriProf))
-# anova(m2, m3, test="Chisq") # not significant, choose m3 (remove macron:maoriProf) 
-# summary(m3) # remove length:maoriProf
-# m4 <- update(m3, . ~ . -c.(length):c.(maoriProf))
-# anova(m3, m4, test="Chisq") # not significant, choose m4 
-# summary(m4) # remove n.neighbors:maoriProf
-# m5 <- update(m4, . ~ . -c.(n.neighbors):c.(maoriProf))
-# anova(m4, m5, test="Chisq") # not significant, choose m5 
-# summary(m5) # remove score
-# m6 <- update(m5, . ~ . -c.(score))
-# anova(m5, m6, test="Chisq") # not significant, choose m6
-# m7 <- glmer(correct ~ c.(familiarity)*c.(maoriProf) + c.(n.neighbors) + c.(length) + macron + (1 + c.(familiarity) + c.(n.neighbors) + c.(length) + macron|workerId) + (1+ c.(maoriProf)|word), data=dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)), family=binomial(link="logit"))
-# summary(m7) # singular fit, remove length
-# m8 <- glmer(correct ~ c.(familiarity)*c.(maoriProf) + c.(n.neighbors) + macron + (1 + c.(familiarity) + c.(n.neighbors) + macron|workerId) + (1+ c.(maoriProf)|word), data=dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)), family=binomial(link="logit"))
-# anova(m7, m8) # not significant, choose m8 (remove length)
-# summary(m8) # singular fit, remove n.neighbors
-# m9 <- glmer(correct ~ c.(familiarity)*c.(maoriProf) + macron + (1 + c.(familiarity) + macron|workerId) + (1+ c.(maoriProf)|word), data=dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)), family=binomial(link="logit"))
-# anova(m8, m9) # not significant, choose m9 (remove n.neighbors)
-# summary(m9) # remove familiarity:maoriProf
-# m10 <- glmer(correct ~ c.(familiarity) + c.(maoriProf) + macron + (1 + c.(familiarity) + macron|workerId) + (1+ c.(maoriProf)|word), data=dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)), family=binomial(link="logit"))
-# anova(m9, m10) # significant, choose m9 (do not remove familiarity:maoriProf)
-# saveRDS(m9, file = "exp2MaoriProf.rds")
-mExp2MaoriProf <- readRDS("./exp2MaoriProf.rds")
-logistic_table(mExp2MaoriProf, caption="Model summary of accuracy with participants’ self-rated Māori proficiency. All numeric variables in this model are centered.")
-``` 
-
-### Effect plots from the model with participants’ self-rated Māori proficiency
-
-```{r māoriProf (Exp2) effect, echo=F, message=F, warning=F, eval=T, fig.width=14, fig.height=3.5, fig.cap="Effect plots of: the interaction between familiarity and self-rated Māori proficiency (Fig.a); and the presence of macrons (Fig.b)."}
-# 1) Familiarity*Proficiency
-exp2MP_1 <- as.data.frame(effect(term="c.(familiarity):c.(maoriProf)", mod=mExp2MaoriProf))
-exp2MP_1$maoriProf1 <- "Proficiency = 0"
-exp2MP_1[exp2MP_1$maoriProf=="0",]$maoriProf1 <- "Proficiency = 0"
-exp2MP_1[exp2MP_1$maoriProf=="1",]$maoriProf1 <- "Proficiency = 1"
-exp2MP_1[exp2MP_1$maoriProf=="2",]$maoriProf1 <- "Proficiency = 2"
-exp2MP_1[exp2MP_1$maoriProf=="3",]$maoriProf1 <- "Proficiency = 3"
-exp2MP_1[exp2MP_1$maoriProf=="4",]$maoriProf1 <- "Proficiency = 4"
-exp2MP_1$type <- "Word"
-F_Exp2MP_1 <- ggplot(exp2MP_1, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + facet_grid(. ~ maoriProf1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 12, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 12, face="bold"))
-
-# 2) Macron
-exp2MP_2 <- as.data.frame(effect(term="macron", mod=mExp2MaoriProf))
-exp2MP_2$Macron <- "Macron = FALSE"
-exp2MP_2[exp2MP_2$macron=="TRUE",]$Macron <- "Macron = TRUE"
-exp2MP_2$type <- "Word"
-F_Exp2MP_2 <- ggplot(exp2MP_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=15), legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
-
-ggarrange(F_Exp2MP_1, F_Exp2MP_2, labels=c("a.","b."), ncol=2, widths=c(5,1))
-```
-
-### Modeling accuracy with participants’ self-reported exposure to Māori by a mixed-effects binary logistic regression model
-
-The model fitting procedure is described in the code below.
-
-```{r māoriExpo (Exp2), echo=T, message=F, warning=F, eval=T}
-# Model fitting: fixed-effects and mixed-effects
-# m1 <- glm(correct ~ (c.(score) + c.(n.neighbors) + c.(familiarity) + c.(length) + macron)*c.(maoriExpo), data=dataExp2, family=binomial(link="logit"))
-# summary(m1) # remove length:maoriExpo
-# m2 <- update(m1, . ~ . -c.(length):c.(maoriExpo))
-# anova(m1, m2, test="Chisq") # not significant, choose m2 (remove length:maoriExpo) 
-# summary(m2) # remove macron:maoriExpo
-# m3 <- update(m2, . ~ . -macron:c.(maoriExpo))
-# anova(m2, m3, test="Chisq") # not significant, choose m3 (remove macron:maoriExpo) 
-# summary(m3) # remove score:maoriExpo
-# m4 <- update(m3, . ~ . -c.(score):c.(maoriExpo))
-# anova(m3, m4, test="Chisq") # not significant, choose m4 (remove score:maoriExpo) 
-# summary(m4) # remove score
-# m5 <- update(m4, . ~ . -c.(score))
-# anova(m4, m5, test="Chisq") # not significant, choose m5 (remove score) 
-# summary(m5) # remove familiarity:maoriExpo
-# m6 <- update(m5, . ~ . -c.(familiarity):c.(maoriExpo)) 
-# anova(m5, m6, test="Chisq") # significant, choose m5 (do not remove familiarity:maoriExpo) 
-# summary(m5) # remove n.neighbors:maoriExpo
-# m7 <- update(m5, . ~ . -c.(n.neighbors):c.(maoriExpo))
-# anova(m5, m7, test="Chisq") # significant, choose m5 (do not remove n.neighbors:maoriExpo)
-# m8 <- glmer(correct ~ c.(n.neighbors)*c.(maoriExpo) + c.(familiarity)*c.(maoriExpo) + macron + c.(length) + (1 + c.(familiarity) + c.(n.neighbors) + macron + c.(length)|workerId) + (1+ c.(maoriExpo)|word), data=dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)), family=binomial(link="logit"))
-# summary(m8) # singular fit -> remove a random slope (length) by workerId
-# m9 <- glmer(correct ~ c.(n.neighbors)*c.(maoriExpo) + c.(familiarity)*c.(maoriExpo) + macron + c.(length) + (1 + c.(familiarity) + c.(n.neighbors) + macron|workerId) + (1+ c.(maoriExpo)|word), data=dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)), family=binomial(link="logit"))
-# summary(m9) # remove maoriExpo:familiarity
-# m10 <- glmer(correct ~ c.(n.neighbors)*c.(maoriExpo) + c.(familiarity) + macron + c.(length) + (1 + c.(familiarity) + c.(n.neighbors) + macron|workerId) + (1+ c.(maoriExpo)|word), data=dataExp2, control=glmerControl(optimizer="bobyqa", optCtrl=list(maxfun=1e6)), family=binomial(link="logit"))
-# anova(m9, m10) # not significant, choose m10 (remove maoriExpo:familiarity)
-# summary(m10) # remove length
-# m11 <- glmer(correct ~ c.(n.neighbors)*c.(maoriExpo) + c.(familiarity) + macron + (1 + c.(familiarity) + c.(n.neighbors) + macron|workerId) + (1+ c.(maoriExpo)|word), data=dataExp2, control = glmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=1e6)), family=binomial(link="logit"))
-# anova(m10, m11) # not significant, choose m11 (remove length)
-# summary(m11) # singular fit -> remove a random slope (n.neighbors) by workerId
-# m12 <- glmer(correct ~ c.(n.neighbors)*c.(maoriExpo) + c.(familiarity) + macron + (1 + c.(familiarity) + macron|workerId) + (1+ c.(maoriExpo)|word), data=dataExp2, control = glmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=1e6)), family=binomial(link="logit"))
-# summary(m12) # AIC: 12476.1, remove n.neighbors:maoriExpo
-# m13 <- glmer(correct ~ c.(n.neighbors) + c.(maoriExpo) + c.(familiarity) + macron + (1 + c.(familiarity) + macron|workerId) + (1+ c.(maoriExpo)|word), data=dataExp2, control = glmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=1e6)), family=binomial(link="logit"))
-# anova(m12, m13) # significant, choose m12 (do not remove n.neighbors:maoriExpo) -> add an uncorrelated random effect (n.neighbors) by workerId to m12
-# m12_1 <- glmer(correct ~ c.(n.neighbors)*c.(maoriExpo) + c.(familiarity) + macron + (1 + c.(familiarity) + macron|workerId) + (0 + c.(n.neighbors)|workerId) + (1+ c.(maoriExpo)|word), data=dataExp2, control = glmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=1e6)), family=binomial(link="logit"))
-# summary(m12_1) #AIC: 12478.0
-# anova(m12, m12_1) # choose m12 (model with a lower AIC score)
-# saveRDS(m12, file = "exp2MaoriExpo.rds")
-mExp2MaoriExpo <- readRDS("./exp2MaoriExpo.rds")   
-logistic_table(mExp2MaoriExpo, caption="Model summary of accuracy with participants’ self-reported exposure to Māori. All numeric variables in this model are centered.")
-``` 
-
-### Effect plots from the model with participants’ self-rated exposure to Māori  
-
-```{r māoriExpo (Exp2) effect, echo=F, message=F, warning=F, eval=T, fig.width=6, fig.height=2, fig.cap="Effect plots of: the interaction between neighbourhood density and participants' exposure to Māori (Fig.a); the presence of macrons (Fig.b); and familiarity (Fig.c)."}
-# 1) Neighbourhood density*Exposure
-exp2ME_1 <- as.data.frame(effect(term="c.(n.neighbors):c.(maoriExpo)", mod=mExp2MaoriExpo))
-exp2ME_1$maoriExpo1 <- "Exposure = 2"
-exp2ME_1[exp2ME_1$maoriExpo=="2",]$maoriExpo1 <- "Exposure = 2"
-exp2ME_1[exp2ME_1$maoriExpo=="4",]$maoriExpo1 <- "Exposure = 4"
-exp2ME_1[exp2ME_1$maoriExpo=="6",]$maoriExpo1 <- "Exposure = 6"
-exp2ME_1[exp2ME_1$maoriExpo=="8",]$maoriExpo1 <- "Exposure = 8"
-exp2ME_1[exp2ME_1$maoriExpo=="10",]$maoriExpo1 <- "Exposure = 10"
-exp2ME_1$type <- "Word"
-exp2ME_1$maoriExpo1 <- factor(exp2ME_1$maoriExpo1, levels=c("Exposure = 2","Exposure = 4","Exposure = 6","Exposure = 8","Exposure = 10"))
-F_Exp2ME_1 <- ggplot(exp2ME_1, aes(x=n.neighbors, y=fit, color = type, fill=type)) + geom_line(size=1) + facet_grid(. ~ maoriExpo1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Neighbourhood density", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=9), axis.title=element_text(size = 9, face = "bold"),legend.text=element_text(size=9), strip.text = element_text(size = 9, face="bold"))
-
-# 2) Macron
-exp2ME_2 <- as.data.frame(effect(term="macron", mod=mExp2MaoriExpo))
-exp2ME_2$Macron <- "Macron = FALSE"
-exp2ME_2[exp2ME_2$macron=="TRUE",]$Macron <- "Macron = TRUE"
-exp2ME_2$type <- "Word"
-F_Exp2ME_2 <- ggplot(exp2ME_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=9), legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=9), axis.title=element_text(size = 9, face = "bold"),legend.text=element_text(size=9), strip.text = element_text(size = 9, face="bold"))
-
-# 3) Familiarity
-exp2ME_3 <- as.data.frame(effect(term="c.(familiarity)", mod=mExp2MaoriExpo))
-exp2ME_3$type <- "Word"
-F_Exp2ME_3 <- ggplot(exp2ME_3, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 10, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 10, face="bold"))
-
-ggarrange(F_Exp2ME_1, labels=c("a."))
-ggarrange(F_Exp2ME_2, F_Exp2ME_3, labels=c("b.","c."), ncol=2, widths=c(1,1))
+ggarrange(exp2_mean_1, exp2_mean_2, labels=c("a.","b."), ncol=2)
+remove(exp2_mean_1, exp2_mean_2)
 ```
 
 # Supporting Information
@@ -1924,268 +1489,15 @@ $\square$ No
 
 ## Appendix B: Stimulus materials for Experiments
 
-### List of stimuli for Experiment 1 - real words
+### Experiment 1
 
-```{r Table.ApB1, echo=F, message=F, warning=F, eval=T}
-dataExp1 %>%
-  filter(type == "real") %>%
-  arrange(word) %>%
-  pull(word) %>%
-  unique() %>%
-  paste(., collapse = ", ") %>%
-  kable(caption="List of stimuli for Experiment 1 - real words", col.names = NULL) %>%
-  kable_styling()
-``` 
+The real word stimuli used in Experiment 1 are:  
+`r dataExp1 %>% filter(type == "real") %>% arrange(word) %>% pull(word) %>% unique() %>% paste(., collapse = "; ")`
 
-### List of stimuli for Experiment 1 - nonwords
+The nonword stimuli used in Experiment 1 are:  
+`r dataExp1 %>% filter(type == "non") %>% arrange(word) %>% pull(word) %>% unique() %>% paste(., collapse = "; ")`
 
-```{r Table.ApB2, echo=F, message=F, warning=F, eval=T}
-dataExp1 %>%
-  filter(type == "non") %>%
-  arrange(word) %>%
-  pull(word) %>%
-  unique() %>%
-  paste(., collapse = ", ") %>%
-  kable(caption="List of stimuli for Experiment 1 - nonwords", col.names = NULL) %>%
-  kable_styling()
-``` 
+### Experiment 2
 
-### List of stimuli for Experiment 2
-
-```{r Table.ApB3, echo=F, message=F, warning=F, eval=T}
-dataExp2 %>%
-  arrange(word) %>%
-  pull(word) %>%
-  unique() %>%
-  paste(., collapse = ", ") %>%
-  kable(caption="List of stimuli for Experiment 2", col.names = NULL) %>%
-  kable_styling()
-``` 
-
-# Paper figures
-
-## Figure 1
-
-```{r Figure 1, echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=6, fig.cap="Figure 1: Overview of participants' sociolinguistic profile in Experiment 1. Bars are labeled with their counts for each category."} 
-# 1) Gender
-# Exp1Gender <- unique(dataExp1[,c("gender","workerId")])
-# Exp1GenderT <- as.data.frame(table(Exp1Gender$gender));names(Exp1GenderT) <- c("gender","freq")
-Fig1Exp1Gender <- ggplot(Exp1Gender, aes(x=gender,color=gender,fill=gender)) + theme_classic() + geom_bar(aes(),size=.1,show.legend=F) + geom_text(data=Exp1GenderT, aes(x=gender,y=freq,label=freq), color="black", vjust=-0.2,size=3)+labs(x="Gender",y="Number of participants") + coord_cartesian(ylim=c(0, 80))
-
-# 2) Education
-# Exp1Education <- unique(dataExp1[,c("education","workerId")]);Exp1Education$education <- as.factor(Exp1Education$education)
-# Exp1EducationT <- as.data.frame(table(Exp1Education$education));names(Exp1EducationT) <- c("education","freq")
-# edu_levels <- c("high","undergraduate","graduate")
-# Exp1Education$education <- factor(Exp1Education$education, levels = edu_levels)
-# Exp1EducationT$education <- factor(Exp1EducationT$education, levels = edu_levels)
-Fig1Exp1Education <- ggplot(Exp1Education, aes(x=education,color=education,fill=education)) + theme_classic() + geom_bar(aes(),size=.1,show.legend=F) + geom_text(data=Exp1EducationT, aes(x=education,y=freq,label=freq), color="black", vjust=-0.2,size=3) + labs(x="Highest education",y="Number of participants") + coord_cartesian(ylim=c(0, 52))
-
-# 3) Basic knowledge of Māori
-# Exp1ML <- unique(dataExp1[,c("maoriList","workerId")]);Exp1ML$maoriList <- as.factor(Exp1ML$maoriList)
-# Exp1MLT <- as.data.frame(table(Exp1ML$maoriList));names(Exp1MLT) <- c("maoriList","freq")
-Fig1Exp1ML <- ggplot(Exp1ML, aes(x=maoriList,color=maoriList,fill=maoriList))+theme_classic()+ geom_bar(aes(),size=.1,show.legend=F) + geom_text(data=Exp1MLT, aes(x=maoriList,y=freq,label=freq), color="black", vjust=-0.2,size=3) + labs(x="Basic knowledge of Māori",y="Number of participants") + coord_cartesian(ylim=c(0, 20))
-  
-# 4) Age
-# Exp1Age <- unique(dataExp1[,c("age","workerId")]);Exp1Age$age <- as.factor(Exp1Age$age)
-# Exp1Age$age <- factor(Exp1Age$age, levels=c("18-29", "30-39", "40-49", "50-59", "+60"))
-# Exp1AgeT <- as.data.frame(table(Exp1Age$age));names(Exp1AgeT) <- c("age","freq")
-# Exp1AgeT$age <- factor(Exp1AgeT$age, levels=c("18-29", "30-39", "40-49", "50-59", "+60"))
-Fig1Exp1Age <- ggplot(Exp1Age, aes(x=age,color=age,fill=age))+theme_classic() + geom_bar(aes(),size=.1,show.legend=F) + geom_text(data=Exp1AgeT, aes(x=age,y=freq,label=freq), color="black", vjust=-0.2,size=3) + labs(x="Age",y="Number of participants") + coord_cartesian(ylim=c(0, 36))
-
-# 5) Place
-# Exp1Place <- unique(dataExp1[,c("place","workerId")]);Exp1PlaceT <- as.data.frame(table(Exp1Place$place));names(Exp1PlaceT) <- c("place","freq")
-# place_levels <- c("north","south","overseas")
-# Exp1Place$place <- factor(Exp1Place$place, levels = place_levels)
-# Exp1PlaceT$place <- factor(Exp1PlaceT$place, levels = place_levels)
-Fig1Exp1Place <- ggplot(Exp1Place, aes(x=place, color=place, fill= place)) + theme_classic() + geom_bar(aes(),size=.1,show.legend=F) + geom_text(data=Exp1PlaceT,aes(x=place,y=freq,label=freq), color="black", vjust=-0.2,size=3) + labs(x = "Place", y = "Number of participants") + coord_cartesian(ylim=c(0, 55))
-
-# 6) Exposure to Māori
-# Exp1ME <- unique(dataExp1[,c("maoriExpo","workerId")]);Exp1ME$maoriExpo <- as.factor(Exp1ME$maoriExpo)
-# Exp1MET <- as.data.frame(table(Exp1ME$maoriExpo));names(Exp1MET) <- c("maoriExpo","freq")
-Fig1Exp1ME <- ggplot(Exp1ME, aes(x=maoriExpo, color=maoriExpo, fill=maoriExpo))+theme_classic() + geom_bar(aes(),size=.1,show.legend=F) + geom_text(data=Exp1MET, aes(x=maoriExpo,y=freq,label=freq), color="black", vjust=-0.2,size=3)+labs(x="Level of exposure",y="Number of participants") + coord_cartesian(ylim=c(0, 28))
-
-multiplot(Fig1Exp1Gender, Fig1Exp1Education, Fig1Exp1ML, Fig1Exp1Age, Fig1Exp1Place, Fig1Exp1ME, cols=2) 
-```
-
-## Figure 2
-
-```{r Figure 2, echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=6, fig.cap="Figure 2: Overview of participants’ sociolinguistic profile in Experiment 2. Bars are labeled with their counts for each category."} 
-# 1) Gender
-# Exp2Gender <- unique(dataExp2[,c("gender","workerId")])
-# Exp2GenderT <- as.data.frame(table(Exp2Gender$gender));names(Exp2GenderT) <- c("gender","freq")
-Fig2Exp2Gender <- ggplot(Exp2Gender, aes(x=gender,color=gender,fill=gender)) + theme_classic() + geom_bar(aes(),size=.1,show.legend=F) + geom_text(data=Exp2GenderT, aes(x=gender,y=freq,label=freq), color="black", vjust=-0.2,size=3)+labs(x="Gender",y="Number of participants") + coord_cartesian(ylim=c(0, 97))
-
-# 2) Education
-# Exp2Education <- unique(dataExp2[,c("education","workerId")]);Exp2Education$education <- as.factor(Exp2Education$education)
-# Exp2EducationT <- as.data.frame(table(Exp2Education$education));names(Exp2EducationT) <- c("education","freq")
-# edu_levels <- c("high","undergraduate","graduate")
-# Exp2Education$education <- factor(Exp2Education$education, levels = edu_levels)
-# Exp2EducationT$education <- factor(Exp2EducationT$education, levels = edu_levels)
-Fig2Exp2Education <- ggplot(Exp2Education, aes(x=education,color=education,fill=education)) + theme_classic() + geom_bar(aes(),size=.1,show.legend=F) + geom_text(data=Exp2EducationT, aes(x=education,y=freq,label=freq), color="black", vjust=-0.2,size=3) + labs(x="Highest education",y="Number of participants") + coord_cartesian(ylim=c(0, 58))
-
-# 3) Basic knowledge of Māori
-# Exp2ML <- unique(dataExp2[,c("maoriList","workerId")]);Exp2ML$maoriList <- as.factor(Exp2ML$maoriList)
-# Exp2MLT <- as.data.frame(table(Exp2ML$maoriList));names(Exp2MLT) <- c("maoriList","freq")
-Fig2Exp2ML <- ggplot(Exp2ML, aes(x=maoriList,color=maoriList,fill=maoriList))+theme_classic()+ geom_bar(aes(),size=.1,show.legend=F) + geom_text(data=Exp2MLT, aes(x=maoriList,y=freq,label=freq), color="black", vjust=-0.2,size=3) + labs(x="Basic knowledge of Māori",y="Number of participants") + coord_cartesian(ylim=c(0, 28))
-
-# 4) Age
-Exp2Age <- unique(dataExp2[,c("age","workerId")]);Exp2Age$age <- as.factor(Exp2Age$age)
-Exp2Age$age <- factor(Exp2Age$age, levels=c("18-29", "30-39", "40-49", "50-59", "+60"))
-Exp2AgeT <- as.data.frame(table(Exp2Age$age));names(Exp2AgeT) <- c("age","freq")
-Exp2AgeT$age <- factor(Exp2AgeT$age, levels=c("18-29", "30-39", "40-49", "50-59", "+60"))
-Fig2Exp2Age <- ggplot(Exp2Age, aes(x=age,color=age,fill=age))+theme_classic() + geom_bar(aes(),size=.1,show.legend=F) + geom_text(data=Exp2AgeT, aes(x=age,y=freq,label=freq), color="black", vjust=-0.2,size=3) + labs(x="Age",y="Number of participants") + coord_cartesian(ylim=c(0, 32))
-
-# 5) Place
-# Exp2Place <- unique(dataExp2[,c("place","workerId")]);Exp2PlaceT <- as.data.frame(table(Exp2Place$place));names(Exp2PlaceT) <- c("place","freq")
-# place_levels <- c("north","south","overseas")
-# Exp2Place$place <- factor(Exp2Place$place, levels = place_levels)
-# Exp2PlaceT$place <- factor(Exp2PlaceT$place, levels = place_levels)
-Fig2Exp2Place <- ggplot(Exp2Place, aes(x=place, color=place, fill= place)) + theme_classic() + geom_bar(aes(),size=.1,show.legend=F) + geom_text(data=Exp2PlaceT,aes(x=place,y=freq,label=freq), color="black", vjust=-0.2,size=3) + labs(x = "Place", y = "Number of participants") + coord_cartesian(ylim=c(0, 60))
-
-# 6) Exposure to Māori
-# Exp2ME <- unique(dataExp2[,c("maoriExpo","workerId")]);Exp2ME$maoriExpo <- as.factor(Exp2ME$maoriExpo)
-# Exp2MET <- as.data.frame(table(Exp2ME$maoriExpo));names(Exp2MET) <- c("maoriExpo","freq")
-Fig2Exp2ME <- ggplot(Exp2ME, aes(x=maoriExpo, color=maoriExpo, fill=maoriExpo))+theme_classic() + geom_bar(aes(),size=.1,show.legend=F) + geom_text(data=Exp2MET, aes(x=maoriExpo,y=freq,label=freq), color="black", vjust=-0.2,size=3)+labs(x="Level of exposure",y="Number of participants") + coord_cartesian(ylim=c(0, 21))
-
-multiplot(Fig2Exp2Gender, Fig2Exp2Education, Fig2Exp2ML, Fig2Exp2Age, Fig2Exp2Place, Fig2Exp2ME, cols=2)
-```
-
-## Figure 3
-
-```{r Figure 3, echo=F, message=F, warning=F, eval=T, fig.width=8, fig.height=4.5, fig.cap="Figure 3: Length distribution of real word stimuli. The length of stimulus (the number of phonemes) is represented on the x-axis and the number of stimuli is represented on the y-axis."} 
-# lengthT <- unique(dataExp1[c("word", "length","type")]);lengthT <- lengthT[lengthT$type=="real",]
-# lengthT$length <- as.factor(lengthT$length)
-# lengthTT <- as.data.frame(table(lengthT$length));names(lengthTT) <- c("length","freq")
-ggplot(lengthT, aes(x = length, color= length, fill= length))  + theme_classic() + 
-geom_bar(aes(fill= length, color= length),size=.1,show.legend=F) + labs(x = "Length", y = "Number of stimuli") + geom_text(data=lengthTT, aes(x=length, y=freq, label=freq),color="black", vjust=-0.2, size=3) + 
-theme(legend.position="none")
-```
-
-## Figure 4
-
-```{r Figure 4, echo=F, message=F, warning=F, eval=T, fig.width=10, fig.height=5, fig.cap="Figure 4: Average word ratings by phonotactic score. The average rating per word is represented on the y-axis and the phonotactic score is represented on the x-axis. Overlapping labels are omitted."} 
-# meanRatings <- aggregate(dataExp1$enteredResponse, by=list(dataExp1$word),  FUN=mean)
-# colnames(meanRatings) <- c("word","mean")
-# Fig4T <- unique(dataExp1[c("word","type","score")])
-# Fig4T <- merge(Fig4T, meanRatings, by="word")
-# Fig4T$Type <- "Nonword";Fig4T[Fig4T$type=="real",]$Type <- "Word"
-# Fig4T$id <- seq_along(Fig4T$word);listID <- Fig4T$id[seq.int(1, length(Fig4T$id),5)]
-# Fig4T <- Fig4T[order(Fig4T$score, decreasing=FALSE),]
-ggplot(Fig4T, aes(x=score, y=mean, group=Type, label=word)) + labs(x= "Phonotactic score", y="Average rating") + theme_classic() + theme(legend.title=element_blank()) + geom_point(aes(color=Type,shape=Type),size=3, alpha=0.2) + geom_text(aes(color=Type), hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + scale_shape_manual(values = c("Nonword" = 19, "Word" = 17)) +  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) + scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) + facet_wrap(vars(Type))  + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) + xlim(c(-1.2, -0.55))
-```
-
-## Figure 5
-
-```{r Figure 5, echo=F, message=F, warning=F, eval=T, fig.width=13, fig.height=7, fig.cap="Figure 5: Effect plots of: the interaction between the neighbourhood density, the distinction between non vs. real word stimuli, and phonotactic score (Fig.a); and the presence of macrons (Fig.b). For plots involving interactions with neighbourhood density, the upper panel represents stimuli with high neighbourhood density, and the lower panel represents stimuli with low neighbourhood density. Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings."}
-nn_cuts = c(32, 16)
-score_cuts = c(-0.5, -0.8)
-
-# 1) Type*Neighbourhood density*Phonotactic score
-exp1_mean_1 <- clm_plotdat(mExp1, c("type", "n.neighbors", "score"), xlevels=list(n.neighbors=nn_cuts), type="mean") %>%
-  mutate(
-    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
-    n.neighbors = factor(n.neighbors, levels=nn_cuts)
-  ) %>%
-  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
-  geom_line(size=1) +
-  xlab("Phonotactic score") +
-  ylab("Predicted mean rating") + 
-  facet_grid(n.neighbors ~ ., labeller=label_both, switch="y") +
-  ylim(c(2.3, 5)) +
-  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  theme_bw() + 
-  theme(legend.position="none", panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face   = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
-
-exp1_dist_1 <- clm_plotdat(mExp1, c("type", "n.neighbors", "score"), xlevels=list(n.neighbors=nn_cuts), type="dist") %>%
-  mutate(
-    type = fct_recode(type, "Nonword"="non", "Word"="real") %>% fct_relevel("Word"),
-    n.neighbors = factor(n.neighbors, levels=nn_cuts)
-  ) %>%
-  rename("Rating" = response) %>%
-  ggplot(., aes(x=score, y=pred, color=type, fill=type)) +
-  geom_ribbon(aes(ymin=lci, ymax=uci), alpha=0.2, color=NA) +
-  geom_line(size=1) +
-  xlab("Phonotactic score") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  scale_fill_manual(values = c("Nonword" = "black", "Word" = "blue")) +
-  facet_grid(n.neighbors ~ Rating, labeller=label_both, switch="y") +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(legend.position="right", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
-
-# 2) Macron
-exp1_mean_2 <- clm_plotdat(mExp1, "macron", type="mean") %>%
-  mutate(
-    type="Word and\nNonword",
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
-  ) %>%
-  ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
-  geom_point(size=4, position=position_dodge(width=0.2)) +
-  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
-  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
-  xlab("Presence of macron") +
-  ylab("Predicted mean rating") + 
-  ylim(c(2.3, 5)) +
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +    
-  theme_bw() + 
-  theme(plot.title = element_text(hjust = 0.5, size=15),legend.position="none",legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold"),   legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold"))
-
-exp1_dist_2 <- clm_plotdat(mExp1, "macron", type="dist") %>%
-  mutate(
-    type="Word and\nNonword",
-    macron = fct_recode(macron, "Yes"="TRUE", "No"="FALSE")
-  ) %>%
-  ggplot(., aes(x=macron, y=pred, color=type, fill=type)) +
-  geom_point(size=4, position=position_dodge(width=0.2)) +
-  geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) +
-  geom_errorbar(aes(ymin=lci, ymax=uci), size=1, width=0.3, position=position_dodge(width=0.2)) +
-  xlab("Presence of macron") +
-  ylab("Probability of rating") + 
-  scale_color_manual(values = c("Word and\nNonword" = "purple")) +
-  scale_fill_manual(values = c("Word and\nNonword" = "purple")) +  
-  facet_grid(. ~ response, labeller=as_labeller(function(x) str_c("Rating: ", x))) +
-  ylim(0, 1) +  
-  theme_bw() + 
-  theme(plot.title = element_text(hjust = 0.5, size=15),legend.position="right",legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face= "bold"), legend.text=element_text(size=12), strip.text = element_text(size = 13, face="bold")) 
-
-ggarrange(exp1_mean_1, exp1_dist_1,exp1_mean_2, exp1_dist_2, labels=c("a.","","b.",""), ncol=2, widths=c(1,6), heights=c(2,1))
-```
-
-## Figure 6
-
-```{r Figure 6, echo=F, message=F, warning=F, eval=T, fig.width=9, fig.height=5, fig.cap="Figure 6: Rate of accurate definitions per word. Words are displayed according to their phonotactic score on the x-axis and their accuracy rates are represented on the y-axis."}
-Fig6 <- dataExp2[,c("workerId","word","correct","familiarity","score","macron")]
-Fig6$correct1 <- 0;Fig6[Fig6$correct=="TRUE",]$correct1 <- 1;Fig6$correct1 <- as.numeric(Fig6$correct1)
-accRate <- aggregate(Fig6$correct1, by=list(Fig6$word),  FUN=sum)
-colnames(accRate) <- c("word","nbCorrect")
-total <- length(unique(Fig6$workerId));accRate$rate <- accRate$nbCorrect/total
-wordScoreMacron <- unique(Fig6[,c("word","familiarity","score","macron")])
-accRate <- merge(accRate, wordScoreMacron, by="word")
-accRate$macron1 <- "Macron = TRUE"
-accRate[accRate$macron=="FALSE",]$macron1 <- "Macron = FALSE"
-ggplot(accRate, aes(x=score, y=rate, label=word)) + labs(x= "Phonotactic score", y="Accuracy rate") + geom_point(color="blue", size=3, alpha=0.2, shape=17) + theme(legend.title=element_blank()) + geom_text(color="blue", hjust=0.2,vjust=-0.7,check_overlap = TRUE, size=4) + theme_bw() + theme(legend.position="none", legend.title=element_blank(),panel.background = element_blank(), axis.text=element_text(size=13), axis.title=element_text(size = 13, face = "bold")) + xlim(c(-1.05, -0.55)) # + facet_wrap(vars(macron1))
-# nrow(unique(wordScoreMacron[wordScoreMacron$macron=="TRUE",])) # 23 words containing a macron
-# nrow(unique(wordScoreMacron[wordScoreMacron$macron=="FALSE",])) # 95 words without a macron
-```
-
-## Figure 7
-
-```{r Figure 7, echo=F, message=F, warning=F, eval=T, fig.width=7, fig.height=2.5, fig.cap="Figure 7: Effect plots of: familiarity (Fig.a); and the presence of macrons (Fig.b)."}
-# 1) Familiarity
-exp2_1 <- as.data.frame(effect(term="c.(familiarity)", mod=mExp2))
-exp2_1$type <- "Word"
-F_Exp2_1 <- ggplot(exp2_1, aes(x=familiarity, y=fit, color = type, fill=type)) + geom_line(size=1) + geom_ribbon(aes(ymin=fit-se, ymax=fit+se),alpha=0.2, color=NA) + labs(x= "Familiarity", y="Accuracy") + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 10, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 10, face="bold"))
-
-# 2) Macron
-exp2_2 <- as.data.frame(effect(term="macron", mod=mExp2))
-exp2_2$Macron <- "Macron = FALSE"
-exp2_2[exp2_2$macron=="TRUE",]$Macron <- "Macron = TRUE"
-exp2_2$type <- "Word"
-F_Exp2_2 <- ggplot(exp2_2, aes(x=macron, y=fit, color=type, fill=type)) + geom_point(size=4, position=position_dodge(width=0.2)) + geom_line(aes(x=as.integer(macron)), size=1, alpha=0.4, position=position_dodge(width=0.2)) + geom_errorbar(aes(ymin=fit-se, ymax=fit+se), size=1, width=0.3, position=position_dodge(width=0.2)) + xlab("Presence of macron") + ylab("Accuracy") + ylim(c(0, 1)) + scale_color_manual(values = c("Word" = "blue")) + scale_fill_manual(values = c("Word" = "blue")) + theme_bw() + theme(plot.title = element_text(hjust = 0.5, size=10), legend.position="none", legend.title=element_blank(), panel.background = element_blank(), axis.text=element_text(size=10), axis.title=element_text(size = 10, face = "bold"),legend.text=element_text(size=10), strip.text = element_text(size = 10, face="bold")) 
-
-ggarrange(F_Exp2_1, F_Exp2_2, labels=c("a.","b."), ncol=2)
-```
+The stimuli used in Experiment 2 are:  
+`r dataExp2 %>% arrange(word) %>% pull(word) %>% unique() %>% paste(., collapse = "; ")`
