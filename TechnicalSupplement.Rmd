@@ -41,7 +41,7 @@ library(MASS)
 library(kableExtra)
 library(ggrepel)
 
-knitr::opts_chunk$set(echo=F, message=F, warning=F, fig.show='hold', results='hold', fig.align='center')
+knitr::opts_chunk$set(echo=T, message=F, warning=F, fig.show='hold', results='hold', fig.align='center')
 
 # Local functions
 
