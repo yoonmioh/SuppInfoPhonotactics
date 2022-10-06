@@ -1,6 +1,6 @@
 # SuppInfoPhonotactics
 
-Supplementary Materials for the paper "Phonotactic knowledge in speakers with a very small active vocabulary"
+Supplementary Materials for the paper "Assessing the size of non-Māori-speakers’ active Māori lexicon"
 
 This supporting data contains:
 - an Rmarkdown script
