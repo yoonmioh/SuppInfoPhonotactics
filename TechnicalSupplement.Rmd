@@ -40,6 +40,7 @@ library(tidyverse)
 library(MASS)
 library(kableExtra)
 library(ggrepel)
+library(car)
 
 knitr::opts_chunk$set(echo=T, message=F, warning=F, fig.show='hold', results='hold', fig.align='center')
 
@@ -250,6 +251,34 @@ display_table = function(dat, caption, digits=3, highlight=c()) {
   table <- dat %>%
     mutate_at(highlight, ~ highlight_min(., digits=digits)) %>%
     kable(caption=caption, digits=digits, escape=F) %>%
+    kable_styling()
+  return(table)
+}
+
+# A function to calculate VIFs for a clmm object and display them in a table
+# NB: VIFs are calculated from a fixed-effect polr object
+clm_vif = function(mod, dat, ...) {
+  table <- vif(polr(mod$terms, data=dat, method="logistic", Hess=TRUE)) %>%
+    vif_table(...)
+  return(table)
+}
+
+# A function to neatly display a VIF table
+vif_table = function(table, ...) {
+  table = table %>%
+    data.frame() %>%
+    rlang::set_names(c("vif")) %>%
+    rownames_to_column("parameter") %>%
+    mutate(
+      parameter = parameter %>%
+        str_replace_all(
+          .,
+          "(?<=^|\\:)(?:c\\.\\()([^:]+)(?:\\))(?=$|\\:)",
+          "\\1 (centered)"
+        ) %>%
+        str_replace_all(., fixed(":"), " &times; ")
+    ) %>%
+    kable(digits=3, escape=F, col.names=c("Parameter", "VIF"), align="lr", ...) %>%
     kable_styling()
   return(table)
 }
@@ -624,7 +653,6 @@ We take a stepwise approach to model fitting, broken into stages in order to min
 
 The model table and partial effects plots are shown below. The main effect of `type` shows that participants rate real words higher than non-words. The main effect of `score` shows that participants rate nonwords higher the higher their phonotactic probability; however, the interaction between `score` and `type` shows that the same is not true for real words, where all words are rated equally high regardless of their phonotactics. Taken together, these results confirm the patterns suggested earlier by the high-frequency words studied by Panther et al. (under review): participants have phonotactic knowledge, and they recruit it to inform ratings when they do not recognize a stimulus, but do not need to recruit when they do recognize a stimulus (in this case, because it is a well known Māori word and perhaps a borrowing into New Zealand English). In addition, the main effect of `macron` shows that the visual presence of a macron is highly salient for participants and causes them to rate stimuli higher, consistent with earlier work (Oh et al., 2020). Finally, the main effect of `n.neighbors` shows that participants rate stimuli that closely resemble many real Māori words higher than those that resemble few words, supporting the conclusion of Oh et al. (2020) that they have a proto-lexicon of a large number of Māori words or word-parts, and suggesting that they can leverage this knowledge to do more than just judge phonotactic probability.
 
-
 ```{r model (Exp1)}
 # Modify confidence ratings as discrete variables
 dataExp1$enteredResponse <- as.factor(dataExp1$enteredResponse)
@@ -780,6 +808,12 @@ exp1_dist_3 <- clm_plotdat(mExp1, c("n.neighbors"), xlevels=list(n.neighbors=25)
 
 ggarrange(exp1_mean_1, exp1_dist_1, exp1_mean_2, exp1_dist_2, exp1_mean_3, exp1_dist_3, labels=c("a.","","b.","","c.",""), ncol=2, widths=c(1,6))
 remove(exp1_mean_1, exp1_dist_1, exp1_mean_2, exp1_dist_2, exp1_mean_3, exp1_dist_3)
+```
+
+Below, we report Variance Inflation Factors (VIFs) for the final model, which are calculated based on the extent to which each fixed effect predictor can be predicted from all other fixed effect predictors. Since this calculation is not dependent on the random effect structures, we perform it by applying the `vif()` function from the `car` package to a (fixed-effect) logit ordinal regression model with all of the fixed effects from the final ordinal regression model; since `vif()` is not applicable to models fit with the `ordinal` package at the time of writing, we instead apply it to a model fit with the `polr()` function from the `MASS` library. Large VIFs indicate multicollinearity, whereby one predictor is highly correlated with combinations of others, which decreases the extent to which inferences from the model can be trusted. For our model, all VIFs are below 2, which indicates low multicollinearity (VIFs above 5 are generally interpreted as potentially problematic, while VIFs above 10 are cause for serious concern).
+
+```{r vif (Exp1)}
+clm_vif(mExp1, dataExp1, caption="Variance Inflation Factors for the final model from Experiment 1. All numeric variables in this model are centered.")
 ```
 
 ## Investigation of individual differences
@@ -966,6 +1000,12 @@ exp1d_dist_3 <- clm_plotdat(mExp1Dprime, c("n.neighbors", "dprime"), xlevels=lis
 
 ggarrange(exp1d_mean_1, exp1d_dist_1, exp1d_mean_2, exp1d_dist_2, exp1d_mean_3, exp1d_dist_3, labels=c("a.","","b.","","c.",""), ncol=2, widths=c(1,6))
 remove(exp1d_mean_1, exp1d_dist_1, exp1d_mean_2, exp1d_dist_2, exp1d_mean_3, exp1d_dist_3)
+```
+
+Below, we report Variance Inflation Factors (VIFs) for the final model, calculated as previously described. All VIFs are below 2.5, which indicates low multicollinearity.
+
+```{r vif (Exp1 dprime)}
+clm_vif(mExp1Dprime, dataExp1DprimeFinite, caption="Variance Inflation Factors for the final individual differences model from Experiment 1. All numeric variables in this model are centered.")
 ```
 
 
@@ -1377,6 +1417,13 @@ exp2_mean_2 <- Effect("macron", mExp2) %>%
 
 ggarrange(exp2_mean_1, exp2_mean_2, labels=c("a.","b."), ncol=2)
 remove(exp2_mean_1, exp2_mean_2)
+```
+
+Below, we report Variance Inflation Factors (VIFs) for the final model, calculated via direct usage of the `vif()` function (i.e. without refitting the model, since `vif()` supports `glmer` model objects). All VIFs are below 3, which indicates limited multicollinearity.
+
+```{r vif (Exp2)}
+vif(mExp2) %>%
+  vif_table(caption="Variance Inflation Factors for the final model from Experiment 2. All numeric variables in this model are centered.")
 ```
 
 # Supporting Information

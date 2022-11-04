@@ -259,7 +259,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Assessing the size of non-Māori-speakers’ active Māori lexicon</h1>
 <h3 class="subtitle">Supplementary materials</h3>
-<h4 class="date">2022-09-27 14:16:48</h4>
+<h4 class="date">2022-11-04 15:38:28</h4>
 
 </div>
 
@@ -1019,6 +1019,65 @@ remove(exp1_mean_1, exp1_dist_1, exp1_mean_2, exp1_dist_2, exp1_mean_3, exp1_dis
 Effect plots of: the interaction between phonotactic score and the distinction between non vs. real word stimuli (Fig.a); the presence of macrons (Fig.b); and number of phonological neighbors (Fig.c). Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings.
 </p>
 </div>
+<p>Below, we report Variance Inflation Factors (VIFs) for the final model, which are calculated based on the extent to which each fixed effect predictor can be predicted from all other fixed effect predictors. Since this calculation is not dependent on the random effect structures, we perform it by applying the <code>vif()</code> function from the <code>car</code> package to a (fixed-effect) logit ordinal regression model with all of the fixed effects from the final ordinal regression model; since <code>vif()</code> is not applicable to models fit with the <code>ordinal</code> package at the time of writing, we instead apply it to a model fit with the <code>polr()</code> function from the <code>MASS</code> library. Large VIFs indicate multicollinearity, whereby one predictor is highly correlated with combinations of others, which decreases the extent to which inferences from the model can be trusted. For our model, all VIFs are below 2, which indicates low multicollinearity (VIFs above 5 are generally interpreted as potentially problematic, while VIFs above 10 are cause for serious concern).</p>
+<pre class="r"><code>clm_vif(mExp1, dataExp1, caption=&quot;Variance Inflation Factors for the final model from Experiment 1. All numeric variables in this model are centered.&quot;)</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+Variance Inflation Factors for the final model from Experiment 1. All numeric variables in this model are centered.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:right;">
+VIF
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+score (centered)
+</td>
+<td style="text-align:right;">
+1.702
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+type
+</td>
+<td style="text-align:right;">
+1.308
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+macron
+</td>
+<td style="text-align:right;">
+1.219
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n.neighbors (centered)
+</td>
+<td style="text-align:right;">
+1.211
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+score (centered) × type
+</td>
+<td style="text-align:right;">
+1.728
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="investigation-of-individual-differences" class="section level2" number="1.6">
 <h2 number="1.6"><span class="header-section-number">1.6</span> Investigation of individual differences</h2>
@@ -1413,6 +1472,105 @@ Thresholds
 Effect plots of the interaction between dprime and: the interaction between phonotactic score and the distinction between non vs. real word stimuli (Fig.a); the presence of macrons (Fig.b); and number of phonological neighbors (Fig.c). Plots on the left show predicted mean ratings and plots on the right show predicted distributions over ratings; top panels in each case show predictions for a high-dprime participant (dprime=3; 93rd percentile in our data), while bottom panels show predictions for a low-dprime participant (dprime=1; 5th percentile in our data). Note that dprime was modeled as a continuous variable, and has been broken into dichotomous values here for illustrative purposes only.
 </p>
 </div>
+<p>Below, we report Variance Inflation Factors (VIFs) for the final model, calculated as previously described. All VIFs are below 2.5, which indicates low multicollinearity.</p>
+<pre class="r"><code>clm_vif(mExp1Dprime, dataExp1DprimeFinite, caption=&quot;Variance Inflation Factors for the final individual differences model from Experiment 1. All numeric variables in this model are centered.&quot;)</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+Variance Inflation Factors for the final individual differences model from Experiment 1. All numeric variables in this model are centered.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:right;">
+VIF
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+dprime (centered)
+</td>
+<td style="text-align:right;">
+2.262
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+score (centered)
+</td>
+<td style="text-align:right;">
+1.687
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+type
+</td>
+<td style="text-align:right;">
+1.387
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+macron
+</td>
+<td style="text-align:right;">
+1.223
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n.neighbors (centered)
+</td>
+<td style="text-align:right;">
+1.242
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dprime (centered) × score (centered)
+</td>
+<td style="text-align:right;">
+1.389
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dprime (centered) × type
+</td>
+<td style="text-align:right;">
+1.848
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dprime (centered) × macron
+</td>
+<td style="text-align:right;">
+1.652
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dprime (centered) × n.neighbors (centered)
+</td>
+<td style="text-align:right;">
+1.232
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+score (centered) × type
+</td>
+<td style="text-align:right;">
+1.751
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="experiment-2" class="section level1" number="2">
@@ -1932,6 +2090,66 @@ remove(exp2_mean_1, exp2_mean_2)</code></pre>
 Effect plots of familiarity (Fig.a) and presence of a macron (Fig.b).
 </p>
 </div>
+<p>Below, we report Variance Inflation Factors (VIFs) for the final model, calculated via direct usage of the <code>vif()</code> function (i.e. without refitting the model, since <code>vif()</code> supports <code>glmer</code> model objects). All VIFs are below 3, which indicates limited multicollinearity.</p>
+<pre class="r"><code>vif(mExp2) %&gt;%
+  vif_table(caption=&quot;Variance Inflation Factors for the final model from Experiment 2. All numeric variables in this model are centered.&quot;)</code></pre>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+Variance Inflation Factors for the final model from Experiment 2. All numeric variables in this model are centered.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:right;">
+VIF
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+familiarity.latent (centered)
+</td>
+<td style="text-align:right;">
+1.066
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+score (centered)
+</td>
+<td style="text-align:right;">
+1.323
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+macron
+</td>
+<td style="text-align:right;">
+1.141
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n.neighbors (centered)
+</td>
+<td style="text-align:right;">
+2.886
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+length (centered)
+</td>
+<td style="text-align:right;">
+2.519
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="supporting-information" class="section level1" number="3">
