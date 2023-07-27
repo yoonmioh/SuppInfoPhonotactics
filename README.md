@@ -1,4 +1,5 @@
 # SuppInfoPhonotactics
+[![DOI](https://zenodo.org/badge/451527869.svg)](https://zenodo.org/badge/latestdoi/451527869)
 
 Supplementary Materials for the paper "Assessing the size of non-Māori-speakers’ active Māori lexicon"
 
